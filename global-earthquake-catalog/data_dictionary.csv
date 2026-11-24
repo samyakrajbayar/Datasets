@@ -1,0 +1,35 @@
+column,data_type,description
+event_id,string,Unique USGS event identifier.
+time_utc,datetime,Origin time of the event in UTC (YYYY-MM-DD HH:MM:SS).
+date,date,Origin date (UTC).
+year,integer,Origin year.
+month,integer,Origin month (1-12).
+day,integer,Origin day of month.
+hour,integer,"Origin hour (0-23, UTC)."
+weekday,string,Day of week of the origin time.
+updated_utc,datetime,Timestamp of the most recent revision of the event record.
+place,string,Human-readable location description.
+country_region,string,"Last component of the place string, usually the country or region."
+latitude,float,Epicentre latitude in decimal degrees.
+longitude,float,Epicentre longitude in decimal degrees.
+depth_km,float,Hypocentre depth in kilometres below sea level.
+depth_class,category,"Depth band: shallow (<70 km), intermediate (<300 km), deep."
+magnitude,float,Preferred magnitude.
+magnitude_type,category,"Magnitude scale used (ml, mb, mww, md, ...)."
+magnitude_class,category,"Descriptive band: minor, light, moderate, strong, major, great."
+n_stations,integer,Number of seismic stations used in the location solution.
+azimuthal_gap_deg,float,"Largest azimuthal gap between stations, in degrees (lower is better)."
+min_distance_deg,float,Distance to the nearest station in degrees.
+rms_residual,float,"Root-mean-square travel-time residual of the location, in seconds."
+network,string,"Contributing seismic network code (e.g. us, ak, ci)."
+event_type,category,"Event type: earthquake, quarry blast, explosion, ice quake, ..."
+review_status,category,Review status of the solution: reviewed or automatic.
+tsunami_flag,boolean,1 if the event is in a region where a tsunami could be generated.
+felt_reports,integer,Number of DYFI 'felt it' reports received.
+cdi,float,Maximum Community Decimal Intensity from felt reports.
+mmi,float,Maximum estimated Modified Mercalli Intensity.
+alert_level,category,"PAGER alert level: green, yellow, orange or red."
+significance,integer,"USGS significance score combining magnitude, felt reports and impact."
+n_sources,integer,Number of contributing data sources.
+sources,string list,Semicolon-separated contributing source codes.
+url,string,USGS event page URL.

@@ -1,0 +1,61 @@
+column,data_type,description
+spkid,number,JPL SPK object identifier.
+full_name,string,"Full designation, e.g. '433 Eros (A898 PA)'."
+name,string,"Proper name, when one has been assigned."
+pdes,number,Permanent designation (number or provisional designation).
+orbit_class,string,"Dynamical class: Atira, Aten, Apollo or Amor."
+orbit_class_description,string,Human-readable definition of the orbit class.
+is_potentially_hazardous,boolean,"true when Earth MOID is below 0.05 AU (the standard PHA criterion, size not considered)."
+absolute_magnitude_h,number,Absolute magnitude H — a proxy for size.
+diameter_km,number,"Mean diameter in km, where measured or modelled."
+diameter_class,string,Size band from <100 m to 10 km+.
+albedo,number,"Geometric albedo, where known."
+rotation_period_hours,number,Rotation period in hours.
+spectral_type_smb,string,SMASSII spectral type.
+spectral_type_tholen,string,Tholen spectral type.
+epoch_jd,number,Epoch of the osculating elements (Julian date).
+semi_major_axis_au,number,Orbital semi-major axis in AU.
+eccentricity,number,Orbital eccentricity.
+perihelion_au,number,Perihelion distance in AU.
+aphelion_au,number,Aphelion distance computed as a x (1 + e).
+inclination_deg,number,Orbital inclination in degrees.
+longitude_ascending_node_deg,number,"Longitude of the ascending node, degrees."
+argument_perihelion_deg,number,"Argument of perihelion, degrees."
+mean_anomaly_deg,number,"Mean anomaly at epoch, degrees."
+time_of_perihelion_jd,number,Time of perihelion passage (Julian date).
+orbital_period_days,number,Orbital period in days.
+orbital_period_years,number,Orbital period in Julian years.
+mean_motion_deg_per_day,number,Mean motion in degrees per day.
+earth_moid_au,number,"Minimum orbit intersection distance with Earth, in AU."
+earth_moid_km,number,Earth MOID converted to km.
+earth_moid_lunar_distances,number,Earth MOID expressed in lunar distances.
+earth_moid_ld_api,number,Earth MOID in lunar distances as returned by JPL (redundant cross-check).
+tisserand_parameter_jupiter,number,Tisserand parameter with respect to Jupiter — separates asteroids from comets.
+observation_arc_days,number,"Length of the observation arc used in the orbit solution, in days."
+first_observation,date,Date of the first observation used in the orbit fit.
+last_observation,date,Date of the last observation used in the orbit fit.
+orbit_rms_arcsec,number,"RMS residual of the orbit fit, in arcseconds."
+orbit_condition_code,number,"Orbit condition code (0 = excellent, 9 = highly uncertain)."
+orbit_producer,string,Organisation that produced the orbit solution.
+is_two_body_orbit,boolean,true when the orbit is a simple two-body solution.
+gm_km3_s2,number,"Gravitational parameter, when known."
+extent,string,Object extent/shape description.
+is_apollo,boolean,true for Apollo-class asteroids.
+is_aten,boolean,true for Aten-class asteroids.
+is_amor,boolean,true for Amor-class asteroids.
+is_atira,boolean,true for Atira-class (interior to Earth's orbit) asteroids.
+is_earth_crossing,boolean,true when perihelion is inside 1.017 AU.
+crosses_mars_orbit,boolean,true when the orbit spans the Martian semi-major axis.
+is_retrograde,boolean,true when inclination exceeds 90 degrees.
+is_near_circular,boolean,true when eccentricity is below 0.1.
+is_high_eccentricity,boolean,true when eccentricity exceeds 0.6.
+inclination_class,string,"Inclination band: low, moderate, high, retrograde."
+size_estimate_m,number,Diameter converted to metres.
+has_diameter,boolean,true when a diameter is published.
+has_albedo,boolean,true when an albedo is published.
+has_spectral_type,boolean,true when a spectral type is published.
+has_rotation_period,boolean,true when a rotation period is published.
+name_length,number,Characters in the full name.
+has_proper_name,boolean,true when the object has a proper name rather than only a designation.
+discovery_number,number,"Asteroid number parsed from the permanent designation, when present."
+h_magnitude_size_m,number,"Diameter estimated from H assuming a 0.14 albedo, only when no measured diameter exists."

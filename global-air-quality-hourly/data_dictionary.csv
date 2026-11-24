@@ -1,0 +1,40 @@
+column,data_type,description
+city,string,City name.
+country,string,Country name.
+iso2,string,ISO 3166-1 alpha-2 country code.
+latitude,float,City latitude used for the model grid cell.
+longitude,float,City longitude used for the model grid cell.
+elevation_m,float,Grid-cell elevation in metres.
+timestamp_utc,datetime,Hourly timestamp in UTC.
+date,date,Calendar date (UTC).
+year,integer,Year.
+month,integer,Month (1-12).
+day,integer,Day of month.
+hour,integer,"Hour of day (0-23, UTC)."
+weekday,string,Day of week.
+pm10,float,Particulate matter < 10 µm (µg/m³).
+pm2_5,float,Particulate matter < 2.5 µm (µg/m³).
+carbon_monoxide,float,Carbon monoxide concentration (µg/m³).
+nitrogen_dioxide,float,Nitrogen dioxide concentration (µg/m³).
+sulphur_dioxide,float,Sulphur dioxide concentration (µg/m³).
+ozone,float,Ozone concentration (µg/m³).
+dust,float,Saharan dust concentration (µg/m³).
+ammonia,float,Ammonia concentration (µg/m³).
+aerosol_optical_depth,float,Aerosol optical depth at 550 nm (dimensionless).
+uv_index,float,UV index at the surface.
+uv_index_clear_sky,float,UV index under clear-sky conditions.
+european_aqi,float,"European AQI, 0-20 good, 20-40 fair, 40-60 moderate, 60-80 poor, 80-100 very poor, >100 extremely poor."
+european_aqi_pm2_5,float,European AQI sub-index for PM2.5.
+european_aqi_pm10,float,European AQI sub-index for PM10.
+european_aqi_nitrogen_dioxide,float,European AQI sub-index for NO2.
+european_aqi_ozone,float,European AQI sub-index for ozone.
+european_aqi_sulphur_dioxide,float,European AQI sub-index for SO2.
+us_aqi,float,"United States AQI (EPA scale, 0-500)."
+us_aqi_pm2_5,float,US AQI sub-index for PM2.5.
+us_aqi_pm10,float,US AQI sub-index for PM10.
+us_aqi_nitrogen_dioxide,float,US AQI sub-index for NO2.
+us_aqi_ozone,float,US AQI sub-index for ozone.
+us_aqi_sulphur_dioxide,float,US AQI sub-index for SO2.
+aqi_band,category,"European AQI band: good, fair, moderate, poor, very poor, extremely poor."
+is_who_pm25_exceeded,boolean,True if PM2.5 is above the WHO 2021 24-hour guideline of 15 µg/m³.
+is_weekend,boolean,True for Saturday and Sunday.

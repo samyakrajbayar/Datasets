@@ -1,0 +1,250 @@
+{
+  "title": "World Airport Network",
+  "id": "samyakrajbayar/world-airport-network",
+  "subtitle": "7,698 airports with IATA/ICAO codes, coordinates and route graph statistics",
+  "description": "# World Airport Network\n\n**Subtitle:** 7,698 airports with IATA/ICAO codes, coordinates and route graph statistics\n\n**Tags:** `aviation`, `transportation`, `geospatial`, `networks`, `airports`, `travel`, `logistics`, `graph-analysis`, `tabular`, `economics`\n\n**Dataset File:** `airports.csv` (7,698 rows, 43 columns, 1.9 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### The world's airports as a graph\n\nOpenFlights maintains one of the most widely used open aviation registries. This dataset joins its\n**airport directory** with its **airline route table** to describe **7,698 airports** in\n237 countries using **43 parameters** \u2014 including the network structure\nthat only appears once routes are aggregated.\n\nEach row is one airport and contains:\n- **Identity** \u2014 OpenFlights id, name, city, country, IATA and ICAO codes, facility type and data source.\n- **Position** \u2014 latitude, longitude, elevation in feet, UTC offset, DST rule and IANA time zone.\n- **Network degree** \u2014 departing and arriving route records, distinct airlines, distinct non-stop\n  destinations, foreign destinations, countries served, domestic versus international route counts and\n  the international share.\n- **Dominant carrier** \u2014 the airline with the most routes at that airport and how many it runs.\n- **Reach** \u2014 mean and maximum great-circle route distance, and the airport code of the longest hop.\n- **Role** \u2014 a hub class derived from route count, from Isolated to Global hub.\n- **Country context** \u2014 continent, UN region and sub-region, population, GDP per capita, distance to the\n  national capital, a near-capital flag, the number of airports in the country and routes per million people.\n\n**7,698 of 7,698 records are scheduled-service airports**; about **3,262** have at least\none route in the airlines table, which makes the difference between \"an airport exists\" and \"an airport is\nconnected\" directly measurable.\n\n## \ud83e\uddfe Columns (43)\n\n`airport_id`, `name`, `city`, `country`, `iata`, `icao`, `latitude`, `longitude`, `altitude_ft`, `tz_offset_hours`, `dst`, `tz_database`, `type`, `source`, `continent`, `region`, `subregion`, `hemisphere`, `altitude_band`, `has_iata`, `is_scheduled_service`, `utc_offset_band`, `n_routes_out`, `n_routes_in`, `n_airlines`, `n_destinations`, `n_destinations_international`, `n_countries_served`, `n_domestic_routes`, `share_international_pct`, `top_airline`, `top_airline_routes`, `mean_route_distance_km`, `max_route_distance_km`, `farthest_destination`, `hub_class`, `capital_distance_km`, `is_near_capital`, `routes_per_million_people`, `country_population`, `country_gdp_per_capita_usd`, `airports_in_country`, `name_word_count`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Airport ranking** \u2014 build a hub index from degree, destination count and international share.\n2. **Network analysis** \u2014 the route table implies a directed graph; compute centrality, communities and degree distributions from the per-airport aggregates.\n3. **Hub-and-spoke structure** \u2014 plot `n_destinations` against `n_airlines` to separate fortress hubs from diversified ones.\n4. **Long-haul geography** \u2014 map `max_route_distance_km`; which airports exist only because of ultra-long-haul aircraft?\n5. **Isolation** \u2014 find countries where many airports exist but almost none are connected.\n6. **Capital concentration** \u2014 `capital_distance_km` versus route count; how much traffic funnels through capital-city airports?\n7. **Aviation and wealth** \u2014 `routes_per_million_people` against GDP per capita.\n8. **Time zones** \u2014 airports per UTC offset band; where does the world's air traffic actually sit?\n9. **Classification** \u2014 predict `hub_class` from geography and country features.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `airports.csv` | 7,698 airports x 43 parameters, route-network enriched. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: hub ranking, long-haul map, wealth vs connectivity. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`aviation`, `transportation`, `geospatial`, `networks`, `airports`, `travel`, `logistics`, `graph-analysis`, `tabular`, `economics`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **OpenFlights** open data, `airports.dat` and `routes.dat`\n  (`github.com/jpatokal/openflights/data`). Airport records ultimately derive from OurAirports and DAFIF;\n  route records are contributed by airlines and the OpenFlights community.\n- **Licence of the upstream files:** Open Database License (ODbL) 1.0.\n- **Transformation:** airport rows reshaped into 14 named columns; the route table aggregated per airport\n  to produce degree, destination, airline, distance and domestic/international statistics.\n- **Enrichment:** country population, GDP per capita, capital coordinates and UN regions joined from the\n  World Bank-backed `countries-of-the-world` table in this repository by country name.\n- **Snapshot date:** 20 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Never (static snapshot).** OpenFlights is largely frozen upstream; the network statistics here reflect the route table as of the snapshot date.\n\n## \u26a0\ufe0f Caveats\n\n- Route coverage is community-maintained and uneven: some regions (notably parts of Africa and Central Asia) are under-reported.\n- `\\N` marks a missing IATA/ICAO code and is preserved rather than blanked so it can be filtered explicitly.\n- Routes are counted as records in `routes.dat`; a route operated by three airlines counts three times.\n- The country join is by name, so a few territories (e.g. 'Hong Kong', 'Macau') may not match a World Bank entity.\n- Distances are great-circle, not flown track distances.\n- The file is a snapshot of schedules, not of passenger volumes \u2014 no traffic or seat-capacity figures are included.\n\n## \ud83d\udcdc Licence\n\nOpen Database License (ODbL) 1.0 for the OpenFlights airport and route data. Derived statistics may be shared under the same terms; attribution to OpenFlights and OurAirports is required.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `airport_id` | `number` | OpenFlights airport identifier. |\n| 2 | `name` | `string` | Airport name. |\n| 3 | `city` | `string` | City served. |\n| 4 | `country` | `string` | Country name as recorded by OpenFlights. |\n| 5 | `iata` | `string` | 3-letter IATA code (\\N when unassigned). |\n| 6 | `icao` | `string` | 4-letter ICAO code (\\N when unassigned). |\n| 7 | `latitude` | `number` | Latitude in decimal degrees. |\n| 8 | `longitude` | `number` | Longitude in decimal degrees. |\n| 9 | `altitude_ft` | `number` | Elevation above sea level in feet. |\n| 10 | `tz_offset_hours` | `number` | UTC offset in hours (fractional where applicable). |\n| 11 | `dst` | `string` | Daylight-saving-time rule letter used by OpenFlights. |\n| 12 | `tz_database` | `string` | IANA time-zone name. |\n| 13 | `type` | `string` | Facility type: airport, heliport, seaplane base, closed. |\n| 14 | `source` | `string` | Upstream data source for the record. |\n| 15 | `continent` | `string` | Continent of the airport's country. |\n| 16 | `region` | `string` | UN macro-region of the airport's country. |\n| 17 | `subregion` | `string` | UN sub-region of the airport's country. |\n| 18 | `hemisphere` | `string` | Northern or Southern hemisphere. |\n| 19 | `altitude_band` | `string` | Elevation band from sea level to high plateau. |\n| 20 | `has_iata` | `boolean` | true when the airport has an IATA code (i.e. is commercially ticketed). |\n| 21 | `is_scheduled_service` | `boolean` | true for records typed `airport` (as opposed to heliport, seaplane base, closed). |\n| 22 | `utc_offset_band` | `number` | UTC offset rounded to the nearest whole hour. |\n| 23 | `n_routes_out` | `number` | Number of scheduled route records departing this airport. |\n| 24 | `n_routes_in` | `number` | Number of scheduled route records arriving at this airport. |\n| 25 | `n_airlines` | `number` | Distinct airlines operating to or from the airport. |\n| 26 | `n_destinations` | `number` | Distinct airports reachable in one non-stop hop. |\n| 27 | `n_destinations_international` | `number` | Distinct destination airports outside the airport's own country. |\n| 28 | `n_countries_served` | `number` | Distinct foreign countries reachable non-stop. |\n| 29 | `n_domestic_routes` | `number` | Route records whose origin and destination are in the same country. |\n| 30 | `share_international_pct` | `number` | Percentage of this airport's route records that cross a border. |\n| 31 | `top_airline` | `string` | Airline with the most route records at this airport. |\n| 32 | `top_airline_routes` | `number` | Route records operated by that airline. |\n| 33 | `mean_route_distance_km` | `number` | Mean great-circle distance of this airport's routes. |\n| 34 | `max_route_distance_km` | `number` | Longest non-stop route from this airport. |\n| 35 | `farthest_destination` | `string` | Airport code of that longest route. |\n| 36 | `hub_class` | `string` | Network role from route count: Isolated, Feeder, Regional, Major, Global hub. |\n| 37 | `capital_distance_km` | `string` | Great-circle distance to the country's capital city. |\n| 38 | `is_near_capital` | `string` | true when the airport is within 40 km of its country's capital. |\n| 39 | `routes_per_million_people` | `number` | Route records divided by country population in millions. |\n| 40 | `country_population` | `number` | Country population (World Bank, joined). |\n| 41 | `country_gdp_per_capita_usd` | `number` | Country GDP per capita (World Bank, joined). |\n| 42 | `airports_in_country` | `number` | Number of airports in this file for the same country. |\n| 43 | `name_word_count` | `number` | Number of words in the airport name. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "ODbL-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "airports.csv",
+      "description": "Primary data file containing 7,698 records across 43 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "airport_id",
+            "type": "number",
+            "description": "OpenFlights airport identifier."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Airport name."
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City served."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country name as recorded by OpenFlights."
+          },
+          {
+            "name": "iata",
+            "type": "string",
+            "description": "3-letter IATA code (\\N when unassigned)."
+          },
+          {
+            "name": "icao",
+            "type": "string",
+            "description": "4-letter ICAO code (\\N when unassigned)."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude in decimal degrees."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude in decimal degrees."
+          },
+          {
+            "name": "altitude_ft",
+            "type": "number",
+            "description": "Elevation above sea level in feet."
+          },
+          {
+            "name": "tz_offset_hours",
+            "type": "number",
+            "description": "UTC offset in hours (fractional where applicable)."
+          },
+          {
+            "name": "dst",
+            "type": "string",
+            "description": "Daylight-saving-time rule letter used by OpenFlights."
+          },
+          {
+            "name": "tz_database",
+            "type": "string",
+            "description": "IANA time-zone name."
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "Facility type: airport, heliport, seaplane base, closed."
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "description": "Upstream data source for the record."
+          },
+          {
+            "name": "continent",
+            "type": "string",
+            "description": "Continent of the airport's country."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "UN macro-region of the airport's country."
+          },
+          {
+            "name": "subregion",
+            "type": "string",
+            "description": "UN sub-region of the airport's country."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "Northern or Southern hemisphere."
+          },
+          {
+            "name": "altitude_band",
+            "type": "string",
+            "description": "Elevation band from sea level to high plateau."
+          },
+          {
+            "name": "has_iata",
+            "type": "boolean",
+            "description": "true when the airport has an IATA code (i.e. is commercially ticketed)."
+          },
+          {
+            "name": "is_scheduled_service",
+            "type": "boolean",
+            "description": "true for records typed `airport` (as opposed to heliport, seaplane base, closed)."
+          },
+          {
+            "name": "utc_offset_band",
+            "type": "number",
+            "description": "UTC offset rounded to the nearest whole hour."
+          },
+          {
+            "name": "n_routes_out",
+            "type": "number",
+            "description": "Number of scheduled route records departing this airport."
+          },
+          {
+            "name": "n_routes_in",
+            "type": "number",
+            "description": "Number of scheduled route records arriving at this airport."
+          },
+          {
+            "name": "n_airlines",
+            "type": "number",
+            "description": "Distinct airlines operating to or from the airport."
+          },
+          {
+            "name": "n_destinations",
+            "type": "number",
+            "description": "Distinct airports reachable in one non-stop hop."
+          },
+          {
+            "name": "n_destinations_international",
+            "type": "number",
+            "description": "Distinct destination airports outside the airport's own country."
+          },
+          {
+            "name": "n_countries_served",
+            "type": "number",
+            "description": "Distinct foreign countries reachable non-stop."
+          },
+          {
+            "name": "n_domestic_routes",
+            "type": "number",
+            "description": "Route records whose origin and destination are in the same country."
+          },
+          {
+            "name": "share_international_pct",
+            "type": "number",
+            "description": "Percentage of this airport's route records that cross a border."
+          },
+          {
+            "name": "top_airline",
+            "type": "string",
+            "description": "Airline with the most route records at this airport."
+          },
+          {
+            "name": "top_airline_routes",
+            "type": "number",
+            "description": "Route records operated by that airline."
+          },
+          {
+            "name": "mean_route_distance_km",
+            "type": "number",
+            "description": "Mean great-circle distance of this airport's routes."
+          },
+          {
+            "name": "max_route_distance_km",
+            "type": "number",
+            "description": "Longest non-stop route from this airport."
+          },
+          {
+            "name": "farthest_destination",
+            "type": "string",
+            "description": "Airport code of that longest route."
+          },
+          {
+            "name": "hub_class",
+            "type": "string",
+            "description": "Network role from route count: Isolated, Feeder, Regional, Major, Global hub."
+          },
+          {
+            "name": "capital_distance_km",
+            "type": "string",
+            "description": "Great-circle distance to the country's capital city."
+          },
+          {
+            "name": "is_near_capital",
+            "type": "string",
+            "description": "true when the airport is within 40 km of its country's capital."
+          },
+          {
+            "name": "routes_per_million_people",
+            "type": "number",
+            "description": "Route records divided by country population in millions."
+          },
+          {
+            "name": "country_population",
+            "type": "number",
+            "description": "Country population (World Bank, joined)."
+          },
+          {
+            "name": "country_gdp_per_capita_usd",
+            "type": "number",
+            "description": "Country GDP per capita (World Bank, joined)."
+          },
+          {
+            "name": "airports_in_country",
+            "type": "number",
+            "description": "Number of airports in this file for the same country."
+          },
+          {
+            "name": "name_word_count",
+            "type": "number",
+            "description": "Number of words in the airport name."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

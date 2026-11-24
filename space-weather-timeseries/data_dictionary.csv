@@ -1,0 +1,23 @@
+column,data_type,description
+timestamp,datetime,UTC timestamp of the X-ray observation.
+satellite,number,GOES satellite number.
+xray_flux,number,Long-channel (0.1-0.8 nm) X-ray flux in W/m^2.
+observed_flux,number,Observed flux before calibration.
+electron_flux,number,Electron flux from the same product.
+xray_class,string,A/B/C/M/X flare class.
+xray_class_detailed,string,Class with magnitude (e.g. M2.4).
+kp_index,number,Planetary K-index at the same minute.
+estimated_kp,number,Estimated Kp from SWPC.
+kp_label,string,Kp label as published (e.g. 5Z).
+f107_flux,number,Daily F10.7 cm solar radio flux.
+is_flare,boolean,true when flux reaches C class.
+is_m_class,boolean,true for M-class flux.
+is_x_class,boolean,true for X-class flux.
+is_storm,boolean,true when Kp is 5 or higher.
+is_geomagnetic_active,boolean,true when Kp is 4 or higher.
+is_quiet,boolean,true when Kp is below 3.
+flux_ratio_f107,number,X-ray flux divided by the daily F10.7 flux.
+hour,number,Hour of day (UTC).
+minute,number,Minute of hour.
+day_of_year,number,Day of year.
+modified_flux,number,X-ray flux scaled by 1e6 for readability.

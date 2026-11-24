@@ -1,0 +1,31 @@
+{
+  "title": "World Bank Project Portfolio",
+  "id": "samyakrajbayar/world-bank-projects",
+  "subtitle": "22,575 development projects with commitments, sectors, regions, dates and sta...",
+  "description": "### 22,575 World Bank investment projects\n\nThe World Bank's projects API documents every investment project it has financed, with approvals,\ncommitments, sectors and status. This dataset contains **22,575 projects** and **81 parameters**.\n\n- **Identity** \u2014 project id, name, country, region, product line and lending instrument.\n- **Finance** \u2014 total commitment, IBRD/IDA split, grants, disbursements, repayments and fees.\n- **Timing** \u2014 board approval, closing and last-status dates plus approval fiscal year.\n- **Classification** \u2014 sector, theme, financial type, status, team lead and quality ratings.\n- **Derived** \u2014 approval/closing years, duration, age, active/closed/dropped flags, IDA/IBRD/grant\n  flags, commitment bands, grant share, disbursement ratio, abstract length and region flags.\n\nThe portfolio represents **$0.0 billion** in commitments across **209 countries\nand territories**, with **2,659 active projects** \u2014 a direct view of development finance.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics"
+  ],
+  "resources": [
+    {
+      "path": "world_bank_projects.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

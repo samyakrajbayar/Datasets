@@ -1,0 +1,53 @@
+column,data_type,description
+country,string,ISO-3166 alpha-3 country code of the plant.
+country_long,string,Country name in long form.
+name,string,Plant name as recorded in the database.
+gppd_idnr,string,Unique WRI Global Power Plant Database identifier.
+capacity_mw,number,Generating capacity in megawatts.
+latitude,number,Plant latitude in decimal degrees.
+longitude,number,Plant longitude in decimal degrees.
+primary_fuel,string,Main fuel or energy source.
+other_fuel1,string,"Secondary fuel, if any."
+other_fuel2,string,"Third fuel, if any."
+other_fuel3,string,"Fourth fuel, if any."
+commissioning_year,number,Year the plant (or its first unit) started operating.
+owner,string,Owner or operator as recorded.
+source,string,Source of the plant record.
+url,string,Source URL for the record.
+geolocation_source,string,How the coordinates were obtained.
+wepp_id,number,World Electric Power Plants database cross-reference.
+year_of_capacity_data,number,Year the capacity figure refers to.
+generation_gwh_2013,number,"Reported net generation in 2013 (GWh), where available."
+generation_gwh_2014,number,"Reported net generation in 2014 (GWh), where available."
+generation_gwh_2015,number,"Reported net generation in 2015 (GWh), where available."
+generation_gwh_2016,number,"Reported net generation in 2016 (GWh), where available."
+generation_gwh_2017,number,"Reported net generation in 2017 (GWh), where available."
+generation_gwh_2018,number,"Reported net generation in 2018 (GWh), where available."
+generation_gwh_2019,string,"Reported net generation in 2019 (GWh), where available."
+generation_data_source,string,Derived field.
+estimated_generation_gwh_2013,number,Derived field.
+estimated_generation_gwh_2014,number,Derived field.
+estimated_generation_gwh_2015,number,Derived field.
+estimated_generation_gwh_2016,number,Derived field.
+estimated_generation_gwh_2017,number,Derived field.
+estimated_generation_note_2013,string,Derived field.
+estimated_generation_note_2014,string,Derived field.
+estimated_generation_note_2015,string,Derived field.
+estimated_generation_note_2016,string,Derived field.
+estimated_generation_note_2017,string,Derived field.
+continent,string,Continent of the plant's country (joined from the countries dataset).
+region,string,UN macro-region of the plant's country.
+subregion,string,UN sub-region of the plant's country.
+fuel_group,string,"Coarse fuel class: Renewable, Fossil, Nuclear, Storage or Other."
+is_renewable,boolean,true when the primary fuel is a renewable source.
+plant_age_years,number,Years since commissioning at snapshot time.
+capacity_class,string,Capacity band from <1 MW to 10 GW+.
+capacity_share_country_pct,number,Plant capacity as a percentage of all plants in its country in this file.
+capacity_share_global_pct,number,Plant capacity as a percentage of total capacity in this file.
+capacity_per_capita_w,number,Plant capacity divided by country population (watts per person).
+mean_capacity_factor_pct,number,"Mean of generation / (capacity x 8760 h) over the years with data, in percent — an observed capacity factor, not a design value."
+latest_generation_gwh,number,Most recent non-empty annual generation value.
+latest_generation_year,number,Year of that most recent generation value.
+has_generation_data,boolean,true when at least one annual generation value is present.
+gdp_per_capita_usd,number,Country GDP per capita from the countries dataset.
+grid_zone_class,string,"Latitude band of the plant (Tropical, Subtropical, Temperate, High latitude)."

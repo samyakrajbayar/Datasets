@@ -1,0 +1,300 @@
+{
+  "title": "Drug-Like Molecules ChEMBL",
+  "id": "samyakrajbayar/drug-like-molecules",
+  "subtitle": "40,000 bioactive molecules with SMILES and drug properties",
+  "description": "# Drug-Like Molecules - ChEMBL Physicochemistry\n\n**Subtitle:** 40,000 bioactive molecules with clinical phase, SMILES & drug properties\n\n**Tags:** `tabular`, `chemistry`, `biology`\n\n**Dataset File:** `chembl_molecules.csv` (40,000 rows, 53 columns, 18.7 MB)\n\n**Provenance & Source:** ChEMBL Database API (ebi.ac.uk/chembl)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 40,000 molecules from the ChEMBL drug-discovery database\n\nChEMBL is the European Bioinformatics Institute's manually curated database of bioactive molecules\nwith drug-like properties. This extract contains **40,000 molecules** with **53 parameters**,\ncombining ChEMBL's curation with computed physicochemical properties.\n\n- **Identity and modality** \u2014 ChEMBL ID, preferred name, molecule type, structure type, ATC codes.\n- **Clinical status** \u2014 maximum phase, first approval year, indication class, black-box warning,\n  first-in-class, prodrug, natural-product and availability flags.\n- **Administration** \u2014 oral, parenteral and topical flags.\n- **Structure** \u2014 canonical SMILES, standard InChI and InChIKey.\n- **Physicochemistry** \u2014 molecular weight (free base and full), ALogP, H-bond donors/acceptors, polar\n  surface area, rotatable bonds, aromatic rings, heavy atoms, QED, natural-product likeness and the\n  Lipinski rule-of-five violation count.\n- **Derived** \u2014 approved/clinical/small-molecule/biologic flags, Ro5 pass, MW/logP/QED bands,\n  property completeness and SMILES length.\n\n**471 molecules are approved drugs (phase 4)** and **39,289 are small molecules**, so the\nfile spans everything from preclinical tool compounds to marketed medicines.\n\n## \ud83e\uddfe Columns (53)\n\n`chembl_id`, `pref_name`, `molecule_type`, `max_phase`, `first_approval`, `indication_class`, `oral`, `parenteral`, `topical`, `black_box_warning`, `natural_product`, `first_in_class`, `chirality`, `prodrug`, `inorganic_flag`, `polymer_flag`, `availability_type`, `atc_classifications`, `canonical_smiles`, `standard_inchi`, `standard_inchi_key`, `mw_freebase`, `full_mwt`, `alogp`, `hba`, `hbd`, `psa`, `rtb`, `ro3_pass`, `num_ro5_violations`, `qed_weighted`, `aromatic_rings`, `heavy_atoms`, `np_likeness_score`, `full_molformula`, `atc_count`, `property_count`, `property_completeness_pct`, `is_approved`, `is_clinical`, `is_preclinical`, `is_small_molecule`, `is_biologic`, `has_black_box_warning`, `is_withdrawn`, `is_oral`, `passes_ro5`, `mw_band`, `logp_band`, `qed_band`, `smiles_length`, `heavy_atom_fraction_of_mw`, `has_structure`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Drug-likeness** \u2014 QED and Ro5 violations for approved vs preclinical compounds.\n2. **Property cliffs** \u2014 molecular weight vs ALogP, coloured by approval status.\n3. **Modality shift** \u2014 small molecules vs biologics over approval year.\n4. **Black-box warnings** \u2014 which indication classes carry the most warnings?\n5. **Oral druggability** \u2014 oral vs parenteral compounds across property space.\n6. **Natural products** \u2014 do natural-product-like molecules have different property profiles?\n7. **Chemical similarity** \u2014 cluster by InChIKey/Murcko scaffold (external toolkit) or SMILES length.\n8. **ATC taxonomy** \u2014 map molecules to therapeutic areas and compare size and phase.\n9. **Predicting approval** \u2014 train a classifier on computed properties (beware selection bias).\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `chembl_molecules.csv` | 40,000 molecules x 53 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`chemistry`, `drug-discovery`, `chembl`, `molecules`, `pharmacology`, `bioinformatics`, `smiles`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **ChEMBL API**, `https://www.ebi.ac.uk/chembl/api/data/molecule.json`,\n  paginated 1,000 records at a time.\n- **Scope:** the first 40,000 molecule records in ChEMBL's default ordering, not a random or\n  approved-only sample.\n- **Processing:** nested `molecule_properties`, `molecule_structures` and `atc_classifications`\n  flattened; derived bands, flags and completeness measures added.\n- **Snapshot date:** 22 November 2026 (ChEMBL release current at that date).\n\n## \ud83d\udd04 Update frequency\n\n**Several times a year.** ChEMBL publishes roughly quarterly releases.\n\n## \u26a0\ufe0f Caveats\n\n- This is the first 40,000 records by ChEMBL ID, not a representative sample of the database.\n- Computed properties are absent for many biologics and older records; blanks are not zero.\n- `max_phase` reflects the highest phase recorded, which may be stale for discontinued drugs.\n- SMILES/InChI strings are large and can make the CSV heavy to load unfiltered.\n- ChEMBL includes compounds that never became drugs; 'approved' is a minority class.\n- Property values are calculated (ALogP, QED), not measured.\n- Some molecules are salts or mixtures, so `full_mwt` differs from `mw_freebase`.\n\n## \ud83d\udcdc Licence\n\nChEMBL data is licensed CC BY-SA 4.0 \u2014 attribution and share-alike apply.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `chembl_id` | `string` | ChEMBL molecule identifier. |\n| 2 | `pref_name` | `string` | Preferred compound name. |\n| 3 | `molecule_type` | `string` | Small molecule, protein, antibody, oligosaccharide, ... |\n| 4 | `max_phase` | `number` | Highest clinical phase reached (4 = approved). |\n| 5 | `first_approval` | `number` | Year of first approval, where approved. |\n| 6 | `indication_class` | `number` | Therapeutic indication class. |\n| 7 | `oral` | `boolean` | true when the molecule is orally administered. |\n| 8 | `parenteral` | `boolean` | true when parenterally administered. |\n| 9 | `topical` | `boolean` | true when topically administered. |\n| 10 | `black_box_warning` | `number` | 1 when a black-box warning applies. |\n| 11 | `natural_product` | `number` | 1 when the compound is a natural product. |\n| 12 | `first_in_class` | `number` | 1 when flagged as first in class. |\n| 13 | `chirality` | `number` | Chirality flag (-1 unknown, 0 achiral, 1 chiral, 2 racemic). |\n| 14 | `prodrug` | `number` | 1 when the compound is a prodrug. |\n| 15 | `inorganic_flag` | `number` | 1 when inorganic. |\n| 16 | `polymer_flag` | `number` | 1 when a polymer. |\n| 17 | `availability_type` | `number` | Prescription / over-the-counter availability code. |\n| 18 | `atc_classifications` | `string` | ATC codes assigned to the molecule. |\n| 19 | `canonical_smiles` | `string` | Canonical SMILES structure string. |\n| 20 | `standard_inchi` | `string` | Standard InChI identifier. |\n| 21 | `standard_inchi_key` | `string` | Standard InChIKey (27 characters). |\n| 22 | `mw_freebase` | `number` | Molecular weight of the free base (Da). |\n| 23 | `full_mwt` | `number` | Molecular weight including salts (Da). |\n| 24 | `alogp` | `number` | Calculated ALogP lipophilicity. |\n| 25 | `hba` | `number` | Hydrogen-bond acceptors. |\n| 26 | `hbd` | `number` | Hydrogen-bond donors. |\n| 27 | `psa` | `number` | Polar surface area (A^2). |\n| 28 | `rtb` | `number` | Rotatable bonds. |\n| 29 | `ro3_pass` | `string` | Lipinski rule-of-three pass flag (Y/N). |\n| 30 | `num_ro5_violations` | `number` | Number of Lipinski rule-of-five violations. |\n| 31 | `qed_weighted` | `number` | QED drug-likeness score (0-1). |\n| 32 | `aromatic_rings` | `number` | Number of aromatic rings. |\n| 33 | `heavy_atoms` | `number` | Number of heavy (non-hydrogen) atoms. |\n| 34 | `np_likeness_score` | `number` | Natural-product likeness score. |\n| 35 | `full_molformula` | `string` | Molecular formula including salts. |\n| 36 | `atc_count` | `number` | Number of ATC codes. |\n| 37 | `property_count` | `number` | How many of the 12 core computed properties are present. |\n| 38 | `property_completeness_pct` | `number` | property_count as a percentage of 12. |\n| 39 | `is_approved` | `boolean` | true when max_phase is 4. |\n| 40 | `is_clinical` | `boolean` | true when the molecule reached phase 1 or later. |\n| 41 | `is_preclinical` | `boolean` | true when max_phase is below 1 or unknown. |\n| 42 | `is_small_molecule` | `boolean` | true when molecule_type is Small molecule. |\n| 43 | `is_biologic` | `boolean` | true for protein/antibody/oligonucleotide modalities. |\n| 44 | `has_black_box_warning` | `boolean` | true when black_box_warning is 1. |\n| 45 | `is_withdrawn` | `boolean` | true when the withdrawn flag is set. |\n| 46 | `is_oral` | `boolean` | true when oral administration is flagged. |\n| 47 | `passes_ro5` | `boolean` | true when num_ro5_violations is 0. |\n| 48 | `mw_band` | `string` | Molecular-weight band (Da). |\n| 49 | `logp_band` | `string` | ALogP band. |\n| 50 | `qed_band` | `string` | QED drug-likeness band. |\n| 51 | `smiles_length` | `number` | Characters in the SMILES string. |\n| 52 | `heavy_atom_fraction_of_mw` | `number` | Heavy atoms divided by molecular weight. |\n| 53 | `has_structure` | `boolean` | true when a SMILES string exists. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-SA-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "chembl_molecules.csv",
+      "description": "Primary dataset file containing 40,000 records across 53 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "chembl_id",
+            "type": "string",
+            "description": "ChEMBL molecule identifier."
+          },
+          {
+            "name": "pref_name",
+            "type": "string",
+            "description": "Preferred compound name."
+          },
+          {
+            "name": "molecule_type",
+            "type": "string",
+            "description": "Small molecule, protein, antibody, oligosaccharide, ..."
+          },
+          {
+            "name": "max_phase",
+            "type": "number",
+            "description": "Highest clinical phase reached (4 = approved)."
+          },
+          {
+            "name": "first_approval",
+            "type": "number",
+            "description": "Year of first approval, where approved."
+          },
+          {
+            "name": "indication_class",
+            "type": "number",
+            "description": "Therapeutic indication class."
+          },
+          {
+            "name": "oral",
+            "type": "boolean",
+            "description": "true when the molecule is orally administered."
+          },
+          {
+            "name": "parenteral",
+            "type": "boolean",
+            "description": "true when parenterally administered."
+          },
+          {
+            "name": "topical",
+            "type": "boolean",
+            "description": "true when topically administered."
+          },
+          {
+            "name": "black_box_warning",
+            "type": "number",
+            "description": "1 when a black-box warning applies."
+          },
+          {
+            "name": "natural_product",
+            "type": "number",
+            "description": "1 when the compound is a natural product."
+          },
+          {
+            "name": "first_in_class",
+            "type": "number",
+            "description": "1 when flagged as first in class."
+          },
+          {
+            "name": "chirality",
+            "type": "number",
+            "description": "Chirality flag (-1 unknown, 0 achiral, 1 chiral, 2 racemic)."
+          },
+          {
+            "name": "prodrug",
+            "type": "number",
+            "description": "1 when the compound is a prodrug."
+          },
+          {
+            "name": "inorganic_flag",
+            "type": "number",
+            "description": "1 when inorganic."
+          },
+          {
+            "name": "polymer_flag",
+            "type": "number",
+            "description": "1 when a polymer."
+          },
+          {
+            "name": "availability_type",
+            "type": "number",
+            "description": "Prescription / over-the-counter availability code."
+          },
+          {
+            "name": "atc_classifications",
+            "type": "string",
+            "description": "ATC codes assigned to the molecule."
+          },
+          {
+            "name": "canonical_smiles",
+            "type": "string",
+            "description": "Canonical SMILES structure string."
+          },
+          {
+            "name": "standard_inchi",
+            "type": "string",
+            "description": "Standard InChI identifier."
+          },
+          {
+            "name": "standard_inchi_key",
+            "type": "string",
+            "description": "Standard InChIKey (27 characters)."
+          },
+          {
+            "name": "mw_freebase",
+            "type": "number",
+            "description": "Molecular weight of the free base (Da)."
+          },
+          {
+            "name": "full_mwt",
+            "type": "number",
+            "description": "Molecular weight including salts (Da)."
+          },
+          {
+            "name": "alogp",
+            "type": "number",
+            "description": "Calculated ALogP lipophilicity."
+          },
+          {
+            "name": "hba",
+            "type": "number",
+            "description": "Hydrogen-bond acceptors."
+          },
+          {
+            "name": "hbd",
+            "type": "number",
+            "description": "Hydrogen-bond donors."
+          },
+          {
+            "name": "psa",
+            "type": "number",
+            "description": "Polar surface area (A^2)."
+          },
+          {
+            "name": "rtb",
+            "type": "number",
+            "description": "Rotatable bonds."
+          },
+          {
+            "name": "ro3_pass",
+            "type": "string",
+            "description": "Lipinski rule-of-three pass flag (Y/N)."
+          },
+          {
+            "name": "num_ro5_violations",
+            "type": "number",
+            "description": "Number of Lipinski rule-of-five violations."
+          },
+          {
+            "name": "qed_weighted",
+            "type": "number",
+            "description": "QED drug-likeness score (0-1)."
+          },
+          {
+            "name": "aromatic_rings",
+            "type": "number",
+            "description": "Number of aromatic rings."
+          },
+          {
+            "name": "heavy_atoms",
+            "type": "number",
+            "description": "Number of heavy (non-hydrogen) atoms."
+          },
+          {
+            "name": "np_likeness_score",
+            "type": "number",
+            "description": "Natural-product likeness score."
+          },
+          {
+            "name": "full_molformula",
+            "type": "string",
+            "description": "Molecular formula including salts."
+          },
+          {
+            "name": "atc_count",
+            "type": "number",
+            "description": "Number of ATC codes."
+          },
+          {
+            "name": "property_count",
+            "type": "number",
+            "description": "How many of the 12 core computed properties are present."
+          },
+          {
+            "name": "property_completeness_pct",
+            "type": "number",
+            "description": "property_count as a percentage of 12."
+          },
+          {
+            "name": "is_approved",
+            "type": "boolean",
+            "description": "true when max_phase is 4."
+          },
+          {
+            "name": "is_clinical",
+            "type": "boolean",
+            "description": "true when the molecule reached phase 1 or later."
+          },
+          {
+            "name": "is_preclinical",
+            "type": "boolean",
+            "description": "true when max_phase is below 1 or unknown."
+          },
+          {
+            "name": "is_small_molecule",
+            "type": "boolean",
+            "description": "true when molecule_type is Small molecule."
+          },
+          {
+            "name": "is_biologic",
+            "type": "boolean",
+            "description": "true for protein/antibody/oligonucleotide modalities."
+          },
+          {
+            "name": "has_black_box_warning",
+            "type": "boolean",
+            "description": "true when black_box_warning is 1."
+          },
+          {
+            "name": "is_withdrawn",
+            "type": "boolean",
+            "description": "true when the withdrawn flag is set."
+          },
+          {
+            "name": "is_oral",
+            "type": "boolean",
+            "description": "true when oral administration is flagged."
+          },
+          {
+            "name": "passes_ro5",
+            "type": "boolean",
+            "description": "true when num_ro5_violations is 0."
+          },
+          {
+            "name": "mw_band",
+            "type": "string",
+            "description": "Molecular-weight band (Da)."
+          },
+          {
+            "name": "logp_band",
+            "type": "string",
+            "description": "ALogP band."
+          },
+          {
+            "name": "qed_band",
+            "type": "string",
+            "description": "QED drug-likeness band."
+          },
+          {
+            "name": "smiles_length",
+            "type": "number",
+            "description": "Characters in the SMILES string."
+          },
+          {
+            "name": "heavy_atom_fraction_of_mw",
+            "type": "number",
+            "description": "Heavy atoms divided by molecular weight."
+          },
+          {
+            "name": "has_structure",
+            "type": "boolean",
+            "description": "true when a SMILES string exists."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/imdb-title-catalogue-1990-2026-analysis",
+  "title": "IMDb Title Catalogue 1990-2026 Analysis",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/imdb-title-catalogue"
+  ]
+}

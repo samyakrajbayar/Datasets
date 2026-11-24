@@ -1,0 +1,281 @@
+{
+  "title": "Biomedical Literature 2024-2025",
+  "id": "samyakrajbayar/biomedical-literature",
+  "subtitle": "40,000 open-access articles with authors, abstracts & citations",
+  "description": "# Biomedical Literature 2024-2025\n\n**Subtitle:** 40,000 open-access articles with authors, abstracts, MeSH terms & citations\n\n**Tags:** `tabular`, `science`, `health`\n\n**Dataset File:** `europepmc_articles.csv` (40,037 rows, 49 columns, 96.0 MB)\n\n**Provenance & Source:** Europe PMC REST API (europepmc.org)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 40,000 open-access biomedical articles\n\nEurope PMC aggregates PubMed, PubMed Central, preprints and patents. This extract pulls\n**40,000 open-access articles published in 2024\u20132025** with **49 parameters** each.\n\n- **Bibliographic identity** \u2014 Europe PMC id, source, PMID, PMCID, DOI, title, journal, ISSN/eISSN,\n  volume, issue and publication dates.\n- **Authorship** \u2014 author string, parsed author count, first and last author, first affiliation.\n- **Content** \u2014 abstract (truncated), author keywords, MeSH descriptors, indexed chemicals.\n- **Funding and licensing** \u2014 grant count and agencies, licence, language.\n- **Access** \u2014 open-access flag, in-PMC, PDF, supplementary files, references and text-mined terms.\n- **Impact** \u2014 citation counts and citation bands.\n- **Derived** \u2014 abstract/title lengths, review and clinical-trial flags, DOI presence, keyword/MeSH/\n  author counts and a recency flag.\n\n**40,000 records are open access**, **5,582 are reviews**, and the sample spans\n**1,722 journals** \u2014 a bibliometric corpus for text mining, citation analysis and research\npolicy work.\n\n## \ud83e\uddfe Columns (49)\n\n`id`, `source`, `pmid`, `pmcid`, `doi`, `title`, `author_string`, `author_count`, `first_author`, `last_author`, `first_affiliation`, `journal_title`, `issn`, `essn`, `volume`, `issue`, `pub_year`, `pub_month`, `pub_type`, `is_review`, `is_clinical_trial`, `is_open_access`, `in_pmc`, `has_pdf`, `has_suppl`, `has_references`, `has_text_mined_terms`, `cited_by_count`, `citation_count`, `abstract`, `abstract_length`, `abstract_word_count`, `title_length`, `keyword_count`, `keywords`, `mesh_count`, `mesh_terms`, `chemical_count`, `grant_count`, `grant_agencies`, `language`, `license`, `first_publication_date`, `electronic_publication_date`, `full_text_url`, `has_doi`, `has_abstract`, `citation_band`, `is_recent`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Topic modelling** \u2014 cluster abstracts to map the 2024\u20132025 biomedical research landscape.\n2. **Citation drivers** \u2014 what predicts citations: journal, author count, MeSH terms, open access?\n3. **Author productivity** \u2014 distribution of papers per author and per affiliation.\n4. **Funding landscape** \u2014 grant agencies and their output by topic.\n5. **Journal analysis** \u2014 output and citation profiles of the largest journals.\n6. **MeSH co-occurrence** \u2014 build a disease\u2013method network from MeSH descriptors.\n7. **Review vs primary research** \u2014 how do abstracts and citation patterns differ?\n8. **Text classification** \u2014 predict review status or clinical-trial status from the abstract.\n9. **Open-access effect** \u2014 compare citations for OA vs non-OA records in the same journal.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `europepmc_articles.csv` | 40,000 articles x 49 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`biomedical`, `literature`, `europe-pmc`, `pubmed`, `text-mining`, `bibliometrics`, `science`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Europe PMC REST API**,\n  `https://www.ebi.ac.uk/europepmc/webservices/rest/search?resultType=core&format=json`.\n- **Query:** `OPEN_ACCESS:y AND (PUB_YEAR:2024 OR PUB_YEAR:2025)`, cursor-paginated 1,000 records at\n  a time until 40,000 records were collected.\n- **Processing:** nested author, journal, MeSH, keyword, chemical, grant and full-text objects\n  flattened; counts, flags and bands derived; abstracts truncated at 2,500 characters.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily.** Europe PMC indexes new articles continuously.\n\n## \u26a0\ufe0f Caveats\n\n- Only open-access records with a 2024 or 2025 publication year are included.\n- The 40,000 records follow Europe PMC's default relevance ordering, not a random sample.\n- Citation counts differ between sources and lag behind publication.\n- Abstracts are truncated at 2,500 characters; the full text is not included.\n- MeSH indexing is incomplete for very recent articles and preprints.\n- Author affiliations are often only available for the first author.\n- Journal titles are free text and may appear with variants.\n\n## \ud83d\udcdc Licence\n\nEurope PMC content carries per-record licences; open-access records are mostly CC BY.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `id` | `number` | Europe PMC record identifier. |\n| 2 | `source` | `string` | Source database (MED, PMC, PPR, ...). |\n| 3 | `pmid` | `number` | PubMed identifier. |\n| 4 | `pmcid` | `string` | PubMed Central identifier. |\n| 5 | `doi` | `string` | Digital Object Identifier. |\n| 6 | `title` | `string` | Article title. |\n| 7 | `author_string` | `string` | Author list as a single string. |\n| 8 | `author_count` | `number` | Number of authors parsed from the structured author list. |\n| 9 | `first_author` | `string` | First author's full name. |\n| 10 | `last_author` | `string` | Last author's full name. |\n| 11 | `first_affiliation` | `string` | Affiliation of the first author. |\n| 12 | `journal_title` | `string` | Journal title. |\n| 13 | `issn` | `string` | Print ISSN. |\n| 14 | `essn` | `string` | Electronic ISSN. |\n| 15 | `volume` | `number` | Journal volume. |\n| 16 | `issue` | `string` | Journal issue. |\n| 17 | `pub_year` | `number` | Publication year. |\n| 18 | `pub_month` | `number` | Publication month. |\n| 19 | `pub_type` | `string` | Publication type string(s). |\n| 20 | `is_review` | `boolean` | true when the publication type includes a review. |\n| 21 | `is_clinical_trial` | `boolean` | true when tagged as a clinical trial. |\n| 22 | `is_open_access` | `boolean` | true when the record is open access. |\n| 23 | `in_pmc` | `boolean` | true when full text is in PubMed Central. |\n| 24 | `has_pdf` | `boolean` | true when a PDF is available. |\n| 25 | `has_suppl` | `boolean` | true when supplementary files exist. |\n| 26 | `has_references` | `boolean` | true when references are indexed. |\n| 27 | `has_text_mined_terms` | `boolean` | true when text-mined terms are available. |\n| 28 | `cited_by_count` | `number` | Number of citations recorded by Europe PMC. |\n| 29 | `citation_count` | `number` | Citation count from the source record. |\n| 30 | `abstract` | `string` | Abstract text (truncated to 2,500 characters). |\n| 31 | `abstract_length` | `number` | Characters in the stored abstract. |\n| 32 | `abstract_word_count` | `number` | Words in the stored abstract. |\n| 33 | `title_length` | `number` | Characters in the title. |\n| 34 | `keyword_count` | `number` | Number of author keywords. |\n| 35 | `keywords` | `string` | Author keywords (semicolon-joined). |\n| 36 | `mesh_count` | `number` | Number of MeSH headings. |\n| 37 | `mesh_terms` | `string` | MeSH descriptor names (semicolon-joined). |\n| 38 | `chemical_count` | `number` | Number of indexed chemicals. |\n| 39 | `grant_count` | `number` | Number of funding grants. |\n| 40 | `grant_agencies` | `string` | Funding agency names. |\n| 41 | `language` | `string` | Language of the article. |\n| 42 | `license` | `string` | Licence reported for the article. |\n| 43 | `first_publication_date` | `date` | First publication date. |\n| 44 | `electronic_publication_date` | `date` | Electronic publication date. |\n| 45 | `full_text_url` | `string` | First full-text URL. |\n| 46 | `has_doi` | `boolean` | true when a DOI is present. |\n| 47 | `has_abstract` | `boolean` | true when an abstract is present. |\n| 48 | `citation_band` | `string` | Citation-count band. |\n| 49 | `is_recent` | `boolean` | true for 2025 publications. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "europepmc_articles.csv",
+      "description": "Primary dataset file containing 40,037 records across 49 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "number",
+            "description": "Europe PMC record identifier."
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "description": "Source database (MED, PMC, PPR, ...)."
+          },
+          {
+            "name": "pmid",
+            "type": "number",
+            "description": "PubMed identifier."
+          },
+          {
+            "name": "pmcid",
+            "type": "string",
+            "description": "PubMed Central identifier."
+          },
+          {
+            "name": "doi",
+            "type": "string",
+            "description": "Digital Object Identifier."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Article title."
+          },
+          {
+            "name": "author_string",
+            "type": "string",
+            "description": "Author list as a single string."
+          },
+          {
+            "name": "author_count",
+            "type": "number",
+            "description": "Number of authors parsed from the structured author list."
+          },
+          {
+            "name": "first_author",
+            "type": "string",
+            "description": "First author's full name."
+          },
+          {
+            "name": "last_author",
+            "type": "string",
+            "description": "Last author's full name."
+          },
+          {
+            "name": "first_affiliation",
+            "type": "string",
+            "description": "Affiliation of the first author."
+          },
+          {
+            "name": "journal_title",
+            "type": "string",
+            "description": "Journal title."
+          },
+          {
+            "name": "issn",
+            "type": "string",
+            "description": "Print ISSN."
+          },
+          {
+            "name": "essn",
+            "type": "string",
+            "description": "Electronic ISSN."
+          },
+          {
+            "name": "volume",
+            "type": "number",
+            "description": "Journal volume."
+          },
+          {
+            "name": "issue",
+            "type": "string",
+            "description": "Journal issue."
+          },
+          {
+            "name": "pub_year",
+            "type": "number",
+            "description": "Publication year."
+          },
+          {
+            "name": "pub_month",
+            "type": "number",
+            "description": "Publication month."
+          },
+          {
+            "name": "pub_type",
+            "type": "string",
+            "description": "Publication type string(s)."
+          },
+          {
+            "name": "is_review",
+            "type": "boolean",
+            "description": "true when the publication type includes a review."
+          },
+          {
+            "name": "is_clinical_trial",
+            "type": "boolean",
+            "description": "true when tagged as a clinical trial."
+          },
+          {
+            "name": "is_open_access",
+            "type": "boolean",
+            "description": "true when the record is open access."
+          },
+          {
+            "name": "in_pmc",
+            "type": "boolean",
+            "description": "true when full text is in PubMed Central."
+          },
+          {
+            "name": "has_pdf",
+            "type": "boolean",
+            "description": "true when a PDF is available."
+          },
+          {
+            "name": "has_suppl",
+            "type": "boolean",
+            "description": "true when supplementary files exist."
+          },
+          {
+            "name": "has_references",
+            "type": "boolean",
+            "description": "true when references are indexed."
+          },
+          {
+            "name": "has_text_mined_terms",
+            "type": "boolean",
+            "description": "true when text-mined terms are available."
+          },
+          {
+            "name": "cited_by_count",
+            "type": "number",
+            "description": "Number of citations recorded by Europe PMC."
+          },
+          {
+            "name": "citation_count",
+            "type": "number",
+            "description": "Citation count from the source record."
+          },
+          {
+            "name": "abstract",
+            "type": "string",
+            "description": "Abstract text (truncated to 2,500 characters)."
+          },
+          {
+            "name": "abstract_length",
+            "type": "number",
+            "description": "Characters in the stored abstract."
+          },
+          {
+            "name": "abstract_word_count",
+            "type": "number",
+            "description": "Words in the stored abstract."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "keyword_count",
+            "type": "number",
+            "description": "Number of author keywords."
+          },
+          {
+            "name": "keywords",
+            "type": "string",
+            "description": "Author keywords (semicolon-joined)."
+          },
+          {
+            "name": "mesh_count",
+            "type": "number",
+            "description": "Number of MeSH headings."
+          },
+          {
+            "name": "mesh_terms",
+            "type": "string",
+            "description": "MeSH descriptor names (semicolon-joined)."
+          },
+          {
+            "name": "chemical_count",
+            "type": "number",
+            "description": "Number of indexed chemicals."
+          },
+          {
+            "name": "grant_count",
+            "type": "number",
+            "description": "Number of funding grants."
+          },
+          {
+            "name": "grant_agencies",
+            "type": "string",
+            "description": "Funding agency names."
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "description": "Language of the article."
+          },
+          {
+            "name": "license",
+            "type": "string",
+            "description": "Licence reported for the article."
+          },
+          {
+            "name": "first_publication_date",
+            "type": "date",
+            "description": "First publication date."
+          },
+          {
+            "name": "electronic_publication_date",
+            "type": "date",
+            "description": "Electronic publication date."
+          },
+          {
+            "name": "full_text_url",
+            "type": "string",
+            "description": "First full-text URL."
+          },
+          {
+            "name": "has_doi",
+            "type": "boolean",
+            "description": "true when a DOI is present."
+          },
+          {
+            "name": "has_abstract",
+            "type": "boolean",
+            "description": "true when an abstract is present."
+          },
+          {
+            "name": "citation_band",
+            "type": "string",
+            "description": "Citation-count band."
+          },
+          {
+            "name": "is_recent",
+            "type": "boolean",
+            "description": "true for 2025 publications."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

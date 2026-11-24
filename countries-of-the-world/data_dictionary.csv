@@ -1,0 +1,53 @@
+column,data_type,description
+cca2,string,ISO 3166-1 alpha-2 country code (2 letters).
+cca3,string,ISO 3166-1 alpha-3 country code (3 letters).
+ccn3,string,ISO 3166-1 numeric country code.
+cioc,string,IOC code used by the International Olympic Committee.
+name_common,string,Common English country name.
+name_official,string,Official English country name.
+status,string,Sovereignty status (officially-assigned / user-assigned).
+independent,boolean,Whether the entity is an independent state.
+un_member,boolean,Whether the country is a UN member state.
+un_regional_group,string,UN regional group the country belongs to.
+region,string,"Continent-level region (e.g. Europe, Africa)."
+subregion,string,"Sub-region (e.g. Western Europe, South-Eastern Asia)."
+capital,string,Capital city name.
+capital_lat,float,Latitude of the capital city (decimal degrees).
+capital_lng,float,Longitude of the capital city (decimal degrees).
+area_km2,float,Total area in square kilometres.
+landlocked,boolean,True if the country has no coastline.
+borders,string list,Semicolon-separated ISO-3 codes of bordering countries.
+n_borders,integer,Number of neighbouring countries.
+lat,float,Centroid latitude (decimal degrees).
+lng,float,Centroid longitude (decimal degrees).
+flag_emoji,string,Unicode flag emoji.
+tld,string,Country-code top level domain.
+idd_root,string,International dialling prefix root (e.g. +1).
+idd_suffixes,string list,Semicolon-separated dialling suffixes on top of idd_root.
+currency_codes,string list,ISO 4217 currency codes used.
+currency_names,string list,Currency names (aligned with currency_codes).
+currency_symbols,string list,Currency symbols (aligned with currency_codes).
+languages,string list,Official languages in English.
+language_count,integer,Number of official languages.
+demonym_male,string,Male English demonym (e.g. Frenchman).
+demonym_female,string,Female English demonym (e.g. Frenchwoman).
+alt_spellings_count,integer,Number of alternative country spellings on record.
+population,float,"World Bank total population, latest year available."
+population_growth_pct,float,Annual population growth rate (%).
+gdp_usd,float,"GDP at current prices, current US dollars."
+gdp_per_capita_usd,float,"GDP per capita, current US dollars."
+gdp_growth_pct,float,"Annual GDP growth, constant prices (%)."
+life_expectancy_years,float,"Life expectancy at birth, total (years)."
+fertility_rate,float,Births per woman.
+urban_population_pct,float,Share of population living in urban areas (%).
+internet_users_pct,float,Individuals using the Internet (% of population).
+mobile_subs_per_100,float,Mobile cellular subscriptions per 100 people.
+literacy_rate_pct,float,"Adult literacy rate, 15+ years (%)."
+unemployment_pct,float,"Unemployment, total (% of labour force, ILO estimate)."
+inflation_pct,float,"Consumer price inflation, annual (%)."
+co2_per_capita_tonnes,float,"CO2 emissions per capita, tonnes (AR5 accounting)."
+forest_area_pct,float,Forest area (% of land area).
+infant_mortality_per_1000,float,"Infant deaths per 1,000 live births."
+health_spend_pct_gdp,float,Current health expenditure (% of GDP).
+education_spend_pct_gdp,float,Government expenditure on education (% of GDP).
+indicator_year,integer,Most recent year for which World Bank values were published.

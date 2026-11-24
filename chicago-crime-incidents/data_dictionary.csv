@@ -1,0 +1,41 @@
+column,data_type,description
+id,number,Incident record identifier.
+case_number,string,Chicago Police Department case number.
+date,datetime,Incident date and time (local).
+block,string,"Block-level address (hundred-block, not an exact address)."
+iucr,string,Illinois Uniform Crime Reporting code.
+primary_type,string,Primary crime type.
+description,string,Secondary description / subtype.
+location_description,string,"Location type (street, residence, apartment, ...)."
+arrest,boolean,true when an arrest was made.
+domestic,boolean,true when the incident was domestic.
+beat,number,Police beat.
+district,number,Police district.
+ward,number,City ward.
+community_area,number,Community area number.
+fbi_code,string,FBI crime code.
+x_coordinate,number,State plane X coordinate.
+y_coordinate,number,State plane Y coordinate.
+year,number,Year reported in the source.
+updated_on,datetime,Last update timestamp of the record.
+latitude,number,Latitude (WGS84).
+longitude,number,Longitude (WGS84).
+fbi_category,string,Human-readable FBI crime category.
+crime_category,string,Derived Violent / Property / Drug / Public order / Other band.
+is_violent,boolean,true for violent crime types.
+is_property,boolean,true for property crime types.
+is_drug,boolean,true for narcotics offences.
+is_public_order,boolean,true for public-order offences.
+is_theft,boolean,true for theft/larceny.
+is_firearm,boolean,true when the description mentions a firearm/handgun.
+is_arrest,boolean,true when arrest is true.
+is_domestic,boolean,true when domestic is true.
+hour,number,Hour of day (0-23).
+month,number,Month number.
+day_of_week,string,Weekday name.
+is_weekend,boolean,true for Saturday/Sunday.
+has_location,boolean,true when latitude and longitude are present.
+block_length,number,Characters in the block address.
+description_length,number,Characters in the secondary description.
+is_night,boolean,true for incidents between 20:00 and 05:59.
+year_month,string,Year-month string for monthly aggregation.

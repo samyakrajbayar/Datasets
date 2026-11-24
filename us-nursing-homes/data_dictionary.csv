@@ -1,0 +1,118 @@
+column,data_type,description
+cms_certification_number_ccn,string,CMS certification number (provider id).
+provider_name,string,Nursing home name.
+provider_address,string,Street address.
+citytown,string,City or town.
+state,string,State.
+zip_code,number,ZIP code.
+telephone_number,number,Phone number.
+provider_ssa_county_code,number,CMS Provider Data Catalog field or derived attribute.
+countyparish,string,County or parish.
+urban,string,CMS Provider Data Catalog field or derived attribute.
+ownership_type,string,Ownership type as reported by CMS.
+number_of_certified_beds,number,Certified bed count.
+average_number_of_residents_per_day,number,Average daily resident census.
+average_number_of_residents_per_day_footnote,number,CMS Provider Data Catalog field or derived attribute.
+provider_type,string,"Provider type (Medicare, Medicaid, both)."
+provider_resides_in_hospital,string,CMS Provider Data Catalog field or derived attribute.
+legal_business_name,string,Legal business name.
+date_first_approved_to_provide_medicare_and_medicaid_services,date,CMS Provider Data Catalog field or derived attribute.
+chain_name,string,Chain name when the home belongs to a chain.
+chain_id,number,Chain identifier.
+number_of_facilities_in_chain,number,CMS Provider Data Catalog field or derived attribute.
+chain_average_overall_5star_rating,number,CMS Provider Data Catalog field or derived attribute.
+chain_average_health_inspection_rating,number,CMS Provider Data Catalog field or derived attribute.
+chain_average_staffing_rating,number,CMS Provider Data Catalog field or derived attribute.
+chain_average_qm_rating,number,CMS Provider Data Catalog field or derived attribute.
+continuing_care_retirement_community,string,CMS Provider Data Catalog field or derived attribute.
+special_focus_status,string,CMS Provider Data Catalog field or derived attribute.
+abuse_icon,string,CMS Provider Data Catalog field or derived attribute.
+high_performing_icon,string,CMS Provider Data Catalog field or derived attribute.
+most_recent_health_inspection_more_than_2_years_ago,string,CMS Provider Data Catalog field or derived attribute.
+provider_changed_ownership_in_last_12_months,string,CMS Provider Data Catalog field or derived attribute.
+with_a_resident_and_family_council,string,CMS Provider Data Catalog field or derived attribute.
+automatic_sprinkler_systems_in_all_required_areas,string,CMS Provider Data Catalog field or derived attribute.
+overall_rating,number,CMS five-star overall rating.
+overall_rating_footnote,number,CMS Provider Data Catalog field or derived attribute.
+health_inspection_rating,number,Health-inspection star rating.
+health_inspection_rating_footnote,number,CMS Provider Data Catalog field or derived attribute.
+qm_rating,number,Quality-measure star rating.
+qm_rating_footnote,number,CMS Provider Data Catalog field or derived attribute.
+longstay_qm_rating,number,CMS Provider Data Catalog field or derived attribute.
+longstay_qm_rating_footnote,number,CMS Provider Data Catalog field or derived attribute.
+shortstay_qm_rating,number,CMS Provider Data Catalog field or derived attribute.
+shortstay_qm_rating_footnote,number,CMS Provider Data Catalog field or derived attribute.
+staffing_rating,number,Staffing star rating.
+staffing_rating_footnote,number,CMS Provider Data Catalog field or derived attribute.
+reported_staffing_footnote,number,CMS Provider Data Catalog field or derived attribute.
+physical_therapist_staffing_footnote,number,CMS Provider Data Catalog field or derived attribute.
+reported_nurse_aide_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+reported_lpn_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+reported_rn_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+reported_licensed_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+reported_total_nurse_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+total_number_of_nurse_staff_hours_per_resident_per_day_on_t_4a14,number,CMS Provider Data Catalog field or derived attribute.
+registered_nurse_hours_per_resident_per_day_on_the_weekend,number,CMS Provider Data Catalog field or derived attribute.
+reported_physical_therapist_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+total_nursing_staff_turnover,number,CMS Provider Data Catalog field or derived attribute.
+total_nursing_staff_turnover_footnote,number,CMS Provider Data Catalog field or derived attribute.
+registered_nurse_turnover,number,CMS Provider Data Catalog field or derived attribute.
+registered_nurse_turnover_footnote,number,CMS Provider Data Catalog field or derived attribute.
+number_of_administrators_who_have_left_the_nursing_home,number,CMS Provider Data Catalog field or derived attribute.
+administrator_turnover_footnote,number,CMS Provider Data Catalog field or derived attribute.
+nursing_casemix_index,number,CMS Provider Data Catalog field or derived attribute.
+nursing_casemix_index_ratio,number,CMS Provider Data Catalog field or derived attribute.
+casemix_nurse_aide_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+casemix_lpn_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+casemix_rn_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+casemix_total_nurse_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+casemix_weekend_total_nurse_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+adjusted_nurse_aide_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+adjusted_lpn_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+adjusted_rn_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+adjusted_total_nurse_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+adjusted_weekend_total_nurse_staffing_hours_per_resident_per_day,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_standard_survey_health_date,date,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_standard_survey_footnote,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_total_number_of_health_deficiencies,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_number_of_standard_health_deficiencies,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_number_of_complaint_health_deficiencies,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_health_deficiency_score,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_number_of_health_revisits,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_health_revisit_score,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_1_total_health_score,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_2_standard_health_survey_date,date,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_2_standard_survey_footnote,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_23_total_number_of_health_deficiencies,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_2_number_of_standard_health_deficiencies,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_23_number_of_complaint_health_deficiencies,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_23_health_deficiency_score,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_23_number_of_health_revisits,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_23_health_revisit_score,number,CMS Provider Data Catalog field or derived attribute.
+rating_cycle_23_total_health_score,number,CMS Provider Data Catalog field or derived attribute.
+total_weighted_health_survey_score,number,CMS Provider Data Catalog field or derived attribute.
+number_of_citations_from_infection_control_inspections,number,CMS Provider Data Catalog field or derived attribute.
+number_of_fines,number,CMS Provider Data Catalog field or derived attribute.
+total_amount_of_fines_in_dollars,number,CMS Provider Data Catalog field or derived attribute.
+number_of_payment_denials,number,CMS Provider Data Catalog field or derived attribute.
+total_number_of_penalties,number,CMS Provider Data Catalog field or derived attribute.
+location,string,CMS Provider Data Catalog field or derived attribute.
+latitude,number,CMS Provider Data Catalog field or derived attribute.
+longitude,number,CMS Provider Data Catalog field or derived attribute.
+geocoding_footnote,number,CMS Provider Data Catalog field or derived attribute.
+processing_date,date,CMS Provider Data Catalog field or derived attribute.
+ownership_group,string,Derived for-profit / non-profit / government group.
+is_for_profit,boolean,true for for-profit providers.
+is_nonprofit,boolean,true for non-profit providers.
+is_government,boolean,true for government-owned providers.
+is_chain,boolean,true when a chain name is present.
+occupancy_rate,number,Average residents divided by certified beds.
+bed_band,string,Certified-bed band.
+resident_band,string,Resident-census band.
+has_rating,boolean,true when at least one star rating exists.
+rating_mean,number,Mean of the available star ratings.
+is_high_rated,boolean,true when the mean rating is 4 or higher.
+is_low_rated,boolean,true when the mean rating is below 2.5.
+has_abuse_flag,boolean,true when CMS flags abuse.
+tenure_years,number,Years since first Medicare/Medicaid approval.
+state_rank_beds,number,Provider beds as a share of its state's certified beds.

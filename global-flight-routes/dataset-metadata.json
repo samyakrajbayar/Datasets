@@ -1,0 +1,31 @@
+{
+  "title": "Global Flight Routes Network",
+  "id": "samyakrajbayar/global-flight-routes",
+  "subtitle": "67,663 airline routes with airport coordinates, airline details, aircraft and...",
+  "description": "### 67,663 airline routes linking the world's airports\n\nOpenFlights publishes the route map assembled from airline schedules and airport registries. This\ndataset joins **67,663 routes** to airport coordinates, airline details and aircraft equipment, giving\n**44 parameters** per route.\n\n- **Airline** \u2014 code, id, name, IATA/ICAO codes, callsign, country and active flag.\n- **Endpoints** \u2014 airport codes, names, cities, countries, coordinates, elevation and timezone for\n  both origin and destination.\n- **Route** \u2014 codeshare flag, stops, aircraft equipment codes and equipment count.\n- **Derived geography** \u2014 great-circle distance and bands, domestic/international flags, altitude\n  gap, latitude/longitude gaps, equator crossing and eastbound direction.\n\n**34,774 routes are international** and the longest non-stop route in the file is **16,082 km**\n(LUN to SLI). The network supports hub\nanalysis, airline strategy, graph analytics and travel-demand modelling.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "ODbL-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "flight_routes.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,36 @@
+column,data_type,description
+station_id,string,GHCN station identifier (first two characters are the country code).
+name,string,Station name.
+latitude,number,Latitude (decimal degrees).
+longitude,number,Longitude (decimal degrees).
+elevation_m,number,Elevation in metres.
+state,string,Two-letter state code (U.S. stations only).
+country_code,string,FIPS-like country code from the station id prefix.
+country_name,string,Country name from the GHCN country list.
+gsn_flag,string,Global Surface Network flag.
+hcn_flag,string,U.S. Historical Climatology Network flag.
+wmo_id,number,"WMO station number, where assigned."
+hemisphere,string,N/S + E/W hemisphere pair.
+latitude_band,string,10-degree latitude band.
+longitude_band,string,15-degree longitude band.
+is_us,boolean,true for U.S. stations.
+has_state,boolean,true when a state code is present.
+has_wmo,boolean,true when a WMO id is present.
+is_gsn,boolean,true for GSN stations.
+is_hcn,boolean,true for HCN stations.
+name_length,number,Characters in the station name.
+name_word_count,number,Words in the station name.
+element_count,number,Number of distinct daily elements measured.
+elements,string,Element codes measured (semicolon-joined).
+first_year,number,First year with data in the inventory.
+last_year,number,Last year with data in the inventory.
+record_years,number,last_year - first_year + 1.
+is_active_2025,boolean,true when data reach 2025 or later.
+is_long_record,boolean,true for records of 50 years or more.
+has_precipitation,boolean,true when PRCP is measured.
+has_temperature,boolean,true when TMAX or TMIN is measured.
+has_snow,boolean,true when SNOW or SNWD is measured.
+has_wind,boolean,true when AWND is measured.
+station_age,number,Years since the first inventory year.
+is_high_elevation,boolean,"true above 2,000 m."
+is_coastal_lowland,boolean,true below 10 m elevation.

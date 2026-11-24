@@ -1,0 +1,82 @@
+column,data_type,description
+nct_id,string,ClinicalTrials.gov identifier (NCT number).
+brief_title,string,Short public title of the study.
+official_title,string,"Full scientific title, when supplied."
+acronym,string,"Study acronym, when supplied."
+org_study_id,string,Sponsor's own protocol identifier.
+secondary_id_count,number,"Number of secondary identifiers (other registries, grants)."
+organization,string,Organisation that submitted the registration.
+organization_class,string,"Class of the submitting organisation (e.g. INDUSTRY, NIH)."
+study_type,string,"Interventional, Observational or Expanded Access."
+overall_status,string,Current recruitment/conduct status.
+last_known_status,string,Last status before the study was withdrawn or unknown.
+why_stopped,string,"Free-text reason the study stopped, when given."
+phase,string,Raw phase list as registered (semicolon-joined).
+phase_clean,string,"Phase collapsed to a single label, Early Phase 1 / Phase 1 / Phase 2 / Phase 3 / Phase 4 / Not applicable."
+lead_sponsor,string,Primary sponsoring organisation.
+lead_sponsor_class,string,"Sponsor type: Industry, Academic, NIH, Network, Other."
+collaborator_count,number,Number of collaborating organisations.
+collaborators,string,Collaborating organisations (semicolon-joined).
+enrollment_count,number,"Planned or actual enrollment, as registered."
+enrollment_type,string,Whether enrollment_count is ANTICIPATED or ACTUAL.
+start_date,string,Study start date (ISO).
+primary_completion_date,string,Date primary outcome data collection is expected to finish.
+completion_date,string,Study completion date (ISO).
+first_posted,date,Date the record first appeared on ClinicalTrials.gov.
+last_update_posted,date,Date of the most recent record update.
+results_first_posted,date,"Date results were first posted, if any."
+has_results,boolean,true when summary results are posted.
+condition_count,number,Number of registered conditions.
+conditions,string,Registered conditions (semicolon-joined).
+keywords,string,Free-text keywords.
+intervention_count,number,Number of interventions.
+interventions,string,Intervention names (semicolon-joined).
+intervention_types,string,"Distinct intervention types: DRUG, DEVICE, BIOLOGICAL, BEHAVIORAL, ..."
+arm_group_count,number,Number of study arms/groups.
+primary_outcome_count,number,Number of primary outcome measures.
+primary_outcome_measures,string,Primary outcome measure names (semicolon-joined).
+secondary_outcome_count,number,Number of secondary outcome measures.
+other_outcome_count,number,Number of other outcome measures.
+sex,string,"Eligible sex: ALL, FEMALE, MALE."
+minimum_age,string,Minimum eligible age as registered (e.g. '18 Years').
+maximum_age,string,Maximum eligible age as registered.
+healthy_volunteers,boolean,true when healthy volunteers are accepted.
+std_ages,string,"Standard age groups: CHILD, ADULT, OLDER_ADULT."
+sampling_method,string,Probability vs non-probability sampling (observational studies).
+primary_purpose,string,"Treatment, Prevention, Diagnostic, Screening, Supportive Care, ..."
+allocation,string,Randomized vs non-randomized.
+intervention_model,string,"Parallel, Crossover, Sequential, Factorial, Single Group."
+observational_model,string,"Cohort, Case-Control, Cross-Sectional, ..."
+masking,string,"None, Single, Double, Triple, Quadruple."
+site_count,number,Number of listed site locations.
+country_count,number,Number of distinct countries with a listed site.
+countries,string,Countries with a listed site (semicolon-joined).
+has_us_site,boolean,true when at least one site is in the United States.
+facility_count,number,Number of distinct facility names.
+has_dmc,boolean,true when a data monitoring committee is declared.
+is_fda_regulated_drug,boolean,true when the study involves an FDA-regulated drug.
+is_fda_regulated_device,boolean,true when the study involves an FDA-regulated device.
+ipd_sharing,string,Individual participant data sharing statement (Yes/No/Undecided).
+reference_count,number,Number of publication references attached to the record.
+brief_summary_length,number,Characters in the brief summary.
+detailed_description_length,number,Characters in the detailed description.
+is_interventional,boolean,true for interventional studies.
+is_observational,boolean,true for observational studies.
+is_industry_sponsored,boolean,true when the lead sponsor class is Industry.
+is_academic_sponsored,boolean,true when the lead sponsor is academic/university.
+is_network_sponsored,boolean,true when the lead sponsor is a clinical network.
+start_year,number,Calendar year of the start date.
+planned_duration_days,number,"Completion date minus start date, in days."
+days_since_last_update,number,Days between the last update and the snapshot date (2026-11-21).
+days_to_first_post,number,Days between study start and first registration posting.
+min_age_years,number,Minimum age converted to years (months/weeks/days divided accordingly).
+max_age_years,number,Maximum age converted to years.
+is_pediatric,boolean,true when the minimum age is below 18.
+is_older_adult,boolean,true when the maximum age is 65 or below.
+is_randomized,boolean,true when allocation is Randomized.
+is_blinded,boolean,true when any masking is declared.
+enrollment_band,string,"Enrollment size band from <50 to 5,000+."
+title_length,number,Characters in the brief title.
+condition_count_clean,number,Number of registered conditions (recounted during flattening).
+is_oncology,boolean,"true when a condition mentions cancer, neoplasm or tumour."
+accepts_healthy_volunteers,boolean,true when healthy volunteers are accepted.

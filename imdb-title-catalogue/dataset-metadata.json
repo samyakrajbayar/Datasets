@@ -1,0 +1,229 @@
+{
+  "title": "IMDB Title Catalogue",
+  "id": "samyakrajbayar/imdb-title-catalogue",
+  "subtitle": "500,000 movies and shows with genres, ratings and release year",
+  "description": "# IMDb Title Catalogue 1990-2026\n\n**Subtitle:** 147,195 films and series with genres, runtime, average rating and votes\n\n**Tags:** `tabular`, `movies`, `entertainment`\n\n**Dataset File:** `imdb_titles.csv` (147,195 rows, 39 columns, 34.4 MB)\n\n**Provenance & Source:** IMDb Non-Commercial Datasets (datasets.imdbws.com)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 300,000 IMDb titles with ratings\n\nIMDb publishes its title metadata as open TSV files. This dataset joins `title.basics` to\n`title.ratings` and keeps **147,195 films and series released since 1990** with at least 100 votes,\ngiving **39 parameters** per title.\n\n- **Identity** \u2014 IMDb id, title type, primary and original title, adult flag, start and end year.\n- **Production** \u2014 runtime and genres.\n- **Ratings** \u2014 average rating and vote count.\n- **Derived** \u2014 decade, age, runtime band, genre count and eight genre flags, movie/series flags,\n  title length and word count, rating and vote bands, highly-rated and popular flags, votes per year,\n  a Bayesian-shrunk rating and a rating x log-votes score.\n\n**107,537 are feature films**, **10,090 rate 8.0 or higher**, and the mean rating in the sample is\n**6.09**. The file supports film-industry, genre and audience-reception analysis.\n\n## \ud83e\uddfe Columns (39)\n\n`tconst`, `title_type`, `primary_title`, `original_title`, `is_adult`, `start_year`, `end_year`, `runtime_minutes`, `genres`, `average_rating`, `num_votes`, `decade`, `age_years`, `is_adult_film`, `runtime_band`, `genre_count`, `is_drama`, `is_comedy`, `is_documentary`, `is_action`, `is_horror`, `is_thriller`, `is_romance`, `is_scifi`, `is_animation`, `is_movie`, `is_series`, `title_length`, `title_word_count`, `same_title`, `rating_band`, `votes_band`, `is_highly_rated`, `is_popular`, `votes_per_year`, `bayesian_rating`, `has_runtime`, `is_ongoing`, `rating_votes_product`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Genre economics** \u2014 ratings and vote counts by genre combination.\n2. **Runtime trends** \u2014 how film length has changed since 1990.\n3. **Ratings over time** \u2014 are newer titles rated differently, or just voted on more?\n4. **Series vs films** \u2014 reception and longevity differences.\n5. **Bayesian ranking** \u2014 build a robust top-1000 using the shrunk rating.\n6. **Title linguistics** \u2014 word count, punctuation and title patterns vs rating.\n7. **Vote dynamics** \u2014 votes per year as a proxy for ongoing popularity.\n8. **Genre co-occurrence** \u2014 network of genre combinations.\n9. **Recommendation features** \u2014 a clean title-level feature table for recommender models.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `imdb_titles.csv` | 147,195 titles x 39 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`imdb`, `movies`, `film`, `ratings`, `entertainment`, `genres`, `recommendation`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **IMDb public datasets**, `https://datasets.imdbws.com/title.basics.tsv.gz`\n  and `title.ratings.tsv.gz` (non-commercial use).\n- **Scope:** titles released from 1990 onward, of type movie/tvSeries/tvMiniSeries, with at least 100\n  votes; the first 300,000 matching rows in `tconst` order.\n- **Processing:** ratings joined by `tconst`, genres split, runtime and year parsed, derived bands,\n  flags and a Bayesian rating computed.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily.** IMDb regenerates the public datasets each day.\n\n## \u26a0\ufe0f Caveats\n\n- IMDb datasets are for personal and non-commercial use; check IMDb's terms before redistribution.\n- Only titles with at least 100 votes and a 1990+ start year are included.\n- The 300,000 rows follow `tconst` order, which correlates with release date, not popularity.\n- Ratings and vote counts are a snapshot and change continuously.\n- Runtime is missing for some series and unreleased titles.\n- Genres are a fixed vocabulary; many titles have several.\n- The Bayesian rating uses a fixed prior (m = 5,000, global mean 7.0), not IMDb's own weighting.\n\n## \ud83d\udcdc Licence\n\nIMDb datasets are provided for personal, non-commercial use only; see IMDb's terms.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `tconst` | `string` | IMDb title identifier. |\n| 2 | `title_type` | `string` | movie, tvSeries or tvMiniSeries. |\n| 3 | `primary_title` | `string` | Primary title. |\n| 4 | `original_title` | `string` | Original-language title. |\n| 5 | `is_adult` | `number` | true for adult titles. |\n| 6 | `start_year` | `number` | Release / start year. |\n| 7 | `end_year` | `number` | End year for series. |\n| 8 | `runtime_minutes` | `number` | Runtime in minutes. |\n| 9 | `genres` | `string` | Genres (comma-separated). |\n| 10 | `average_rating` | `number` | IMDb weighted average rating (1-10). |\n| 11 | `num_votes` | `number` | Number of votes. |\n| 12 | `decade` | `number` | Start-year decade. |\n| 13 | `age_years` | `number` | Years since release at 2026. |\n| 14 | `is_adult_film` | `boolean` | true when flagged adult. |\n| 15 | `runtime_band` | `string` | Runtime band. |\n| 16 | `genre_count` | `number` | Number of genres. |\n| 17 | `is_drama` | `boolean` | true when Drama is a genre. |\n| 18 | `is_comedy` | `boolean` | true when Comedy is a genre. |\n| 19 | `is_documentary` | `boolean` | true when Documentary is a genre. |\n| 20 | `is_action` | `boolean` | true when Action is a genre. |\n| 21 | `is_horror` | `boolean` | true when Horror is a genre. |\n| 22 | `is_thriller` | `boolean` | true when Thriller is a genre. |\n| 23 | `is_romance` | `boolean` | true when Romance is a genre. |\n| 24 | `is_scifi` | `boolean` | true when Sci-Fi is a genre. |\n| 25 | `is_animation` | `boolean` | true when Animation is a genre. |\n| 26 | `is_movie` | `boolean` | true for feature films. |\n| 27 | `is_series` | `boolean` | true for series. |\n| 28 | `title_length` | `number` | Characters in the primary title. |\n| 29 | `title_word_count` | `number` | Words in the primary title. |\n| 30 | `same_title` | `boolean` | true when primary and original titles match. |\n| 31 | `rating_band` | `string` | Rating band. |\n| 32 | `votes_band` | `string` | Vote-count band. |\n| 33 | `is_highly_rated` | `boolean` | true when rating is 8.0 or higher. |\n| 34 | `is_popular` | `boolean` | true when votes are 10,000 or more. |\n| 35 | `votes_per_year` | `number` | Votes divided by age in years. |\n| 36 | `bayesian_rating` | `number` | Rating shrunk toward the global mean (m = 5,000 votes). |\n| 37 | `has_runtime` | `boolean` | true when a runtime is listed. |\n| 38 | `is_ongoing` | `boolean` | true when a series has no end year. |\n| 39 | `rating_votes_product` | `number` | Rating x log10(votes), a simple popularity-weighted score. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "imdb_titles.csv",
+      "description": "Primary dataset file containing 147,195 records across 39 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "tconst",
+            "type": "string",
+            "description": "IMDb title identifier."
+          },
+          {
+            "name": "title_type",
+            "type": "string",
+            "description": "movie, tvSeries or tvMiniSeries."
+          },
+          {
+            "name": "primary_title",
+            "type": "string",
+            "description": "Primary title."
+          },
+          {
+            "name": "original_title",
+            "type": "string",
+            "description": "Original-language title."
+          },
+          {
+            "name": "is_adult",
+            "type": "number",
+            "description": "true for adult titles."
+          },
+          {
+            "name": "start_year",
+            "type": "number",
+            "description": "Release / start year."
+          },
+          {
+            "name": "end_year",
+            "type": "number",
+            "description": "End year for series."
+          },
+          {
+            "name": "runtime_minutes",
+            "type": "number",
+            "description": "Runtime in minutes."
+          },
+          {
+            "name": "genres",
+            "type": "string",
+            "description": "Genres (comma-separated)."
+          },
+          {
+            "name": "average_rating",
+            "type": "number",
+            "description": "IMDb weighted average rating (1-10)."
+          },
+          {
+            "name": "num_votes",
+            "type": "number",
+            "description": "Number of votes."
+          },
+          {
+            "name": "decade",
+            "type": "number",
+            "description": "Start-year decade."
+          },
+          {
+            "name": "age_years",
+            "type": "number",
+            "description": "Years since release at 2026."
+          },
+          {
+            "name": "is_adult_film",
+            "type": "boolean",
+            "description": "true when flagged adult."
+          },
+          {
+            "name": "runtime_band",
+            "type": "string",
+            "description": "Runtime band."
+          },
+          {
+            "name": "genre_count",
+            "type": "number",
+            "description": "Number of genres."
+          },
+          {
+            "name": "is_drama",
+            "type": "boolean",
+            "description": "true when Drama is a genre."
+          },
+          {
+            "name": "is_comedy",
+            "type": "boolean",
+            "description": "true when Comedy is a genre."
+          },
+          {
+            "name": "is_documentary",
+            "type": "boolean",
+            "description": "true when Documentary is a genre."
+          },
+          {
+            "name": "is_action",
+            "type": "boolean",
+            "description": "true when Action is a genre."
+          },
+          {
+            "name": "is_horror",
+            "type": "boolean",
+            "description": "true when Horror is a genre."
+          },
+          {
+            "name": "is_thriller",
+            "type": "boolean",
+            "description": "true when Thriller is a genre."
+          },
+          {
+            "name": "is_romance",
+            "type": "boolean",
+            "description": "true when Romance is a genre."
+          },
+          {
+            "name": "is_scifi",
+            "type": "boolean",
+            "description": "true when Sci-Fi is a genre."
+          },
+          {
+            "name": "is_animation",
+            "type": "boolean",
+            "description": "true when Animation is a genre."
+          },
+          {
+            "name": "is_movie",
+            "type": "boolean",
+            "description": "true for feature films."
+          },
+          {
+            "name": "is_series",
+            "type": "boolean",
+            "description": "true for series."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the primary title."
+          },
+          {
+            "name": "title_word_count",
+            "type": "number",
+            "description": "Words in the primary title."
+          },
+          {
+            "name": "same_title",
+            "type": "boolean",
+            "description": "true when primary and original titles match."
+          },
+          {
+            "name": "rating_band",
+            "type": "string",
+            "description": "Rating band."
+          },
+          {
+            "name": "votes_band",
+            "type": "string",
+            "description": "Vote-count band."
+          },
+          {
+            "name": "is_highly_rated",
+            "type": "boolean",
+            "description": "true when rating is 8.0 or higher."
+          },
+          {
+            "name": "is_popular",
+            "type": "boolean",
+            "description": "true when votes are 10,000 or more."
+          },
+          {
+            "name": "votes_per_year",
+            "type": "number",
+            "description": "Votes divided by age in years."
+          },
+          {
+            "name": "bayesian_rating",
+            "type": "number",
+            "description": "Rating shrunk toward the global mean (m = 5,000 votes)."
+          },
+          {
+            "name": "has_runtime",
+            "type": "boolean",
+            "description": "true when a runtime is listed."
+          },
+          {
+            "name": "is_ongoing",
+            "type": "boolean",
+            "description": "true when a series has no end year."
+          },
+          {
+            "name": "rating_votes_product",
+            "type": "number",
+            "description": "Rating x log10(votes), a simple popularity-weighted score."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

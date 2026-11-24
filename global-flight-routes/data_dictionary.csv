@@ -1,0 +1,45 @@
+column,data_type,description
+airline,string,Airline IATA/ICAO code as listed on the route.
+airline_id,number,OpenFlights field or derived route attribute.
+airline_name,string,Airline name joined from airlines.dat.
+airline_iata,string,OpenFlights field or derived route attribute.
+airline_icao,string,OpenFlights field or derived route attribute.
+airline_callsign,string,OpenFlights field or derived route attribute.
+airline_country,string,Airline country of registration.
+airline_active,string,Y/N activity flag from airlines.dat.
+source_airport,string,Origin airport IATA code.
+source_airport_id,number,OpenFlights field or derived route attribute.
+source_name,string,Origin airport name.
+source_city,string,Origin city.
+source_country,string,Origin country.
+source_icao,string,OpenFlights field or derived route attribute.
+source_lat,number,Origin latitude.
+source_lon,number,Origin longitude.
+source_altitude_ft,number,Origin elevation in feet.
+source_timezone,number,Origin timezone offset in hours.
+destination_airport,string,Destination airport IATA code.
+destination_airport_id,number,OpenFlights field or derived route attribute.
+destination_name,string,Destination airport name.
+destination_city,string,Destination city.
+destination_country,string,Destination country.
+destination_icao,string,OpenFlights field or derived route attribute.
+destination_lat,number,Destination latitude.
+destination_lon,number,Destination longitude.
+destination_altitude_ft,number,Destination elevation in feet.
+destination_timezone,number,OpenFlights field or derived route attribute.
+codeshare,string,Y when the route is a codeshare.
+stops,number,Number of intermediate stops.
+equipment,string,Space-separated aircraft type codes.
+equipment_count,number,Number of aircraft types listed.
+primary_equipment,string,First aircraft type code.
+distance_km,number,Great-circle distance between airports (km).
+distance_band,string,Distance bucket.
+is_domestic,boolean,true when both airports are in the same country.
+is_international,boolean,true when the airports are in different countries.
+is_codeshare,boolean,true for codeshare routes.
+has_stops,boolean,true when the route has intermediate stops.
+altitude_gap_ft,number,Destination minus origin elevation.
+lat_gap,number,Latitude difference (destination - origin).
+lon_gap,number,Longitude difference (destination - origin).
+crosses_equator,boolean,true when the route crosses the equator.
+eastbound,boolean,true when the destination is east of the origin.

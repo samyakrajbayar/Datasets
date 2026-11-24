@@ -1,0 +1,50 @@
+column,data_type,description
+station_id,string,NDBC station identifier.
+name,string,Station name.
+owner,string,Station owner/operator.
+lat,number,Latitude.
+lon,number,Longitude.
+elev,number,Station elevation (m).
+program,string,NDBC programme code.
+type,string,Platform type.
+has_met,string,true when meteorological sensors are present.
+has_currents,string,true when current measurements are available.
+has_waterquality,string,true when water-quality sensors are present.
+has_dart,string,true for tsunami DART stations.
+obs_time,datetime,Timestamp of the latest observation (UTC).
+wind_dir_deg,number,"Wind direction, degrees from which the wind blows."
+wind_speed_ms,number,Wind speed in m/s.
+gust_ms,number,Gust speed in m/s.
+wave_height_m,number,Significant wave height in metres.
+dominant_period_s,number,Dominant wave period in seconds.
+average_period_s,number,Average wave period.
+wave_dir_deg,number,Dominant wave direction.
+pressure_hpa,number,Sea-level pressure in hPa.
+air_temp_c,number,Air temperature in Celsius.
+water_temp_c,number,Sea-surface temperature in Celsius.
+dewpoint_c,number,Dew point in Celsius.
+visibility_nmi,number,Visibility in nautical miles.
+pressure_tendency_hpa,number,Pressure change over the last 3 hours.
+tide_m,number,Tide height in metres.
+wind_speed_kmh,number,Wind speed in km/h.
+gust_kmh,number,Gust speed in km/h.
+wave_height_ft,number,Significant wave height in feet.
+pressure_inhg,number,Pressure in inches of mercury.
+air_temp_f,number,Air temperature in Fahrenheit.
+water_temp_f,number,Water temperature in Fahrenheit.
+dewpoint_f,number,Dew point in Fahrenheit.
+air_water_temp_gap,number,Air temperature minus water temperature.
+wind_chill_c,number,Wind-chill temperature (Celsius) when wind exceeds 4.8 km/h.
+obs_age_hours,number,Hours since the latest observation.
+has_obs,boolean,true when an observation was retrieved.
+is_recent,boolean,true when the observation is at most 2 hours old.
+is_stale,boolean,true when the observation is older than 24 hours.
+has_wave_data,boolean,true when wave height is reported.
+has_pressure,boolean,true when pressure is reported.
+has_wind,boolean,true when wind is reported.
+has_water_temp,boolean,true when water temperature is reported.
+wind_band,string,Beaufort-like wind band.
+wave_band,string,Wave-height band.
+hemisphere,string,Quadrant from the coordinates.
+is_buoy,boolean,true for moored buoys.
+is_fixed_platform,boolean,true for fixed platforms.

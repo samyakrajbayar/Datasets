@@ -1,0 +1,32 @@
+column,data_type,description
+award_id,string,Contract award identifier (PIID).
+recipient_name,string,Recipient name as reported.
+recipient_id,string,USAspending recipient identifier.
+award_amount,number,Total obligated amount in USD.
+awarding_agency,string,Top-level awarding agency.
+awarding_sub_agency,string,Awarding sub-agency.
+agency_slug,string,Agency slug used by USAspending.
+award_type,string,Contract award type (A/B/C/D).
+start_date,date,Period-of-performance start.
+end_date,date,Period-of-performance end.
+duration_days,number,Days between start and end.
+naics_code,string,NAICS industry code.
+naics_sector,number,Two-digit NAICS sector.
+psc_code,string,Product Service Code.
+place_state,string,Place-of-performance state code.
+place_country,string,Place-of-performance country code.
+description,string,Award description (truncated to 500 characters).
+description_length,number,Characters in the description.
+amount_band,string,Award-size band.
+is_multiyear,boolean,true when the period of performance exceeds a year.
+is_large_award,boolean,true for awards of $1m or more.
+start_year,number,Start year.
+start_month,number,Start month.
+end_year,number,End year.
+is_positive_amount,boolean,true for positive award amounts.
+amount_per_day,number,Award amount divided by duration in days.
+description_has_software,boolean,true when the description mentions software.
+description_has_services,boolean,true when it mentions services.
+description_has_construction,boolean,true when it mentions construction.
+is_defense,boolean,true for defense agencies.
+is_health,boolean,true for health agencies.

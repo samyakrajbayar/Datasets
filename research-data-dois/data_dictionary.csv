@@ -1,0 +1,60 @@
+column,data_type,description
+doi,string,DOI of the research output.
+title,string,Primary title.
+publisher,string,Data repository or publisher.
+publication_year,number,Year of publication.
+resource_type,string,Free-text resource type.
+resource_type_general,string,"Controlled resource type (Dataset, Software, Text, ...)."
+creator_count,number,Number of creators.
+first_creator,string,First creator's name.
+creator_names,string,All creator names (semicolon-joined).
+creator_affiliations,string,Distinct creator affiliations.
+contributor_count,number,Number of contributors.
+subject_count,number,Number of subject keywords.
+subjects,string,Subject keywords (semicolon-joined).
+description_count,number,Number of descriptions.
+description,string,"Primary description (truncated to 1,500 characters)."
+language,string,Language code.
+version,string,Version string.
+rights_count,number,Number of rights statements.
+rights,string,Rights/licence statements (semicolon-joined).
+url,string,Landing-page URL.
+content_url,string,"Direct content URL, where given."
+is_active,boolean,true when the DOI is active.
+state,string,"DOI state (findable, registered, ...)."
+view_count,number,DataCite view count.
+download_count,number,DataCite download count.
+reference_count,number,Number of references.
+citation_count,number,Number of citations.
+part_count,number,Number of parts.
+part_of_count,number,Number of parent records.
+related_count,number,Number of related identifiers.
+funding_count,number,Number of funding references.
+funder_names,string,Funder names (semicolon-joined).
+geo_count,number,Number of geo-locations.
+geo_place,string,First geo-location place name.
+geo_lat,number,First geo-location latitude.
+geo_lon,number,First geo-location longitude.
+date_count,number,Number of dates.
+dates,string,Date values (semicolon-joined).
+size_count,number,Number of sizes.
+sizes,string,Size values (semicolon-joined).
+format_count,number,Number of formats.
+formats,string,Format values (semicolon-joined).
+identifier_count,number,Number of alternative identifiers.
+orcid_count,number,Number of ORCID identifiers among creators.
+title_length,number,Characters in the title.
+description_length,number,Characters in the stored description.
+has_orcid,boolean,true when at least one creator has an ORCID.
+has_description,boolean,true when a description exists.
+has_funding,boolean,true when funding references exist.
+has_geo,boolean,true when a geo-location exists.
+has_related,boolean,true when related identifiers exist.
+has_rights,boolean,true when a rights statement exists.
+is_dataset,boolean,true for resource_type_general Dataset.
+is_software,boolean,true for Software.
+is_text,boolean,true for Text/JournalArticle.
+is_image,boolean,true for Image.
+is_preprint,boolean,true when the type or title suggests a preprint.
+year_band,string,Publication year band.
+decade,number,Publication decade.

@@ -1,0 +1,43 @@
+column,data_type,description
+anilist_id,integer,AniList media id.
+mal_id,integer,"MyAnimeList id, when mapped."
+title_romaji,string,Romaji title.
+title_english,string,"English title, when available."
+title_native,string,Native (Japanese) title.
+n_synonyms,integer,Number of alternative titles on record.
+format,category,"TV, TV_SHORT, MOVIE, SPECIAL, OVA, ONA, MUSIC."
+status,category,"FINISHED, RELEASING, NOT_YET_RELEASED, CANCELLED, HIATUS."
+source,category,"Original source material: ORIGINAL, MANGA, LIGHT_NOVEL, GAME, ..."
+country_of_origin,string,ISO country code of origin (mostly JP).
+season,category,"Broadcast season: WINTER, SPRING, SUMMER, FALL."
+season_year,integer,Year of the broadcast season.
+episodes,integer,Number of episodes.
+duration_min,float,Episode duration in minutes.
+total_runtime_min,float,episodes × duration.
+start_year,integer,Start year.
+start_month,integer,Start month.
+end_year,integer,End year.
+end_month,integer,End month.
+airing_span_months,float,Months between start and end dates.
+average_score,integer,"Weighted average score, 0-100, from AniList users."
+mean_score,integer,"Arithmetic mean score, 0-100."
+popularity,integer,Number of users with the title on their list.
+favourites,integer,Number of users who marked it a favourite.
+trending,integer,Current trending rank score.
+n_genres,integer,Number of genres.
+genres,string list,Semicolon-separated genres.
+primary_studio,string,Main animation studio.
+n_studios,integer,Number of main studios.
+all_studios,string list,Semicolon-separated main studios.
+n_tags,integer,Number of community tags.
+top_tags,string list,Five highest-ranked tags.
+is_adult,boolean,True if the title is 18+.
+description_length,integer,Character length of the description.
+description,string,"Synopsis, truncated to 800 characters, HTML stripped."
+cover_color,string,Dominant cover colour (hex).
+cover_image_url,string,Extra-large cover image URL.
+banner_image_url,string,Banner image URL.
+trailer_site,category,Trailer host: youtube or dailymotion.
+next_airing_episode,integer,Next episode number for currently airing titles.
+site_url,string,AniList page URL.
+score_per_episode,float,average_score / episodes; a simple quality-per-length ratio.

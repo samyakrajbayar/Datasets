@@ -1,0 +1,210 @@
+{
+  "title": "Global Weather Stations",
+  "id": "samyakrajbayar/global-weather-stations",
+  "subtitle": "150,000 NOAA weather stations with coordinates and elevation",
+  "description": "# Global Weather Station Network\n\n**Subtitle:** 133,041 GHCN-Daily stations with coordinates, elevation & network data\n\n**Tags:** `tabular`, `weather`, `climate`\n\n**Dataset File:** `weather_stations.csv` (133,041 rows, 35 columns, 28.0 MB)\n\n**Provenance & Source:** NOAA NCEI GHCN-Daily Database (noaa.gov)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The global weather-station network\n\nNOAA's Global Historical Climatology Network \u2013 Daily (GHCN-Daily) aggregates station observations\nworldwide. This dataset combines its **133,041 stations** across **218 countries** with the\ninventory of what each station measures, giving **35 parameters**.\n\n- **Identity** \u2014 station id, name, country code and name, U.S. state, GSN/HCN flags and WMO id.\n- **Position** \u2014 latitude, longitude, elevation, hemisphere and coordinate bands.\n- **Measurement inventory** \u2014 element codes and count, first and last year, record length, and\n  precipitation/temperature/snow/wind availability flags.\n- **Derived** \u2014 active-in-2025 and long-record flags, station age, high-elevation and coastal-lowland\n  flags, name and country coverage.\n\n**43,689 stations have data reaching 2025** and **985** belong to the Global Surface Network.\nThe file is a ready-made station metadata table for any GHCN-Daily analysis or climate-data pipeline.\n\n## \ud83e\uddfe Columns (35)\n\n`station_id`, `name`, `latitude`, `longitude`, `elevation_m`, `state`, `country_code`, `country_name`, `gsn_flag`, `hcn_flag`, `wmo_id`, `hemisphere`, `latitude_band`, `longitude_band`, `is_us`, `has_state`, `has_wmo`, `is_gsn`, `is_hcn`, `name_length`, `name_word_count`, `element_count`, `elements`, `first_year`, `last_year`, `record_years`, `is_active_2025`, `is_long_record`, `has_precipitation`, `has_temperature`, `has_snow`, `has_wind`, `station_age`, `is_high_elevation`, `is_coastal_lowland`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Network coverage** \u2014 station density by country and latitude band.\n2. **Record length** \u2014 which regions have long, continuous climate records?\n3. **Measurement gaps** \u2014 stations with temperature but no precipitation, and vice versa.\n4. **Elevation bias** \u2014 high-elevation stations are sparse; quantify the gap.\n5. **Active vs retired** \u2014 map stations that stopped reporting.\n6. **GSN/HCN** \u2014 reference-network coverage by country.\n7. **Climate analysis prep** \u2014 join this metadata to GHCN-Daily observations.\n8. **Station naming** \u2014 name patterns and duplicate names.\n9. **Country comparison** \u2014 stations per country vs land area (external join).\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `weather_stations.csv` | 133,041 stations x 35 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`weather`, `climate`, `noaa`, `ghcn`, `stations`, `geospatial`, `infrastructure`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **NOAA NCEI GHCN-Daily** metadata files,\n  `ghcnd-stations.txt`, `ghcnd-countries.txt` and `ghcnd-inventory.txt` under\n  `https://www.ncei.noaa.gov/pub/data/ghcn/daily/`.\n- **Processing:** fixed-width station records parsed, country names joined, inventory aggregated to one\n  row per station (element set, first and last year), derived flags and bands added.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily.** GHCN-Daily and its metadata files are refreshed each day.\n\n## \u26a0\ufe0f Caveats\n\n- Station metadata describes the station, not the observations; no daily values are included.\n- Inventory years describe data availability in GHCN-Daily, not the station's operational life.\n- The country code is a GHCN/FIPS-style prefix and may differ from ISO codes.\n- Elevation is station elevation, not necessarily representative of the surrounding area.\n- Some stations have no inventory entry and therefore blank element/year fields.\n- GSN/HCN flags are network memberships that change slowly.\n- Station names and coordinates contain historical inconsistencies.\n\n## \ud83d\udcdc Licence\n\nU.S. Government work (NOAA/NCEI) \u2014 public domain.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `station_id` | `string` | GHCN station identifier (first two characters are the country code). |\n| 2 | `name` | `string` | Station name. |\n| 3 | `latitude` | `number` | Latitude (decimal degrees). |\n| 4 | `longitude` | `number` | Longitude (decimal degrees). |\n| 5 | `elevation_m` | `number` | Elevation in metres. |\n| 6 | `state` | `string` | Two-letter state code (U.S. stations only). |\n| 7 | `country_code` | `string` | FIPS-like country code from the station id prefix. |\n| 8 | `country_name` | `string` | Country name from the GHCN country list. |\n| 9 | `gsn_flag` | `string` | Global Surface Network flag. |\n| 10 | `hcn_flag` | `string` | U.S. Historical Climatology Network flag. |\n| 11 | `wmo_id` | `number` | WMO station number, where assigned. |\n| 12 | `hemisphere` | `string` | N/S + E/W hemisphere pair. |\n| 13 | `latitude_band` | `string` | 10-degree latitude band. |\n| 14 | `longitude_band` | `string` | 15-degree longitude band. |\n| 15 | `is_us` | `boolean` | true for U.S. stations. |\n| 16 | `has_state` | `boolean` | true when a state code is present. |\n| 17 | `has_wmo` | `boolean` | true when a WMO id is present. |\n| 18 | `is_gsn` | `boolean` | true for GSN stations. |\n| 19 | `is_hcn` | `boolean` | true for HCN stations. |\n| 20 | `name_length` | `number` | Characters in the station name. |\n| 21 | `name_word_count` | `number` | Words in the station name. |\n| 22 | `element_count` | `number` | Number of distinct daily elements measured. |\n| 23 | `elements` | `string` | Element codes measured (semicolon-joined). |\n| 24 | `first_year` | `number` | First year with data in the inventory. |\n| 25 | `last_year` | `number` | Last year with data in the inventory. |\n| 26 | `record_years` | `number` | last_year - first_year + 1. |\n| 27 | `is_active_2025` | `boolean` | true when data reach 2025 or later. |\n| 28 | `is_long_record` | `boolean` | true for records of 50 years or more. |\n| 29 | `has_precipitation` | `boolean` | true when PRCP is measured. |\n| 30 | `has_temperature` | `boolean` | true when TMAX or TMIN is measured. |\n| 31 | `has_snow` | `boolean` | true when SNOW or SNWD is measured. |\n| 32 | `has_wind` | `boolean` | true when AWND is measured. |\n| 33 | `station_age` | `number` | Years since the first inventory year. |\n| 34 | `is_high_elevation` | `boolean` | true above 2,000 m. |\n| 35 | `is_coastal_lowland` | `boolean` | true below 10 m elevation. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "weather_stations.csv",
+      "description": "Primary dataset file containing 133,041 records across 35 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "station_id",
+            "type": "string",
+            "description": "GHCN station identifier (first two characters are the country code)."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Station name."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude (decimal degrees)."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude (decimal degrees)."
+          },
+          {
+            "name": "elevation_m",
+            "type": "number",
+            "description": "Elevation in metres."
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "Two-letter state code (U.S. stations only)."
+          },
+          {
+            "name": "country_code",
+            "type": "string",
+            "description": "FIPS-like country code from the station id prefix."
+          },
+          {
+            "name": "country_name",
+            "type": "string",
+            "description": "Country name from the GHCN country list."
+          },
+          {
+            "name": "gsn_flag",
+            "type": "string",
+            "description": "Global Surface Network flag."
+          },
+          {
+            "name": "hcn_flag",
+            "type": "string",
+            "description": "U.S. Historical Climatology Network flag."
+          },
+          {
+            "name": "wmo_id",
+            "type": "number",
+            "description": "WMO station number, where assigned."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "N/S + E/W hemisphere pair."
+          },
+          {
+            "name": "latitude_band",
+            "type": "string",
+            "description": "10-degree latitude band."
+          },
+          {
+            "name": "longitude_band",
+            "type": "string",
+            "description": "15-degree longitude band."
+          },
+          {
+            "name": "is_us",
+            "type": "boolean",
+            "description": "true for U.S. stations."
+          },
+          {
+            "name": "has_state",
+            "type": "boolean",
+            "description": "true when a state code is present."
+          },
+          {
+            "name": "has_wmo",
+            "type": "boolean",
+            "description": "true when a WMO id is present."
+          },
+          {
+            "name": "is_gsn",
+            "type": "boolean",
+            "description": "true for GSN stations."
+          },
+          {
+            "name": "is_hcn",
+            "type": "boolean",
+            "description": "true for HCN stations."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the station name."
+          },
+          {
+            "name": "name_word_count",
+            "type": "number",
+            "description": "Words in the station name."
+          },
+          {
+            "name": "element_count",
+            "type": "number",
+            "description": "Number of distinct daily elements measured."
+          },
+          {
+            "name": "elements",
+            "type": "string",
+            "description": "Element codes measured (semicolon-joined)."
+          },
+          {
+            "name": "first_year",
+            "type": "number",
+            "description": "First year with data in the inventory."
+          },
+          {
+            "name": "last_year",
+            "type": "number",
+            "description": "Last year with data in the inventory."
+          },
+          {
+            "name": "record_years",
+            "type": "number",
+            "description": "last_year - first_year + 1."
+          },
+          {
+            "name": "is_active_2025",
+            "type": "boolean",
+            "description": "true when data reach 2025 or later."
+          },
+          {
+            "name": "is_long_record",
+            "type": "boolean",
+            "description": "true for records of 50 years or more."
+          },
+          {
+            "name": "has_precipitation",
+            "type": "boolean",
+            "description": "true when PRCP is measured."
+          },
+          {
+            "name": "has_temperature",
+            "type": "boolean",
+            "description": "true when TMAX or TMIN is measured."
+          },
+          {
+            "name": "has_snow",
+            "type": "boolean",
+            "description": "true when SNOW or SNWD is measured."
+          },
+          {
+            "name": "has_wind",
+            "type": "boolean",
+            "description": "true when AWND is measured."
+          },
+          {
+            "name": "station_age",
+            "type": "number",
+            "description": "Years since the first inventory year."
+          },
+          {
+            "name": "is_high_elevation",
+            "type": "boolean",
+            "description": "true above 2,000 m."
+          },
+          {
+            "name": "is_coastal_lowland",
+            "type": "boolean",
+            "description": "true below 10 m elevation."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/global-air-quality-2024-263k-ho-starter-notebook",
+  "title": "Global Air Quality 2024: 263K Ho Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/global-air-quality-hourly"
+  ]
+}

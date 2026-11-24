@@ -1,0 +1,31 @@
+{
+  "title": "Retracted Research Papers - Retraction Watch",
+  "id": "samyakrajbayar/retracted-papers",
+  "subtitle": "74,000 retractions, corrections and expressions of concern with reasons, lags...",
+  "description": "### 74,000 retracted or corrected research papers\n\nThe Retraction Watch database, distributed through Crossref, records every retraction, correction and\nexpression of concern in the scholarly literature. This dataset contains **74,000 records** with\n**60 parameters**.\n\n- **Paper** \u2014 record id, title, subject, article type, original DOI and PubMed id.\n- **People and places** \u2014 authors, institutions, journal, publisher and country.\n- **Retraction** \u2014 date, DOI, PubMed id, nature of the notice and the full reason text.\n- **Derived** \u2014 years, months and quarters, publication-to-retraction lag in days and years, nature\n  flags, 13 reason-keyword flags, paywall/DOI/URL flags, subject flags, text lengths and lag bands.\n\n**6,548 records cite plagiarism** and **11,360 cite duplication**, while **44,991\nretractions date from 2020 or later**. The file is the standard reference for research-integrity,\nmeta-science and bibliometrics work.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "retractions.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

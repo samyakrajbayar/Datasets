@@ -1,0 +1,320 @@
+{
+  "title": "Global Aviation Infrastructure",
+  "id": "samyakrajbayar/global-aviation-infrastructure",
+  "subtitle": "70,000 airports and runways with IATA codes and coordinates",
+  "description": "# Global Aviation Infrastructure\n\n**Subtitle:** 86,377 airports with runway, radio-navigation & country parameters\n\n**Tags:** `tabular`, `aviation`, `transport`\n\n**Dataset File:** `airports.csv` (86,377 rows, 57 columns, 23.2 MB)\n\n**Provenance & Source:** OurAirports Public Data (ourairports.com)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The world's airports, runways and radio infrastructure\n\nOurAirports is a community-maintained global aeronautical database. This extract joins its four\npublic tables into **86,377 airports** across **247 countries/territories**, with\n**57 parameters** per airport.\n\n- **Identity** \u2014 internal id, ident, airport type, name, IATA/ICAO/GPS/local codes, municipality,\n  ISO country and region, continent, coordinates and elevation.\n- **Country context** \u2014 country name, World Bank region and subregion, hemisphere and coordinate bands.\n- **Runways** \u2014 count, longest/total/average length, widest runway, paved vs unpaved vs closed,\n  lighted count and the set of surface types.\n- **Radio and navigation** \u2014 frequency count and types, highest frequency, navaid count and types.\n- **Service flags** \u2014 scheduled service, large/medium/small airport, heliport, seaplane base, has\n  runway / frequency / navaid, website and Wikipedia availability.\n\n**1,174 large airports** and **4,336 airports with scheduled service** are included;\n**9,053** carry an IATA code. The runway and navaid joins turn a simple directory into an\ninfrastructure dataset suitable for network analysis, accessibility studies and aviation economics.\n\n## \ud83e\uddfe Columns (57)\n\n`id`, `ident`, `type`, `name`, `latitude_deg`, `longitude_deg`, `elevation_ft`, `continent`, `iso_country`, `iso_region`, `municipality`, `scheduled_service`, `icao_code`, `iata_code`, `gps_code`, `local_code`, `home_link`, `wikipedia_link`, `keywords`, `country_name`, `country_region`, `country_subregion`, `elevation_m`, `hemisphere`, `latitude_band`, `longitude_band`, `is_large_airport`, `is_medium_airport`, `is_small_airport`, `is_heliport`, `is_seaplane_base`, `has_iata`, `has_icao`, `has_scheduled_service`, `has_home_link`, `has_wikipedia_link`, `name_length`, `keyword_count`, `runway_count`, `paved_runway_count`, `unpaved_runway_count`, `lighted_runway_count`, `closed_runway_count`, `longest_runway_ft`, `longest_runway_m`, `total_runway_length_ft`, `avg_runway_length_ft`, `max_runway_width_ft`, `runway_surface_types`, `frequency_count`, `frequency_types`, `max_frequency_mhz`, `navaid_count`, `navaid_types`, `has_runway`, `has_frequency`, `has_navaid`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Hub ranking** \u2014 rank airports by runway capacity, scheduled service and navaid density.\n2. **Island and remote access** \u2014 find countries whose airports have no paved runway.\n3. **Runway length vs traffic** \u2014 do long runways predict scheduled service, or the reverse?\n4. **Airport density** \u2014 airports per million people by country (join the countries dataset).\n5. **Surface mix** \u2014 unpaved share by region; which regions still depend on grass/gravel strips?\n6. **Navigation infrastructure gaps** \u2014 airports with runways but no navaids or frequencies.\n7. **Coordinate quality** \u2014 missing or suspicious coordinates by country and airport type.\n8. **Heliport geography** \u2014 where heliports cluster relative to large airports.\n9. **Map making** \u2014 the latitude/longitude columns support point maps and hex-bin density plots.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `airports.csv` | 86,377 airports x 57 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`aviation`, `airports`, `infrastructure`, `transport`, `geospatial`, `ourairports`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **OurAirports** public data files,\n  `https://davidmegginson.github.io/ourairports-data/` (`airports.csv`, `runways.csv`,\n  `frequencies.csv`, `navaids.csv`), maintained by David Megginson and contributors.\n- **Join:** runways, frequencies and navaids are aggregated to one row per airport (by airport id for\n  runways/frequencies and by associated airport ident for navaids).\n- **Enrichment:** country names and World Bank regions joined from the pack's countries dataset;\n  elevations converted to metres; coordinate bands and service flags derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous upstream; snapshot here.** OurAirports updates its files daily.\n\n## \u26a0\ufe0f Caveats\n\n- OurAirports is community-maintained: small airports and heliports are inconsistently complete.\n- Runway and frequency tables change slowly and may lag official AIP publications.\n- `scheduled_service` reflects the last contributor update, not a live timetable.\n- Some closed airports remain in the file with `type = closed`.\n- Navaids are joined by `associated_airport` ident, which is missing for some aids.\n- Coordinates are WGS84 but a small number of records are approximate.\n- No passenger or movement statistics are included \u2014 this is infrastructure, not traffic.\n\n## \ud83d\udcdc Licence\n\nOurAirports data is released into the public domain (CC0).\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `id` | `number` | OurAirports internal airport identifier. |\n| 2 | `ident` | `string` | Stable identifier (usually the ICAO code or local code). |\n| 3 | `type` | `string` | Airport type: large_airport, medium_airport, small_airport, heliport, seaplane_base, closed. |\n| 4 | `name` | `string` | Airport name. |\n| 5 | `latitude_deg` | `number` | Latitude in decimal degrees (WGS84). |\n| 6 | `longitude_deg` | `number` | Longitude in decimal degrees (WGS84). |\n| 7 | `elevation_ft` | `number` | Elevation above sea level in feet. |\n| 8 | `continent` | `string` | Continent code (AF, AN, AS, EU, NA, OC, SA). |\n| 9 | `iso_country` | `string` | ISO 3166-1 alpha-2 country code. |\n| 10 | `iso_region` | `string` | ISO 3166-2 subdivision code. |\n| 11 | `municipality` | `string` | City or town served. |\n| 12 | `scheduled_service` | `string` | yes/no \u2014 whether scheduled commercial service exists. |\n| 13 | `icao_code` | `string` | ICAO airport code. |\n| 14 | `iata_code` | `string` | IATA airport code. |\n| 15 | `gps_code` | `string` | GPS/ICAO code used in navigation databases. |\n| 16 | `local_code` | `string` | Local national identifier. |\n| 17 | `home_link` | `string` | Official website. |\n| 18 | `wikipedia_link` | `string` | Wikipedia article. |\n| 19 | `keywords` | `string` | Comma-separated alternative names. |\n| 20 | `country_name` | `string` | Country common name (joined from the countries dataset). |\n| 21 | `country_region` | `number` | World Bank region of the country. |\n| 22 | `country_subregion` | `number` | World Bank subregion. |\n| 23 | `elevation_m` | `number` | Elevation in metres. |\n| 24 | `hemisphere` | `string` | N/S + E/W hemisphere pair. |\n| 25 | `latitude_band` | `string` | 10-degree latitude band label. |\n| 26 | `longitude_band` | `string` | 15-degree longitude band label. |\n| 27 | `is_large_airport` | `boolean` | true for large_airport records. |\n| 28 | `is_medium_airport` | `boolean` | true for medium_airport records. |\n| 29 | `is_small_airport` | `boolean` | true for small_airport records. |\n| 30 | `is_heliport` | `boolean` | true for heliports. |\n| 31 | `is_seaplane_base` | `boolean` | true for seaplane bases. |\n| 32 | `has_iata` | `boolean` | true when an IATA code is present. |\n| 33 | `has_icao` | `boolean` | true when an ICAO code is present. |\n| 34 | `has_scheduled_service` | `boolean` | true when scheduled_service is yes. |\n| 35 | `has_home_link` | `boolean` | true when a website is listed. |\n| 36 | `has_wikipedia_link` | `boolean` | true when a Wikipedia article is listed. |\n| 37 | `name_length` | `number` | Characters in the airport name. |\n| 38 | `keyword_count` | `number` | Number of alternative names. |\n| 39 | `runway_count` | `number` | Number of runway records (including closed). |\n| 40 | `paved_runway_count` | `number` | Runways with an asphalt/concrete surface. |\n| 41 | `unpaved_runway_count` | `number` | Open runways without a paved surface. |\n| 42 | `lighted_runway_count` | `number` | Runways flagged as lighted. |\n| 43 | `closed_runway_count` | `number` | Runways flagged as closed. |\n| 44 | `longest_runway_ft` | `number` | Longest runway length in feet. |\n| 45 | `longest_runway_m` | `number` | Longest runway length in metres. |\n| 46 | `total_runway_length_ft` | `number` | Sum of all runway lengths in feet. |\n| 47 | `avg_runway_length_ft` | `number` | Mean runway length in feet. |\n| 48 | `max_runway_width_ft` | `number` | Widest runway in feet. |\n| 49 | `runway_surface_types` | `string` | Distinct runway surface strings. |\n| 50 | `frequency_count` | `number` | Number of radio frequencies assigned. |\n| 51 | `frequency_types` | `string` | Distinct frequency types (TWR, GND, ATIS, ...). |\n| 52 | `max_frequency_mhz` | `number` | Highest assigned frequency in MHz. |\n| 53 | `navaid_count` | `number` | Navigational aids associated with the airport. |\n| 54 | `navaid_types` | `string` | Distinct navaid types. |\n| 55 | `has_runway` | `boolean` | true when at least one runway is recorded. |\n| 56 | `has_frequency` | `boolean` | true when at least one frequency is recorded. |\n| 57 | `has_navaid` | `boolean` | true when at least one navaid is associated. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "airports.csv",
+      "description": "Primary dataset file containing 86,377 records across 57 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "number",
+            "description": "OurAirports internal airport identifier."
+          },
+          {
+            "name": "ident",
+            "type": "string",
+            "description": "Stable identifier (usually the ICAO code or local code)."
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "Airport type: large_airport, medium_airport, small_airport, heliport, seaplane_base, closed."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Airport name."
+          },
+          {
+            "name": "latitude_deg",
+            "type": "number",
+            "description": "Latitude in decimal degrees (WGS84)."
+          },
+          {
+            "name": "longitude_deg",
+            "type": "number",
+            "description": "Longitude in decimal degrees (WGS84)."
+          },
+          {
+            "name": "elevation_ft",
+            "type": "number",
+            "description": "Elevation above sea level in feet."
+          },
+          {
+            "name": "continent",
+            "type": "string",
+            "description": "Continent code (AF, AN, AS, EU, NA, OC, SA)."
+          },
+          {
+            "name": "iso_country",
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code."
+          },
+          {
+            "name": "iso_region",
+            "type": "string",
+            "description": "ISO 3166-2 subdivision code."
+          },
+          {
+            "name": "municipality",
+            "type": "string",
+            "description": "City or town served."
+          },
+          {
+            "name": "scheduled_service",
+            "type": "string",
+            "description": "yes/no \u2014 whether scheduled commercial service exists."
+          },
+          {
+            "name": "icao_code",
+            "type": "string",
+            "description": "ICAO airport code."
+          },
+          {
+            "name": "iata_code",
+            "type": "string",
+            "description": "IATA airport code."
+          },
+          {
+            "name": "gps_code",
+            "type": "string",
+            "description": "GPS/ICAO code used in navigation databases."
+          },
+          {
+            "name": "local_code",
+            "type": "string",
+            "description": "Local national identifier."
+          },
+          {
+            "name": "home_link",
+            "type": "string",
+            "description": "Official website."
+          },
+          {
+            "name": "wikipedia_link",
+            "type": "string",
+            "description": "Wikipedia article."
+          },
+          {
+            "name": "keywords",
+            "type": "string",
+            "description": "Comma-separated alternative names."
+          },
+          {
+            "name": "country_name",
+            "type": "string",
+            "description": "Country common name (joined from the countries dataset)."
+          },
+          {
+            "name": "country_region",
+            "type": "number",
+            "description": "World Bank region of the country."
+          },
+          {
+            "name": "country_subregion",
+            "type": "number",
+            "description": "World Bank subregion."
+          },
+          {
+            "name": "elevation_m",
+            "type": "number",
+            "description": "Elevation in metres."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "N/S + E/W hemisphere pair."
+          },
+          {
+            "name": "latitude_band",
+            "type": "string",
+            "description": "10-degree latitude band label."
+          },
+          {
+            "name": "longitude_band",
+            "type": "string",
+            "description": "15-degree longitude band label."
+          },
+          {
+            "name": "is_large_airport",
+            "type": "boolean",
+            "description": "true for large_airport records."
+          },
+          {
+            "name": "is_medium_airport",
+            "type": "boolean",
+            "description": "true for medium_airport records."
+          },
+          {
+            "name": "is_small_airport",
+            "type": "boolean",
+            "description": "true for small_airport records."
+          },
+          {
+            "name": "is_heliport",
+            "type": "boolean",
+            "description": "true for heliports."
+          },
+          {
+            "name": "is_seaplane_base",
+            "type": "boolean",
+            "description": "true for seaplane bases."
+          },
+          {
+            "name": "has_iata",
+            "type": "boolean",
+            "description": "true when an IATA code is present."
+          },
+          {
+            "name": "has_icao",
+            "type": "boolean",
+            "description": "true when an ICAO code is present."
+          },
+          {
+            "name": "has_scheduled_service",
+            "type": "boolean",
+            "description": "true when scheduled_service is yes."
+          },
+          {
+            "name": "has_home_link",
+            "type": "boolean",
+            "description": "true when a website is listed."
+          },
+          {
+            "name": "has_wikipedia_link",
+            "type": "boolean",
+            "description": "true when a Wikipedia article is listed."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the airport name."
+          },
+          {
+            "name": "keyword_count",
+            "type": "number",
+            "description": "Number of alternative names."
+          },
+          {
+            "name": "runway_count",
+            "type": "number",
+            "description": "Number of runway records (including closed)."
+          },
+          {
+            "name": "paved_runway_count",
+            "type": "number",
+            "description": "Runways with an asphalt/concrete surface."
+          },
+          {
+            "name": "unpaved_runway_count",
+            "type": "number",
+            "description": "Open runways without a paved surface."
+          },
+          {
+            "name": "lighted_runway_count",
+            "type": "number",
+            "description": "Runways flagged as lighted."
+          },
+          {
+            "name": "closed_runway_count",
+            "type": "number",
+            "description": "Runways flagged as closed."
+          },
+          {
+            "name": "longest_runway_ft",
+            "type": "number",
+            "description": "Longest runway length in feet."
+          },
+          {
+            "name": "longest_runway_m",
+            "type": "number",
+            "description": "Longest runway length in metres."
+          },
+          {
+            "name": "total_runway_length_ft",
+            "type": "number",
+            "description": "Sum of all runway lengths in feet."
+          },
+          {
+            "name": "avg_runway_length_ft",
+            "type": "number",
+            "description": "Mean runway length in feet."
+          },
+          {
+            "name": "max_runway_width_ft",
+            "type": "number",
+            "description": "Widest runway in feet."
+          },
+          {
+            "name": "runway_surface_types",
+            "type": "string",
+            "description": "Distinct runway surface strings."
+          },
+          {
+            "name": "frequency_count",
+            "type": "number",
+            "description": "Number of radio frequencies assigned."
+          },
+          {
+            "name": "frequency_types",
+            "type": "string",
+            "description": "Distinct frequency types (TWR, GND, ATIS, ...)."
+          },
+          {
+            "name": "max_frequency_mhz",
+            "type": "number",
+            "description": "Highest assigned frequency in MHz."
+          },
+          {
+            "name": "navaid_count",
+            "type": "number",
+            "description": "Navigational aids associated with the airport."
+          },
+          {
+            "name": "navaid_types",
+            "type": "string",
+            "description": "Distinct navaid types."
+          },
+          {
+            "name": "has_runway",
+            "type": "boolean",
+            "description": "true when at least one runway is recorded."
+          },
+          {
+            "name": "has_frequency",
+            "type": "boolean",
+            "description": "true when at least one frequency is recorded."
+          },
+          {
+            "name": "has_navaid",
+            "type": "boolean",
+            "description": "true when at least one navaid is associated."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

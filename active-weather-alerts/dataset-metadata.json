@@ -1,0 +1,31 @@
+{
+  "title": "Active U.S. Weather Alerts - Live NWS Snapshot",
+  "id": "samyakrajbayar/active-weather-alerts",
+  "subtitle": "678 active watches, warnings and advisories with severity, timing, zones and...",
+  "description": "### 678 active weather alerts across the United States\n\nThe National Weather Service publishes every active watch, warning and advisory as CAP messages.\nThis dataset is a live snapshot of **678 alerts** expanded to **49 parameters**.\n\n- **Alert identity** \u2014 CAP id, event, headline, category, status and message type.\n- **Geography** \u2014 affected-area description, UGC zone codes and SAME geocodes with counts.\n- **Hazard** \u2014 severity, urgency, certainty, response type and scope.\n- **Timing** \u2014 sent, effective, onset, expiry and end timestamps plus duration, lead time and age.\n- **Derived** \u2014 numeric severity/urgency/certainty ranks, a combined risk score, warning/watch/\n  advisory and hazard-type flags, text lengths and instruction presence.\n\n**175 of the alerts are warnings**, and the snapshot spans **308 state-level area\nprefixes**. The data supports hazard monitoring, alert-fatigue studies and text classification.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "weather_alerts.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,44 @@
+column,data_type,description
+geonameid,number,GeoNames numeric identifier.
+name,string,City name (UTF-8).
+asciiname,string,ASCII transliteration of the name.
+alternatenames,string,"Semicolon-separated alternative names (comma-separated upstream, normalised here)."
+latitude,number,Latitude in decimal degrees.
+longitude,number,Longitude in decimal degrees.
+feature_class,string,GeoNames feature class; P for populated places.
+feature_code,string,"GeoNames feature code (PPLC national capital, PPLA1 seat of a first-order division, PPL town...)."
+country_code,string,ISO-3166 alpha-2 country code.
+cc2,string,Alternate country codes for places near a border.
+admin1_code,string,First-level administrative division code.
+admin2_code,string,Second-level administrative division code.
+admin3_code,string,Third-level administrative division code.
+admin4_code,string,Fourth-level administrative division code.
+population,number,City population.
+elevation_m,number,Elevation in metres as recorded (often empty).
+dem_m,number,Digital elevation model value in metres.
+timezone,string,IANA time-zone name.
+modification_date,date,Date the GeoNames record was last modified.
+country_name,string,Country common name (joined by ISO-3 code).
+continent,string,Continent of the country.
+region,string,UN macro-region of the country.
+subregion,string,UN sub-region of the country.
+admin1_name,string,Name of the first-level administrative division (state/province/region).
+is_capital,boolean,true when the city is the national capital (GeoNames feature code PPLC).
+is_admin_capital,boolean,true when the city is the capital of a first-level division (PPLA family).
+hemisphere,string,Northern or Southern hemisphere.
+latitude_band,string,Climate-style latitude band.
+population_class,string,Population band from small town to megacity.
+population_share_country_pct,number,City population as a percentage of its country's population.
+country_urban_pct,number,Urbanisation rate of the country (World Bank).
+country_population,number,Country population (World Bank).
+country_area_km2,number,Country area in square kilometres.
+country_pop_density_per_km2,number,Country population density.
+city_rank_in_country,number,Rank of the city by population within its country in this file.
+alt_names_count,number,Number of alternative names recorded (a proxy for international prominence).
+name_length,number,Length of the primary name in characters.
+has_diacritics,boolean,true when the primary name contains non-ASCII characters.
+distance_to_capital_km,number,Great-circle distance to the country's capital city.
+timezone_region,string,"Geographic prefix of the IANA time zone (e.g. Europe, America, Asia)."
+utc_offset_hours,number,"Standard UTC offset implied by the time zone, from the country capital."
+elevation_band,string,Terrain band from sea level to high plateau.
+gdp_per_capita_usd,number,Country GDP per capita (World Bank).

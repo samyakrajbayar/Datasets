@@ -1,0 +1,344 @@
+{
+  "title": "Art Institute of Chicago Collection",
+  "id": "samyakrajbayar/art-institute-collection",
+  "subtitle": "12,000 museum objects with materials, dates, style, subjects & color statistics",
+  "description": "# Art Institute of Chicago Collection\n\n**Subtitle:** 12,000 museum objects with materials, dates, style, subjects & color statistics\n\n**Tags:** `art`, `history`, `visual-arts`, `tabular`\n\n**Dataset File:** `artworks.csv` (20,965 rows, 62 columns, 6.8 MB)\n\n**Provenance & Source:** Art Institute of Chicago Public API (api.artic.edu)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 12,000 objects from the Art Institute of Chicago\n\nThe Art Institute publishes its collection through a free API, including curatorial metadata that most\nmuseums keep internal: classification, style, theme, subject tags, provenance text and even computed\nimage colour statistics.\n\nThis snapshot has **12,000 objects** and **62 parameters**:\n- **Identity** \u2014 id, title, accession number, reference API link, fiscal year.\n- **Creation** \u2014 display date, start and end years, derived century, decade, object age, place of origin.\n- **Materials** \u2014 medium text, a normalised medium class, dimensions, classification and artwork type.\n- **Curation** \u2014 department, style(s), themes, subject tags, tag count, description and provenance lengths.\n- **Artist** \u2014 id, name, display string, attribution flags.\n- **Rights and access** \u2014 public-domain flag, copyright notice, zoomability, educational and multimedia\n  resource flags, alternate images, documents, audio.\n- **Imaging** \u2014 thumbnail presence and pixel dimensions, aspect ratio, colourfulness, dominant colour\n  hue/saturation/lightness and its pixel population.\n- **Display** \u2014 gallery title and coordinates when the object is on view.\n\n**50.5%** of the objects are public domain and many ship with a thumbnail URL pattern\n(`https://www.artic.edu/iiif/2/<image_id>/full/843,/0/default.jpg`), so the file doubles as an\nimage-classification manifest.\n\n## \ud83e\uddfe Columns (62)\n\n`id`, `title`, `main_reference_number`, `date_display`, `date_start`, `date_end`, `place_of_origin`, `medium_display`, `medium_class`, `dimensions`, `credit_line`, `classification_title`, `classification_titles`, `department_title`, `department_id`, `artwork_type_title`, `style_title`, `style_titles`, `theme_titles`, `subject_titles`, `artist_id`, `artist_title`, `artist_display`, `is_public_domain`, `is_boosted`, `colorfulness`, `color_hue`, `color_saturation`, `color_lightness`, `color_population`, `has_thumbnail`, `thumbnail_width`, `thumbnail_height`, `latitude`, `longitude`, `gallery_title`, `fiscal_year`, `copyright_notice`, `alt_image_count`, `document_count`, `sound_count`, `has_educational_resources`, `has_multimedia_resources`, `is_zoomable`, `max_zoom_window_size`, `description_length`, `provenance_text_length`, `api_link`, `century`, `creation_year`, `creation_decade`, `object_age_years`, `has_artist`, `is_anonymous`, `is_on_view`, `image_aspect_ratio`, `title_length`, `tag_count`, `is_painting`, `is_print`, `is_photograph`, `is_sculpture`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Collection composition** \u2014 department, classification and medium mix; what does a encyclopaedic museum actually hold?\n2. **Acquisition history** \u2014 `fiscal_year` and credit lines over time; when did the collection grow fastest?\n3. **Colour analysis** \u2014 dominant hue and colourfulness by century, department and medium; is the art getting brighter?\n4. **Public domain strategy** \u2014 public-domain share by department and artist death date (from `artist_display`).\n5. **Artist concentration** \u2014 works per artist, and how many artists have exactly one object.\n6. **Style timeline** \u2014 style labels by creation decade; trace the rise and fall of movements.\n7. **Subject tags** \u2014 co-occurrence network of subject titles (portraits, landscapes, animals).\n8. **Image manifest** \u2014 build a download list from `thumbnail` ids and train a classifier on medium or century.\n9. **Provenance research** \u2014 length and content of provenance text as a proxy for documentation quality.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `artworks.csv` | 12,000 artworks x 62 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: departments, dates, colour, artists. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`art`, `museum`, `culture`, `image-metadata`, `history`, `collection`, `public-domain`, `tabular`, `visual-arts`, `humanities`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Art Institute of Chicago API v1** (`https://api.artic.edu/api/v1/artworks`),\n  pages 1\u2013120 at 100 objects per page, with an explicit field list to keep payloads small.\n- **Upstream:** the museum's public collection API, which exposes curatorial catalogue data and\n  IIIF image derivatives.\n- **Processing:** objects flattened to one row each; list fields (classifications, styles, themes,\n  subjects, images, documents) joined with semicolons and counted; colour statistics extracted from\n  the API's computed dominant-colour object.\n- **Derived columns:** century, decade, object age, attribution and on-view flags, medium normalisation,\n  aspect ratio, tag counts, object-type flags.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous upstream; snapshot here.** The museum API changes as cataloguing improves. Re-run `scripts/26_artworks.py` for a new snapshot.\n\n## \u26a0\ufe0f Caveats\n\n- This is the first 12,000 records in API order, not a random or complete sample of the ~120,000-object collection.\n- `date_start`/`date_end` are cataloguer estimates and can be negative (BCE) or missing.\n- `dimensions` is free text with mixed units; it was deliberately not parsed into numbers.\n- Thumbnail URLs are not included directly \u2014 reconstruct them from the object's image id via the documented IIIF pattern.\n- Colour statistics describe the museum's photograph, not the physical object.\n- Some fields (gallery, coordinates) are only populated for objects currently on view.\n- Rights vary by object; `is_public_domain` reflects the museum's own determination.\n\n## \ud83d\udcdc Licence\n\nMetadata is published under CC0 by the Art Institute of Chicago; images carry their own rights statements. Attribution to the museum is requested.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `id` | `number` | Art Institute of Chicago artwork id. |\n| 2 | `title` | `string` | Object title. |\n| 3 | `main_reference_number` | `string` | Museum accession number. |\n| 4 | `date_display` | `string` | Date as displayed in the gallery. |\n| 5 | `date_start` | `number` | Earliest year of creation (negative = BCE). |\n| 6 | `date_end` | `number` | Latest year of creation. |\n| 7 | `place_of_origin` | `string` | Place of origin as catalogued. |\n| 8 | `medium_display` | `string` | Materials and technique, free text. |\n| 9 | `medium_class` | `string` | Materials normalised into painting, print, sculpture, photograph, drawing, etc. |\n| 10 | `dimensions` | `string` | Dimensions as catalogued (free text). |\n| 11 | `credit_line` | `string` | Acquisition credit line. |\n| 12 | `classification_title` | `string` | Primary classification (painting, print, sculpture, ...). |\n| 13 | `classification_titles` | `string` | All classifications assigned. |\n| 14 | `department_title` | `string` | Curatorial department. |\n| 15 | `department_id` | `string` | Curatorial department id. |\n| 16 | `artwork_type_title` | `string` | Object type. |\n| 17 | `style_title` | `string` | Primary style or period. |\n| 18 | `style_titles` | `string` | All styles and periods assigned. |\n| 19 | `theme_titles` | `string` | Themes assigned by the museum. |\n| 20 | `subject_titles` | `string` | Subject tags assigned by the museum. |\n| 21 | `artist_id` | `number` | Artist id (empty for unknown makers). |\n| 22 | `artist_title` | `string` | Artist name. |\n| 23 | `artist_display` | `string` | Artist name with nationality and dates. |\n| 24 | `is_public_domain` | `boolean` | true when the work is in the public domain. |\n| 25 | `is_boosted` | `boolean` | true when the museum promotes the object. |\n| 26 | `colorfulness` | `number` | Computed colourfulness score of the image. |\n| 27 | `color_hue` | `number` | Dominant hue (0-360). |\n| 28 | `color_saturation` | `number` | Dominant colour saturation (0-1). |\n| 29 | `color_lightness` | `number` | Dominant colour lightness (0-1). |\n| 30 | `color_population` | `number` | Share of pixels in the dominant colour cluster. |\n| 31 | `has_thumbnail` | `boolean` | true when a thumbnail image is available. |\n| 32 | `thumbnail_width` | `number` | Thumbnail width in pixels. |\n| 33 | `thumbnail_height` | `number` | Thumbnail height in pixels. |\n| 34 | `latitude` | `number` | Gallery latitude, when the object is on view. |\n| 35 | `longitude` | `number` | Gallery longitude, when the object is on view. |\n| 36 | `gallery_title` | `string` | Gallery where the object is displayed. |\n| 37 | `fiscal_year` | `number` | Fiscal year the record was last touched. |\n| 38 | `copyright_notice` | `string` | Copyright statement, when applicable. |\n| 39 | `alt_image_count` | `number` | Number of alternative images. |\n| 40 | `document_count` | `number` | Number of attached documents. |\n| 41 | `sound_count` | `number` | Number of audio files. |\n| 42 | `has_educational_resources` | `boolean` | true when educational resources exist. |\n| 43 | `has_multimedia_resources` | `boolean` | true when multimedia resources exist. |\n| 44 | `is_zoomable` | `boolean` | true when a deep-zoom image is available. |\n| 45 | `max_zoom_window_size` | `number` | Maximum zoom window size. |\n| 46 | `description_length` | `number` | Characters in the catalogue description. |\n| 47 | `provenance_text_length` | `number` | Characters in the provenance text. |\n| 48 | `api_link` | `string` | Canonical API URL for the object. |\n| 49 | `century` | `string` | Creation century derived from date_start. |\n| 50 | `creation_year` | `number` | Preferred creation year (date_start, else date_end). |\n| 51 | `creation_decade` | `number` | Decade of creation. |\n| 52 | `object_age_years` | `number` | Years between creation and 2026. |\n| 53 | `has_artist` | `boolean` | true when an artist is attributed. |\n| 54 | `is_anonymous` | `boolean` | true when no artist is attributed. |\n| 55 | `is_on_view` | `boolean` | true when a gallery is assigned. |\n| 56 | `image_aspect_ratio` | `number` | Thumbnail width divided by height. |\n| 57 | `title_length` | `number` | Characters in the title. |\n| 58 | `tag_count` | `number` | Style + theme + subject tag count. |\n| 59 | `is_painting` | `boolean` | true when the classification is painting. |\n| 60 | `is_print` | `boolean` | true when the classification is print. |\n| 61 | `is_photograph` | `boolean` | true when the medium is photographic. |\n| 62 | `is_sculpture` | `boolean` | true when the object is sculpture. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "artworks.csv",
+      "description": "Primary dataset file containing 20,965 records across 62 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "number",
+            "description": "Art Institute of Chicago artwork id."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Object title."
+          },
+          {
+            "name": "main_reference_number",
+            "type": "string",
+            "description": "Museum accession number."
+          },
+          {
+            "name": "date_display",
+            "type": "string",
+            "description": "Date as displayed in the gallery."
+          },
+          {
+            "name": "date_start",
+            "type": "number",
+            "description": "Earliest year of creation (negative = BCE)."
+          },
+          {
+            "name": "date_end",
+            "type": "number",
+            "description": "Latest year of creation."
+          },
+          {
+            "name": "place_of_origin",
+            "type": "string",
+            "description": "Place of origin as catalogued."
+          },
+          {
+            "name": "medium_display",
+            "type": "string",
+            "description": "Materials and technique, free text."
+          },
+          {
+            "name": "medium_class",
+            "type": "string",
+            "description": "Materials normalised into painting, print, sculpture, photograph, drawing, etc."
+          },
+          {
+            "name": "dimensions",
+            "type": "string",
+            "description": "Dimensions as catalogued (free text)."
+          },
+          {
+            "name": "credit_line",
+            "type": "string",
+            "description": "Acquisition credit line."
+          },
+          {
+            "name": "classification_title",
+            "type": "string",
+            "description": "Primary classification (painting, print, sculpture, ...)."
+          },
+          {
+            "name": "classification_titles",
+            "type": "string",
+            "description": "All classifications assigned."
+          },
+          {
+            "name": "department_title",
+            "type": "string",
+            "description": "Curatorial department."
+          },
+          {
+            "name": "department_id",
+            "type": "string",
+            "description": "Curatorial department id."
+          },
+          {
+            "name": "artwork_type_title",
+            "type": "string",
+            "description": "Object type."
+          },
+          {
+            "name": "style_title",
+            "type": "string",
+            "description": "Primary style or period."
+          },
+          {
+            "name": "style_titles",
+            "type": "string",
+            "description": "All styles and periods assigned."
+          },
+          {
+            "name": "theme_titles",
+            "type": "string",
+            "description": "Themes assigned by the museum."
+          },
+          {
+            "name": "subject_titles",
+            "type": "string",
+            "description": "Subject tags assigned by the museum."
+          },
+          {
+            "name": "artist_id",
+            "type": "number",
+            "description": "Artist id (empty for unknown makers)."
+          },
+          {
+            "name": "artist_title",
+            "type": "string",
+            "description": "Artist name."
+          },
+          {
+            "name": "artist_display",
+            "type": "string",
+            "description": "Artist name with nationality and dates."
+          },
+          {
+            "name": "is_public_domain",
+            "type": "boolean",
+            "description": "true when the work is in the public domain."
+          },
+          {
+            "name": "is_boosted",
+            "type": "boolean",
+            "description": "true when the museum promotes the object."
+          },
+          {
+            "name": "colorfulness",
+            "type": "number",
+            "description": "Computed colourfulness score of the image."
+          },
+          {
+            "name": "color_hue",
+            "type": "number",
+            "description": "Dominant hue (0-360)."
+          },
+          {
+            "name": "color_saturation",
+            "type": "number",
+            "description": "Dominant colour saturation (0-1)."
+          },
+          {
+            "name": "color_lightness",
+            "type": "number",
+            "description": "Dominant colour lightness (0-1)."
+          },
+          {
+            "name": "color_population",
+            "type": "number",
+            "description": "Share of pixels in the dominant colour cluster."
+          },
+          {
+            "name": "has_thumbnail",
+            "type": "boolean",
+            "description": "true when a thumbnail image is available."
+          },
+          {
+            "name": "thumbnail_width",
+            "type": "number",
+            "description": "Thumbnail width in pixels."
+          },
+          {
+            "name": "thumbnail_height",
+            "type": "number",
+            "description": "Thumbnail height in pixels."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Gallery latitude, when the object is on view."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Gallery longitude, when the object is on view."
+          },
+          {
+            "name": "gallery_title",
+            "type": "string",
+            "description": "Gallery where the object is displayed."
+          },
+          {
+            "name": "fiscal_year",
+            "type": "number",
+            "description": "Fiscal year the record was last touched."
+          },
+          {
+            "name": "copyright_notice",
+            "type": "string",
+            "description": "Copyright statement, when applicable."
+          },
+          {
+            "name": "alt_image_count",
+            "type": "number",
+            "description": "Number of alternative images."
+          },
+          {
+            "name": "document_count",
+            "type": "number",
+            "description": "Number of attached documents."
+          },
+          {
+            "name": "sound_count",
+            "type": "number",
+            "description": "Number of audio files."
+          },
+          {
+            "name": "has_educational_resources",
+            "type": "boolean",
+            "description": "true when educational resources exist."
+          },
+          {
+            "name": "has_multimedia_resources",
+            "type": "boolean",
+            "description": "true when multimedia resources exist."
+          },
+          {
+            "name": "is_zoomable",
+            "type": "boolean",
+            "description": "true when a deep-zoom image is available."
+          },
+          {
+            "name": "max_zoom_window_size",
+            "type": "number",
+            "description": "Maximum zoom window size."
+          },
+          {
+            "name": "description_length",
+            "type": "number",
+            "description": "Characters in the catalogue description."
+          },
+          {
+            "name": "provenance_text_length",
+            "type": "number",
+            "description": "Characters in the provenance text."
+          },
+          {
+            "name": "api_link",
+            "type": "string",
+            "description": "Canonical API URL for the object."
+          },
+          {
+            "name": "century",
+            "type": "string",
+            "description": "Creation century derived from date_start."
+          },
+          {
+            "name": "creation_year",
+            "type": "number",
+            "description": "Preferred creation year (date_start, else date_end)."
+          },
+          {
+            "name": "creation_decade",
+            "type": "number",
+            "description": "Decade of creation."
+          },
+          {
+            "name": "object_age_years",
+            "type": "number",
+            "description": "Years between creation and 2026."
+          },
+          {
+            "name": "has_artist",
+            "type": "boolean",
+            "description": "true when an artist is attributed."
+          },
+          {
+            "name": "is_anonymous",
+            "type": "boolean",
+            "description": "true when no artist is attributed."
+          },
+          {
+            "name": "is_on_view",
+            "type": "boolean",
+            "description": "true when a gallery is assigned."
+          },
+          {
+            "name": "image_aspect_ratio",
+            "type": "number",
+            "description": "Thumbnail width divided by height."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "tag_count",
+            "type": "number",
+            "description": "Style + theme + subject tag count."
+          },
+          {
+            "name": "is_painting",
+            "type": "boolean",
+            "description": "true when the classification is painting."
+          },
+          {
+            "name": "is_print",
+            "type": "boolean",
+            "description": "true when the classification is print."
+          },
+          {
+            "name": "is_photograph",
+            "type": "boolean",
+            "description": "true when the medium is photographic."
+          },
+          {
+            "name": "is_sculpture",
+            "type": "boolean",
+            "description": "true when the object is sculpture."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

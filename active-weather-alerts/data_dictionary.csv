@@ -1,0 +1,50 @@
+column,data_type,description
+alert_id,string,CAP alert identifier.
+event,string,Alert event name (e.g. Tornado Warning).
+headline,string,CAP headline (truncated to 400 characters).
+area_desc,string,Affected area description.
+zone_count,number,Number of UGC zones affected.
+same_count,number,Number of SAME geocodes.
+status,string,"Alert status (Actual, Test, ...)."
+message_type,string,"Alert, Update or Cancel."
+category,string,"CAP category (Met, Fire, Health, ...)."
+severity,string,Extreme/Severe/Moderate/Minor/Unknown.
+certainty,string,Observed/Likely/Possible/Unlikely/Unknown.
+urgency,string,Immediate/Expected/Future/Past/Unknown.
+response,string,Recommended response type.
+scope,string,Public/restricted scope.
+sender_name,string,Issuing NWS office.
+language,string,NWS alert field or derived attribute.
+sent,datetime,Time the alert was sent.
+effective,datetime,Time the alert takes effect.
+onset,datetime,Expected onset time.
+expires,datetime,Expiry time.
+ends,datetime,End time where supplied.
+duration_hours,number,"Expiry minus sent, in hours."
+lead_time_hours,number,"Onset minus sent, in hours."
+age_hours,number,Hours since the alert was sent.
+severity_rank,number,Numeric severity rank 0-4.
+urgency_rank,number,Numeric urgency rank 0-4.
+certainty_rank,number,Numeric certainty rank 0-4.
+risk_score,number,"Product of severity, urgency and certainty ranks."
+is_warning,boolean,true for warnings.
+is_watch,boolean,true for watches.
+is_advisory,boolean,true for advisories.
+is_statement,boolean,NWS alert field or derived attribute.
+is_fire,boolean,true for fire-weather alerts.
+is_flood,boolean,true for flood alerts.
+is_winter,boolean,true for winter-weather alerts.
+is_heat,boolean,true for heat alerts.
+is_wind,boolean,true for wind alerts.
+is_severe_storm,boolean,true for thunderstorm/tornado/hail alerts.
+is_marine,boolean,true for marine alerts.
+has_instruction,boolean,true when protective instructions are supplied.
+description_length,number,Characters in the description.
+instruction_length,number,Characters in the instruction.
+zone_list,string,"UGC zone codes, semicolon-separated (truncated)."
+parameter_keys,string,Names of additional CAP parameters.
+nws_headline_words,number,NWS alert field or derived attribute.
+description_words,number,Word count of the description.
+event_length,number,NWS alert field or derived attribute.
+is_extreme,boolean,true for Extreme severity alerts.
+is_immediate,boolean,true for Immediate urgency alerts.

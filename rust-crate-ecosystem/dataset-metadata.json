@@ -1,0 +1,254 @@
+{
+  "title": "Rust Crate Ecosystem",
+  "id": "samyakrajbayar/rust-crate-ecosystem",
+  "subtitle": "100,000 Rust crates with downloads, dependencies and categories",
+  "description": "# Rust Crate Ecosystem\n\n**Subtitle:** 20,000 crates with downloads, versions, metadata and maintenance stats\n\n**Tags:** `tabular`, `software`, `rust`\n\n**Dataset File:** `rust_crates.csv` (22,404 rows, 44 columns, 7.0 MB)\n\n**Provenance & Source:** crates.io API & Database Dumps (crates.io)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 30,000 Rust crates\n\ncrates.io is the Rust package registry. This dataset contains the **20,000 most-downloaded crates**\nwith **44 parameters** each.\n\n- **Identity** \u2014 name, creation and update dates, all-time and recent downloads, version count,\n  newest/max stable/default versions and yanked flag.\n- **Metadata** \u2014 description, homepage, documentation, repository, keywords and categories.\n- **Derived** \u2014 description length, keyword/category counts, link and description flags, pre-release\n  and 0.x flags, name features, age, downloads per day, versions per year and domain flags\n  (async, CLI, WASM, embedded, proc-macro, serialization).\n\n**10,110 crates have more than a million downloads** and **19,452** link to a source\nrepository \u2014 a snapshot of the Rust open-source supply chain.\n\n## \ud83e\uddfe Columns (44)\n\n`name`, `created_at`, `updated_at`, `downloads`, `recent_downloads`, `recent_share_pct`, `num_versions`, `max_version`, `newest_version`, `max_stable_version`, `default_version`, `yanked`, `description`, `description_length`, `homepage`, `documentation`, `repository`, `keywords`, `categories`, `keyword_count`, `category_count`, `has_homepage`, `has_documentation`, `has_repository`, `has_description`, `is_prerelease`, `is_major_zero`, `name_length`, `name_has_underscore`, `age_days`, `days_since_update`, `downloads_per_day`, `recent_downloads_per_day`, `versions_per_year`, `is_popular`, `download_band`, `is_async`, `is_cli`, `is_wasm`, `is_embedded`, `is_proc_macro`, `is_serialization`, `created_year`, `updated_year`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Adoption curves** \u2014 downloads vs age, and which crates are still growing.\n2. **Maintenance** \u2014 days since update vs popularity; find abandoned dependencies.\n3. **Naming conventions** \u2014 underscores vs hyphens, length and prefix patterns.\n4. **Ecosystem layers** \u2014 async vs CLI vs embedded vs WASM crates by download band.\n5. **Documentation quality** \u2014 repository/documentation/homepage coverage by category.\n6. **Version churn** \u2014 versions per year and 0.x maturity.\n7. **Category network** \u2014 co-occurrence of categories and keywords.\n8. **Dependency risk** \u2014 popular crates with stale updates or yanked versions.\n9. **Supply chain** \u2014 build a crate metadata table for SBOM research.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `rust_crates.csv` | 20,000 crates x 44 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`rust`, `crates`, `packages`, `software`, `open-source`, `supply-chain`, `developer-tools`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **crates.io API**, `https://crates.io/api/v1/crates?sort=downloads`,\n  100 crates per page.\n- **Scope:** the 30,000 most-downloaded crates at snapshot time.\n- **Processing:** list records flattened; keywords and categories joined; age, download-rate, naming\n  and domain flags derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous.** New crates and versions are published daily.\n\n## \u26a0\ufe0f Caveats\n\n- Downloads are cumulative and not de-duplicated by user or CI.\n- The crates.io API does not expose licence or dependency data in the list endpoint.\n- Domain flags are keyword heuristics on the description and keywords.\n- A yanked crate can still have many historical downloads.\n- Version strings are not strictly semver-normalised.\n- Recent downloads cover a 90-day window, so the rate is approximate.\n- This is a popularity-ranked sample, not a random sample of all crates.\n\n## \ud83d\udcdc Licence\n\ncrate metadata is provided by crates.io under CC BY 4.0; each crate keeps its own licence.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `name` | `string` | Crate name. |\n| 2 | `created_at` | `date` | First publication date. |\n| 3 | `updated_at` | `date` | Last update date. |\n| 4 | `downloads` | `number` | All-time downloads. |\n| 5 | `recent_downloads` | `number` | Downloads in the last 90 days. |\n| 6 | `recent_share_pct` | `number` | recent_downloads as a percentage of all-time downloads. |\n| 7 | `num_versions` | `number` | Number of published versions. |\n| 8 | `max_version` | `string` | Highest published version. |\n| 9 | `newest_version` | `string` | Newest published version. |\n| 10 | `max_stable_version` | `string` | Highest non-prerelease version. |\n| 11 | `default_version` | `string` | Default version shown by crates.io. |\n| 12 | `yanked` | `boolean` | true when the crate is yanked. |\n| 13 | `description` | `string` | Crate description. |\n| 14 | `description_length` | `number` | Characters in the description. |\n| 15 | `homepage` | `string` | Project homepage. |\n| 16 | `documentation` | `string` | Documentation URL. |\n| 17 | `repository` | `string` | Source repository URL. |\n| 18 | `keywords` | `number` | Keywords (semicolon-joined). |\n| 19 | `categories` | `number` | Categories (semicolon-joined). |\n| 20 | `keyword_count` | `number` | Number of keywords. |\n| 21 | `category_count` | `number` | Number of categories. |\n| 22 | `has_homepage` | `boolean` | true when a homepage is listed. |\n| 23 | `has_documentation` | `boolean` | true when documentation is listed. |\n| 24 | `has_repository` | `boolean` | true when a repository is listed. |\n| 25 | `has_description` | `boolean` | true when a description exists. |\n| 26 | `is_prerelease` | `boolean` | true when the newest version is a pre-release. |\n| 27 | `is_major_zero` | `boolean` | true when the newest version is 0.x. |\n| 28 | `name_length` | `number` | Characters in the crate name. |\n| 29 | `name_has_underscore` | `boolean` | true when the name contains an underscore. |\n| 30 | `age_days` | `number` | Days since first publication. |\n| 31 | `days_since_update` | `number` | Days since the last update. |\n| 32 | `downloads_per_day` | `number` | All-time downloads divided by age in days. |\n| 33 | `recent_downloads_per_day` | `number` | Recent downloads divided by 90. |\n| 34 | `versions_per_year` | `number` | Versions published per year of age. |\n| 35 | `is_popular` | `boolean` | true when all-time downloads exceed one million. |\n| 36 | `download_band` | `string` | All-time download band. |\n| 37 | `is_async` | `boolean` | true when the description or keywords mention async/tokio. |\n| 38 | `is_cli` | `boolean` | true when the description or keywords mention CLI/command line. |\n| 39 | `is_wasm` | `boolean` | true when the description or keywords mention wasm/webassembly. |\n| 40 | `is_embedded` | `boolean` | true when the description or keywords mention embedded/no_std. |\n| 41 | `is_proc_macro` | `boolean` | true when the description or keywords mention proc-macro. |\n| 42 | `is_serialization` | `boolean` | true when the description or keywords mention serde/serialization. |\n| 43 | `created_year` | `number` | Year of first publication. |\n| 44 | `updated_year` | `number` | Year of last update. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "rust_crates.csv",
+      "description": "Primary dataset file containing 22,404 records across 44 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Crate name."
+          },
+          {
+            "name": "created_at",
+            "type": "date",
+            "description": "First publication date."
+          },
+          {
+            "name": "updated_at",
+            "type": "date",
+            "description": "Last update date."
+          },
+          {
+            "name": "downloads",
+            "type": "number",
+            "description": "All-time downloads."
+          },
+          {
+            "name": "recent_downloads",
+            "type": "number",
+            "description": "Downloads in the last 90 days."
+          },
+          {
+            "name": "recent_share_pct",
+            "type": "number",
+            "description": "recent_downloads as a percentage of all-time downloads."
+          },
+          {
+            "name": "num_versions",
+            "type": "number",
+            "description": "Number of published versions."
+          },
+          {
+            "name": "max_version",
+            "type": "string",
+            "description": "Highest published version."
+          },
+          {
+            "name": "newest_version",
+            "type": "string",
+            "description": "Newest published version."
+          },
+          {
+            "name": "max_stable_version",
+            "type": "string",
+            "description": "Highest non-prerelease version."
+          },
+          {
+            "name": "default_version",
+            "type": "string",
+            "description": "Default version shown by crates.io."
+          },
+          {
+            "name": "yanked",
+            "type": "boolean",
+            "description": "true when the crate is yanked."
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Crate description."
+          },
+          {
+            "name": "description_length",
+            "type": "number",
+            "description": "Characters in the description."
+          },
+          {
+            "name": "homepage",
+            "type": "string",
+            "description": "Project homepage."
+          },
+          {
+            "name": "documentation",
+            "type": "string",
+            "description": "Documentation URL."
+          },
+          {
+            "name": "repository",
+            "type": "string",
+            "description": "Source repository URL."
+          },
+          {
+            "name": "keywords",
+            "type": "number",
+            "description": "Keywords (semicolon-joined)."
+          },
+          {
+            "name": "categories",
+            "type": "number",
+            "description": "Categories (semicolon-joined)."
+          },
+          {
+            "name": "keyword_count",
+            "type": "number",
+            "description": "Number of keywords."
+          },
+          {
+            "name": "category_count",
+            "type": "number",
+            "description": "Number of categories."
+          },
+          {
+            "name": "has_homepage",
+            "type": "boolean",
+            "description": "true when a homepage is listed."
+          },
+          {
+            "name": "has_documentation",
+            "type": "boolean",
+            "description": "true when documentation is listed."
+          },
+          {
+            "name": "has_repository",
+            "type": "boolean",
+            "description": "true when a repository is listed."
+          },
+          {
+            "name": "has_description",
+            "type": "boolean",
+            "description": "true when a description exists."
+          },
+          {
+            "name": "is_prerelease",
+            "type": "boolean",
+            "description": "true when the newest version is a pre-release."
+          },
+          {
+            "name": "is_major_zero",
+            "type": "boolean",
+            "description": "true when the newest version is 0.x."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the crate name."
+          },
+          {
+            "name": "name_has_underscore",
+            "type": "boolean",
+            "description": "true when the name contains an underscore."
+          },
+          {
+            "name": "age_days",
+            "type": "number",
+            "description": "Days since first publication."
+          },
+          {
+            "name": "days_since_update",
+            "type": "number",
+            "description": "Days since the last update."
+          },
+          {
+            "name": "downloads_per_day",
+            "type": "number",
+            "description": "All-time downloads divided by age in days."
+          },
+          {
+            "name": "recent_downloads_per_day",
+            "type": "number",
+            "description": "Recent downloads divided by 90."
+          },
+          {
+            "name": "versions_per_year",
+            "type": "number",
+            "description": "Versions published per year of age."
+          },
+          {
+            "name": "is_popular",
+            "type": "boolean",
+            "description": "true when all-time downloads exceed one million."
+          },
+          {
+            "name": "download_band",
+            "type": "string",
+            "description": "All-time download band."
+          },
+          {
+            "name": "is_async",
+            "type": "boolean",
+            "description": "true when the description or keywords mention async/tokio."
+          },
+          {
+            "name": "is_cli",
+            "type": "boolean",
+            "description": "true when the description or keywords mention CLI/command line."
+          },
+          {
+            "name": "is_wasm",
+            "type": "boolean",
+            "description": "true when the description or keywords mention wasm/webassembly."
+          },
+          {
+            "name": "is_embedded",
+            "type": "boolean",
+            "description": "true when the description or keywords mention embedded/no_std."
+          },
+          {
+            "name": "is_proc_macro",
+            "type": "boolean",
+            "description": "true when the description or keywords mention proc-macro."
+          },
+          {
+            "name": "is_serialization",
+            "type": "boolean",
+            "description": "true when the description or keywords mention serde/serialization."
+          },
+          {
+            "name": "created_year",
+            "type": "number",
+            "description": "Year of first publication."
+          },
+          {
+            "name": "updated_year",
+            "type": "number",
+            "description": "Year of last update."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

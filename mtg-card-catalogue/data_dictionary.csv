@@ -1,0 +1,80 @@
+column,data_type,description
+card_id,string,Scryfall card id for this printing.
+oracle_id,string,Oracle id shared by all printings of the card.
+name,string,Card name.
+lang,string,Card language.
+layout,string,"Card layout (normal, transform, split, ...)."
+released_at,date,Set release date.
+set_code,string,Set code.
+set_name,string,Set name.
+set_type,string,"Set type (core, expansion, commander, promo, ...)."
+collector_number,string,Collector number within the set.
+rarity,string,"Rarity (common, uncommon, rare, mythic, special, bonus)."
+artist,string,Illustrator.
+border_color,string,Border colour.
+frame,number,Frame version.
+frame_effects,string,Frame effects.
+security_stamp,string,"Security stamp, where printed."
+finishes,string,"Available finishes (nonfoil, foil, etched)."
+games,string,"Games the card is available in (paper, mtgo, arena)."
+digital,boolean,true for digital-only printings.
+promo,boolean,true for promotional printings.
+reprint,boolean,true when the card is a reprint.
+variation,boolean,true for alternate-art variations.
+reserved,boolean,true when the card is on the Reserved List.
+full_art,boolean,true for full-art cards.
+textless,boolean,true for textless cards.
+booster,boolean,true when the card appears in boosters.
+story_spotlight,boolean,true for story spotlight cards.
+highres_image,boolean,true when a high-resolution image exists.
+image_status,string,Image availability status.
+mana_cost,string,Mana cost string.
+cmc,number,Converted mana cost.
+type_line,string,Full type line.
+oracle_text,string,Oracle rules text.
+power,string,Power (creatures).
+toughness,string,Toughness (creatures).
+loyalty,string,Starting loyalty (planeswalkers).
+colors,string,Colours (WUBRG).
+color_identity,string,Colour identity.
+color_indicator,string,Colour indicator for colourless-frame cards.
+keywords,string,Keyword abilities.
+produced_mana,string,Mana the card can produce.
+legalities,string,Format legality as key:value pairs.
+price_usd,number,USD price (non-foil).
+price_usd_foil,number,USD price (foil).
+price_eur,number,EUR price.
+price_tix,number,MTGO ticket price.
+edhrec_rank,number,EDHREC popularity rank.
+penny_rank,number,Penny Dreadful rank.
+card_back_id,string,Scryfall id of the card back.
+illustration_id,string,Illustration id.
+scryfall_uri,string,Scryfall page URL.
+prints_search_uri,string,URL of all printings.
+rulings_uri,string,URL of rulings.
+face_count,number,Number of card faces.
+oracle_text_length,number,Characters in the oracle text.
+keyword_count,number,Number of keyword abilities.
+color_count,number,Number of colours.
+is_colorless,boolean,true when the card has no colours.
+is_multicolor,boolean,true when the card has two or more colours.
+is_monocolor,boolean,true when the card has exactly one colour.
+power_num,number,"Power parsed to a number, where possible."
+toughness_num,number,"Toughness parsed to a number, where possible."
+cmc_band,number,Converted-mana-cost band.
+is_creature,boolean,true when the type line contains Creature.
+is_land,boolean,true when the type line contains Land.
+is_instant,boolean,true when the type line contains Instant.
+is_sorcery,boolean,true when the type line contains Sorcery.
+is_artifact,boolean,true when the type line contains Artifact.
+is_enchantment,boolean,true when the type line contains Enchantment.
+is_planeswalker,boolean,true when the type line contains Planeswalker.
+is_battle,boolean,true when the type line contains Battle.
+is_legendary,boolean,true when the type line contains Legendary.
+is_commander_legal,boolean,true when legal in Commander.
+is_standard_legal,boolean,true when legal in Standard.
+is_modern_legal,boolean,true when legal in Modern.
+has_price,boolean,true when a USD price is listed.
+set_age_years,number,Years since the set released.
+collector_number_int,number,"Collector number parsed to an integer, where numeric."
+rarity_rank,number,Ordinal rarity rank (common=1 ... mythic=4).

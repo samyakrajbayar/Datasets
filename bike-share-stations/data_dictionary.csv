@@ -1,0 +1,34 @@
+column,data_type,description
+system,string,Bike-share system name.
+city,string,Primary city served.
+country,string,Country.
+operator,string,Operating company.
+station_id,string,System-specific station identifier.
+external_id,string,GBFS station field or derived attribute.
+name,string,Station name as shown in the app.
+short_name,string,Short station code.
+lat,number,Latitude.
+lon,number,Longitude.
+region_id,number,GBFS region identifier.
+capacity,number,Number of docks.
+station_type,string,"Station class (classic, electric, ...)."
+has_kiosk,boolean,true when the station has a payment kiosk.
+address,string,GBFS station field or derived attribute.
+rental_methods,string,Semicolon-separated accepted rental methods.
+rental_method_count,number,Number of rental methods.
+accepts_key,boolean,true when keys are accepted.
+accepts_creditcard,boolean,true when credit cards are accepted.
+accepts_phone,boolean,true when phone rental is supported.
+accepts_transit_card,boolean,GBFS station field or derived attribute.
+accepts_accountnumber,boolean,GBFS station field or derived attribute.
+has_android_app,boolean,true when an Android rental link exists.
+has_ios_app,boolean,true when an iOS rental link exists.
+has_web_rental,boolean,GBFS station field or derived attribute.
+electric_surcharge_waiver,boolean,GBFS station field or derived attribute.
+has_external_id,boolean,GBFS station field or derived attribute.
+has_region,boolean,GBFS station field or derived attribute.
+capacity_band,string,Dock-count band.
+name_length,number,Characters in the station name.
+is_charging,boolean,GBFS station field or derived attribute.
+lat_band,string,GBFS station field or derived attribute.
+lon_band,string,GBFS station field or derived attribute.

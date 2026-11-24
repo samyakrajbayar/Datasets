@@ -1,0 +1,68 @@
+column,data_type,description
+code,number,Open Food Facts barcode (EAN/UPC).
+product_name,string,Product name as entered.
+generic_name,string,Generic product name.
+brands,string,"Brand(s), comma-separated."
+brand_count,number,Number of brands listed.
+categories,string,Human-readable category path.
+categories_tags,string,Normalised category tags (semicolon-joined).
+category_count,number,Number of category tags.
+countries,string,Countries where the product is sold.
+countries_tags,string,Normalised country tags.
+country_count,number,Number of countries.
+quantity,string,Net quantity as printed (free text).
+product_quantity_g,number,Net quantity parsed to grams where possible.
+serving_size,string,Serving size as printed.
+packaging,string,Packaging description.
+packaging_tags,string,Normalised packaging tags.
+labels,string,Labels and certifications as printed.
+labels_tags,string,Normalised label tags.
+allergens,string,Allergens as printed.
+allergen_count,number,Number of allergen tags.
+additives_tags,string,Normalised additive tags (E-numbers).
+additive_count,number,Number of additives.
+ingredients_text,string,Ingredient list (truncated to 800 characters).
+ingredient_count,number,Comma-separated ingredient count.
+image_url,string,Front-of-pack image URL.
+nutriscore_grade,string,"Nutri-Score letter (a-e), where computed."
+nutriscore_score,number,Nutri-Score numeric score (lower is better).
+ecoscore_grade,string,"Eco-Score letter (a-e), where computed."
+ecoscore_score,number,Eco-Score numeric score.
+nova_group,number,NOVA processing group 1-4.
+manufacturing_places,string,Manufacturing locations as declared.
+stores,string,Retail chains listed.
+origins,string,Country of origin as declared.
+lang,string,Language of the record.
+energy_kcal_100g,number,Energy per 100 g in kcal.
+fat_100g,number,Fat per 100 g (g).
+saturated_fat_100g,number,Saturated fat per 100 g (g).
+carbohydrates_100g,number,Carbohydrates per 100 g (g).
+sugars_100g,number,Sugars per 100 g (g).
+added_sugars_100g,number,"Added sugars per 100 g (g), where declared."
+fiber_100g,number,Fibre per 100 g (g).
+proteins_100g,number,Protein per 100 g (g).
+salt_100g,number,Salt per 100 g (g).
+sodium_100g,number,Sodium per 100 g (g).
+is_ultra_processed,boolean,true when NOVA group is 4.
+is_processed,boolean,true when NOVA group is 3.
+is_unprocessed,boolean,true when NOVA group is 1.
+has_nutriscore,boolean,true when a Nutri-Score grade exists.
+has_ecoscore,boolean,true when an Eco-Score grade exists.
+is_organic,boolean,true when an organic label is present.
+is_vegan,boolean,true when a vegan label is present.
+is_vegetarian,boolean,true when a vegetarian label is present.
+is_gluten_free,boolean,true when a gluten-free label is present.
+contains_palm_oil,boolean,true when the ingredients mention palm oil.
+is_beverage,boolean,true when the category indicates a drink.
+is_snack,boolean,true when the category indicates a snack or biscuit.
+sugar_energy_pct,number,Share of energy from sugars (sugars x 4 / kcal x 100).
+fat_energy_pct,number,Share of energy from fat (fat x 9 / kcal x 100).
+protein_energy_pct,number,Share of energy from protein (protein x 4 / kcal x 100).
+is_high_sugar,boolean,true when sugars exceed 22.5 g/100 g.
+is_high_salt,boolean,true when salt exceeds 1.5 g/100 g.
+is_high_fat,boolean,true when fat exceeds 17.5 g/100 g.
+is_high_fiber,boolean,true when fibre exceeds 6 g/100 g.
+is_high_protein,boolean,true when protein exceeds 20 g/100 g.
+nutrition_fields_present,number,How many of the ten core nutrient fields are filled.
+nutrition_completeness_pct,number,Nutrition fields present as a percentage of ten.
+label_count,number,Number of label tags.

@@ -1,0 +1,58 @@
+column,data_type,description
+agency_code,string,"Reporting agency code (USGS, ...)."
+agency_name,string,Reporting agency name.
+altitude,number,Land-surface altitude in metres.
+altitude_accuracy,number,Altitude accuracy code.
+altitude_method_code,string,USGS monitoring-location attribute.
+altitude_method_name,string,USGS monitoring-location attribute.
+aquifer_code,string,USGS monitoring-location attribute.
+aquifer_type_code,string,USGS monitoring-location attribute.
+basin_code,number,Basin code.
+construction_date,number,USGS monitoring-location attribute.
+contributing_drainage_area,number,USGS monitoring-location attribute.
+country_code,string,USGS monitoring-location attribute.
+country_name,string,Country name.
+county_code,number,USGS monitoring-location attribute.
+county_name,string,County name.
+depth_source_code,string,USGS monitoring-location attribute.
+district_code,number,USGS monitoring-location attribute.
+drainage_area,number,USGS monitoring-location attribute.
+hole_constructed_depth,number,USGS monitoring-location attribute.
+horizontal_position_method_code,string,USGS monitoring-location attribute.
+horizontal_position_method_name,string,USGS monitoring-location attribute.
+horizontal_positional_accuracy,string,USGS monitoring-location attribute.
+horizontal_positional_accuracy_code,string,USGS monitoring-location attribute.
+hydrologic_unit_code,number,Hydrologic unit code (HUC).
+id,string,OGC feature id.
+latitude,number,Latitude.
+longitude,number,Longitude.
+minor_civil_division_code,number,USGS monitoring-location attribute.
+monitoring_location_name,string,Site name.
+monitoring_location_number,number,USGS site number.
+national_aquifer_code,string,USGS monitoring-location attribute.
+original_horizontal_datum,string,USGS monitoring-location attribute.
+original_horizontal_datum_name,string,USGS monitoring-location attribute.
+revision_created,datetime,USGS monitoring-location attribute.
+revision_modified,datetime,USGS monitoring-location attribute.
+revision_note,string,USGS monitoring-location attribute.
+site_type,string,"Site type (Stream, Well, Lake, Spring, Estuary, ...)."
+site_type_code,string,Site type code.
+state_code,number,State FIPS code.
+state_name,string,State name.
+time_zone_abbreviation,string,USGS monitoring-location attribute.
+uses_daylight_savings,string,USGS monitoring-location attribute.
+vertical_datum,string,USGS monitoring-location attribute.
+vertical_datum_name,string,USGS monitoring-location attribute.
+well_constructed_depth,number,USGS monitoring-location attribute.
+is_stream,boolean,true for stream/river sites.
+is_groundwater,boolean,true for wells and groundwater sites.
+is_lake,boolean,true for lake/reservoir sites.
+is_spring,boolean,true for springs.
+is_estuary,boolean,true for estuaries.
+has_coordinates,boolean,true when the site has coordinates.
+altitude_ft,number,Altitude converted to feet.
+huc2,number,First two HUC digits (major region).
+huc4,number,First four HUC digits (subregion).
+is_active,boolean,true when the site status is active.
+latitude_band,string,Northern or southern hemisphere.
+drainage_area_sqmi,number,Drainage area in square miles where reported.

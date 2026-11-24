@@ -1,0 +1,54 @@
+column,data_type,description
+doi,string,"Digital Object Identifier — the unique, resolvable id of the work."
+title,string,Work title as deposited at Crossref.
+subtitle,string,"Subtitle, when the deposit includes one."
+journal,string,Container (journal) title.
+journal_abbrev,string,Abbreviated journal title as registered by the publisher.
+publisher,string,Publishing organisation that deposited the DOI.
+type,string,Crossref work type; all rows here are `journal-article`.
+published_year,number,Year of the issued (publication) date.
+published_month,number,Month of the issued date.
+published_day,number,Day of the issued date.
+published_date,string,Full issued date as YYYY-M-D.
+created_date,datetime,Timestamp when the DOI record was first created at Crossref.
+n_authors,number,Number of authors in the deposited author list.
+n_editors,number,Number of editors.
+first_author,string,Family name of the first author.
+first_author_given,string,Given name of the first author.
+last_author,string,Family name of the last author (often the senior/PI author).
+n_affiliations,number,Number of distinct institutional affiliations across all authors.
+first_affiliation,string,Affiliation of the first author who reported one.
+n_funders,number,Number of funding records attached to the work.
+funder_names,string,Semicolon-separated funder names.
+citations,number,Crossref cited-by count at snapshot time.
+citations_per_year,number,Citations divided by years since publication.
+year_since_publication,number,Age of the work in years at snapshot time.
+n_subjects,number,Derived field.
+subjects,number,Derived field.
+n_issn,number,Number of ISSNs registered for the journal.
+issn,string,First ISSN of the journal.
+is_open_access,boolean,true when at least one licence is registered for the work.
+license_urls,string,Semicolon-separated licence URLs.
+volume,string,Journal volume.
+issue,string,Journal issue.
+pages,string,Page range or article number.
+n_links,number,Number of full-text/resource links in the record.
+n_references,number,Number of references the publisher deposited for the work.
+has_abstract,boolean,true when the deposit carries an abstract.
+abstract_length,number,Length of the abstract text in characters.
+title_length,number,Title length in characters.
+article_number,string,Article number for journals that number articles instead of pages.
+publisher_location,number,Registered location of the publisher.
+doi_prefix,number,"DOI prefix, which identifies the registration agency member (usually the publisher)."
+group_title,number,"Group or collection title, where deposited."
+deposited_date,datetime,Timestamp of the last metadata deposit.
+indexed_date,datetime,Timestamp when Crossref last indexed the record.
+print_year,number,"Year of the print publication date, when distinct."
+online_year,number,"Year of the online publication date, when distinct."
+url,string,Canonical DOI resolver URL.
+decade,string,Publication decade.
+is_single_author,boolean,true when the work has exactly one author.
+team_size_class,string,"Author-count band: Solo, Small (2-5), Medium (6-20), Large (>20)."
+citation_class,string,"Citation band: Mega (10k+), High (1k-10k), Notable (100-1k), Low (<100)."
+field,string,"Discipline inferred from journal-title keywords (heuristic, see `field_basis`)."
+field_basis,string,How the field was assigned; always `journal title keywords` here.

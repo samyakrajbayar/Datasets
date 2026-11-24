@@ -1,0 +1,335 @@
+{
+  "title": "Near-Earth Asteroids",
+  "id": "samyakrajbayar/near-earth-asteroids",
+  "subtitle": "43,000 NEOs with orbital elements, MOID, delta-v, diameter and spectral type",
+  "description": "# Near-Earth Asteroids\n\n**Subtitle:** 43,000 NEOs with orbital elements, MOID, delta-v, diameter and spectral type\n\n**Tags:** `astronomy`, `physics`, `science`, `tabular`\n\n**Dataset File:** `near_earth_asteroids.csv` (43,367 rows, 60 columns, 16.9 MB)\n\n**Provenance & Source:** NASA JPL Solar System Dynamics (SSD) Small-Body Database API\n\n**Expected Update Frequency:** `quarterly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every known near-Earth asteroid, with full orbital elements\n\nNASA/JPL's Small-Body Database is the authoritative catalogue of Solar System objects. This dataset\nis a complete query of its **near-Earth object** subset: **43,367 asteroids** with **60 parameters** each.\n\nColumns cover:\n- **Identity** \u2014 SPK id, full name, proper name, permanent/provisional designation, discovery number.\n- **Dynamics** \u2014 semi-major axis, eccentricity, perihelion and aphelion, inclination, node, argument of\n  perihelion, mean anomaly, epoch, time of perihelion, period in days and years, mean motion,\n  and a derived orbit class (Atira / Aten / Apollo / Amor).\n- **Hazard metrics** \u2014 Earth MOID in AU, km and lunar distances, the standard\n  potentially-hazardous flag, Earth- and Mars-crossing flags, and the Tisserand parameter.\n- **Orbit quality** \u2014 observation arc, first and last observation dates, RMS residual,\n  condition code, orbit producer and a two-body flag.\n- **Physical properties** \u2014 absolute magnitude H, measured diameter, a size estimate from H for the\n  majority without a measured diameter, albedo, rotation period, SMASSII and Tholen spectral types.\n- **Derived features** \u2014 diameter and inclination classes, retrograde, near-circular and\n  high-eccentricity flags, name features and data-completeness flags.\n\n**24,643 objects** are Apollo-class and **23,447** meet the MOID-based potentially-hazardous\ncriterion. Diameter is missing for most objects, which makes the H-to-size estimate a useful,\nexplicitly documented imputation rather than a hidden one.\n\n## \ud83e\uddfe Columns (60)\n\n`spkid`, `full_name`, `name`, `pdes`, `orbit_class`, `orbit_class_description`, `is_potentially_hazardous`, `absolute_magnitude_h`, `diameter_km`, `diameter_class`, `albedo`, `rotation_period_hours`, `spectral_type_smb`, `spectral_type_tholen`, `epoch_jd`, `semi_major_axis_au`, `eccentricity`, `perihelion_au`, `aphelion_au`, `inclination_deg`, `longitude_ascending_node_deg`, `argument_perihelion_deg`, `mean_anomaly_deg`, `time_of_perihelion_jd`, `orbital_period_days`, `orbital_period_years`, `mean_motion_deg_per_day`, `earth_moid_au`, `earth_moid_km`, `earth_moid_lunar_distances`, `earth_moid_ld_api`, `tisserand_parameter_jupiter`, `observation_arc_days`, `first_observation`, `last_observation`, `orbit_rms_arcsec`, `orbit_condition_code`, `orbit_producer`, `is_two_body_orbit`, `gm_km3_s2`, `extent`, `is_apollo`, `is_aten`, `is_amor`, `is_atira`, `is_earth_crossing`, `crosses_mars_orbit`, `is_retrograde`, `is_near_circular`, `is_high_eccentricity`, `inclination_class`, `size_estimate_m`, `has_diameter`, `has_albedo`, `has_spectral_type`, `has_rotation_period`, `name_length`, `has_proper_name`, `discovery_number`, `h_magnitude_size_m`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Hazard ranking** \u2014 combine MOID, H and delta-v into your own risk score and compare with the official PHA flag.\n2. **Orbit families** \u2014 cluster the six orbital elements to recover dynamical groups and resonances.\n3. **Size distribution** \u2014 cumulative size-frequency distribution; fit a power law and check where survey completeness drops.\n4. **Discovery completeness** \u2014 `has_diameter`, `has_albedo` and `has_spectral_type` versus size; which objects are still uncharacterised?\n5. **Orbit quality** \u2014 condition code and arc length versus object size; how well do we really know the small ones?\n6. **Comet or asteroid?** \u2014 use the Tisserand parameter to separate dormant comets from asteroidal orbits.\n7. **Aten vs Apollo** \u2014 how do the two Earth-crossing classes differ in period, inclination and size?\n8. **Rotation and size** \u2014 rotation period versus diameter; find the spin barrier around 2.2 hours.\n9. **Spectral types** \u2014 compositional mix by orbit class and size.\n10. **Close-approach candidates** \u2014 filter MOID < 0.01 AU and rank by H for a watchlist.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `near_earth_asteroids.csv` | 43,367 near-Earth asteroids x 60 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: orbit classes, sizes, hazard metrics. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`astronomy`, `space`, `asteroids`, `solar-system`, `nasa`, `orbital-mechanics`, `planetary-science`, `tabular`, `physics`, `risk-analysis`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **NASA/JPL Small-Body Database (SBDB) Query API**,\n  `https://ssd-api.jpl.nasa.gov/sbdb_query.api` with `sb-group=neo` and an explicit field list.\n- **Upstream curation:** JPL's Solar System Dynamics group, which maintains the definitive orbit\n  solutions and physical-property compilations for small bodies.\n- **Coverage:** the full near-Earth object subset returned by the API at query time\n  (43,000+ objects, including numbered and provisional designations).\n- **Derived columns:** orbit class, aphelion, Earth MOID in km and lunar distances, crossing and\n  hazard flags, size and inclination bands, H-based size estimate, completeness flags, discovery number.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily upstream.** JPL refreshes orbits as new observations arrive; re-run `scripts/27_asteroids.py` for a fresh snapshot.\n\n## \u26a0\ufe0f Caveats\n\n- `is_potentially_hazardous` follows the MOID < 0.05 AU convention and does not consider object size.\n- Diameter is missing for most objects; `h_magnitude_size_m` assumes a fixed 0.14 albedo and is an estimate only.\n- Orbital elements are osculating values at a single epoch and drift over time; do not mix epochs.\n- The API's `dv` is the minimum delta-v from Earth, computed under simplifying assumptions.\n- Spectral types are available for a small minority and come from two different classification systems.\n- `crosses_mars_orbit` is a coarse geometric test, not a collision assessment.\n- New objects are discovered continuously, so counts differ between snapshots.\n\n## \ud83d\udcdc Licence\n\nPublic domain \u2014 NASA/JPL-Caltech. Data is produced by a U.S. Government laboratory and is free to use with attribution to JPL/NASA.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `spkid` | `number` | JPL SPK object identifier. |\n| 2 | `full_name` | `string` | Full designation, e.g. '433 Eros (A898 PA)'. |\n| 3 | `name` | `string` | Proper name, when one has been assigned. |\n| 4 | `pdes` | `number` | Permanent designation (number or provisional designation). |\n| 5 | `orbit_class` | `string` | Dynamical class: Atira, Aten, Apollo or Amor. |\n| 6 | `orbit_class_description` | `string` | Human-readable definition of the orbit class. |\n| 7 | `is_potentially_hazardous` | `boolean` | true when Earth MOID is below 0.05 AU (the standard PHA criterion, size not considered). |\n| 8 | `absolute_magnitude_h` | `number` | Absolute magnitude H \u2014 a proxy for size. |\n| 9 | `diameter_km` | `number` | Mean diameter in km, where measured or modelled. |\n| 10 | `diameter_class` | `string` | Size band from <100 m to 10 km+. |\n| 11 | `albedo` | `number` | Geometric albedo, where known. |\n| 12 | `rotation_period_hours` | `number` | Rotation period in hours. |\n| 13 | `spectral_type_smb` | `string` | SMASSII spectral type. |\n| 14 | `spectral_type_tholen` | `string` | Tholen spectral type. |\n| 15 | `epoch_jd` | `number` | Epoch of the osculating elements (Julian date). |\n| 16 | `semi_major_axis_au` | `number` | Orbital semi-major axis in AU. |\n| 17 | `eccentricity` | `number` | Orbital eccentricity. |\n| 18 | `perihelion_au` | `number` | Perihelion distance in AU. |\n| 19 | `aphelion_au` | `number` | Aphelion distance computed as a x (1 + e). |\n| 20 | `inclination_deg` | `number` | Orbital inclination in degrees. |\n| 21 | `longitude_ascending_node_deg` | `number` | Longitude of the ascending node, degrees. |\n| 22 | `argument_perihelion_deg` | `number` | Argument of perihelion, degrees. |\n| 23 | `mean_anomaly_deg` | `number` | Mean anomaly at epoch, degrees. |\n| 24 | `time_of_perihelion_jd` | `number` | Time of perihelion passage (Julian date). |\n| 25 | `orbital_period_days` | `number` | Orbital period in days. |\n| 26 | `orbital_period_years` | `number` | Orbital period in Julian years. |\n| 27 | `mean_motion_deg_per_day` | `number` | Mean motion in degrees per day. |\n| 28 | `earth_moid_au` | `number` | Minimum orbit intersection distance with Earth, in AU. |\n| 29 | `earth_moid_km` | `number` | Earth MOID converted to km. |\n| 30 | `earth_moid_lunar_distances` | `number` | Earth MOID expressed in lunar distances. |\n| 31 | `earth_moid_ld_api` | `number` | Earth MOID in lunar distances as returned by JPL (redundant cross-check). |\n| 32 | `tisserand_parameter_jupiter` | `number` | Tisserand parameter with respect to Jupiter \u2014 separates asteroids from comets. |\n| 33 | `observation_arc_days` | `number` | Length of the observation arc used in the orbit solution, in days. |\n| 34 | `first_observation` | `date` | Date of the first observation used in the orbit fit. |\n| 35 | `last_observation` | `date` | Date of the last observation used in the orbit fit. |\n| 36 | `orbit_rms_arcsec` | `number` | RMS residual of the orbit fit, in arcseconds. |\n| 37 | `orbit_condition_code` | `number` | Orbit condition code (0 = excellent, 9 = highly uncertain). |\n| 38 | `orbit_producer` | `string` | Organisation that produced the orbit solution. |\n| 39 | `is_two_body_orbit` | `boolean` | true when the orbit is a simple two-body solution. |\n| 40 | `gm_km3_s2` | `number` | Gravitational parameter, when known. |\n| 41 | `extent` | `string` | Object extent/shape description. |\n| 42 | `is_apollo` | `boolean` | true for Apollo-class asteroids. |\n| 43 | `is_aten` | `boolean` | true for Aten-class asteroids. |\n| 44 | `is_amor` | `boolean` | true for Amor-class asteroids. |\n| 45 | `is_atira` | `boolean` | true for Atira-class (interior to Earth's orbit) asteroids. |\n| 46 | `is_earth_crossing` | `boolean` | true when perihelion is inside 1.017 AU. |\n| 47 | `crosses_mars_orbit` | `boolean` | true when the orbit spans the Martian semi-major axis. |\n| 48 | `is_retrograde` | `boolean` | true when inclination exceeds 90 degrees. |\n| 49 | `is_near_circular` | `boolean` | true when eccentricity is below 0.1. |\n| 50 | `is_high_eccentricity` | `boolean` | true when eccentricity exceeds 0.6. |\n| 51 | `inclination_class` | `string` | Inclination band: low, moderate, high, retrograde. |\n| 52 | `size_estimate_m` | `number` | Diameter converted to metres. |\n| 53 | `has_diameter` | `boolean` | true when a diameter is published. |\n| 54 | `has_albedo` | `boolean` | true when an albedo is published. |\n| 55 | `has_spectral_type` | `boolean` | true when a spectral type is published. |\n| 56 | `has_rotation_period` | `boolean` | true when a rotation period is published. |\n| 57 | `name_length` | `number` | Characters in the full name. |\n| 58 | `has_proper_name` | `boolean` | true when the object has a proper name rather than only a designation. |\n| 59 | `discovery_number` | `number` | Asteroid number parsed from the permanent designation, when present. |\n| 60 | `h_magnitude_size_m` | `number` | Diameter estimated from H assuming a 0.14 albedo, only when no measured diameter exists. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "near_earth_asteroids.csv",
+      "description": "Primary dataset file containing 43,367 records across 60 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "spkid",
+            "type": "number",
+            "description": "JPL SPK object identifier."
+          },
+          {
+            "name": "full_name",
+            "type": "string",
+            "description": "Full designation, e.g. '433 Eros (A898 PA)'."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Proper name, when one has been assigned."
+          },
+          {
+            "name": "pdes",
+            "type": "number",
+            "description": "Permanent designation (number or provisional designation)."
+          },
+          {
+            "name": "orbit_class",
+            "type": "string",
+            "description": "Dynamical class: Atira, Aten, Apollo or Amor."
+          },
+          {
+            "name": "orbit_class_description",
+            "type": "string",
+            "description": "Human-readable definition of the orbit class."
+          },
+          {
+            "name": "is_potentially_hazardous",
+            "type": "boolean",
+            "description": "true when Earth MOID is below 0.05 AU (the standard PHA criterion, size not considered)."
+          },
+          {
+            "name": "absolute_magnitude_h",
+            "type": "number",
+            "description": "Absolute magnitude H \u2014 a proxy for size."
+          },
+          {
+            "name": "diameter_km",
+            "type": "number",
+            "description": "Mean diameter in km, where measured or modelled."
+          },
+          {
+            "name": "diameter_class",
+            "type": "string",
+            "description": "Size band from <100 m to 10 km+."
+          },
+          {
+            "name": "albedo",
+            "type": "number",
+            "description": "Geometric albedo, where known."
+          },
+          {
+            "name": "rotation_period_hours",
+            "type": "number",
+            "description": "Rotation period in hours."
+          },
+          {
+            "name": "spectral_type_smb",
+            "type": "string",
+            "description": "SMASSII spectral type."
+          },
+          {
+            "name": "spectral_type_tholen",
+            "type": "string",
+            "description": "Tholen spectral type."
+          },
+          {
+            "name": "epoch_jd",
+            "type": "number",
+            "description": "Epoch of the osculating elements (Julian date)."
+          },
+          {
+            "name": "semi_major_axis_au",
+            "type": "number",
+            "description": "Orbital semi-major axis in AU."
+          },
+          {
+            "name": "eccentricity",
+            "type": "number",
+            "description": "Orbital eccentricity."
+          },
+          {
+            "name": "perihelion_au",
+            "type": "number",
+            "description": "Perihelion distance in AU."
+          },
+          {
+            "name": "aphelion_au",
+            "type": "number",
+            "description": "Aphelion distance computed as a x (1 + e)."
+          },
+          {
+            "name": "inclination_deg",
+            "type": "number",
+            "description": "Orbital inclination in degrees."
+          },
+          {
+            "name": "longitude_ascending_node_deg",
+            "type": "number",
+            "description": "Longitude of the ascending node, degrees."
+          },
+          {
+            "name": "argument_perihelion_deg",
+            "type": "number",
+            "description": "Argument of perihelion, degrees."
+          },
+          {
+            "name": "mean_anomaly_deg",
+            "type": "number",
+            "description": "Mean anomaly at epoch, degrees."
+          },
+          {
+            "name": "time_of_perihelion_jd",
+            "type": "number",
+            "description": "Time of perihelion passage (Julian date)."
+          },
+          {
+            "name": "orbital_period_days",
+            "type": "number",
+            "description": "Orbital period in days."
+          },
+          {
+            "name": "orbital_period_years",
+            "type": "number",
+            "description": "Orbital period in Julian years."
+          },
+          {
+            "name": "mean_motion_deg_per_day",
+            "type": "number",
+            "description": "Mean motion in degrees per day."
+          },
+          {
+            "name": "earth_moid_au",
+            "type": "number",
+            "description": "Minimum orbit intersection distance with Earth, in AU."
+          },
+          {
+            "name": "earth_moid_km",
+            "type": "number",
+            "description": "Earth MOID converted to km."
+          },
+          {
+            "name": "earth_moid_lunar_distances",
+            "type": "number",
+            "description": "Earth MOID expressed in lunar distances."
+          },
+          {
+            "name": "earth_moid_ld_api",
+            "type": "number",
+            "description": "Earth MOID in lunar distances as returned by JPL (redundant cross-check)."
+          },
+          {
+            "name": "tisserand_parameter_jupiter",
+            "type": "number",
+            "description": "Tisserand parameter with respect to Jupiter \u2014 separates asteroids from comets."
+          },
+          {
+            "name": "observation_arc_days",
+            "type": "number",
+            "description": "Length of the observation arc used in the orbit solution, in days."
+          },
+          {
+            "name": "first_observation",
+            "type": "date",
+            "description": "Date of the first observation used in the orbit fit."
+          },
+          {
+            "name": "last_observation",
+            "type": "date",
+            "description": "Date of the last observation used in the orbit fit."
+          },
+          {
+            "name": "orbit_rms_arcsec",
+            "type": "number",
+            "description": "RMS residual of the orbit fit, in arcseconds."
+          },
+          {
+            "name": "orbit_condition_code",
+            "type": "number",
+            "description": "Orbit condition code (0 = excellent, 9 = highly uncertain)."
+          },
+          {
+            "name": "orbit_producer",
+            "type": "string",
+            "description": "Organisation that produced the orbit solution."
+          },
+          {
+            "name": "is_two_body_orbit",
+            "type": "boolean",
+            "description": "true when the orbit is a simple two-body solution."
+          },
+          {
+            "name": "gm_km3_s2",
+            "type": "number",
+            "description": "Gravitational parameter, when known."
+          },
+          {
+            "name": "extent",
+            "type": "string",
+            "description": "Object extent/shape description."
+          },
+          {
+            "name": "is_apollo",
+            "type": "boolean",
+            "description": "true for Apollo-class asteroids."
+          },
+          {
+            "name": "is_aten",
+            "type": "boolean",
+            "description": "true for Aten-class asteroids."
+          },
+          {
+            "name": "is_amor",
+            "type": "boolean",
+            "description": "true for Amor-class asteroids."
+          },
+          {
+            "name": "is_atira",
+            "type": "boolean",
+            "description": "true for Atira-class (interior to Earth's orbit) asteroids."
+          },
+          {
+            "name": "is_earth_crossing",
+            "type": "boolean",
+            "description": "true when perihelion is inside 1.017 AU."
+          },
+          {
+            "name": "crosses_mars_orbit",
+            "type": "boolean",
+            "description": "true when the orbit spans the Martian semi-major axis."
+          },
+          {
+            "name": "is_retrograde",
+            "type": "boolean",
+            "description": "true when inclination exceeds 90 degrees."
+          },
+          {
+            "name": "is_near_circular",
+            "type": "boolean",
+            "description": "true when eccentricity is below 0.1."
+          },
+          {
+            "name": "is_high_eccentricity",
+            "type": "boolean",
+            "description": "true when eccentricity exceeds 0.6."
+          },
+          {
+            "name": "inclination_class",
+            "type": "string",
+            "description": "Inclination band: low, moderate, high, retrograde."
+          },
+          {
+            "name": "size_estimate_m",
+            "type": "number",
+            "description": "Diameter converted to metres."
+          },
+          {
+            "name": "has_diameter",
+            "type": "boolean",
+            "description": "true when a diameter is published."
+          },
+          {
+            "name": "has_albedo",
+            "type": "boolean",
+            "description": "true when an albedo is published."
+          },
+          {
+            "name": "has_spectral_type",
+            "type": "boolean",
+            "description": "true when a spectral type is published."
+          },
+          {
+            "name": "has_rotation_period",
+            "type": "boolean",
+            "description": "true when a rotation period is published."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the full name."
+          },
+          {
+            "name": "has_proper_name",
+            "type": "boolean",
+            "description": "true when the object has a proper name rather than only a designation."
+          },
+          {
+            "name": "discovery_number",
+            "type": "number",
+            "description": "Asteroid number parsed from the permanent designation, when present."
+          },
+          {
+            "name": "h_magnitude_size_m",
+            "type": "number",
+            "description": "Diameter estimated from H assuming a 0.14 albedo, only when no measured diameter exists."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

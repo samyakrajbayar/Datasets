@@ -1,0 +1,61 @@
+column,data_type,description
+record_id,number,Retraction Watch record id.
+title,string,Paper title (truncated to 400 characters).
+subject,string,Subject area(s).
+institution,string,Author institution(s).
+journal,string,Journal or venue.
+publisher,string,Publisher.
+country,string,"Author country/countries, semicolon-separated."
+country_count,number,Number of countries.
+author,string,Author list as published.
+author_count,number,Number of authors.
+urls,string,Related URLs (truncated).
+article_type,string,Article type.
+retraction_date,string,Retraction notice date.
+retraction_year,number,Year of retraction.
+retraction_month,number,Month of retraction.
+retraction_quarter,number,Quarter of retraction.
+retraction_doi,string,Retraction notice DOI.
+retraction_pubmed_id,number,Retraction PubMed id.
+original_paper_date,string,Original paper date.
+original_year,number,Year of the original paper.
+original_month,number,Retraction Watch field or derived attribute.
+original_doi,string,Original paper DOI.
+original_pubmed_id,number,Original paper PubMed id.
+lag_days,number,Days between original publication and retraction.
+lag_years,number,Years between publication and retraction.
+retraction_nature,string,"Retraction, Correction, Expression of concern, ..."
+reason,string,"Reason text (truncated to 1,000 characters)."
+reason_length,number,Characters in the reason.
+paywalled,string,Paywall status as recorded.
+notes,string,Notes (truncated).
+notes_length,number,Retraction Watch field or derived attribute.
+is_retraction,boolean,true for retractions.
+is_correction,boolean,true for corrections.
+is_expression_of_concern,boolean,true for expressions of concern.
+is_reinstatement,boolean,true for reinstatements.
+mentions_plagiarism,boolean,true when plagiarism is cited.
+mentions_duplication,boolean,true when duplication is cited.
+mentions_data_issues,boolean,true when data problems are cited.
+mentions_fabrication,boolean,true when fabrication is cited.
+mentions_error,boolean,true when error is cited.
+mentions_authorship,boolean,true when authorship disputes are cited.
+mentions_peer_review,boolean,true when peer-review problems are cited.
+mentions_ethics,boolean,true when ethics issues are cited.
+mentions_consent,boolean,Retraction Watch field or derived attribute.
+mentions_conflict,boolean,Retraction Watch field or derived attribute.
+mentions_reproducibility,boolean,Retraction Watch field or derived attribute.
+mentions_image,boolean,true when image problems are cited.
+is_paywalled,boolean,true when the paper is paywalled.
+has_notes,boolean,Retraction Watch field or derived attribute.
+has_doi,boolean,true when an original DOI exists.
+has_urls,boolean,Retraction Watch field or derived attribute.
+is_clinical_trial,boolean,true for clinical-trial subjects.
+is_cancer_paper,boolean,true for cancer-research subjects.
+is_engineering,boolean,Retraction Watch field or derived attribute.
+is_social_science,boolean,true for social-science subjects.
+subject_length,number,Retraction Watch field or derived attribute.
+title_length,number,Retraction Watch field or derived attribute.
+is_recent,boolean,true for retractions since 2020.
+retraction_decade,string,Decade of retraction.
+lag_band,string,Publication-to-retraction lag band.

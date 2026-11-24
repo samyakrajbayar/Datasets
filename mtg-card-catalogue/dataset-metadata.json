@@ -1,0 +1,430 @@
+{
+  "title": "Magic The Gathering Card Catalogue",
+  "id": "samyakrajbayar/mtg-card-catalogue",
+  "subtitle": "75,000 MTG cards with mana cost, type, power and set info",
+  "description": "# Magic: The Gathering Card Catalogue\n\n**Subtitle:** 39,412 unique MTG cards with mana, types, rules text, legalities & prices\n\n**Tags:** `tabular`, `games`\n\n**Dataset File:** `mtg_cards.csv` (70,290 rows, 79 columns, 50.7 MB)\n\n**Provenance & Source:** Scryfall Bulk Data API (scryfall.com)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The complete Magic: The Gathering oracle catalogue\n\nScryfall's `oracle_cards` bulk file is the canonical list of unique Magic cards. This dataset contains\n**39,412 cards across 594 sets** with **79 parameters** each.\n\n- **Identity** \u2014 Scryfall and oracle ids, name, language, layout, set code/name/type, collector number,\n  rarity, artist and release date.\n- **Printing** \u2014 border, frame, frame effects, security stamp, finishes, games, digital/promo/reprint/\n  variation/reserved flags, full-art, textless, booster and story-spotlight flags, image status.\n- **Game text** \u2014 mana cost and converted cost, type line, oracle text, power, toughness, loyalty,\n  colours, colour identity, colour indicator, keywords and produced mana.\n- **Legalities and prices** \u2014 full format legality map, USD/USD-foil/EUR/MTGO prices, EDHREC and Penny\n  ranks, Scryfall and rulings URLs.\n- **Derived** \u2014 colour count and colourfulness, parsed power/toughness, CMC band, card-type flags,\n  Commander/Standard/Modern legality, price presence, set age and rarity rank.\n\n**20,424 cards are creatures** and **33,303** have a listed USD price \u2014 a complete base\ntable for metagame, market and card-design analysis.\n\n## \ud83e\uddfe Columns (79)\n\n`card_id`, `oracle_id`, `name`, `lang`, `layout`, `released_at`, `set_code`, `set_name`, `set_type`, `collector_number`, `rarity`, `artist`, `border_color`, `frame`, `frame_effects`, `security_stamp`, `finishes`, `games`, `digital`, `promo`, `reprint`, `variation`, `reserved`, `full_art`, `textless`, `booster`, `story_spotlight`, `highres_image`, `image_status`, `mana_cost`, `cmc`, `type_line`, `oracle_text`, `power`, `toughness`, `loyalty`, `colors`, `color_identity`, `color_indicator`, `keywords`, `produced_mana`, `legalities`, `price_usd`, `price_usd_foil`, `price_eur`, `price_tix`, `edhrec_rank`, `penny_rank`, `card_back_id`, `illustration_id`, `scryfall_uri`, `prints_search_uri`, `rulings_uri`, `face_count`, `oracle_text_length`, `keyword_count`, `color_count`, `is_colorless`, `is_multicolor`, `is_monocolor`, `power_num`, `toughness_num`, `cmc_band`, `is_creature`, `is_land`, `is_instant`, `is_sorcery`, `is_artifact`, `is_enchantment`, `is_planeswalker`, `is_battle`, `is_legendary`, `is_commander_legal`, `is_standard_legal`, `is_modern_legal`, `has_price`, `set_age_years`, `collector_number_int`, `rarity_rank`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Card design over time** \u2014 mana cost, power/toughness and keyword usage by release year.\n2. **Colour pie** \u2014 mechanics and keywords by colour identity.\n3. **Market analysis** \u2014 price distribution by rarity, set age and format legality.\n4. **Power creep** \u2014 creature stats vs mana cost across eras.\n5. **Format staples** \u2014 Commander/Modern legality vs EDHREC rank.\n6. **Text mining** \u2014 keyword and rules-text co-occurrence networks.\n7. **Set composition** \u2014 rarity and card-type mix across sets.\n8. **Reserved list** \u2014 the reserved cards and their price profile.\n9. **Price prediction** \u2014 model USD price from rarity, age, legality and EDHREC rank.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `mtg_cards.csv` | 39,412 cards x 79 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`magic-the-gathering`, `cards`, `games`, `scryfall`, `catalogue`, `prices`, `text`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Scryfall bulk data**, `https://api.scryfall.com/bulk-data`, using the\n  `oracle_cards` JSONL archive (one JSON object per line).\n- **Scope:** every unique oracle card in Scryfall at snapshot time.\n- **Processing:** JSONL parsed, nested legalities/prices/finishes flattened, card-type and colour flags,\n  parsed stats and rarity ranks derived.\n- **Snapshot date:** 22 November 2026 (bulk file dated 2026-11-22).\n\n## \ud83d\udd04 Update frequency\n\n**Daily.** Scryfall regenerates the bulk files every day.\n\n## \u26a0\ufe0f Caveats\n\n- Prices are Scryfall's daily snapshots and fluctuate; they are not a transaction record.\n- Oracle text uses Scryfall's wording, which can differ from printed text.\n- Multi-face cards are one row with `face_count` > 1; per-face detail is not expanded.\n- Legalities are stored as a single key:value string, not one column per format.\n- Power/toughness can be non-numeric (`*`, `1+*`), so parsed values may be blank.\n- Digital-only printings and promos are included; filter `digital`/`promo` for paper analysis.\n- Bulk data is refreshed daily, so counts and prices will differ from other snapshots.\n\n## \ud83d\udcdc Licence\n\nScryfall data is provided for community use; Magic: The Gathering is a Wizards of the Coast property.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `card_id` | `string` | Scryfall card id for this printing. |\n| 2 | `oracle_id` | `string` | Oracle id shared by all printings of the card. |\n| 3 | `name` | `string` | Card name. |\n| 4 | `lang` | `string` | Card language. |\n| 5 | `layout` | `string` | Card layout (normal, transform, split, ...). |\n| 6 | `released_at` | `date` | Set release date. |\n| 7 | `set_code` | `string` | Set code. |\n| 8 | `set_name` | `string` | Set name. |\n| 9 | `set_type` | `string` | Set type (core, expansion, commander, promo, ...). |\n| 10 | `collector_number` | `string` | Collector number within the set. |\n| 11 | `rarity` | `string` | Rarity (common, uncommon, rare, mythic, special, bonus). |\n| 12 | `artist` | `string` | Illustrator. |\n| 13 | `border_color` | `string` | Border colour. |\n| 14 | `frame` | `number` | Frame version. |\n| 15 | `frame_effects` | `string` | Frame effects. |\n| 16 | `security_stamp` | `string` | Security stamp, where printed. |\n| 17 | `finishes` | `string` | Available finishes (nonfoil, foil, etched). |\n| 18 | `games` | `string` | Games the card is available in (paper, mtgo, arena). |\n| 19 | `digital` | `boolean` | true for digital-only printings. |\n| 20 | `promo` | `boolean` | true for promotional printings. |\n| 21 | `reprint` | `boolean` | true when the card is a reprint. |\n| 22 | `variation` | `boolean` | true for alternate-art variations. |\n| 23 | `reserved` | `boolean` | true when the card is on the Reserved List. |\n| 24 | `full_art` | `boolean` | true for full-art cards. |\n| 25 | `textless` | `boolean` | true for textless cards. |\n| 26 | `booster` | `boolean` | true when the card appears in boosters. |\n| 27 | `story_spotlight` | `boolean` | true for story spotlight cards. |\n| 28 | `highres_image` | `boolean` | true when a high-resolution image exists. |\n| 29 | `image_status` | `string` | Image availability status. |\n| 30 | `mana_cost` | `string` | Mana cost string. |\n| 31 | `cmc` | `number` | Converted mana cost. |\n| 32 | `type_line` | `string` | Full type line. |\n| 33 | `oracle_text` | `string` | Oracle rules text. |\n| 34 | `power` | `string` | Power (creatures). |\n| 35 | `toughness` | `string` | Toughness (creatures). |\n| 36 | `loyalty` | `string` | Starting loyalty (planeswalkers). |\n| 37 | `colors` | `string` | Colours (WUBRG). |\n| 38 | `color_identity` | `string` | Colour identity. |\n| 39 | `color_indicator` | `string` | Colour indicator for colourless-frame cards. |\n| 40 | `keywords` | `string` | Keyword abilities. |\n| 41 | `produced_mana` | `string` | Mana the card can produce. |\n| 42 | `legalities` | `string` | Format legality as key:value pairs. |\n| 43 | `price_usd` | `number` | USD price (non-foil). |\n| 44 | `price_usd_foil` | `number` | USD price (foil). |\n| 45 | `price_eur` | `number` | EUR price. |\n| 46 | `price_tix` | `number` | MTGO ticket price. |\n| 47 | `edhrec_rank` | `number` | EDHREC popularity rank. |\n| 48 | `penny_rank` | `number` | Penny Dreadful rank. |\n| 49 | `card_back_id` | `string` | Scryfall id of the card back. |\n| 50 | `illustration_id` | `string` | Illustration id. |\n| 51 | `scryfall_uri` | `string` | Scryfall page URL. |\n| 52 | `prints_search_uri` | `string` | URL of all printings. |\n| 53 | `rulings_uri` | `string` | URL of rulings. |\n| 54 | `face_count` | `number` | Number of card faces. |\n| 55 | `oracle_text_length` | `number` | Characters in the oracle text. |\n| 56 | `keyword_count` | `number` | Number of keyword abilities. |\n| 57 | `color_count` | `number` | Number of colours. |\n| 58 | `is_colorless` | `boolean` | true when the card has no colours. |\n| 59 | `is_multicolor` | `boolean` | true when the card has two or more colours. |\n| 60 | `is_monocolor` | `boolean` | true when the card has exactly one colour. |\n| 61 | `power_num` | `number` | Power parsed to a number, where possible. |\n| 62 | `toughness_num` | `number` | Toughness parsed to a number, where possible. |\n| 63 | `cmc_band` | `number` | Converted-mana-cost band. |\n| 64 | `is_creature` | `boolean` | true when the type line contains Creature. |\n| 65 | `is_land` | `boolean` | true when the type line contains Land. |\n| 66 | `is_instant` | `boolean` | true when the type line contains Instant. |\n| 67 | `is_sorcery` | `boolean` | true when the type line contains Sorcery. |\n| 68 | `is_artifact` | `boolean` | true when the type line contains Artifact. |\n| 69 | `is_enchantment` | `boolean` | true when the type line contains Enchantment. |\n| 70 | `is_planeswalker` | `boolean` | true when the type line contains Planeswalker. |\n| 71 | `is_battle` | `boolean` | true when the type line contains Battle. |\n| 72 | `is_legendary` | `boolean` | true when the type line contains Legendary. |\n| 73 | `is_commander_legal` | `boolean` | true when legal in Commander. |\n| 74 | `is_standard_legal` | `boolean` | true when legal in Standard. |\n| 75 | `is_modern_legal` | `boolean` | true when legal in Modern. |\n| 76 | `has_price` | `boolean` | true when a USD price is listed. |\n| 77 | `set_age_years` | `number` | Years since the set released. |\n| 78 | `collector_number_int` | `number` | Collector number parsed to an integer, where numeric. |\n| 79 | `rarity_rank` | `number` | Ordinal rarity rank (common=1 ... mythic=4). |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "games"
+  ],
+  "resources": [
+    {
+      "path": "mtg_cards.csv",
+      "description": "Primary dataset file containing 70,290 records across 79 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "card_id",
+            "type": "string",
+            "description": "Scryfall card id for this printing."
+          },
+          {
+            "name": "oracle_id",
+            "type": "string",
+            "description": "Oracle id shared by all printings of the card."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Card name."
+          },
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Card language."
+          },
+          {
+            "name": "layout",
+            "type": "string",
+            "description": "Card layout (normal, transform, split, ...)."
+          },
+          {
+            "name": "released_at",
+            "type": "date",
+            "description": "Set release date."
+          },
+          {
+            "name": "set_code",
+            "type": "string",
+            "description": "Set code."
+          },
+          {
+            "name": "set_name",
+            "type": "string",
+            "description": "Set name."
+          },
+          {
+            "name": "set_type",
+            "type": "string",
+            "description": "Set type (core, expansion, commander, promo, ...)."
+          },
+          {
+            "name": "collector_number",
+            "type": "string",
+            "description": "Collector number within the set."
+          },
+          {
+            "name": "rarity",
+            "type": "string",
+            "description": "Rarity (common, uncommon, rare, mythic, special, bonus)."
+          },
+          {
+            "name": "artist",
+            "type": "string",
+            "description": "Illustrator."
+          },
+          {
+            "name": "border_color",
+            "type": "string",
+            "description": "Border colour."
+          },
+          {
+            "name": "frame",
+            "type": "number",
+            "description": "Frame version."
+          },
+          {
+            "name": "frame_effects",
+            "type": "string",
+            "description": "Frame effects."
+          },
+          {
+            "name": "security_stamp",
+            "type": "string",
+            "description": "Security stamp, where printed."
+          },
+          {
+            "name": "finishes",
+            "type": "string",
+            "description": "Available finishes (nonfoil, foil, etched)."
+          },
+          {
+            "name": "games",
+            "type": "string",
+            "description": "Games the card is available in (paper, mtgo, arena)."
+          },
+          {
+            "name": "digital",
+            "type": "boolean",
+            "description": "true for digital-only printings."
+          },
+          {
+            "name": "promo",
+            "type": "boolean",
+            "description": "true for promotional printings."
+          },
+          {
+            "name": "reprint",
+            "type": "boolean",
+            "description": "true when the card is a reprint."
+          },
+          {
+            "name": "variation",
+            "type": "boolean",
+            "description": "true for alternate-art variations."
+          },
+          {
+            "name": "reserved",
+            "type": "boolean",
+            "description": "true when the card is on the Reserved List."
+          },
+          {
+            "name": "full_art",
+            "type": "boolean",
+            "description": "true for full-art cards."
+          },
+          {
+            "name": "textless",
+            "type": "boolean",
+            "description": "true for textless cards."
+          },
+          {
+            "name": "booster",
+            "type": "boolean",
+            "description": "true when the card appears in boosters."
+          },
+          {
+            "name": "story_spotlight",
+            "type": "boolean",
+            "description": "true for story spotlight cards."
+          },
+          {
+            "name": "highres_image",
+            "type": "boolean",
+            "description": "true when a high-resolution image exists."
+          },
+          {
+            "name": "image_status",
+            "type": "string",
+            "description": "Image availability status."
+          },
+          {
+            "name": "mana_cost",
+            "type": "string",
+            "description": "Mana cost string."
+          },
+          {
+            "name": "cmc",
+            "type": "number",
+            "description": "Converted mana cost."
+          },
+          {
+            "name": "type_line",
+            "type": "string",
+            "description": "Full type line."
+          },
+          {
+            "name": "oracle_text",
+            "type": "string",
+            "description": "Oracle rules text."
+          },
+          {
+            "name": "power",
+            "type": "string",
+            "description": "Power (creatures)."
+          },
+          {
+            "name": "toughness",
+            "type": "string",
+            "description": "Toughness (creatures)."
+          },
+          {
+            "name": "loyalty",
+            "type": "string",
+            "description": "Starting loyalty (planeswalkers)."
+          },
+          {
+            "name": "colors",
+            "type": "string",
+            "description": "Colours (WUBRG)."
+          },
+          {
+            "name": "color_identity",
+            "type": "string",
+            "description": "Colour identity."
+          },
+          {
+            "name": "color_indicator",
+            "type": "string",
+            "description": "Colour indicator for colourless-frame cards."
+          },
+          {
+            "name": "keywords",
+            "type": "string",
+            "description": "Keyword abilities."
+          },
+          {
+            "name": "produced_mana",
+            "type": "string",
+            "description": "Mana the card can produce."
+          },
+          {
+            "name": "legalities",
+            "type": "string",
+            "description": "Format legality as key:value pairs."
+          },
+          {
+            "name": "price_usd",
+            "type": "number",
+            "description": "USD price (non-foil)."
+          },
+          {
+            "name": "price_usd_foil",
+            "type": "number",
+            "description": "USD price (foil)."
+          },
+          {
+            "name": "price_eur",
+            "type": "number",
+            "description": "EUR price."
+          },
+          {
+            "name": "price_tix",
+            "type": "number",
+            "description": "MTGO ticket price."
+          },
+          {
+            "name": "edhrec_rank",
+            "type": "number",
+            "description": "EDHREC popularity rank."
+          },
+          {
+            "name": "penny_rank",
+            "type": "number",
+            "description": "Penny Dreadful rank."
+          },
+          {
+            "name": "card_back_id",
+            "type": "string",
+            "description": "Scryfall id of the card back."
+          },
+          {
+            "name": "illustration_id",
+            "type": "string",
+            "description": "Illustration id."
+          },
+          {
+            "name": "scryfall_uri",
+            "type": "string",
+            "description": "Scryfall page URL."
+          },
+          {
+            "name": "prints_search_uri",
+            "type": "string",
+            "description": "URL of all printings."
+          },
+          {
+            "name": "rulings_uri",
+            "type": "string",
+            "description": "URL of rulings."
+          },
+          {
+            "name": "face_count",
+            "type": "number",
+            "description": "Number of card faces."
+          },
+          {
+            "name": "oracle_text_length",
+            "type": "number",
+            "description": "Characters in the oracle text."
+          },
+          {
+            "name": "keyword_count",
+            "type": "number",
+            "description": "Number of keyword abilities."
+          },
+          {
+            "name": "color_count",
+            "type": "number",
+            "description": "Number of colours."
+          },
+          {
+            "name": "is_colorless",
+            "type": "boolean",
+            "description": "true when the card has no colours."
+          },
+          {
+            "name": "is_multicolor",
+            "type": "boolean",
+            "description": "true when the card has two or more colours."
+          },
+          {
+            "name": "is_monocolor",
+            "type": "boolean",
+            "description": "true when the card has exactly one colour."
+          },
+          {
+            "name": "power_num",
+            "type": "number",
+            "description": "Power parsed to a number, where possible."
+          },
+          {
+            "name": "toughness_num",
+            "type": "number",
+            "description": "Toughness parsed to a number, where possible."
+          },
+          {
+            "name": "cmc_band",
+            "type": "number",
+            "description": "Converted-mana-cost band."
+          },
+          {
+            "name": "is_creature",
+            "type": "boolean",
+            "description": "true when the type line contains Creature."
+          },
+          {
+            "name": "is_land",
+            "type": "boolean",
+            "description": "true when the type line contains Land."
+          },
+          {
+            "name": "is_instant",
+            "type": "boolean",
+            "description": "true when the type line contains Instant."
+          },
+          {
+            "name": "is_sorcery",
+            "type": "boolean",
+            "description": "true when the type line contains Sorcery."
+          },
+          {
+            "name": "is_artifact",
+            "type": "boolean",
+            "description": "true when the type line contains Artifact."
+          },
+          {
+            "name": "is_enchantment",
+            "type": "boolean",
+            "description": "true when the type line contains Enchantment."
+          },
+          {
+            "name": "is_planeswalker",
+            "type": "boolean",
+            "description": "true when the type line contains Planeswalker."
+          },
+          {
+            "name": "is_battle",
+            "type": "boolean",
+            "description": "true when the type line contains Battle."
+          },
+          {
+            "name": "is_legendary",
+            "type": "boolean",
+            "description": "true when the type line contains Legendary."
+          },
+          {
+            "name": "is_commander_legal",
+            "type": "boolean",
+            "description": "true when legal in Commander."
+          },
+          {
+            "name": "is_standard_legal",
+            "type": "boolean",
+            "description": "true when legal in Standard."
+          },
+          {
+            "name": "is_modern_legal",
+            "type": "boolean",
+            "description": "true when legal in Modern."
+          },
+          {
+            "name": "has_price",
+            "type": "boolean",
+            "description": "true when a USD price is listed."
+          },
+          {
+            "name": "set_age_years",
+            "type": "number",
+            "description": "Years since the set released."
+          },
+          {
+            "name": "collector_number_int",
+            "type": "number",
+            "description": "Collector number parsed to an integer, where numeric."
+          },
+          {
+            "name": "rarity_rank",
+            "type": "number",
+            "description": "Ordinal rarity rank (common=1 ... mythic=4)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

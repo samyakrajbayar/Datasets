@@ -1,0 +1,335 @@
+{
+  "title": "Human Proteome",
+  "id": "samyakrajbayar/human-proteome",
+  "subtitle": "20,000 UniProt human proteins with function, GO terms and length",
+  "description": "# Human Proteome - Reviewed Annotations\n\n**Subtitle:** 20,429 curated human proteins with sequences, domains & gene symbols\n\n**Tags:** `tabular`, `biology`, `science`\n\n**Dataset File:** `human_proteins.csv` (20,429 rows, 60 columns, 47.4 MB)\n\n**Provenance & Source:** UniProtKB Swiss-Prot Database (uniprot.org)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The curated human proteome\n\nUniProtKB/Swiss-Prot is the manually reviewed protein knowledge base. This extract contains\n**20,429 reviewed human proteins** with **60 parameters**, including the full sequence and\nevery major annotation layer.\n\n- **Identity** \u2014 accession, entry name, protein name, gene names, organism, sequence length and mass,\n  sequence version and the full amino-acid sequence.\n- **Function** \u2014 curated function text, catalytic activity, cofactor, pathway, subunit and\n  pharmaceutical-use annotations.\n- **Localisation** \u2014 subcellular location text plus secreted, membrane, nuclear and mitochondrial flags.\n- **Structure and interactions** \u2014 domain features, binding and active sites, disulfide bonds,\n  modified residues and PDB identifiers.\n- **Disease and variation** \u2014 disease associations, natural variants and caution notes.\n- **Ontology** \u2014 GO term IDs, UniProt keywords and their counts.\n- **Derived** \u2014 enzyme class, length band, mass per residue, annotation lengths and per-protein counts.\n\n**4,616 proteins are enzymes**, **8,969 have at least one PDB structure**, and\n**5,350** carry a disease association \u2014 enough to support structural bioinformatics, function\nprediction and drug-target exploration.\n\n## \ud83e\uddfe Columns (60)\n\n`accession`, `entry_name`, `protein_name`, `gene_names`, `organism`, `length`, `mass_da`, `sequence_version`, `ec_number`, `function`, `domains`, `go_ids`, `keywords`, `subcellular_location`, `involvement_in_disease`, `pdb_ids`, `sequence_similarity`, `binding_sites`, `active_sites`, `sequence`, `catalytic_activity`, `cofactor`, `subunit`, `pathway`, `pharmaceutical_use`, `tissue_specificity`, `signal_peptide`, `transit_peptide`, `chains`, `disulfide_bonds`, `variants`, `modified_residues`, `caution`, `gene_count`, `function_length`, `domain_count`, `go_term_count`, `pdb_structure_count`, `keyword_count`, `subcellular_location_count`, `binding_site_count`, `active_site_count`, `variant_count`, `disulfide_count`, `modified_residue_count`, `is_enzyme`, `ec_class`, `has_structure`, `has_signal_peptide`, `has_transit_peptide`, `has_disease_association`, `is_transmembrane`, `is_secreted`, `is_membrane_protein`, `is_nuclear`, `is_mitochondrial`, `has_caution`, `mass_per_residue_da`, `length_band`, `is_reviewed`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Enzyme vs non-enzyme** \u2014 compare length, mass and domain counts between EC-annotated and other proteins.\n2. **Structure coverage** \u2014 which protein families lack experimental structures?\n3. **Localisation prediction** \u2014 build a classifier from sequence-derived features (length, mass, keywords).\n4. **Disease proteome** \u2014 enrichment of GO terms and keywords among disease-associated proteins.\n5. **Domain architecture** \u2014 parse the domain features to find recurrent multi-domain combinations.\n6. **Sequence composition** \u2014 amino-acid frequencies by localisation class.\n7. **Annotation quality** \u2014 protein entries with many variants and caution notes.\n8. **Network analysis** \u2014 build a protein-protein graph from the subunit annotations.\n9. **Text mining** \u2014 the function and disease fields are a rich corpus for biomedical NLP.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `human_proteins.csv` | 20,429 proteins x 60 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`biology`, `proteomics`, `uniprot`, `bioinformatics`, `proteins`, `genomics`, `health`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **UniProtKB REST API**, stream endpoint\n  `https://rest.uniprot.org/uniprotkb/stream?query=reviewed:true+AND+organism_id:9606`.\n- **Scope:** all reviewed (Swiss-Prot) entries for Homo sapiens, 33 returned fields including the\n  complete sequence.\n- **Processing:** TSV flattened to one row per protein; counts, flags, enzyme class and length bands\n  derived; long free-text fields truncated only where noted.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Every eight weeks.** UniProt releases a new version on a regular cadence.\n\n## \u26a0\ufe0f Caveats\n\n- Only reviewed entries are included; unreviewed TrEMBL records (the majority) are excluded.\n- Annotation depth varies enormously between well-studied and newly added proteins.\n- Function and disease text is truncated at 2,000 / 1,500 characters.\n- Feature fields are semicolon-joined strings; their internal structure is positional and not normalised.\n- Isoforms are not separate rows \u2014 one row per canonical entry.\n- Mass is the computed mass of the canonical sequence, not a measured value.\n\n## \ud83d\udcdc Licence\n\nUniProt data is licensed CC BY 4.0 \u2014 cite UniProt and the source databases.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `accession` | `string` | UniProtKB primary accession. |\n| 2 | `entry_name` | `string` | UniProt entry name (e.g. MOTSC_HUMAN). |\n| 3 | `protein_name` | `string` | Recommended protein name, with synonyms. |\n| 4 | `gene_names` | `string` | Gene name(s) mapped to the entry. |\n| 5 | `organism` | `string` | Source organism (Homo sapiens). |\n| 6 | `length` | `number` | Protein sequence length in amino acids. |\n| 7 | `mass_da` | `number` | Computed molecular mass in daltons. |\n| 8 | `sequence_version` | `number` | UniProt sequence version. |\n| 9 | `ec_number` | `string` | Enzyme Commission number(s), where assigned. |\n| 10 | `function` | `string` | Curated function annotation (truncated to 2,000 characters). |\n| 11 | `domains` | `string` | Domain boundaries from the feature table. |\n| 12 | `go_ids` | `string` | Gene Ontology term IDs (semicolon-joined). |\n| 13 | `keywords` | `number` | UniProt keyword annotations (semicolon-joined). |\n| 14 | `subcellular_location` | `string` | Curated subcellular location text. |\n| 15 | `involvement_in_disease` | `string` | Disease association text (truncated to 1,500 characters). |\n| 16 | `pdb_ids` | `string` | PDB structure identifiers. |\n| 17 | `sequence_similarity` | `string` | Sequence similarity family annotation. |\n| 18 | `binding_sites` | `string` | Binding-site features. |\n| 19 | `active_sites` | `string` | Active-site features. |\n| 20 | `sequence` | `string` | Full amino-acid sequence. |\n| 21 | `catalytic_activity` | `number` | Catalytic activity annotation. |\n| 22 | `cofactor` | `number` | Cofactor annotation. |\n| 23 | `subunit` | `number` | Subunit / complex composition. |\n| 24 | `pathway` | `number` | Pathway annotation. |\n| 25 | `pharmaceutical_use` | `number` | Pharmaceutical use annotation. |\n| 26 | `tissue_specificity` | `number` | Tissue expression specificity. |\n| 27 | `signal_peptide` | `number` | Signal peptide feature. |\n| 28 | `transit_peptide` | `number` | Transit peptide feature. |\n| 29 | `chains` | `number` | Chain features. |\n| 30 | `disulfide_bonds` | `number` | Disulfide bond features. |\n| 31 | `variants` | `number` | Natural variant features. |\n| 32 | `modified_residues` | `number` | Post-translational modification features. |\n| 33 | `caution` | `number` | Caution / annotation warning text. |\n| 34 | `gene_count` | `number` | Number of gene names listed. |\n| 35 | `function_length` | `number` | Characters in the function annotation. |\n| 36 | `domain_count` | `number` | Number of domain features. |\n| 37 | `go_term_count` | `number` | Number of GO terms. |\n| 38 | `pdb_structure_count` | `number` | Number of PDB structures. |\n| 39 | `keyword_count` | `number` | Number of UniProt keywords. |\n| 40 | `subcellular_location_count` | `number` | Number of subcellular location terms. |\n| 41 | `binding_site_count` | `number` | Number of binding-site features. |\n| 42 | `active_site_count` | `number` | Number of active-site features. |\n| 43 | `variant_count` | `number` | Number of natural variants. |\n| 44 | `disulfide_count` | `number` | Number of disulfide bonds. |\n| 45 | `modified_residue_count` | `number` | Number of modified residues. |\n| 46 | `is_enzyme` | `boolean` | true when an EC number is assigned. |\n| 47 | `ec_class` | `number` | First digit of the EC number (enzyme class). |\n| 48 | `has_structure` | `boolean` | true when at least one PDB structure exists. |\n| 49 | `has_signal_peptide` | `boolean` | true when a signal peptide is annotated. |\n| 50 | `has_transit_peptide` | `boolean` | true when a transit peptide is annotated. |\n| 51 | `has_disease_association` | `boolean` | true when a disease association is annotated. |\n| 52 | `is_transmembrane` | `boolean` | true when the keyword Transmembrane is present. |\n| 53 | `is_secreted` | `boolean` | true when the location mentions secreted. |\n| 54 | `is_membrane_protein` | `boolean` | true when the location mentions membrane. |\n| 55 | `is_nuclear` | `boolean` | true when the location mentions nucleus. |\n| 56 | `is_mitochondrial` | `boolean` | true when the location mentions mitochondria. |\n| 57 | `has_caution` | `boolean` | true when a caution annotation exists. |\n| 58 | `mass_per_residue_da` | `number` | Mass divided by sequence length. |\n| 59 | `length_band` | `string` | Protein length band (aa). |\n| 60 | `is_reviewed` | `boolean` | true \u2014 the query restricts to reviewed Swiss-Prot entries. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "human_proteins.csv",
+      "description": "Primary dataset file containing 20,429 records across 60 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "accession",
+            "type": "string",
+            "description": "UniProtKB primary accession."
+          },
+          {
+            "name": "entry_name",
+            "type": "string",
+            "description": "UniProt entry name (e.g. MOTSC_HUMAN)."
+          },
+          {
+            "name": "protein_name",
+            "type": "string",
+            "description": "Recommended protein name, with synonyms."
+          },
+          {
+            "name": "gene_names",
+            "type": "string",
+            "description": "Gene name(s) mapped to the entry."
+          },
+          {
+            "name": "organism",
+            "type": "string",
+            "description": "Source organism (Homo sapiens)."
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "description": "Protein sequence length in amino acids."
+          },
+          {
+            "name": "mass_da",
+            "type": "number",
+            "description": "Computed molecular mass in daltons."
+          },
+          {
+            "name": "sequence_version",
+            "type": "number",
+            "description": "UniProt sequence version."
+          },
+          {
+            "name": "ec_number",
+            "type": "string",
+            "description": "Enzyme Commission number(s), where assigned."
+          },
+          {
+            "name": "function",
+            "type": "string",
+            "description": "Curated function annotation (truncated to 2,000 characters)."
+          },
+          {
+            "name": "domains",
+            "type": "string",
+            "description": "Domain boundaries from the feature table."
+          },
+          {
+            "name": "go_ids",
+            "type": "string",
+            "description": "Gene Ontology term IDs (semicolon-joined)."
+          },
+          {
+            "name": "keywords",
+            "type": "number",
+            "description": "UniProt keyword annotations (semicolon-joined)."
+          },
+          {
+            "name": "subcellular_location",
+            "type": "string",
+            "description": "Curated subcellular location text."
+          },
+          {
+            "name": "involvement_in_disease",
+            "type": "string",
+            "description": "Disease association text (truncated to 1,500 characters)."
+          },
+          {
+            "name": "pdb_ids",
+            "type": "string",
+            "description": "PDB structure identifiers."
+          },
+          {
+            "name": "sequence_similarity",
+            "type": "string",
+            "description": "Sequence similarity family annotation."
+          },
+          {
+            "name": "binding_sites",
+            "type": "string",
+            "description": "Binding-site features."
+          },
+          {
+            "name": "active_sites",
+            "type": "string",
+            "description": "Active-site features."
+          },
+          {
+            "name": "sequence",
+            "type": "string",
+            "description": "Full amino-acid sequence."
+          },
+          {
+            "name": "catalytic_activity",
+            "type": "number",
+            "description": "Catalytic activity annotation."
+          },
+          {
+            "name": "cofactor",
+            "type": "number",
+            "description": "Cofactor annotation."
+          },
+          {
+            "name": "subunit",
+            "type": "number",
+            "description": "Subunit / complex composition."
+          },
+          {
+            "name": "pathway",
+            "type": "number",
+            "description": "Pathway annotation."
+          },
+          {
+            "name": "pharmaceutical_use",
+            "type": "number",
+            "description": "Pharmaceutical use annotation."
+          },
+          {
+            "name": "tissue_specificity",
+            "type": "number",
+            "description": "Tissue expression specificity."
+          },
+          {
+            "name": "signal_peptide",
+            "type": "number",
+            "description": "Signal peptide feature."
+          },
+          {
+            "name": "transit_peptide",
+            "type": "number",
+            "description": "Transit peptide feature."
+          },
+          {
+            "name": "chains",
+            "type": "number",
+            "description": "Chain features."
+          },
+          {
+            "name": "disulfide_bonds",
+            "type": "number",
+            "description": "Disulfide bond features."
+          },
+          {
+            "name": "variants",
+            "type": "number",
+            "description": "Natural variant features."
+          },
+          {
+            "name": "modified_residues",
+            "type": "number",
+            "description": "Post-translational modification features."
+          },
+          {
+            "name": "caution",
+            "type": "number",
+            "description": "Caution / annotation warning text."
+          },
+          {
+            "name": "gene_count",
+            "type": "number",
+            "description": "Number of gene names listed."
+          },
+          {
+            "name": "function_length",
+            "type": "number",
+            "description": "Characters in the function annotation."
+          },
+          {
+            "name": "domain_count",
+            "type": "number",
+            "description": "Number of domain features."
+          },
+          {
+            "name": "go_term_count",
+            "type": "number",
+            "description": "Number of GO terms."
+          },
+          {
+            "name": "pdb_structure_count",
+            "type": "number",
+            "description": "Number of PDB structures."
+          },
+          {
+            "name": "keyword_count",
+            "type": "number",
+            "description": "Number of UniProt keywords."
+          },
+          {
+            "name": "subcellular_location_count",
+            "type": "number",
+            "description": "Number of subcellular location terms."
+          },
+          {
+            "name": "binding_site_count",
+            "type": "number",
+            "description": "Number of binding-site features."
+          },
+          {
+            "name": "active_site_count",
+            "type": "number",
+            "description": "Number of active-site features."
+          },
+          {
+            "name": "variant_count",
+            "type": "number",
+            "description": "Number of natural variants."
+          },
+          {
+            "name": "disulfide_count",
+            "type": "number",
+            "description": "Number of disulfide bonds."
+          },
+          {
+            "name": "modified_residue_count",
+            "type": "number",
+            "description": "Number of modified residues."
+          },
+          {
+            "name": "is_enzyme",
+            "type": "boolean",
+            "description": "true when an EC number is assigned."
+          },
+          {
+            "name": "ec_class",
+            "type": "number",
+            "description": "First digit of the EC number (enzyme class)."
+          },
+          {
+            "name": "has_structure",
+            "type": "boolean",
+            "description": "true when at least one PDB structure exists."
+          },
+          {
+            "name": "has_signal_peptide",
+            "type": "boolean",
+            "description": "true when a signal peptide is annotated."
+          },
+          {
+            "name": "has_transit_peptide",
+            "type": "boolean",
+            "description": "true when a transit peptide is annotated."
+          },
+          {
+            "name": "has_disease_association",
+            "type": "boolean",
+            "description": "true when a disease association is annotated."
+          },
+          {
+            "name": "is_transmembrane",
+            "type": "boolean",
+            "description": "true when the keyword Transmembrane is present."
+          },
+          {
+            "name": "is_secreted",
+            "type": "boolean",
+            "description": "true when the location mentions secreted."
+          },
+          {
+            "name": "is_membrane_protein",
+            "type": "boolean",
+            "description": "true when the location mentions membrane."
+          },
+          {
+            "name": "is_nuclear",
+            "type": "boolean",
+            "description": "true when the location mentions nucleus."
+          },
+          {
+            "name": "is_mitochondrial",
+            "type": "boolean",
+            "description": "true when the location mentions mitochondria."
+          },
+          {
+            "name": "has_caution",
+            "type": "boolean",
+            "description": "true when a caution annotation exists."
+          },
+          {
+            "name": "mass_per_residue_da",
+            "type": "number",
+            "description": "Mass divided by sequence length."
+          },
+          {
+            "name": "length_band",
+            "type": "string",
+            "description": "Protein length band (aa)."
+          },
+          {
+            "name": "is_reviewed",
+            "type": "boolean",
+            "description": "true \u2014 the query restricts to reviewed Swiss-Prot entries."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

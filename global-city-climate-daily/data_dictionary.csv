@@ -1,0 +1,41 @@
+column,data_type,description
+city,string,City name.
+country,string,Country name.
+iso2,string,ISO 3166-1 alpha-2 country code.
+latitude,float,City latitude sent to NASA POWER.
+longitude,float,City longitude sent to NASA POWER.
+elevation_m,float,Grid-cell elevation in metres.
+date,date,Calendar date (UTC-based solar day).
+year,integer,Year.
+month,integer,Month (1-12).
+day,integer,Day of month.
+day_of_year,integer,Ordinal day of the year.
+season,category,"Meteorological season, hemisphere aware."
+weekday,string,Day of week.
+T2M,float,Mean air temperature at 2 m (°C).
+T2M_MAX,float,Maximum air temperature at 2 m (°C).
+T2M_MIN,float,Minimum air temperature at 2 m (°C).
+T2MDEW,float,Dew-point temperature at 2 m (°C).
+T2MWET,float,Wet-bulb temperature at 2 m (°C).
+T2M_RANGE,float,Temperature range at 2 m (°C).
+TS,float,Earth skin temperature (°C).
+RH2M,float,Relative humidity at 2 m (%).
+QV2M,float,Specific humidity at 2 m (g/kg).
+PRECTOTCORR,float,Bias-corrected total precipitation (mm/day).
+EVLAND,float,Evaporation over land (mm/day).
+GWETROOT,float,"Root-zone soil wetness (fraction, 0-1)."
+GWETTOP,float,"Surface soil wetness (fraction, 0-1)."
+WS2M,float,Wind speed at 2 m (m/s).
+WS10M,float,Wind speed at 10 m (m/s).
+WD2M,float,Wind direction at 2 m (meteorological degrees).
+PS,float,Surface pressure (kPa).
+CLOUD_AMT,float,Cloud amount (%).
+ALLSKY_SFC_SW_DWN,float,All-sky surface shortwave downward irradiance (MJ/m²/day).
+ALLSKY_KT,float,"All-sky clearness index (dimensionless, 0-1)."
+temperature_range_c,float,T2M_MAX - T2M_MIN (°C).
+rain_day,boolean,True if precipitation exceeded 0.1 mm.
+extreme_heat,boolean,True if the daily maximum reached 35 °C.
+extreme_cold,boolean,True if the daily minimum dropped to -10 °C or below.
+wind_class,category,"Wind band based on WS10M: calm, light, moderate, fresh, strong."
+sunshine_class,category,"Clearness band from ALLSKY_KT: cloudy, mixed, sunny."
+aridity_index,float,"EVLAND / PRECTOTCORR; high values indicate dry, evaporative conditions."

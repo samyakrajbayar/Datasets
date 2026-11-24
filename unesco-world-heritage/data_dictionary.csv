@@ -1,0 +1,47 @@
+column,data_type,description
+id_number,number,UNESCO site id.
+unique_number,number,Internal unique number.
+site,string,Site name.
+dossier,string,Dossier reference.
+http_url,string,UNESCO page URL.
+image_url,string,Representative image URL.
+iso_code,string,ISO country codes of the states parties.
+iso_count,number,Number of countries.
+states,string,"States parties, comma-separated."
+state_count,number,Number of states parties.
+regions,string,UNESCO regions.
+region_count,number,UNESCO World Heritage field or derived attribute.
+category,string,"Cultural, Natural or Mixed."
+criteria_txt,string,Criteria as published (e.g. (ii)(iv)).
+criteria_count,number,Number of criteria met.
+criteria,string,"Roman-numeral criteria, semicolon-separated."
+date_inscribed,number,Year of inscription.
+inscription_year,number,Inscription year as an integer.
+age_years,number,Years since inscription.
+extension,number,Extension flag from the source.
+extension_count,number,Number of later boundary extensions.
+secondary_dates,string,Years of extension/modification.
+danger,number,Danger-list flag.
+transnational,number,Transnational property flag.
+location,string,Location description.
+justification,string,"Justification text (cleaned, truncated)."
+short_description,string,"Description (HTML stripped, truncated)."
+description_length,number,Characters in the description.
+latitude,number,Latitude parsed from the geolocation string.
+longitude,number,Longitude parsed from the geolocation string.
+has_geolocation,boolean,UNESCO World Heritage field or derived attribute.
+is_in_danger,boolean,true when on the List of World Heritage in Danger.
+is_transnational,boolean,true for transnational properties.
+is_cultural,boolean,true for cultural sites.
+is_natural,boolean,true for natural sites.
+is_mixed,boolean,true for mixed sites.
+has_criteria,boolean,UNESCO World Heritage field or derived attribute.
+has_extension,boolean,true when the property was extended.
+has_image,boolean,UNESCO World Heritage field or derived attribute.
+inscription_decade,string,Decade of inscription.
+name_length,number,UNESCO World Heritage field or derived attribute.
+region_africa,boolean,true for African sites.
+region_asia,boolean,true for Asian sites.
+region_europe,boolean,true for European/North American sites.
+region_americas,boolean,true for Latin American/Caribbean sites.
+region_arab,boolean,true for Arab States sites.

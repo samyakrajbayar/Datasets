@@ -1,0 +1,32 @@
+{
+  "title": "USGS Water-Monitoring Site Inventory",
+  "id": "samyakrajbayar/usgs-water-monitoring-sites",
+  "subtitle": "41,000 stream gauges, wells, lakes and springs with geography, hydrologic uni...",
+  "description": "### 41,000 USGS water-monitoring sites\n\nThe USGS National Water Information System tracks stream gauges, wells, lakes and springs across the\nUnited States and its territories. This dataset pages the modern OGC API into a table of **41,000\nsites** with **57 parameters**.\n\n- **Identity** \u2014 site number, name, agency, site type and status.\n- **Geography** \u2014 state, county, country, HUC hydrologic units, latitude, longitude, altitude and\n  time zone.\n- **Site characteristics** \u2014 drainage area, well depth and construction fields where reported.\n- **Derived** \u2014 stream/groundwater/lake/spring/estuary flags, coordinates availability, altitude in\n  feet, HUC region and subregion, hemisphere and drainage area in square miles.\n\n**5,455 sites are streams or rivers** and **33,628 are wells**, spread over **2\nstates and territories** \u2014 the reference inventory for hydrology, drought and water-quality work.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "environment",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "usgs_sites.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

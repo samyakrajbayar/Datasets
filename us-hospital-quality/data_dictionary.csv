@@ -1,0 +1,54 @@
+column,data_type,description
+facility_id,string,CMS certification number.
+facility_name,string,Hospital name.
+address,string,Street address.
+citytown,string,City or town.
+state,string,State.
+zip_code,number,ZIP code.
+countyparish,string,County or parish.
+telephone_number,string,Phone number.
+hospital_type,string,CMS hospital type.
+hospital_ownership,string,Ownership type.
+emergency_services,string,Whether emergency services are provided.
+meets_criteria_for_birthing_friendly_designation,string,CMS Hospital Compare field or derived attribute.
+hospital_overall_rating,string,Overall star rating (1-5).
+hospital_overall_rating_footnote,string,CMS Hospital Compare field or derived attribute.
+mort_group_measure_count,string,Mortality measures in the group.
+count_of_facility_mort_measures,string,Mortality measures reported by the hospital.
+count_of_mort_measures_better,string,Measures better than the national rate.
+count_of_mort_measures_no_different,string,Measures no different from the national rate.
+count_of_mort_measures_worse,string,Measures worse than the national rate.
+mort_group_footnote,number,CMS Hospital Compare field or derived attribute.
+safety_group_measure_count,string,CMS Hospital Compare field or derived attribute.
+count_of_facility_safety_measures,string,CMS Hospital Compare field or derived attribute.
+count_of_safety_measures_better,string,CMS Hospital Compare field or derived attribute.
+count_of_safety_measures_no_different,string,CMS Hospital Compare field or derived attribute.
+count_of_safety_measures_worse,string,CMS Hospital Compare field or derived attribute.
+safety_group_footnote,number,CMS Hospital Compare field or derived attribute.
+readm_group_measure_count,string,CMS Hospital Compare field or derived attribute.
+count_of_facility_readm_measures,string,CMS Hospital Compare field or derived attribute.
+count_of_readm_measures_better,string,CMS Hospital Compare field or derived attribute.
+count_of_readm_measures_no_different,string,CMS Hospital Compare field or derived attribute.
+count_of_readm_measures_worse,string,CMS Hospital Compare field or derived attribute.
+readm_group_footnote,number,CMS Hospital Compare field or derived attribute.
+pt_exp_group_measure_count,string,CMS Hospital Compare field or derived attribute.
+count_of_facility_pt_exp_measures,string,CMS Hospital Compare field or derived attribute.
+pt_exp_group_footnote,number,CMS Hospital Compare field or derived attribute.
+te_group_measure_count,string,CMS Hospital Compare field or derived attribute.
+count_of_facility_te_measures,string,CMS Hospital Compare field or derived attribute.
+te_group_footnote,number,CMS Hospital Compare field or derived attribute.
+ownership_group,string,Derived ownership group.
+is_for_profit,boolean,true for for-profit hospitals.
+is_nonprofit,boolean,true for non-profit hospitals.
+is_government,boolean,true for government hospitals.
+is_acute_care,boolean,true for acute-care hospitals.
+has_emergency,boolean,true when emergency services are offered.
+has_birthing,boolean,true when the hospital meets birthing-friendly criteria.
+rating_band,number,Star-rating band.
+measure_coverage,number,Reported mortality measures divided by the comparable measures.
+better_ratio,number,Share of comparable measures better than the national rate.
+worse_ratio,number,Share worse than the national rate.
+net_measure_score,number,Better minus worse measure counts.
+is_high_rated,boolean,true for 4-5 star hospitals.
+is_unrated,boolean,true when no overall rating exists.
+state_hospital_share,number,This hospital's share of hospitals in its state.

@@ -1,0 +1,43 @@
+column,data_type,description
+season,number,Championship season.
+round,number,Round number within the season.
+race_name,string,Grand Prix name.
+race_date,date,Race date.
+race_time,string,"Scheduled start time (UTC), where published."
+circuit_id,string,Circuit identifier.
+circuit_name,string,Circuit name.
+locality,string,Circuit locality.
+country,string,Circuit country.
+latitude,number,Circuit latitude.
+longitude,number,Circuit longitude.
+driver_id,string,Driver identifier.
+driver_code,string,Three-letter driver code.
+permanent_number,number,Permanent driver number (modern era).
+first_name,string,Driver first name.
+last_name,string,Driver last name.
+driver_nationality,string,Driver nationality.
+constructor_id,string,Constructor identifier.
+constructor_name,string,Constructor name.
+constructor_nationality,string,Constructor nationality.
+grid,number,Starting grid position (0 = pit lane).
+position,number,"Finishing position, where classified."
+position_text,string,"Finishing position as text (R = retired, D = disqualified, ...)."
+position_order,number,Official classification order.
+points,number,Championship points scored.
+laps,number,Laps completed.
+status,string,"Finish status (Finished, Accident, Engine, ...)."
+finish_time_millis,number,Total race time in milliseconds.
+finish_time,string,Total race time as text.
+fastest_lap_rank,number,Rank of the driver's fastest lap.
+fastest_lap_time,string,Driver's fastest lap time.
+fastest_lap_speed_kph,number,Driver's fastest lap average speed.
+is_win,boolean,true for a race win.
+is_podium,boolean,true for a top-three finish.
+is_points_finish,boolean,true when points were scored.
+is_finished,boolean,true when the car was classified as finished.
+is_pole,boolean,true when starting from first on the grid.
+grid_delta,number,Grid position minus finishing position (positive = gained places).
+points_per_lap,number,Points divided by laps completed.
+position_band,string,Finishing-position band.
+driver_age_at_race,number,"Driver age at the race date, where birth date is known."
+decade,number,Season decade.

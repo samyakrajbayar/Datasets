@@ -1,0 +1,40 @@
+column,data_type,description
+inspection_id,number,Inspection record id.
+dba_name,string,Doing-business-as name.
+aka_name,string,Also-known-as name.
+license_number,number,City licence number.
+facility_type,string,Facility type as recorded.
+facility_group,string,Coarse facility group derived from the type.
+risk,string,"Risk classification (1 high, 2 medium, 3 low)."
+risk_rank,number,Numeric risk rank.
+address,string,Street address.
+city,string,Chicago inspection field or derived attribute.
+state,string,Chicago inspection field or derived attribute.
+zip,number,Chicago inspection field or derived attribute.
+latitude,number,Chicago inspection field or derived attribute.
+longitude,number,Chicago inspection field or derived attribute.
+inspection_date,datetime,Inspection date.
+inspection_type,string,"Inspection type (canvass, complaint, licence, ...)."
+results,string,"Outcome text (Pass, Fail, Pass w/ Conditions, ...)."
+violations,string,"Violation text (truncated to 2,000 characters)."
+violation_count,number,Number of numbered violation items.
+violation_text_length,number,Characters of violation text.
+inspection_year,number,Year of inspection.
+inspection_month,number,Month of inspection.
+inspection_quarter,number,Quarter of inspection.
+inspection_weekday,string,Weekday of inspection.
+is_pass,boolean,true when the result starts with Pass.
+is_fail,boolean,true when the establishment failed.
+is_conditional,boolean,true for pass-with-conditions results.
+is_out_of_business,boolean,Chicago inspection field or derived attribute.
+is_no_entry,boolean,Chicago inspection field or derived attribute.
+is_complaint,boolean,true for complaint-driven inspections.
+is_canvass,boolean,true for routine canvass inspections.
+is_reinspection,boolean,true for re-inspections.
+is_license_inspection,boolean,Chicago inspection field or derived attribute.
+has_location,boolean,true when coordinates are present.
+has_violations,boolean,true when violations were recorded.
+violation_band,string,Violation-count band.
+name_length,number,Chicago inspection field or derived attribute.
+is_chain_name,boolean,true when an AKA name exists.
+geo_block,string,Chicago inspection field or derived attribute.

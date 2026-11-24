@@ -1,0 +1,51 @@
+column,data_type,description
+recall_number,string,Unique recall number.
+event_id,number,FDA event identifier grouping related recalls.
+recalling_firm,string,Firm initiating the recall.
+city,string,Firm city.
+state,string,Firm state.
+country,string,Firm country.
+postal_code,string,openFDA enforcement field or derived attribute.
+address_1,string,openFDA enforcement field or derived attribute.
+address_2,string,openFDA enforcement field or derived attribute.
+product_type,string,"FDA product centre (Food, Drug, Device)."
+classification,string,Class I/II/III severity.
+class_rank,number,Numeric class rank (I=3).
+status,string,"Recall status (Ongoing, Completed, Terminated)."
+voluntary_mandated,string,Whether the recall was voluntary or mandated.
+initial_firm_notification,string,How the firm notified customers.
+distribution_pattern,string,Distribution description (truncated).
+product_description,string,Product description (truncated).
+product_quantity,string,Quantity recalled.
+reason_for_recall,string,"Reason text (truncated to 1,000 characters)."
+code_info,string,Lot/code information (truncated).
+more_code_info,string,openFDA enforcement field or derived attribute.
+recall_initiation_date,number,Date the recall started.
+center_classification_date,number,Date FDA classified the recall.
+report_date,number,Date published in the enforcement report.
+termination_date,number,Date the recall was terminated.
+initiation_year,number,Year the recall started.
+initiation_month,number,Month the recall started.
+classification_lag_days,number,Days from initiation to classification.
+report_lag_days,number,Days from initiation to publication.
+recall_duration_days,number,Days from initiation to termination.
+is_class_i,boolean,true for Class I recalls.
+is_class_ii,boolean,true for Class II recalls.
+is_class_iii,boolean,true for Class III recalls.
+is_ongoing,boolean,true while the recall is ongoing.
+is_completed,boolean,true when completed.
+is_terminated,boolean,true when terminated.
+is_voluntary,boolean,true for voluntary recalls.
+has_termination,boolean,true when a termination date exists.
+has_openfda,boolean,true when openFDA product data is attached.
+openfda_key_count,number,openFDA enforcement field or derived attribute.
+reason_length,number,Characters in the reason.
+description_length,number,Characters in the product description.
+distribution_length,number,openFDA enforcement field or derived attribute.
+mentions_undeclared_allergen,boolean,true when undeclared allergens are the reason.
+mentions_listeria,boolean,true when Listeria is mentioned.
+mentions_salmonella,boolean,true when Salmonella is mentioned.
+mentions_foreign_material,boolean,true when foreign material is mentioned.
+mentions_labeling,boolean,true when labelling is mentioned.
+is_food,boolean,true for food recalls.
+is_drug,boolean,true for drug recalls.

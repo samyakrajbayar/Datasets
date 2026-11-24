@@ -1,0 +1,31 @@
+{
+  "title": "FDA Food & Supplement Recalls",
+  "id": "samyakrajbayar/fda-food-recalls",
+  "subtitle": "25,000 food recalls with classifications, firms, distribution, dates and haza...",
+  "description": "### 25,000 FDA food and supplement recalls\n\nopenFDA's enforcement endpoint publishes every food, beverage and dietary-supplement recall that\nappears in FDA's weekly Enforcement Report. This dataset contains **25,000 recalls** and\n**50 parameters**.\n\n- **Recall** \u2014 recall number, event id, classification, status, voluntary/mandated and notification\n  method.\n- **Firm** \u2014 name, address, city, state, country and postal code.\n- **Product** \u2014 type, description, quantity, code/lot information and distribution pattern.\n- **Dates and lags** \u2014 initiation, classification, report and termination dates plus classification,\n  reporting and total duration in days.\n- **Derived** \u2014 class ranks and flags, ongoing/completed/terminated flags, openFDA availability,\n  text lengths and reason keywords (undeclared allergen, Listeria, Salmonella, foreign material,\n  labelling).\n\n**10,983 recalls are Class I** (serious harm), **5,407 cite undeclared allergens** and\n**6,276 mention Listeria** \u2014 a direct measure of food-safety risk in the U.S. supply chain.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "food_recalls.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

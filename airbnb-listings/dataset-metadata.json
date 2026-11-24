@@ -1,0 +1,32 @@
+{
+  "title": "Airbnb Listings - Eight World Cities",
+  "id": "samyakrajbayar/airbnb-listings",
+  "subtitle": "288,431 short-term rental listings with prices, hosts, reviews, occupancy est...",
+  "description": "### 288,431 short-term rental listings in 8 cities\n\nInside Airbnb publishes scraped Airbnb listings for cities worldwide. This dataset collects the\nlatest snapshot for **8 city feeds** (**8 cities**) and keeps **76 parameters**\nper listing.\n\n- **Listing** \u2014 id, URL, title, property type, room type, guests, bedrooms, beds, bathrooms and\n  amenities.\n- **Host** \u2014 id, name, join date, response time/rate, acceptance rate, superhost status, listing\n  counts, verification methods and identity checks.\n- **Location** \u2014 neighbourhood, cleansed neighbourhood and neighbourhood group, latitude and\n  longitude.\n- **Commercial** \u2014 price, minimum/maximum nights, availability windows, review counts and scores,\n  licence, instant booking, occupancy and revenue estimates.\n- **Derived** \u2014 numeric price, amenity count, room-type flags, superhost/instant/licence flags,\n  mean review score, per-guest ratios, price/occupancy/revenue bands and availability ratio.\n\n**210,155 listings are entire homes** and **112,740 display a licence number** \u2014 the core\nvariables for housing-market, tourism and regulation research.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "airbnb_listings.csv.zip",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

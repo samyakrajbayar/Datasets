@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/art-institute-of-chicago-collect-starter-notebook",
+  "title": "Art Institute of Chicago Collect Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/art-institute-collection"
+  ]
+}

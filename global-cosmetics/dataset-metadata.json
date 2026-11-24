@@ -1,0 +1,316 @@
+{
+  "title": "Global Cosmetics and Beauty Products",
+  "id": "samyakrajbayar/global-cosmetics",
+  "subtitle": "100,000 cosmetic products with ingredients, brand and category",
+  "description": "# Global Cosmetics & Personal Care\n\n**Subtitle:** 3,913 beauty products with ingredients, brands, packaging & Eco-Scores\n\n**Tags:** `tabular`, `health`, `consumer`\n\n**Dataset File:** `cosmetics.csv` (4,498 rows, 56 columns, 2.8 MB)\n\n**Provenance & Source:** Open Beauty Facts Database (openbeautyfacts.org)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 10,000 cosmetics and personal-care products\n\nOpen Beauty Facts is the cosmetics sibling of Open Food Facts: a crowd-sourced database of\ningredients and labels. This dataset samples **3,913 products** across 20 categories with\n**56 parameters** each.\n\n- **Identity** \u2014 barcode, name, generic name, brands, categories and category group, quantity and\n  product weight.\n- **Market** \u2014 countries and country tags, stores, origins, manufacturing places.\n- **Packaging and labels** \u2014 packaging tags, certifications, allergens, additives, ingredient text and\n  counts.\n- **Scores** \u2014 Eco-Score grade/score and NOVA group.\n- **Derived** \u2014 brand/category/country/label/allergen/additive/origin counts, vegan/organic/natural/\n  hypoallergenic/paraben-free/sulfate-free flags, image and score availability, name and ingredient\n  lengths.\n\n**1,411 distinct brands**, **137 organic-labelled products** and **303 vegan-labelled\nproducts** are included. The ingredient lists and claims support formulation, greenwashing and\nconsumer-label research.\n\n## \ud83e\uddfe Columns (56)\n\n`code`, `product_name`, `generic_name`, `brands`, `brand_count`, `categories`, `categories_tags`, `category_count`, `category_group`, `countries`, `countries_tags`, `country_count`, `quantity`, `product_quantity_g`, `packaging`, `packaging_tags`, `packaging_count`, `labels`, `labels_tags`, `label_count`, `allergens`, `allergens_tags`, `allergen_count`, `additives_tags`, `additive_count`, `ingredients_text`, `ingredient_count`, `image_url`, `image_front_url`, `ecoscore_grade`, `ecoscore_score`, `nova_group`, `manufacturing_places`, `stores`, `origins`, `origins_tags`, `origin_count`, `lang`, `conservation_conditions`, `warning`, `period_after_opening`, `emb_codes`, `link`, `obsolete`, `is_vegan`, `is_organic`, `is_natural`, `is_hypoallergenic`, `is_paraben_free`, `is_sulfate_free`, `has_ecoscore`, `has_nova`, `is_ultra_processed`, `has_image`, `name_length`, `ingredients_text_length`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Ingredient analysis** \u2014 most common ingredients by category.\n2. **Green claims** \u2014 organic/natural/vegan claims vs Eco-Score.\n3. **Category comparison** \u2014 ingredient complexity in hair vs skin vs makeup.\n4. **Brand landscape** \u2014 brand concentration and product counts.\n5. **Packaging** \u2014 packaging types by category and country.\n6. **Allergens** \u2014 allergen prevalence in cosmetics.\n7. **Label text mining** \u2014 claims and warnings across categories.\n8. **Country differences** \u2014 formulation and labelling by market.\n9. **Image dataset** \u2014 `image_front_url` supports packaging-image classification.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `cosmetics.csv` | 3,913 products x 56 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`cosmetics`, `beauty`, `ingredients`, `open-beauty-facts`, `labels`, `consumer`, `health`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Open Beauty Facts** search API v2\n  (`https://world.openbeautyfacts.org/api/v2/search`), category queries.\n- **Sampling:** the first five pages of 100 products in each of 20 cosmetics categories, deduplicated\n  by barcode \u2014 a category-stratified sample.\n- **Processing:** nested category/country/label/packaging/origin tag arrays flattened; counts, diet and\n  claim flags, category groups and text lengths derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous upstream; snapshot here.** Volunteers edit the database daily.\n\n## \u26a0\ufe0f Caveats\n\n- Crowd-sourced data: coverage and accuracy vary strongly by country and brand.\n- The category-stratified sample is not representative of the whole database.\n- Ingredient text is truncated at 1,000 characters.\n- Eco-Score and NOVA are present for only a minority of products.\n- `product_quantity_g` is parsed from free text and fails for non-gram units.\n- Some products are discontinued or duplicated in the database.\n- The main `.org` host was intermittently unavailable; a mirror was used where needed.\n\n## \ud83d\udcdc Licence\n\nOpen Database License (ODbL 1.0) \u2014 Open Beauty Facts contributors.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `code` | `number` | Product barcode (EAN/UPC). |\n| 2 | `product_name` | `string` | Product name. |\n| 3 | `generic_name` | `string` | Generic product name. |\n| 4 | `brands` | `string` | Brand(s), comma-separated. |\n| 5 | `brand_count` | `number` | Number of brands listed. |\n| 6 | `categories` | `string` | Category path. |\n| 7 | `categories_tags` | `string` | Normalised category tags. |\n| 8 | `category_count` | `number` | Number of category tags. |\n| 9 | `category_group` | `string` | Coarse product group. |\n| 10 | `countries` | `string` | Countries where the product is sold. |\n| 11 | `countries_tags` | `string` | Normalised country tags. |\n| 12 | `country_count` | `number` | Number of countries. |\n| 13 | `quantity` | `string` | Net quantity as printed. |\n| 14 | `product_quantity_g` | `number` | Net quantity parsed to grams where possible. |\n| 15 | `packaging` | `string` | Packaging description. |\n| 16 | `packaging_tags` | `string` | Normalised packaging tags. |\n| 17 | `packaging_count` | `number` | Number of packaging tags. |\n| 18 | `labels` | `string` | Labels and certifications. |\n| 19 | `labels_tags` | `string` | Normalised label tags. |\n| 20 | `label_count` | `number` | Number of label tags. |\n| 21 | `allergens` | `string` | Allergens as printed. |\n| 22 | `allergens_tags` | `string` | Normalised allergen tags. |\n| 23 | `allergen_count` | `number` | Number of allergens. |\n| 24 | `additives_tags` | `string` | Additive tags. |\n| 25 | `additive_count` | `number` | Number of additives. |\n| 26 | `ingredients_text` | `string` | Ingredient list (truncated to 1,000 characters). |\n| 27 | `ingredient_count` | `number` | Comma-separated ingredient count. |\n| 28 | `image_url` | `string` | Product image URL. |\n| 29 | `image_front_url` | `string` | Front-of-pack image URL. |\n| 30 | `ecoscore_grade` | `string` | Eco-Score letter, where computed. |\n| 31 | `ecoscore_score` | `number` | Eco-Score numeric score. |\n| 32 | `nova_group` | `number` | NOVA processing group. |\n| 33 | `manufacturing_places` | `string` | Manufacturing locations. |\n| 34 | `stores` | `string` | Retailers listed. |\n| 35 | `origins` | `string` | Country of origin as declared. |\n| 36 | `origins_tags` | `string` | Normalised origin tags. |\n| 37 | `origin_count` | `number` | Number of origin tags. |\n| 38 | `lang` | `string` | Record language. |\n| 39 | `conservation_conditions` | `string` | Storage conditions. |\n| 40 | `warning` | `number` | Safety warning text. |\n| 41 | `period_after_opening` | `number` | Period after opening. |\n| 42 | `emb_codes` | `string` | European manufacturer codes. |\n| 43 | `link` | `string` | Product page URL. |\n| 44 | `obsolete` | `boolean` | true when the product is marked obsolete. |\n| 45 | `is_vegan` | `boolean` | true when a vegan label is present. |\n| 46 | `is_organic` | `boolean` | true when an organic label is present. |\n| 47 | `is_natural` | `boolean` | true when a natural label is present. |\n| 48 | `is_hypoallergenic` | `boolean` | true when a hypoallergenic label is present. |\n| 49 | `is_paraben_free` | `boolean` | true when a paraben-free claim is present. |\n| 50 | `is_sulfate_free` | `boolean` | true when a sulfate-free claim is present. |\n| 51 | `has_ecoscore` | `boolean` | true when an Eco-Score exists. |\n| 52 | `has_nova` | `boolean` | true when a NOVA group exists. |\n| 53 | `is_ultra_processed` | `boolean` | true when NOVA group is 4. |\n| 54 | `has_image` | `boolean` | true when an image URL exists. |\n| 55 | `name_length` | `number` | Characters in the product name. |\n| 56 | `ingredients_text_length` | `number` | Characters in the stored ingredient list. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "cosmetics.csv",
+      "description": "Primary dataset file containing 4,498 records across 56 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "code",
+            "type": "number",
+            "description": "Product barcode (EAN/UPC)."
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "description": "Product name."
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "description": "Generic product name."
+          },
+          {
+            "name": "brands",
+            "type": "string",
+            "description": "Brand(s), comma-separated."
+          },
+          {
+            "name": "brand_count",
+            "type": "number",
+            "description": "Number of brands listed."
+          },
+          {
+            "name": "categories",
+            "type": "string",
+            "description": "Category path."
+          },
+          {
+            "name": "categories_tags",
+            "type": "string",
+            "description": "Normalised category tags."
+          },
+          {
+            "name": "category_count",
+            "type": "number",
+            "description": "Number of category tags."
+          },
+          {
+            "name": "category_group",
+            "type": "string",
+            "description": "Coarse product group."
+          },
+          {
+            "name": "countries",
+            "type": "string",
+            "description": "Countries where the product is sold."
+          },
+          {
+            "name": "countries_tags",
+            "type": "string",
+            "description": "Normalised country tags."
+          },
+          {
+            "name": "country_count",
+            "type": "number",
+            "description": "Number of countries."
+          },
+          {
+            "name": "quantity",
+            "type": "string",
+            "description": "Net quantity as printed."
+          },
+          {
+            "name": "product_quantity_g",
+            "type": "number",
+            "description": "Net quantity parsed to grams where possible."
+          },
+          {
+            "name": "packaging",
+            "type": "string",
+            "description": "Packaging description."
+          },
+          {
+            "name": "packaging_tags",
+            "type": "string",
+            "description": "Normalised packaging tags."
+          },
+          {
+            "name": "packaging_count",
+            "type": "number",
+            "description": "Number of packaging tags."
+          },
+          {
+            "name": "labels",
+            "type": "string",
+            "description": "Labels and certifications."
+          },
+          {
+            "name": "labels_tags",
+            "type": "string",
+            "description": "Normalised label tags."
+          },
+          {
+            "name": "label_count",
+            "type": "number",
+            "description": "Number of label tags."
+          },
+          {
+            "name": "allergens",
+            "type": "string",
+            "description": "Allergens as printed."
+          },
+          {
+            "name": "allergens_tags",
+            "type": "string",
+            "description": "Normalised allergen tags."
+          },
+          {
+            "name": "allergen_count",
+            "type": "number",
+            "description": "Number of allergens."
+          },
+          {
+            "name": "additives_tags",
+            "type": "string",
+            "description": "Additive tags."
+          },
+          {
+            "name": "additive_count",
+            "type": "number",
+            "description": "Number of additives."
+          },
+          {
+            "name": "ingredients_text",
+            "type": "string",
+            "description": "Ingredient list (truncated to 1,000 characters)."
+          },
+          {
+            "name": "ingredient_count",
+            "type": "number",
+            "description": "Comma-separated ingredient count."
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "description": "Product image URL."
+          },
+          {
+            "name": "image_front_url",
+            "type": "string",
+            "description": "Front-of-pack image URL."
+          },
+          {
+            "name": "ecoscore_grade",
+            "type": "string",
+            "description": "Eco-Score letter, where computed."
+          },
+          {
+            "name": "ecoscore_score",
+            "type": "number",
+            "description": "Eco-Score numeric score."
+          },
+          {
+            "name": "nova_group",
+            "type": "number",
+            "description": "NOVA processing group."
+          },
+          {
+            "name": "manufacturing_places",
+            "type": "string",
+            "description": "Manufacturing locations."
+          },
+          {
+            "name": "stores",
+            "type": "string",
+            "description": "Retailers listed."
+          },
+          {
+            "name": "origins",
+            "type": "string",
+            "description": "Country of origin as declared."
+          },
+          {
+            "name": "origins_tags",
+            "type": "string",
+            "description": "Normalised origin tags."
+          },
+          {
+            "name": "origin_count",
+            "type": "number",
+            "description": "Number of origin tags."
+          },
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Record language."
+          },
+          {
+            "name": "conservation_conditions",
+            "type": "string",
+            "description": "Storage conditions."
+          },
+          {
+            "name": "warning",
+            "type": "number",
+            "description": "Safety warning text."
+          },
+          {
+            "name": "period_after_opening",
+            "type": "number",
+            "description": "Period after opening."
+          },
+          {
+            "name": "emb_codes",
+            "type": "string",
+            "description": "European manufacturer codes."
+          },
+          {
+            "name": "link",
+            "type": "string",
+            "description": "Product page URL."
+          },
+          {
+            "name": "obsolete",
+            "type": "boolean",
+            "description": "true when the product is marked obsolete."
+          },
+          {
+            "name": "is_vegan",
+            "type": "boolean",
+            "description": "true when a vegan label is present."
+          },
+          {
+            "name": "is_organic",
+            "type": "boolean",
+            "description": "true when an organic label is present."
+          },
+          {
+            "name": "is_natural",
+            "type": "boolean",
+            "description": "true when a natural label is present."
+          },
+          {
+            "name": "is_hypoallergenic",
+            "type": "boolean",
+            "description": "true when a hypoallergenic label is present."
+          },
+          {
+            "name": "is_paraben_free",
+            "type": "boolean",
+            "description": "true when a paraben-free claim is present."
+          },
+          {
+            "name": "is_sulfate_free",
+            "type": "boolean",
+            "description": "true when a sulfate-free claim is present."
+          },
+          {
+            "name": "has_ecoscore",
+            "type": "boolean",
+            "description": "true when an Eco-Score exists."
+          },
+          {
+            "name": "has_nova",
+            "type": "boolean",
+            "description": "true when a NOVA group exists."
+          },
+          {
+            "name": "is_ultra_processed",
+            "type": "boolean",
+            "description": "true when NOVA group is 4."
+          },
+          {
+            "name": "has_image",
+            "type": "boolean",
+            "description": "true when an image URL exists."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the product name."
+          },
+          {
+            "name": "ingredients_text_length",
+            "type": "number",
+            "description": "Characters in the stored ingredient list."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

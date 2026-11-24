@@ -1,0 +1,50 @@
+column,data_type,description
+id,number,Europe PMC record identifier.
+source,string,"Source database (MED, PMC, PPR, ...)."
+pmid,number,PubMed identifier.
+pmcid,string,PubMed Central identifier.
+doi,string,Digital Object Identifier.
+title,string,Article title.
+author_string,string,Author list as a single string.
+author_count,number,Number of authors parsed from the structured author list.
+first_author,string,First author's full name.
+last_author,string,Last author's full name.
+first_affiliation,string,Affiliation of the first author.
+journal_title,string,Journal title.
+issn,string,Print ISSN.
+essn,string,Electronic ISSN.
+volume,number,Journal volume.
+issue,string,Journal issue.
+pub_year,number,Publication year.
+pub_month,number,Publication month.
+pub_type,string,Publication type string(s).
+is_review,boolean,true when the publication type includes a review.
+is_clinical_trial,boolean,true when tagged as a clinical trial.
+is_open_access,boolean,true when the record is open access.
+in_pmc,boolean,true when full text is in PubMed Central.
+has_pdf,boolean,true when a PDF is available.
+has_suppl,boolean,true when supplementary files exist.
+has_references,boolean,true when references are indexed.
+has_text_mined_terms,boolean,true when text-mined terms are available.
+cited_by_count,number,Number of citations recorded by Europe PMC.
+citation_count,number,Citation count from the source record.
+abstract,string,"Abstract text (truncated to 2,500 characters)."
+abstract_length,number,Characters in the stored abstract.
+abstract_word_count,number,Words in the stored abstract.
+title_length,number,Characters in the title.
+keyword_count,number,Number of author keywords.
+keywords,string,Author keywords (semicolon-joined).
+mesh_count,number,Number of MeSH headings.
+mesh_terms,string,MeSH descriptor names (semicolon-joined).
+chemical_count,number,Number of indexed chemicals.
+grant_count,number,Number of funding grants.
+grant_agencies,string,Funding agency names.
+language,string,Language of the article.
+license,string,Licence reported for the article.
+first_publication_date,date,First publication date.
+electronic_publication_date,date,Electronic publication date.
+full_text_url,string,First full-text URL.
+has_doi,boolean,true when a DOI is present.
+has_abstract,boolean,true when an abstract is present.
+citation_band,string,Citation-count band.
+is_recent,boolean,true for 2025 publications.

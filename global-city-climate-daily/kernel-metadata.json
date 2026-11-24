@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/global-city-climate-2015-2025-1-starter-notebook",
+  "title": "Global City Climate 2015-2025: 1 Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/global-city-climate-daily"
+  ]
+}

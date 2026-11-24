@@ -1,0 +1,321 @@
+{
+  "title": "Hurricane Database 1851-2024",
+  "id": "samyakrajbayar/hurricane-database",
+  "subtitle": "Atlantic and Pacific cyclone tracks with intensity, pressure and wind radii",
+  "description": "# Hurricane Database 1851-2024\n\n**Subtitle:** Atlantic and Pacific cyclone tracks with intensity, pressure and wind radii\n\n**Tags:** `weather`, `climate`, `time-series`, `tabular`\n\n**Dataset File:** `hurricanes.csv` (55,230 rows, 57 columns, 14.3 MB)\n\n**Provenance & Source:** NOAA National Hurricane Center HURDAT2 Database\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 170 years of Atlantic and eastern Pacific cyclone tracks\n\nHURDAT2 is the official best-track archive maintained by the NOAA National Hurricane Center:\nevery six hours of every tropical cyclone since 1851, with position, intensity, central pressure\nand (from 2004) the full wind-radius structure.\n\nThis snapshot has **55,230 waypoints** from **1,991 storms** across **174 seasons\n(1851\u20132024)** and **57 parameters** per row:\n\n- **Track** \u2014 storm id, basin, season, storm number and name, timestamp, latitude and longitude,\n  landfall/minimum-pressure/maximum-wind record flags.\n- **Intensity** \u2014 maximum sustained wind in knots, km/h and mph, central pressure, Saffir-Simpson\n  category as label and number, hurricane and major-hurricane flags.\n- **Structure** \u2014 the 34, 50 and 64 kt wind radii in all four quadrants (48 radius values across\n  the file), radius of maximum wind, and a flag for whether the storm has structure data.\n- **Motion** \u2014 bearing, speed and compass direction since the previous waypoint, plus 6-hourly\n  wind and pressure tendencies.\n- **Storm summaries** \u2014 peak wind, minimum pressure, peak category, duration, active days,\n  waypoint count and Accumulated Cyclone Energy, repeated on every row for easy grouping.\n- **Time features** \u2014 decade, waypoint index, first/last waypoint flags.\n\n3,345 waypoints (6.1%) are at major-hurricane intensity. Because the file mixes\n1851 ship reports with satellite-era fixes, it is a natural laboratory for data-quality work as well\nas for climate-trend analysis.\n\n## \ud83e\uddfe Columns (57)\n\n`storm_id`, `basin`, `basin_code`, `storm_number`, `storm_name`, `storm_year`, `record_time_utc`, `iso_date`, `hour_utc`, `record_identifier`, `status`, `status_label`, `latitude`, `longitude`, `max_wind_kt`, `max_wind_kmh`, `max_wind_mph`, `min_pressure_mb`, `category`, `category_num`, `is_hurricane`, `is_major`, `is_named`, `lat_hemisphere`, `lon_hemisphere`, `distance_to_equator_km`, `movement_bearing_deg`, `movement_speed_kmh`, `movement_direction`, `wind_change_kt`, `pressure_change_mb`, `storm_max_wind_kt`, `storm_min_pressure_mb`, `storm_peak_category`, `storm_duration_days`, `storm_record_count`, `storm_active_days`, `storm_ace`, `storm_sequence_in_year`, `decade`, `waypoint_index`, `is_first_point`, `is_last_point`, `radius_34_kt_ne`, `radius_34_kt_se`, `radius_34_kt_sw`, `radius_34_kt_nw`, `radius_50_kt_ne`, `radius_50_kt_se`, `radius_50_kt_sw`, `radius_50_kt_nw`, `radius_64_kt_ne`, `radius_64_kt_se`, `radius_64_kt_sw`, `radius_64_kt_nw`, `max_wind_radius_nm`, `has_wind_radii`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Climate trends** \u2014 annual ACE, major-hurricane days and peak intensity by decade; how much of the trend is observation quality?\n2. **Rapid intensification** \u2014 find 24-hour wind increases above 30 kt and ask where and when they happen.\n3. **Track maps** \u2014 plot all tracks coloured by category, or density-map genesis points.\n4. **Landfall climatology** \u2014 use `record_identifier == 'L'` to study US Gulf/Atlantic landfalls by decade and state.\n5. **Size structure** \u2014 wind radii are only available post-2004; model storm size from intensity and latitude.\n6. **Translation speed** \u2014 are storms slowing down? Regress `movement_speed_kmh` on year and latitude.\n7. **Pressure\u2013wind relationship** \u2014 fit wind as a function of pressure, basin and latitude; find outliers.\n8. **Seasonality** \u2014 genesis and peak-timing distributions, and how El Ni\u00f1o years shift the eastern Pacific.\n9. **Forecast benchmark** \u2014 use the 6-hourly series as ground truth for simple persistence/trend baselines.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `hurricanes.csv` | 55,230 six-hourly cyclone waypoints x 57 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: tracks, categories, ACE by decade. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`hurricanes`, `weather`, `climate`, `meteorology`, `natural-disasters`, `geospatial`, `time-series`, `noaa`, `environment`, `tabular`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** NOAA National Hurricane Center / Atlantic Oceanographic and Meteorological Laboratory,\n  **HURDAT2** best-track database, file `hurdat2-1851-2024-040425.txt`\n  (`https://www.nhc.noaa.gov/data/hurdat/`).\n- **Contents:** all North Atlantic (AL) and eastern/central Pacific (EP/CP) tropical cyclones,\n  1851\u20132024, at 6-hourly resolution.\n- **Parsing:** the fixed HURDAT2 layout was parsed directly: storm headers, then comma-separated\n  waypoint records with 21 fields, including the 12 quadrant wind radii and radius of maximum wind.\n- **Derived columns:** unit conversions, Saffir-Simpson category, motion vector, 6-hourly tendencies,\n  storm-level aggregates (peak intensity, ACE, duration), decade and sequence flags.\n- **Snapshot date:** 21 November 2026 (2024 season is the latest in this release).\n\n## \ud83d\udd04 Update frequency\n\n**Annual.** NOAA publishes a revised HURDAT2 file after each season (usually spring); re-run `scripts/22_hurricanes.py` to refresh.\n\n## \u26a0\ufe0f Caveats\n\n- Pre-1950 tracks rely on ship observations and are far less complete; intensity before the satellite era is smoothed and often underestimated.\n- Wind radii (34/50/64 kt quadrants) only exist from 2004 onward; `has_wind_radii` marks availability.\n- Pressure is missing (-999 in the source, blank here) for many early or weak systems.\n- ACE uses the 6-hourly maximum wind; 3-hourly special waypoints are not present in HURDAT2.\n- `record_identifier` flags are sparse and occasionally inconsistent with the surrounding track.\n- The file stops at the 2024 season; storms from 2025\u20132026 are not included in this release.\n- Longitude is signed (west negative), unlike the source's 'W' suffix notation.\n\n## \ud83d\udcdc Licence\n\nPublic domain \u2014 NOAA / National Weather Service. Best-track data is a work of the U.S. Government and free of copyright; attribution is requested.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `storm_id` | `string` | HURDAT2 storm identifier (basin + number + year, e.g. AL011851). |\n| 2 | `basin` | `string` | Basin name: North Atlantic, Eastern Pacific or Central Pacific. |\n| 3 | `basin_code` | `string` | Two-letter basin code (AL, EP, CP). |\n| 4 | `storm_number` | `number` | Storm number within its season. |\n| 5 | `storm_name` | `string` | Storm name, or UNNAMED for pre-naming-era systems. |\n| 6 | `storm_year` | `number` | Season year. |\n| 7 | `record_time_utc` | `datetime` | Observation timestamp in UTC (ISO). |\n| 8 | `iso_date` | `number` | Date of the observation (YYYYMMDD, as in the source). |\n| 9 | `hour_utc` | `number` | Synoptic hour of the observation (0, 6, 12, 18). |\n| 10 | `record_identifier` | `string` | Landfall (L), minimum pressure (P) or maximum wind (W) marker. |\n| 11 | `status` | `string` | Two-letter status code (HU, TS, TD, EX, SS, SD, LO, ...). |\n| 12 | `status_label` | `string` | Expanded status label. |\n| 13 | `latitude` | `number` | Storm centre latitude in degrees (north positive). |\n| 14 | `longitude` | `number` | Storm centre longitude in degrees (east positive, so western hemisphere is negative). |\n| 15 | `max_wind_kt` | `number` | Maximum sustained wind in knots (1-minute average). |\n| 16 | `max_wind_kmh` | `number` | Maximum sustained wind converted to km/h. |\n| 17 | `max_wind_mph` | `number` | Maximum sustained wind converted to mph. |\n| 18 | `min_pressure_mb` | `number` | Central pressure in millibars. |\n| 19 | `category` | `string` | Saffir-Simpson category label at this point. |\n| 20 | `category_num` | `number` | Saffir-Simpson category as a number (0 for TS, -1 for depression). |\n| 21 | `is_hurricane` | `boolean` | true when sustained wind is at least 64 kt. |\n| 22 | `is_major` | `boolean` | true when sustained wind is at least 96 kt (Category 3+). |\n| 23 | `is_named` | `boolean` | true when the storm has a name rather than UNNAMED. |\n| 24 | `lat_hemisphere` | `string` | N or S. |\n| 25 | `lon_hemisphere` | `string` | E or W. |\n| 26 | `distance_to_equator_km` | `number` | Absolute latitude converted to km. |\n| 27 | `movement_bearing_deg` | `number` | Bearing of motion since the previous waypoint, in degrees. |\n| 28 | `movement_speed_kmh` | `number` | Translation speed since the previous waypoint, in km/h. |\n| 29 | `movement_direction` | `string` | Compass direction of motion (N, NE, E, ...). |\n| 30 | `wind_change_kt` | `number` | Change in maximum wind since the previous waypoint (kt). |\n| 31 | `pressure_change_mb` | `number` | Change in central pressure since the previous waypoint (mb). |\n| 32 | `storm_max_wind_kt` | `number` | Peak sustained wind over the whole storm. |\n| 33 | `storm_min_pressure_mb` | `number` | Lowest central pressure over the whole storm. |\n| 34 | `storm_peak_category` | `string` | Peak Saffir-Simpson category over the whole storm. |\n| 35 | `storm_duration_days` | `number` | Time between the first and last waypoint, in days. |\n| 36 | `storm_record_count` | `number` | Number of 6-hourly waypoints in the storm. |\n| 37 | `storm_active_days` | `number` | Number of distinct calendar dates with a waypoint. |\n| 38 | `storm_ace` | `number` | Accumulated Cyclone Energy in 10^4 kt^2 (sum of squared winds / 10^4). |\n| 39 | `storm_sequence_in_year` | `number` | Storm number within the season. |\n| 40 | `decade` | `number` | Decade of the season year. |\n| 41 | `waypoint_index` | `number` | Position of this waypoint within the storm track (1-based). |\n| 42 | `is_first_point` | `boolean` | true for the first waypoint of the storm. |\n| 43 | `is_last_point` | `boolean` | true for the last waypoint of the storm. |\n| 44 | `radius_34_kt_ne` | `number` | Radius of 34 KT NE winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 45 | `radius_34_kt_se` | `number` | Radius of 34 KT SE winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 46 | `radius_34_kt_sw` | `number` | Radius of 34 KT SW winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 47 | `radius_34_kt_nw` | `number` | Radius of 34 KT NW winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 48 | `radius_50_kt_ne` | `number` | Radius of 50 KT NE winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 49 | `radius_50_kt_se` | `number` | Radius of 50 KT SE winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 50 | `radius_50_kt_sw` | `number` | Radius of 50 KT SW winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 51 | `radius_50_kt_nw` | `number` | Radius of 50 KT NW winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 52 | `radius_64_kt_ne` | `number` | Radius of 64 KT NE winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 53 | `radius_64_kt_se` | `number` | Radius of 64 KT SE winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 54 | `radius_64_kt_sw` | `number` | Radius of 64 KT SW winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 55 | `radius_64_kt_nw` | `number` | Radius of 64 KT NW winds in nautical miles (quadrant NE/SE/SW/NW). |\n| 56 | `max_wind_radius_nm` | `number` | Radius of maximum wind in nautical miles, when reported. |\n| 57 | `has_wind_radii` | `boolean` | true when any quadrant wind radius is reported (post-2004 records). |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "environment",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "hurricanes.csv",
+      "description": "Primary dataset file containing 55,230 records across 57 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "storm_id",
+            "type": "string",
+            "description": "HURDAT2 storm identifier (basin + number + year, e.g. AL011851)."
+          },
+          {
+            "name": "basin",
+            "type": "string",
+            "description": "Basin name: North Atlantic, Eastern Pacific or Central Pacific."
+          },
+          {
+            "name": "basin_code",
+            "type": "string",
+            "description": "Two-letter basin code (AL, EP, CP)."
+          },
+          {
+            "name": "storm_number",
+            "type": "number",
+            "description": "Storm number within its season."
+          },
+          {
+            "name": "storm_name",
+            "type": "string",
+            "description": "Storm name, or UNNAMED for pre-naming-era systems."
+          },
+          {
+            "name": "storm_year",
+            "type": "number",
+            "description": "Season year."
+          },
+          {
+            "name": "record_time_utc",
+            "type": "datetime",
+            "description": "Observation timestamp in UTC (ISO)."
+          },
+          {
+            "name": "iso_date",
+            "type": "number",
+            "description": "Date of the observation (YYYYMMDD, as in the source)."
+          },
+          {
+            "name": "hour_utc",
+            "type": "number",
+            "description": "Synoptic hour of the observation (0, 6, 12, 18)."
+          },
+          {
+            "name": "record_identifier",
+            "type": "string",
+            "description": "Landfall (L), minimum pressure (P) or maximum wind (W) marker."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "Two-letter status code (HU, TS, TD, EX, SS, SD, LO, ...)."
+          },
+          {
+            "name": "status_label",
+            "type": "string",
+            "description": "Expanded status label."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Storm centre latitude in degrees (north positive)."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Storm centre longitude in degrees (east positive, so western hemisphere is negative)."
+          },
+          {
+            "name": "max_wind_kt",
+            "type": "number",
+            "description": "Maximum sustained wind in knots (1-minute average)."
+          },
+          {
+            "name": "max_wind_kmh",
+            "type": "number",
+            "description": "Maximum sustained wind converted to km/h."
+          },
+          {
+            "name": "max_wind_mph",
+            "type": "number",
+            "description": "Maximum sustained wind converted to mph."
+          },
+          {
+            "name": "min_pressure_mb",
+            "type": "number",
+            "description": "Central pressure in millibars."
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "description": "Saffir-Simpson category label at this point."
+          },
+          {
+            "name": "category_num",
+            "type": "number",
+            "description": "Saffir-Simpson category as a number (0 for TS, -1 for depression)."
+          },
+          {
+            "name": "is_hurricane",
+            "type": "boolean",
+            "description": "true when sustained wind is at least 64 kt."
+          },
+          {
+            "name": "is_major",
+            "type": "boolean",
+            "description": "true when sustained wind is at least 96 kt (Category 3+)."
+          },
+          {
+            "name": "is_named",
+            "type": "boolean",
+            "description": "true when the storm has a name rather than UNNAMED."
+          },
+          {
+            "name": "lat_hemisphere",
+            "type": "string",
+            "description": "N or S."
+          },
+          {
+            "name": "lon_hemisphere",
+            "type": "string",
+            "description": "E or W."
+          },
+          {
+            "name": "distance_to_equator_km",
+            "type": "number",
+            "description": "Absolute latitude converted to km."
+          },
+          {
+            "name": "movement_bearing_deg",
+            "type": "number",
+            "description": "Bearing of motion since the previous waypoint, in degrees."
+          },
+          {
+            "name": "movement_speed_kmh",
+            "type": "number",
+            "description": "Translation speed since the previous waypoint, in km/h."
+          },
+          {
+            "name": "movement_direction",
+            "type": "string",
+            "description": "Compass direction of motion (N, NE, E, ...)."
+          },
+          {
+            "name": "wind_change_kt",
+            "type": "number",
+            "description": "Change in maximum wind since the previous waypoint (kt)."
+          },
+          {
+            "name": "pressure_change_mb",
+            "type": "number",
+            "description": "Change in central pressure since the previous waypoint (mb)."
+          },
+          {
+            "name": "storm_max_wind_kt",
+            "type": "number",
+            "description": "Peak sustained wind over the whole storm."
+          },
+          {
+            "name": "storm_min_pressure_mb",
+            "type": "number",
+            "description": "Lowest central pressure over the whole storm."
+          },
+          {
+            "name": "storm_peak_category",
+            "type": "string",
+            "description": "Peak Saffir-Simpson category over the whole storm."
+          },
+          {
+            "name": "storm_duration_days",
+            "type": "number",
+            "description": "Time between the first and last waypoint, in days."
+          },
+          {
+            "name": "storm_record_count",
+            "type": "number",
+            "description": "Number of 6-hourly waypoints in the storm."
+          },
+          {
+            "name": "storm_active_days",
+            "type": "number",
+            "description": "Number of distinct calendar dates with a waypoint."
+          },
+          {
+            "name": "storm_ace",
+            "type": "number",
+            "description": "Accumulated Cyclone Energy in 10^4 kt^2 (sum of squared winds / 10^4)."
+          },
+          {
+            "name": "storm_sequence_in_year",
+            "type": "number",
+            "description": "Storm number within the season."
+          },
+          {
+            "name": "decade",
+            "type": "number",
+            "description": "Decade of the season year."
+          },
+          {
+            "name": "waypoint_index",
+            "type": "number",
+            "description": "Position of this waypoint within the storm track (1-based)."
+          },
+          {
+            "name": "is_first_point",
+            "type": "boolean",
+            "description": "true for the first waypoint of the storm."
+          },
+          {
+            "name": "is_last_point",
+            "type": "boolean",
+            "description": "true for the last waypoint of the storm."
+          },
+          {
+            "name": "radius_34_kt_ne",
+            "type": "number",
+            "description": "Radius of 34 KT NE winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_34_kt_se",
+            "type": "number",
+            "description": "Radius of 34 KT SE winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_34_kt_sw",
+            "type": "number",
+            "description": "Radius of 34 KT SW winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_34_kt_nw",
+            "type": "number",
+            "description": "Radius of 34 KT NW winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_50_kt_ne",
+            "type": "number",
+            "description": "Radius of 50 KT NE winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_50_kt_se",
+            "type": "number",
+            "description": "Radius of 50 KT SE winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_50_kt_sw",
+            "type": "number",
+            "description": "Radius of 50 KT SW winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_50_kt_nw",
+            "type": "number",
+            "description": "Radius of 50 KT NW winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_64_kt_ne",
+            "type": "number",
+            "description": "Radius of 64 KT NE winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_64_kt_se",
+            "type": "number",
+            "description": "Radius of 64 KT SE winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_64_kt_sw",
+            "type": "number",
+            "description": "Radius of 64 KT SW winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "radius_64_kt_nw",
+            "type": "number",
+            "description": "Radius of 64 KT NW winds in nautical miles (quadrant NE/SE/SW/NW)."
+          },
+          {
+            "name": "max_wind_radius_nm",
+            "type": "number",
+            "description": "Radius of maximum wind in nautical miles, when reported."
+          },
+          {
+            "name": "has_wind_radii",
+            "type": "boolean",
+            "description": "true when any quadrant wind radius is reported (post-2004 records)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

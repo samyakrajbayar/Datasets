@@ -1,0 +1,299 @@
+{
+  "title": "Stack Overflow Questions",
+  "id": "samyakrajbayar/stack-overflow-questions",
+  "subtitle": "100,000 SO questions with tags, score, view count and answers",
+  "description": "# Stack Overflow Questions\n\n**Subtitle:** 5,372 recent questions with bodies, tags, scores, answers and metadata\n\n**Tags:** `tabular`, `programming`, `nlp`\n\n**Dataset File:** `stackoverflow_questions.csv` (95,385 rows, 53 columns, 6.5 MB)\n\n**Provenance & Source:** Stack Exchange API v2.3 (api.stackexchange.com)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 20,000 recent Stack Overflow questions\n\nThe Stack Exchange API exposes every public question with its body, tags, score and owner. This\ndataset contains **5,372 questions sampled across 20 popular language and tool tags** (highest-voted\nfirst) with **53 parameters**.\n\n- **Question** \u2014 id, title, HTML body, canonical link, score, views, answers, comments, favourites.\n- **Lifecycle** \u2014 creation, last activity, last edit, closed date/reason, protected date, accepted\n  answer, bounty and content licence.\n- **Asker** \u2014 display name, reputation, user id and user type.\n- **Content features** \u2014 body length, HTML-stripped length, code-block count, links, images, tag count\n  and derived flags.\n- **Derived** \u2014 answer rate, score per view, age in days, year/month/hour/weekday, weekend flag,\n  title length/word count and language tags.\n\n**5,371 questions are answered** and **373 are closed**. The body HTML and tags make this\na ready corpus for question-quality, tagging and programming-language research.\n\n## \ud83e\uddfe Columns (53)\n\n`question_id`, `title`, `body`, `link`, `score`, `view_count`, `answer_count`, `comment_count`, `favorite_count`, `creation_date`, `last_activity_date`, `last_edit_date`, `closed_date`, `closed_reason`, `tags`, `owner_name`, `owner_reputation`, `owner_user_id`, `owner_type`, `is_answered`, `accepted_answer_id`, `bounty_amount`, `content_license`, `protected_date`, `body_length`, `body_text_length`, `code_block_count`, `link_count`, `image_count`, `tag_count`, `has_accepted_answer`, `is_closed`, `has_bounty`, `has_body`, `has_owner`, `has_edit`, `title_length`, `title_word_count`, `is_title_question`, `answer_rate`, `score_per_view`, `age_days`, `year`, `month`, `hour`, `day_of_week`, `is_weekend`, `is_python`, `is_javascript`, `is_java`, `is_csharp`, `is_sql`, `is_php`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Answer probability** \u2014 what predicts whether a question gets answered?\n2. **Tag networks** \u2014 co-occurrence of language and framework tags.\n3. **Question quality** \u2014 score and views vs body length, code blocks and title phrasing.\n4. **Closure analysis** \u2014 which tags and title patterns are closed most often?\n5. **Language trends** \u2014 python vs javascript vs java question volume over the sample window.\n6. **Time-of-day effects** \u2014 do questions posted at certain hours get more answers?\n7. **Reputation effects** \u2014 asker reputation vs answer rate and score.\n8. **Text classification** \u2014 predict tags from the title and body.\n9. **Duplicate detection** \u2014 near-duplicate titles and bodies.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `stackoverflow_questions.csv` | 5,372 questions x 53 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`stackoverflow`, `programming`, `questions`, `text-mining`, `developer-community`, `qa`, `api`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Stack Exchange API v2.3**,\n  `https://api.stackexchange.com/2.3/questions?site=stackoverflow&filter=withbody`.\n- **Scope:** up to three pages of 100 highest-voted questions for each of 20 popular tags\n  (python, javascript, java, c#, php, c++, sql, html, css, reactjs, node.js, pandas, numpy, r, swift,\n  kotlin, go, rust, typescript, docker), deduplicated by question id.\n- **Processing:** HTML body retained and also stripped for length features; timestamps converted to\n  ISO; tag flags, text counts and rate features derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous.** New questions appear every minute.\n\n## \u26a0\ufe0f Caveats\n\n- The API's anonymous quota (300 requests/day) limited this extract, so the sample stops at about 6,000 questions.\n- This is a tag-stratified popularity sample, not a random or complete history.\n- Scores, views and reputations are point-in-time values that change over time.\n- Bodies are HTML and may contain scripts or embedded content; sanitise before rendering.\n- Deleted questions are not returned by the API.\n- Owner information is missing for unregistered or deleted users.\n- `is_answered` follows the API definition and does not require an accepted answer.\n\n## \ud83d\udcdc Licence\n\nStack Exchange content is CC BY-SA 4.0; attribution and share-alike apply.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `question_id` | `number` | Stack Overflow question id. |\n| 2 | `title` | `string` | Question title. |\n| 3 | `body` | `string` | Question body (HTML, truncated to 8,000 characters). |\n| 4 | `link` | `string` | Canonical question URL. |\n| 5 | `score` | `number` | Question score (upvotes minus downvotes). |\n| 6 | `view_count` | `number` | Views. |\n| 7 | `answer_count` | `number` | Number of answers. |\n| 8 | `comment_count` | `number` | Number of comments. |\n| 9 | `favorite_count` | `number` | Times bookmarked. |\n| 10 | `creation_date` | `datetime` | Creation timestamp (UTC, ISO). |\n| 11 | `last_activity_date` | `datetime` | Last activity timestamp. |\n| 12 | `last_edit_date` | `datetime` | Last edit timestamp. |\n| 13 | `closed_date` | `datetime` | Closure timestamp, where closed. |\n| 14 | `closed_reason` | `string` | Reason for closure. |\n| 15 | `tags` | `string` | Tags (semicolon-joined). |\n| 16 | `owner_name` | `string` | Asker display name. |\n| 17 | `owner_reputation` | `number` | Asker reputation at snapshot time. |\n| 18 | `owner_user_id` | `number` | Asker user id. |\n| 19 | `owner_type` | `string` | User type (registered, unregistered, ...). |\n| 20 | `is_answered` | `boolean` | true when the question has an accepted or upvoted answer. |\n| 21 | `accepted_answer_id` | `number` | Accepted answer id, where present. |\n| 22 | `bounty_amount` | `number` | Bounty amount, where one was offered. |\n| 23 | `content_license` | `string` | Content licence. |\n| 24 | `protected_date` | `datetime` | Date the question was protected. |\n| 25 | `body_length` | `number` | Characters in the HTML body. |\n| 26 | `body_text_length` | `number` | Characters after stripping HTML tags. |\n| 27 | `code_block_count` | `number` | Number of `<code>` blocks. |\n| 28 | `link_count` | `number` | Number of hyperlinks in the body. |\n| 29 | `image_count` | `number` | Number of images in the body. |\n| 30 | `tag_count` | `number` | Number of tags. |\n| 31 | `has_accepted_answer` | `boolean` | true when an answer was accepted. |\n| 32 | `is_closed` | `boolean` | true when the question is closed. |\n| 33 | `has_bounty` | `boolean` | true when a bounty was offered. |\n| 34 | `has_body` | `boolean` | true when the body is non-empty. |\n| 35 | `has_owner` | `boolean` | true when the asker is known. |\n| 36 | `has_edit` | `boolean` | true when the question was edited. |\n| 37 | `title_length` | `number` | Characters in the title. |\n| 38 | `title_word_count` | `number` | Words in the title. |\n| 39 | `is_title_question` | `boolean` | true when the title ends with a question mark. |\n| 40 | `answer_rate` | `number` | Answers per 1,000 views. |\n| 41 | `score_per_view` | `number` | Score divided by views. |\n| 42 | `age_days` | `number` | Days between creation and 2026-11-22. |\n| 43 | `year` | `number` | Creation year. |\n| 44 | `month` | `number` | Creation month. |\n| 45 | `hour` | `number` | Creation hour (UTC). |\n| 46 | `day_of_week` | `string` | Creation weekday. |\n| 47 | `is_weekend` | `boolean` | true for Saturday/Sunday. |\n| 48 | `is_python` | `boolean` | true when tagged python. |\n| 49 | `is_javascript` | `boolean` | true when tagged javascript. |\n| 50 | `is_java` | `boolean` | true when tagged java. |\n| 51 | `is_csharp` | `boolean` | true when tagged c#. |\n| 52 | `is_sql` | `boolean` | true when tagged sql. |\n| 53 | `is_php` | `boolean` | true when tagged php. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-SA-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "stackoverflow_questions.csv",
+      "description": "Primary dataset file containing 95,385 records across 53 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "question_id",
+            "type": "number",
+            "description": "Stack Overflow question id."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Question title."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Question body (HTML, truncated to 8,000 characters)."
+          },
+          {
+            "name": "link",
+            "type": "string",
+            "description": "Canonical question URL."
+          },
+          {
+            "name": "score",
+            "type": "number",
+            "description": "Question score (upvotes minus downvotes)."
+          },
+          {
+            "name": "view_count",
+            "type": "number",
+            "description": "Views."
+          },
+          {
+            "name": "answer_count",
+            "type": "number",
+            "description": "Number of answers."
+          },
+          {
+            "name": "comment_count",
+            "type": "number",
+            "description": "Number of comments."
+          },
+          {
+            "name": "favorite_count",
+            "type": "number",
+            "description": "Times bookmarked."
+          },
+          {
+            "name": "creation_date",
+            "type": "datetime",
+            "description": "Creation timestamp (UTC, ISO)."
+          },
+          {
+            "name": "last_activity_date",
+            "type": "datetime",
+            "description": "Last activity timestamp."
+          },
+          {
+            "name": "last_edit_date",
+            "type": "datetime",
+            "description": "Last edit timestamp."
+          },
+          {
+            "name": "closed_date",
+            "type": "datetime",
+            "description": "Closure timestamp, where closed."
+          },
+          {
+            "name": "closed_reason",
+            "type": "string",
+            "description": "Reason for closure."
+          },
+          {
+            "name": "tags",
+            "type": "string",
+            "description": "Tags (semicolon-joined)."
+          },
+          {
+            "name": "owner_name",
+            "type": "string",
+            "description": "Asker display name."
+          },
+          {
+            "name": "owner_reputation",
+            "type": "number",
+            "description": "Asker reputation at snapshot time."
+          },
+          {
+            "name": "owner_user_id",
+            "type": "number",
+            "description": "Asker user id."
+          },
+          {
+            "name": "owner_type",
+            "type": "string",
+            "description": "User type (registered, unregistered, ...)."
+          },
+          {
+            "name": "is_answered",
+            "type": "boolean",
+            "description": "true when the question has an accepted or upvoted answer."
+          },
+          {
+            "name": "accepted_answer_id",
+            "type": "number",
+            "description": "Accepted answer id, where present."
+          },
+          {
+            "name": "bounty_amount",
+            "type": "number",
+            "description": "Bounty amount, where one was offered."
+          },
+          {
+            "name": "content_license",
+            "type": "string",
+            "description": "Content licence."
+          },
+          {
+            "name": "protected_date",
+            "type": "datetime",
+            "description": "Date the question was protected."
+          },
+          {
+            "name": "body_length",
+            "type": "number",
+            "description": "Characters in the HTML body."
+          },
+          {
+            "name": "body_text_length",
+            "type": "number",
+            "description": "Characters after stripping HTML tags."
+          },
+          {
+            "name": "code_block_count",
+            "type": "number",
+            "description": "Number of `<code>` blocks."
+          },
+          {
+            "name": "link_count",
+            "type": "number",
+            "description": "Number of hyperlinks in the body."
+          },
+          {
+            "name": "image_count",
+            "type": "number",
+            "description": "Number of images in the body."
+          },
+          {
+            "name": "tag_count",
+            "type": "number",
+            "description": "Number of tags."
+          },
+          {
+            "name": "has_accepted_answer",
+            "type": "boolean",
+            "description": "true when an answer was accepted."
+          },
+          {
+            "name": "is_closed",
+            "type": "boolean",
+            "description": "true when the question is closed."
+          },
+          {
+            "name": "has_bounty",
+            "type": "boolean",
+            "description": "true when a bounty was offered."
+          },
+          {
+            "name": "has_body",
+            "type": "boolean",
+            "description": "true when the body is non-empty."
+          },
+          {
+            "name": "has_owner",
+            "type": "boolean",
+            "description": "true when the asker is known."
+          },
+          {
+            "name": "has_edit",
+            "type": "boolean",
+            "description": "true when the question was edited."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "title_word_count",
+            "type": "number",
+            "description": "Words in the title."
+          },
+          {
+            "name": "is_title_question",
+            "type": "boolean",
+            "description": "true when the title ends with a question mark."
+          },
+          {
+            "name": "answer_rate",
+            "type": "number",
+            "description": "Answers per 1,000 views."
+          },
+          {
+            "name": "score_per_view",
+            "type": "number",
+            "description": "Score divided by views."
+          },
+          {
+            "name": "age_days",
+            "type": "number",
+            "description": "Days between creation and 2026-11-22."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Creation year."
+          },
+          {
+            "name": "month",
+            "type": "number",
+            "description": "Creation month."
+          },
+          {
+            "name": "hour",
+            "type": "number",
+            "description": "Creation hour (UTC)."
+          },
+          {
+            "name": "day_of_week",
+            "type": "string",
+            "description": "Creation weekday."
+          },
+          {
+            "name": "is_weekend",
+            "type": "boolean",
+            "description": "true for Saturday/Sunday."
+          },
+          {
+            "name": "is_python",
+            "type": "boolean",
+            "description": "true when tagged python."
+          },
+          {
+            "name": "is_javascript",
+            "type": "boolean",
+            "description": "true when tagged javascript."
+          },
+          {
+            "name": "is_java",
+            "type": "boolean",
+            "description": "true when tagged java."
+          },
+          {
+            "name": "is_csharp",
+            "type": "boolean",
+            "description": "true when tagged c#."
+          },
+          {
+            "name": "is_sql",
+            "type": "boolean",
+            "description": "true when tagged sql."
+          },
+          {
+            "name": "is_php",
+            "type": "boolean",
+            "description": "true when tagged php."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

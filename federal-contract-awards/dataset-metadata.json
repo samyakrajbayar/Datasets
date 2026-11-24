@@ -1,0 +1,31 @@
+{
+  "title": "U.S. Federal Contract Awards - FY2025-FY2026",
+  "id": "samyakrajbayar/federal-contract-awards",
+  "subtitle": "29,998 contract awards with amounts, agencies, recipients, NAICS/PSC codes an...",
+  "description": "### 29,998 U.S. federal contract awards (FY2025\u2013FY2026)\n\nUSAspending publishes every federal award. This dataset takes the **29,998 largest contract awards**\nfrom October 2024 to September 2026, with **31 parameters** each.\n\n- **Award** \u2014 PIID, amount, type, description and period of performance.\n- **Recipient** \u2014 name and USAspending recipient id.\n- **Agency** \u2014 awarding agency, sub-agency and slug, with defense/health flags.\n- **Classification** \u2014 NAICS code and sector, PSC code, place of performance.\n- **Derived** \u2014 duration in days, start/end year and month, amount bands, multi-year and large-award\n  flags, amount per day, description length and keyword flags.\n\nThe sample covers **$4,808.2 billion** in obligations across **47 agencies** and\n**6,572 recipients** \u2014 enough for procurement, industrial-policy and contractor-concentration\nresearch.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics"
+  ],
+  "resources": [
+    {
+      "path": "federal_awards.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

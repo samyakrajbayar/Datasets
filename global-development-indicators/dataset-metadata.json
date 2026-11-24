@@ -1,0 +1,431 @@
+{
+  "title": "Global Development Indicators",
+  "id": "samyakrajbayar/global-development-indicators",
+  "subtitle": "200+ World Bank development indicators across 200 countries",
+  "description": "# Global Development Indicators 1960-2025\n\n**Subtitle:** 14,322 country-years across 55 World Bank development indicators\n\n**Tags:** `tabular`, `economics`, `countries`\n\n**Dataset File:** `development_indicators.csv` (14,322 rows, 79 columns, 5.9 MB)\n\n**Provenance & Source:** World Bank World Development Indicators (data.worldbank.org)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 66 years of development, 55 indicators, one panel\n\nThe World Bank's World Development Indicators are the standard cross-country macro dataset. This\nextract pivots **55 indicators** into a wide country-year panel: **14,322 rows** for\n**217 countries from 1960 to 2025**, with **79 parameters**.\n\n- **Economy** \u2014 GDP (current and constant), GDP per capita, growth, manufacturing/agriculture/services\n  shares, trade, FDI, government debt, tax revenue and expenditure.\n- **People** \u2014 population, growth, age structure, density, urban share, birth/death rates, fertility,\n  life expectancy by sex and infant mortality.\n- **Health** \u2014 health spending (% GDP and per capita), beds, physicians, measles immunisation, maternal\n  mortality, TB and HIV incidence.\n- **Education** \u2014 primary/secondary/tertiary enrolment, education spending and adult literacy.\n- **Environment and infrastructure** \u2014 forest and agricultural land, cereal yield, freshwater\n  withdrawal, electricity access, energy use per capita, renewable share, internet and mobile uptake.\n- **Inequality and labour** \u2014 Gini, poverty headcount, unemployment, participation and employment ratio.\n- **Derived** \u2014 log GDP, urban/rural population, dependency ratios, life-expectancy gap, access gaps,\n  health spend per person-day, income-group flags and per-row completeness.\n\nMissing values are left blank rather than imputed, so the completeness columns show exactly how much\nof each country-year is observed.\n\n## \ud83e\uddfe Columns (79)\n\n`iso3`, `country_name`, `country_iso2`, `year`, `region`, `income_level`, `lending_type`, `capital_city`, `latitude`, `longitude`, `population_total`, `population_growth_pct`, `population_0_14_pct`, `population_15_64_pct`, `population_65plus_pct`, `life_expectancy_years`, `life_expectancy_female_years`, `life_expectancy_male_years`, `infant_mortality_per_1000`, `fertility_rate`, `birth_rate_per_1000`, `death_rate_per_1000`, `urban_population_pct`, `population_density_per_km2`, `gdp_current_usd`, `gdp_per_capita_usd`, `gdp_growth_pct`, `gdp_constant_2015_usd`, `manufacturing_value_added_pct`, `agriculture_value_added_pct`, `services_value_added_pct`, `exports_gdp_pct`, `imports_gdp_pct`, `trade_gdp_pct`, `fdi_inflow_usd`, `central_govt_debt_pct`, `tax_revenue_pct`, `govt_expense_pct`, `gini_index`, `poverty_2_15_per_day_pct`, `unemployment_pct`, `labour_force_participation_pct`, `employment_ratio_pct`, `primary_enrolment_pct`, `secondary_enrolment_pct`, `tertiary_enrolment_pct`, `education_spend_pct`, `literacy_rate_pct`, `health_spend_pct`, `health_spend_per_capita_usd`, `hospital_beds_per_1000`, `physicians_per_1000`, `measles_immunisation_pct`, `maternal_mortality_per_100k`, `tuberculosis_per_100k`, `hiv_incidence_per_1000`, `forest_area_pct`, `agricultural_land_pct`, `cereal_yield_kg_per_ha`, `freshwater_withdrawal_pct`, `electricity_access_pct`, `energy_use_per_capita_kg`, `renewable_energy_pct`, `internet_users_pct`, `mobile_subscriptions_per_100`, `urban_population`, `rural_population_pct`, `log10_gdp`, `log10_gdp_per_capita`, `youth_dependency_ratio`, `old_age_dependency_ratio`, `life_expectancy_gap_years`, `electricity_access_gap_pct`, `internet_nonusers_pct`, `health_spend_per_person_day_usd`, `is_high_income`, `is_low_income`, `indicators_present`, `indicator_completeness_pct`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Development trajectories** \u2014 plot GDP per capita vs life expectancy by decade, coloured by region.\n2. **Convergence** \u2014 do poorer countries grow faster? Regress growth on initial income.\n3. **Structural transformation** \u2014 manufacturing share vs income, and where countries peak.\n4. **Health spending efficiency** \u2014 life expectancy per health dollar by income group.\n5. **Education and growth** \u2014 enrolment in 1990 vs GDP per capita in 2020.\n6. **Missing data** \u2014 visualise completeness by indicator and region; a ready-made missingness study.\n7. **Gender gaps** \u2014 female-male life expectancy and literacy gaps over time.\n8. **Resource dependence** \u2014 forest loss vs agricultural expansion and cereal yield.\n9. **Digital divide** \u2014 internet and mobile adoption curves by income group.\n10. **Panel forecasting** \u2014 build a country-year model with lagged features.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `development_indicators.csv` | 14,322 country-years x 79 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`world-bank`, `development`, `economics`, `health`, `education`, `panel-data`, `countries`, `sustainability`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **World Bank World Development Indicators** API v2,\n  `https://api.worldbank.org/v2/country/all/indicator/<CODE>?format=json&per_page=20000&date=1960:2025`.\n- **Indicator set:** the 55 codes listed in `scripts/34_development.py`, chosen across economy, health,\n  education, environment, infrastructure and inequality.\n- **Country filter:** the World Bank country endpoint was used to drop regional and income aggregates\n  (`region.id = NA`), leaving sovereign countries and territories.\n- **Processing:** long indicator series pivoted to one row per country-year; derived ratios and flags\n  computed only where the inputs exist.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Annual (with frequent revisions).** The World Bank updates WDI several times a year.\n\n## \u26a0\ufe0f Caveats\n\n- Coverage is very uneven: 1960s rows are sparse, and some indicators start in the 1990s or 2000s.\n- World Bank estimates are modelled and revised; values can change between vintages.\n- GDP is in current US$ unless the column says constant; cross-year comparisons need the constant series.\n- Aggregate regions were removed, but territories (e.g. small islands) remain.\n- Poverty and Gini series have long gaps and changing survey methodologies.\n- Blank cells mean 'not reported', not zero.\n- The panel stops at 2025 because 2026 reporting is incomplete.\n\n## \ud83d\udcdc Licence\n\nWorld Bank Open Data is licensed CC BY 4.0 \u2014 attribution required.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `iso3` | `string` | World Bank / ISO 3166-1 alpha-3 country code. |\n| 2 | `country_name` | `string` | Country name as used by the World Bank. |\n| 3 | `country_iso2` | `string` | ISO 3166-1 alpha-2 code. |\n| 4 | `year` | `number` | Calendar year of the observation. |\n| 5 | `region` | `string` | World Bank region. |\n| 6 | `income_level` | `string` | World Bank income group (High, Upper middle, Lower middle, Low). |\n| 7 | `lending_type` | `string` | World Bank lending category. |\n| 8 | `capital_city` | `string` | Capital city. |\n| 9 | `latitude` | `number` | Country centroid latitude. |\n| 10 | `longitude` | `number` | Country centroid longitude. |\n| 11 | `population_total` | `number` | Total population. |\n| 12 | `population_growth_pct` | `number` | Annual population growth rate (%). |\n| 13 | `population_0_14_pct` | `number` | Population aged 0-14 (% of total). |\n| 14 | `population_15_64_pct` | `number` | Population aged 15-64 (% of total). |\n| 15 | `population_65plus_pct` | `number` | Population aged 65+ (% of total). |\n| 16 | `life_expectancy_years` | `number` | Life expectancy at birth, total (years). |\n| 17 | `life_expectancy_female_years` | `number` | Life expectancy at birth, female (years). |\n| 18 | `life_expectancy_male_years` | `number` | Life expectancy at birth, male (years). |\n| 19 | `infant_mortality_per_1000` | `number` | Infant mortality per 1,000 live births. |\n| 20 | `fertility_rate` | `number` | Fertility rate, total births per woman. |\n| 21 | `birth_rate_per_1000` | `number` | Crude birth rate per 1,000 people. |\n| 22 | `death_rate_per_1000` | `number` | Crude death rate per 1,000 people. |\n| 23 | `urban_population_pct` | `number` | Urban population (% of total). |\n| 24 | `population_density_per_km2` | `number` | Population density (people per sq. km). |\n| 25 | `gdp_current_usd` | `number` | GDP at current prices (US$). |\n| 26 | `gdp_per_capita_usd` | `number` | GDP per capita (current US$). |\n| 27 | `gdp_growth_pct` | `number` | GDP growth (annual %). |\n| 28 | `gdp_constant_2015_usd` | `number` | GDP at constant 2015 prices (US$). |\n| 29 | `manufacturing_value_added_pct` | `number` | Manufacturing value added (% of GDP). |\n| 30 | `agriculture_value_added_pct` | `number` | Agriculture value added (% of GDP). |\n| 31 | `services_value_added_pct` | `number` | Services value added (% of GDP). |\n| 32 | `exports_gdp_pct` | `number` | Exports of goods and services (% of GDP). |\n| 33 | `imports_gdp_pct` | `number` | Imports of goods and services (% of GDP). |\n| 34 | `trade_gdp_pct` | `number` | Trade (% of GDP). |\n| 35 | `fdi_inflow_usd` | `number` | Foreign direct investment, net inflows (US$). |\n| 36 | `central_govt_debt_pct` | `number` | Central government debt (% of GDP). |\n| 37 | `tax_revenue_pct` | `number` | Tax revenue (% of GDP). |\n| 38 | `govt_expense_pct` | `number` | Expense (% of GDP). |\n| 39 | `gini_index` | `number` | Gini index (0-100). |\n| 40 | `poverty_2_15_per_day_pct` | `number` | Poverty headcount at $2.15/day (2017 PPP, %). |\n| 41 | `unemployment_pct` | `number` | Unemployment, total (% of labour force). |\n| 42 | `labour_force_participation_pct` | `number` | Labour force participation rate (%). |\n| 43 | `employment_ratio_pct` | `number` | Employment to population ratio (%). |\n| 44 | `primary_enrolment_pct` | `number` | School enrolment, primary (% gross). |\n| 45 | `secondary_enrolment_pct` | `number` | School enrolment, secondary (% gross). |\n| 46 | `tertiary_enrolment_pct` | `number` | School enrolment, tertiary (% gross). |\n| 47 | `education_spend_pct` | `number` | Government expenditure on education (% of GDP). |\n| 48 | `literacy_rate_pct` | `number` | Adult literacy rate (% of people aged 15+). |\n| 49 | `health_spend_pct` | `number` | Current health expenditure (% of GDP). |\n| 50 | `health_spend_per_capita_usd` | `number` | Current health expenditure per capita (US$). |\n| 51 | `hospital_beds_per_1000` | `number` | Hospital beds per 1,000 people. |\n| 52 | `physicians_per_1000` | `number` | Physicians per 1,000 people. |\n| 53 | `measles_immunisation_pct` | `number` | Immunisation, measles (% of children 12-23 months). |\n| 54 | `maternal_mortality_per_100k` | `number` | Maternal mortality ratio per 100,000 live births. |\n| 55 | `tuberculosis_per_100k` | `number` | Incidence of tuberculosis per 100,000 people. |\n| 56 | `hiv_incidence_per_1000` | `number` | HIV incidence per 1,000 uninfected population. |\n| 57 | `forest_area_pct` | `number` | Forest area (% of land area). |\n| 58 | `agricultural_land_pct` | `number` | Agricultural land (% of land area). |\n| 59 | `cereal_yield_kg_per_ha` | `number` | Cereal yield (kg per hectare). |\n| 60 | `freshwater_withdrawal_pct` | `number` | Annual freshwater withdrawals (% of internal resources). |\n| 61 | `electricity_access_pct` | `number` | Access to electricity (% of population). |\n| 62 | `energy_use_per_capita_kg` | `number` | Energy use per capita (kg of oil equivalent). |\n| 63 | `renewable_energy_pct` | `number` | Renewable energy consumption (% of final energy). |\n| 64 | `internet_users_pct` | `number` | Individuals using the Internet (% of population). |\n| 65 | `mobile_subscriptions_per_100` | `number` | Mobile cellular subscriptions per 100 people. |\n| 66 | `urban_population` | `number` | Urban population (population x urban share). |\n| 67 | `rural_population_pct` | `number` | 100 - urban population share. |\n| 68 | `log10_gdp` | `number` | log10 of GDP in current US$. |\n| 69 | `log10_gdp_per_capita` | `number` | log10 of GDP per capita. |\n| 70 | `youth_dependency_ratio` | `number` | Population 0-14 / population 15-64 x 100. |\n| 71 | `old_age_dependency_ratio` | `number` | Population 65+ / population 15-64 x 100. |\n| 72 | `life_expectancy_gap_years` | `number` | Female minus male life expectancy. |\n| 73 | `electricity_access_gap_pct` | `number` | 100 - electricity access share. |\n| 74 | `internet_nonusers_pct` | `number` | 100 - internet user share. |\n| 75 | `health_spend_per_person_day_usd` | `number` | Health spend per capita divided by 365. |\n| 76 | `is_high_income` | `boolean` | true for World Bank high-income countries. |\n| 77 | `is_low_income` | `boolean` | true for World Bank low-income countries. |\n| 78 | `indicators_present` | `number` | How many of the 55 indicators are non-null for this row. |\n| 79 | `indicator_completeness_pct` | `number` | indicators_present as a percentage of 55. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "development_indicators.csv",
+      "description": "Primary dataset file containing 14,322 records across 79 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "iso3",
+            "type": "string",
+            "description": "World Bank / ISO 3166-1 alpha-3 country code."
+          },
+          {
+            "name": "country_name",
+            "type": "string",
+            "description": "Country name as used by the World Bank."
+          },
+          {
+            "name": "country_iso2",
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 code."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Calendar year of the observation."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "World Bank region."
+          },
+          {
+            "name": "income_level",
+            "type": "string",
+            "description": "World Bank income group (High, Upper middle, Lower middle, Low)."
+          },
+          {
+            "name": "lending_type",
+            "type": "string",
+            "description": "World Bank lending category."
+          },
+          {
+            "name": "capital_city",
+            "type": "string",
+            "description": "Capital city."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Country centroid latitude."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Country centroid longitude."
+          },
+          {
+            "name": "population_total",
+            "type": "number",
+            "description": "Total population."
+          },
+          {
+            "name": "population_growth_pct",
+            "type": "number",
+            "description": "Annual population growth rate (%)."
+          },
+          {
+            "name": "population_0_14_pct",
+            "type": "number",
+            "description": "Population aged 0-14 (% of total)."
+          },
+          {
+            "name": "population_15_64_pct",
+            "type": "number",
+            "description": "Population aged 15-64 (% of total)."
+          },
+          {
+            "name": "population_65plus_pct",
+            "type": "number",
+            "description": "Population aged 65+ (% of total)."
+          },
+          {
+            "name": "life_expectancy_years",
+            "type": "number",
+            "description": "Life expectancy at birth, total (years)."
+          },
+          {
+            "name": "life_expectancy_female_years",
+            "type": "number",
+            "description": "Life expectancy at birth, female (years)."
+          },
+          {
+            "name": "life_expectancy_male_years",
+            "type": "number",
+            "description": "Life expectancy at birth, male (years)."
+          },
+          {
+            "name": "infant_mortality_per_1000",
+            "type": "number",
+            "description": "Infant mortality per 1,000 live births."
+          },
+          {
+            "name": "fertility_rate",
+            "type": "number",
+            "description": "Fertility rate, total births per woman."
+          },
+          {
+            "name": "birth_rate_per_1000",
+            "type": "number",
+            "description": "Crude birth rate per 1,000 people."
+          },
+          {
+            "name": "death_rate_per_1000",
+            "type": "number",
+            "description": "Crude death rate per 1,000 people."
+          },
+          {
+            "name": "urban_population_pct",
+            "type": "number",
+            "description": "Urban population (% of total)."
+          },
+          {
+            "name": "population_density_per_km2",
+            "type": "number",
+            "description": "Population density (people per sq. km)."
+          },
+          {
+            "name": "gdp_current_usd",
+            "type": "number",
+            "description": "GDP at current prices (US$)."
+          },
+          {
+            "name": "gdp_per_capita_usd",
+            "type": "number",
+            "description": "GDP per capita (current US$)."
+          },
+          {
+            "name": "gdp_growth_pct",
+            "type": "number",
+            "description": "GDP growth (annual %)."
+          },
+          {
+            "name": "gdp_constant_2015_usd",
+            "type": "number",
+            "description": "GDP at constant 2015 prices (US$)."
+          },
+          {
+            "name": "manufacturing_value_added_pct",
+            "type": "number",
+            "description": "Manufacturing value added (% of GDP)."
+          },
+          {
+            "name": "agriculture_value_added_pct",
+            "type": "number",
+            "description": "Agriculture value added (% of GDP)."
+          },
+          {
+            "name": "services_value_added_pct",
+            "type": "number",
+            "description": "Services value added (% of GDP)."
+          },
+          {
+            "name": "exports_gdp_pct",
+            "type": "number",
+            "description": "Exports of goods and services (% of GDP)."
+          },
+          {
+            "name": "imports_gdp_pct",
+            "type": "number",
+            "description": "Imports of goods and services (% of GDP)."
+          },
+          {
+            "name": "trade_gdp_pct",
+            "type": "number",
+            "description": "Trade (% of GDP)."
+          },
+          {
+            "name": "fdi_inflow_usd",
+            "type": "number",
+            "description": "Foreign direct investment, net inflows (US$)."
+          },
+          {
+            "name": "central_govt_debt_pct",
+            "type": "number",
+            "description": "Central government debt (% of GDP)."
+          },
+          {
+            "name": "tax_revenue_pct",
+            "type": "number",
+            "description": "Tax revenue (% of GDP)."
+          },
+          {
+            "name": "govt_expense_pct",
+            "type": "number",
+            "description": "Expense (% of GDP)."
+          },
+          {
+            "name": "gini_index",
+            "type": "number",
+            "description": "Gini index (0-100)."
+          },
+          {
+            "name": "poverty_2_15_per_day_pct",
+            "type": "number",
+            "description": "Poverty headcount at $2.15/day (2017 PPP, %)."
+          },
+          {
+            "name": "unemployment_pct",
+            "type": "number",
+            "description": "Unemployment, total (% of labour force)."
+          },
+          {
+            "name": "labour_force_participation_pct",
+            "type": "number",
+            "description": "Labour force participation rate (%)."
+          },
+          {
+            "name": "employment_ratio_pct",
+            "type": "number",
+            "description": "Employment to population ratio (%)."
+          },
+          {
+            "name": "primary_enrolment_pct",
+            "type": "number",
+            "description": "School enrolment, primary (% gross)."
+          },
+          {
+            "name": "secondary_enrolment_pct",
+            "type": "number",
+            "description": "School enrolment, secondary (% gross)."
+          },
+          {
+            "name": "tertiary_enrolment_pct",
+            "type": "number",
+            "description": "School enrolment, tertiary (% gross)."
+          },
+          {
+            "name": "education_spend_pct",
+            "type": "number",
+            "description": "Government expenditure on education (% of GDP)."
+          },
+          {
+            "name": "literacy_rate_pct",
+            "type": "number",
+            "description": "Adult literacy rate (% of people aged 15+)."
+          },
+          {
+            "name": "health_spend_pct",
+            "type": "number",
+            "description": "Current health expenditure (% of GDP)."
+          },
+          {
+            "name": "health_spend_per_capita_usd",
+            "type": "number",
+            "description": "Current health expenditure per capita (US$)."
+          },
+          {
+            "name": "hospital_beds_per_1000",
+            "type": "number",
+            "description": "Hospital beds per 1,000 people."
+          },
+          {
+            "name": "physicians_per_1000",
+            "type": "number",
+            "description": "Physicians per 1,000 people."
+          },
+          {
+            "name": "measles_immunisation_pct",
+            "type": "number",
+            "description": "Immunisation, measles (% of children 12-23 months)."
+          },
+          {
+            "name": "maternal_mortality_per_100k",
+            "type": "number",
+            "description": "Maternal mortality ratio per 100,000 live births."
+          },
+          {
+            "name": "tuberculosis_per_100k",
+            "type": "number",
+            "description": "Incidence of tuberculosis per 100,000 people."
+          },
+          {
+            "name": "hiv_incidence_per_1000",
+            "type": "number",
+            "description": "HIV incidence per 1,000 uninfected population."
+          },
+          {
+            "name": "forest_area_pct",
+            "type": "number",
+            "description": "Forest area (% of land area)."
+          },
+          {
+            "name": "agricultural_land_pct",
+            "type": "number",
+            "description": "Agricultural land (% of land area)."
+          },
+          {
+            "name": "cereal_yield_kg_per_ha",
+            "type": "number",
+            "description": "Cereal yield (kg per hectare)."
+          },
+          {
+            "name": "freshwater_withdrawal_pct",
+            "type": "number",
+            "description": "Annual freshwater withdrawals (% of internal resources)."
+          },
+          {
+            "name": "electricity_access_pct",
+            "type": "number",
+            "description": "Access to electricity (% of population)."
+          },
+          {
+            "name": "energy_use_per_capita_kg",
+            "type": "number",
+            "description": "Energy use per capita (kg of oil equivalent)."
+          },
+          {
+            "name": "renewable_energy_pct",
+            "type": "number",
+            "description": "Renewable energy consumption (% of final energy)."
+          },
+          {
+            "name": "internet_users_pct",
+            "type": "number",
+            "description": "Individuals using the Internet (% of population)."
+          },
+          {
+            "name": "mobile_subscriptions_per_100",
+            "type": "number",
+            "description": "Mobile cellular subscriptions per 100 people."
+          },
+          {
+            "name": "urban_population",
+            "type": "number",
+            "description": "Urban population (population x urban share)."
+          },
+          {
+            "name": "rural_population_pct",
+            "type": "number",
+            "description": "100 - urban population share."
+          },
+          {
+            "name": "log10_gdp",
+            "type": "number",
+            "description": "log10 of GDP in current US$."
+          },
+          {
+            "name": "log10_gdp_per_capita",
+            "type": "number",
+            "description": "log10 of GDP per capita."
+          },
+          {
+            "name": "youth_dependency_ratio",
+            "type": "number",
+            "description": "Population 0-14 / population 15-64 x 100."
+          },
+          {
+            "name": "old_age_dependency_ratio",
+            "type": "number",
+            "description": "Population 65+ / population 15-64 x 100."
+          },
+          {
+            "name": "life_expectancy_gap_years",
+            "type": "number",
+            "description": "Female minus male life expectancy."
+          },
+          {
+            "name": "electricity_access_gap_pct",
+            "type": "number",
+            "description": "100 - electricity access share."
+          },
+          {
+            "name": "internet_nonusers_pct",
+            "type": "number",
+            "description": "100 - internet user share."
+          },
+          {
+            "name": "health_spend_per_person_day_usd",
+            "type": "number",
+            "description": "Health spend per capita divided by 365."
+          },
+          {
+            "name": "is_high_income",
+            "type": "boolean",
+            "description": "true for World Bank high-income countries."
+          },
+          {
+            "name": "is_low_income",
+            "type": "boolean",
+            "description": "true for World Bank low-income countries."
+          },
+          {
+            "name": "indicators_present",
+            "type": "number",
+            "description": "How many of the 55 indicators are non-null for this row."
+          },
+          {
+            "name": "indicator_completeness_pct",
+            "type": "number",
+            "description": "indicators_present as a percentage of 55."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

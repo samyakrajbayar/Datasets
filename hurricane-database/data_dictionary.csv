@@ -1,0 +1,58 @@
+column,data_type,description
+storm_id,string,"HURDAT2 storm identifier (basin + number + year, e.g. AL011851)."
+basin,string,"Basin name: North Atlantic, Eastern Pacific or Central Pacific."
+basin_code,string,"Two-letter basin code (AL, EP, CP)."
+storm_number,number,Storm number within its season.
+storm_name,string,"Storm name, or UNNAMED for pre-naming-era systems."
+storm_year,number,Season year.
+record_time_utc,datetime,Observation timestamp in UTC (ISO).
+iso_date,number,"Date of the observation (YYYYMMDD, as in the source)."
+hour_utc,number,"Synoptic hour of the observation (0, 6, 12, 18)."
+record_identifier,string,"Landfall (L), minimum pressure (P) or maximum wind (W) marker."
+status,string,"Two-letter status code (HU, TS, TD, EX, SS, SD, LO, ...)."
+status_label,string,Expanded status label.
+latitude,number,Storm centre latitude in degrees (north positive).
+longitude,number,"Storm centre longitude in degrees (east positive, so western hemisphere is negative)."
+max_wind_kt,number,Maximum sustained wind in knots (1-minute average).
+max_wind_kmh,number,Maximum sustained wind converted to km/h.
+max_wind_mph,number,Maximum sustained wind converted to mph.
+min_pressure_mb,number,Central pressure in millibars.
+category,string,Saffir-Simpson category label at this point.
+category_num,number,"Saffir-Simpson category as a number (0 for TS, -1 for depression)."
+is_hurricane,boolean,true when sustained wind is at least 64 kt.
+is_major,boolean,true when sustained wind is at least 96 kt (Category 3+).
+is_named,boolean,true when the storm has a name rather than UNNAMED.
+lat_hemisphere,string,N or S.
+lon_hemisphere,string,E or W.
+distance_to_equator_km,number,Absolute latitude converted to km.
+movement_bearing_deg,number,"Bearing of motion since the previous waypoint, in degrees."
+movement_speed_kmh,number,"Translation speed since the previous waypoint, in km/h."
+movement_direction,string,"Compass direction of motion (N, NE, E, ...)."
+wind_change_kt,number,Change in maximum wind since the previous waypoint (kt).
+pressure_change_mb,number,Change in central pressure since the previous waypoint (mb).
+storm_max_wind_kt,number,Peak sustained wind over the whole storm.
+storm_min_pressure_mb,number,Lowest central pressure over the whole storm.
+storm_peak_category,string,Peak Saffir-Simpson category over the whole storm.
+storm_duration_days,number,"Time between the first and last waypoint, in days."
+storm_record_count,number,Number of 6-hourly waypoints in the storm.
+storm_active_days,number,Number of distinct calendar dates with a waypoint.
+storm_ace,number,Accumulated Cyclone Energy in 10^4 kt^2 (sum of squared winds / 10^4).
+storm_sequence_in_year,number,Storm number within the season.
+decade,number,Decade of the season year.
+waypoint_index,number,Position of this waypoint within the storm track (1-based).
+is_first_point,boolean,true for the first waypoint of the storm.
+is_last_point,boolean,true for the last waypoint of the storm.
+radius_34_kt_ne,number,Radius of 34 KT NE winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_34_kt_se,number,Radius of 34 KT SE winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_34_kt_sw,number,Radius of 34 KT SW winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_34_kt_nw,number,Radius of 34 KT NW winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_50_kt_ne,number,Radius of 50 KT NE winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_50_kt_se,number,Radius of 50 KT SE winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_50_kt_sw,number,Radius of 50 KT SW winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_50_kt_nw,number,Radius of 50 KT NW winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_64_kt_ne,number,Radius of 64 KT NE winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_64_kt_se,number,Radius of 64 KT SE winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_64_kt_sw,number,Radius of 64 KT SW winds in nautical miles (quadrant NE/SE/SW/NW).
+radius_64_kt_nw,number,Radius of 64 KT NW winds in nautical miles (quadrant NE/SE/SW/NW).
+max_wind_radius_nm,number,"Radius of maximum wind in nautical miles, when reported."
+has_wind_radii,boolean,true when any quadrant wind radius is reported (post-2004 records).

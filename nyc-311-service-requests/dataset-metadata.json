@@ -1,0 +1,294 @@
+{
+  "title": "NYC 311 Service Requests",
+  "id": "samyakrajbayar/nyc-311-service-requests",
+  "subtitle": "200,000 NYC 311 requests with agency, location and resolution details",
+  "description": "# NYC 311 Service Requests\n\n**Subtitle:** 200,000 NYC 311 requests with agency, location and resolution details\n\n**Tags:** `tabular`, `urban`, `civic`\n\n**Dataset File:** `nyc_311_requests.csv` (200,000 rows, 52 columns, 152.8 MB)\n\n**Provenance & Source:** NYC Open Data Portal (data.cityofnewyork.us)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 200,000 New York City service requests\n\nNYC 311 is the city's non-emergency request system: noise, heat, potholes, sanitation, water, trees and\nmore. This dataset takes the **200,000 most recent requests** and expands each into **52 parameters**.\n\n- **Request identity** \u2014 unique key, created and closed timestamps, status, due date, channel.\n- **Responsibility** \u2014 agency code and name, complaint type, descriptor, facility type.\n- **Location** \u2014 incident address, street, cross streets, ZIP, borough, community board, council\n  district, police precinct, park facility, latitude/longitude and State Plane coordinates.\n- **Outcome** \u2014 resolution description and last resolution update.\n- **Derived** \u2014 response hours and days, closed flags, 1-day and 7-day closure flags, year/month/\n  weekday/hour, weekend flag, coarse complaint category, location flag, text lengths and topic flags.\n\n**153,951 requests (77.0%) are closed**, **33,098 are noise complaints**, and\nrequests span **6 boroughs** \u2014 a ready-made civic-operations and response-time dataset.\n\n## \ud83e\uddfe Columns (52)\n\n`unique_key`, `created_date`, `closed_date`, `agency`, `agency_name`, `complaint_type`, `descriptor`, `location_type`, `incident_zip`, `incident_address`, `street_name`, `cross_street_1`, `cross_street_2`, `intersection_street_1`, `intersection_street_2`, `address_type`, `city`, `landmark`, `facility_type`, `status`, `due_date`, `resolution_description`, `resolution_action_updated_date`, `community_board`, `council_district`, `police_precinct`, `borough`, `park_borough`, `open_data_channel_type`, `park_facility_name`, `latitude`, `longitude`, `x_coordinate`, `y_coordinate`, `response_hours`, `response_days`, `is_closed`, `is_open`, `closed_within_1_day`, `closed_within_7_days`, `year`, `month`, `day_of_week`, `hour`, `is_weekend`, `complaint_category`, `has_location`, `resolution_length`, `descriptor_length`, `is_noise`, `is_heat_hot_water`, `is_street_condition`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Response-time equity** \u2014 median closure time by borough, ZIP and complaint type.\n2. **Agency performance** \u2014 which agencies close fastest, and how much do they backload?\n3. **Seasonality** \u2014 heat complaints in winter, noise in summer; plot a heatmap by month and hour.\n4. **Channel shift** \u2014 phone vs online vs mobile over time.\n5. **Geography** \u2014 hex-bin request density and compare with population or income.\n6. **Backlog** \u2014 open requests by age and type; which categories stall?\n7. **Resolution text NLP** \u2014 cluster resolution descriptions to find recurring outcomes.\n8. **Classification** \u2014 predict the responsible agency from the complaint text.\n9. **Equity audit** \u2014 response time vs neighbourhood demographics (external join required).\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `nyc_311_requests.csv` | 200,000 service requests x 52 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`nyc`, `311`, `civic`, `open-data`, `service-requests`, `urban`, `response-time`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **NYC Open Data**, 311 Service Requests from 2010 to present,\n  `https://data.cityofnewyork.us/resource/erm2-nwe9.json` (Socrata).\n- **Scope:** the 200,000 most recent requests by `created_date`, five pages of 40,000.\n- **Processing:** timestamps parsed, response times and calendar fields derived, complaint types mapped\n  to a coarse category, topic flags added.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily.** New York City publishes 311 requests continuously.\n\n## \u26a0\ufe0f Caveats\n\n- This is a recency sample, not a random or complete historical extract.\n- Timestamps are local New York time; daylight-saving transitions are not normalised.\n- Open requests have no closed_date and therefore no response time.\n- Complaint types are free-text choices and change over the years.\n- Coordinates are missing for a minority of requests (e.g. anonymous or address-only).\n- Resolution descriptions are operator text and can be terse or boilerplate.\n- The 200,000-row sample may not support fine-grained historical comparisons.\n\n## \ud83d\udcdc Licence\n\nNYC Open Data is licensed under the Open Data Commons Attribution License.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `unique_key` | `number` | Unique service-request identifier. |\n| 2 | `created_date` | `datetime` | Request creation timestamp (local time). |\n| 3 | `closed_date` | `datetime` | Request closure timestamp, where closed. |\n| 4 | `agency` | `string` | Responsible agency code. |\n| 5 | `agency_name` | `string` | Responsible agency name. |\n| 6 | `complaint_type` | `string` | Complaint type as selected by the caller. |\n| 7 | `descriptor` | `string` | Complaint sub-type / descriptor. |\n| 8 | `location_type` | `string` | Location type (residential, commercial, ...). |\n| 9 | `incident_zip` | `number` | ZIP code of the incident. |\n| 10 | `incident_address` | `string` | Street address of the incident. |\n| 11 | `street_name` | `string` | Street name. |\n| 12 | `cross_street_1` | `string` | First cross street. |\n| 13 | `cross_street_2` | `string` | Second cross street. |\n| 14 | `intersection_street_1` | `string` | First intersection street. |\n| 15 | `intersection_street_2` | `string` | Second intersection street. |\n| 16 | `address_type` | `string` | Address type (address, blockface, intersection, ...). |\n| 17 | `city` | `string` | City (usually New York). |\n| 18 | `landmark` | `string` | Landmark name, if any. |\n| 19 | `facility_type` | `string` | Facility type, if the request concerns a facility. |\n| 20 | `status` | `string` | Request status (Open, In Progress, Closed, ...). |\n| 21 | `due_date` | `datetime` | Agency due date. |\n| 22 | `resolution_description` | `string` | Agency resolution text. |\n| 23 | `resolution_action_updated_date` | `datetime` | Last resolution update. |\n| 24 | `community_board` | `string` | Community board district. |\n| 25 | `council_district` | `number` | City council district. |\n| 26 | `police_precinct` | `string` | Police precinct. |\n| 27 | `borough` | `string` | Borough of the incident. |\n| 28 | `park_borough` | `string` | Parks department borough. |\n| 29 | `open_data_channel_type` | `string` | How the request was submitted (phone, online, mobile, ...). |\n| 30 | `park_facility_name` | `string` | Park or facility name. |\n| 31 | `latitude` | `number` | Latitude (WGS84). |\n| 32 | `longitude` | `number` | Longitude (WGS84). |\n| 33 | `x_coordinate` | `number` | State plane X coordinate. |\n| 34 | `y_coordinate` | `number` | State plane Y coordinate. |\n| 35 | `response_hours` | `number` | Closed minus created, in hours. |\n| 36 | `response_days` | `number` | response_hours / 24. |\n| 37 | `is_closed` | `boolean` | true when a closed_date is present. |\n| 38 | `is_open` | `boolean` | true when status is Open. |\n| 39 | `closed_within_1_day` | `boolean` | true when closed within 24 hours. |\n| 40 | `closed_within_7_days` | `boolean` | true when closed within 7 days. |\n| 41 | `year` | `number` | Year the request was created. |\n| 42 | `month` | `number` | Month number. |\n| 43 | `day_of_week` | `string` | Weekday name. |\n| 44 | `hour` | `number` | Hour of creation (0-23). |\n| 45 | `is_weekend` | `boolean` | true for Saturday/Sunday. |\n| 46 | `complaint_category` | `string` | Coarse category derived from complaint_type. |\n| 47 | `has_location` | `boolean` | true when latitude and longitude are present. |\n| 48 | `resolution_length` | `number` | Characters in the resolution description. |\n| 49 | `descriptor_length` | `number` | Characters in the descriptor. |\n| 50 | `is_noise` | `boolean` | true for noise complaints. |\n| 51 | `is_heat_hot_water` | `boolean` | true for heat/hot-water complaints. |\n| 52 | `is_street_condition` | `boolean` | true for street-condition complaints. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "nyc_311_requests.csv.zip",
+      "description": "Primary dataset file containing 200,000 records across 52 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "unique_key",
+            "type": "number",
+            "description": "Unique service-request identifier."
+          },
+          {
+            "name": "created_date",
+            "type": "datetime",
+            "description": "Request creation timestamp (local time)."
+          },
+          {
+            "name": "closed_date",
+            "type": "datetime",
+            "description": "Request closure timestamp, where closed."
+          },
+          {
+            "name": "agency",
+            "type": "string",
+            "description": "Responsible agency code."
+          },
+          {
+            "name": "agency_name",
+            "type": "string",
+            "description": "Responsible agency name."
+          },
+          {
+            "name": "complaint_type",
+            "type": "string",
+            "description": "Complaint type as selected by the caller."
+          },
+          {
+            "name": "descriptor",
+            "type": "string",
+            "description": "Complaint sub-type / descriptor."
+          },
+          {
+            "name": "location_type",
+            "type": "string",
+            "description": "Location type (residential, commercial, ...)."
+          },
+          {
+            "name": "incident_zip",
+            "type": "number",
+            "description": "ZIP code of the incident."
+          },
+          {
+            "name": "incident_address",
+            "type": "string",
+            "description": "Street address of the incident."
+          },
+          {
+            "name": "street_name",
+            "type": "string",
+            "description": "Street name."
+          },
+          {
+            "name": "cross_street_1",
+            "type": "string",
+            "description": "First cross street."
+          },
+          {
+            "name": "cross_street_2",
+            "type": "string",
+            "description": "Second cross street."
+          },
+          {
+            "name": "intersection_street_1",
+            "type": "string",
+            "description": "First intersection street."
+          },
+          {
+            "name": "intersection_street_2",
+            "type": "string",
+            "description": "Second intersection street."
+          },
+          {
+            "name": "address_type",
+            "type": "string",
+            "description": "Address type (address, blockface, intersection, ...)."
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City (usually New York)."
+          },
+          {
+            "name": "landmark",
+            "type": "string",
+            "description": "Landmark name, if any."
+          },
+          {
+            "name": "facility_type",
+            "type": "string",
+            "description": "Facility type, if the request concerns a facility."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "Request status (Open, In Progress, Closed, ...)."
+          },
+          {
+            "name": "due_date",
+            "type": "datetime",
+            "description": "Agency due date."
+          },
+          {
+            "name": "resolution_description",
+            "type": "string",
+            "description": "Agency resolution text."
+          },
+          {
+            "name": "resolution_action_updated_date",
+            "type": "datetime",
+            "description": "Last resolution update."
+          },
+          {
+            "name": "community_board",
+            "type": "string",
+            "description": "Community board district."
+          },
+          {
+            "name": "council_district",
+            "type": "number",
+            "description": "City council district."
+          },
+          {
+            "name": "police_precinct",
+            "type": "string",
+            "description": "Police precinct."
+          },
+          {
+            "name": "borough",
+            "type": "string",
+            "description": "Borough of the incident."
+          },
+          {
+            "name": "park_borough",
+            "type": "string",
+            "description": "Parks department borough."
+          },
+          {
+            "name": "open_data_channel_type",
+            "type": "string",
+            "description": "How the request was submitted (phone, online, mobile, ...)."
+          },
+          {
+            "name": "park_facility_name",
+            "type": "string",
+            "description": "Park or facility name."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude (WGS84)."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude (WGS84)."
+          },
+          {
+            "name": "x_coordinate",
+            "type": "number",
+            "description": "State plane X coordinate."
+          },
+          {
+            "name": "y_coordinate",
+            "type": "number",
+            "description": "State plane Y coordinate."
+          },
+          {
+            "name": "response_hours",
+            "type": "number",
+            "description": "Closed minus created, in hours."
+          },
+          {
+            "name": "response_days",
+            "type": "number",
+            "description": "response_hours / 24."
+          },
+          {
+            "name": "is_closed",
+            "type": "boolean",
+            "description": "true when a closed_date is present."
+          },
+          {
+            "name": "is_open",
+            "type": "boolean",
+            "description": "true when status is Open."
+          },
+          {
+            "name": "closed_within_1_day",
+            "type": "boolean",
+            "description": "true when closed within 24 hours."
+          },
+          {
+            "name": "closed_within_7_days",
+            "type": "boolean",
+            "description": "true when closed within 7 days."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Year the request was created."
+          },
+          {
+            "name": "month",
+            "type": "number",
+            "description": "Month number."
+          },
+          {
+            "name": "day_of_week",
+            "type": "string",
+            "description": "Weekday name."
+          },
+          {
+            "name": "hour",
+            "type": "number",
+            "description": "Hour of creation (0-23)."
+          },
+          {
+            "name": "is_weekend",
+            "type": "boolean",
+            "description": "true for Saturday/Sunday."
+          },
+          {
+            "name": "complaint_category",
+            "type": "string",
+            "description": "Coarse category derived from complaint_type."
+          },
+          {
+            "name": "has_location",
+            "type": "boolean",
+            "description": "true when latitude and longitude are present."
+          },
+          {
+            "name": "resolution_length",
+            "type": "number",
+            "description": "Characters in the resolution description."
+          },
+          {
+            "name": "descriptor_length",
+            "type": "number",
+            "description": "Characters in the descriptor."
+          },
+          {
+            "name": "is_noise",
+            "type": "boolean",
+            "description": "true for noise complaints."
+          },
+          {
+            "name": "is_heat_hot_water",
+            "type": "boolean",
+            "description": "true for heat/hot-water complaints."
+          },
+          {
+            "name": "is_street_condition",
+            "type": "boolean",
+            "description": "true for street-condition complaints."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

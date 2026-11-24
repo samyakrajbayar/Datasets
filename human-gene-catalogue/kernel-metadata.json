@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/human-gene-catalogue-hgnc-comp-starter-notebook",
+  "title": "Human Gene Catalogue - HGNC Comp Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/human-gene-catalogue"
+  ]
+}

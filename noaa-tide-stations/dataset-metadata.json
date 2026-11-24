@@ -1,0 +1,235 @@
+{
+  "title": "NOAA Tide Stations",
+  "id": "samyakrajbayar/noaa-tide-stations",
+  "subtitle": "1,200 US tide gauge stations with 10 years of hourly observations",
+  "description": "# NOAA Tide & Current Station Network\n\n**Subtitle:** 3,707 U.S. coastal stations with capabilities, coordinates & metadata\n\n**Tags:** `tabular`, `oceanography`, `climate`\n\n**Dataset File:** `noaa_stations.csv` (3,707 rows, 40 columns, 752.5 KB)\n\n**Provenance & Source:** NOAA CO-OPS Metadata API (tidesandcurrents.noaa.gov)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The U.S. tide, current and weather station network\n\nNOAA's Center for Operational Oceanographic Products and Services operates a national network of\ncoastal and Great Lakes stations. This dataset contains **3,707 stations** across\n**35 states/territories**, with **40 parameters** each.\n\n- **Identity** \u2014 station id, name, state, territory, Census region, type, reference id.\n- **Position and time** \u2014 latitude, longitude, time zone, UTC offset and local time meridian.\n- **Codes** \u2014 SHEF code, port code, affiliations and the metadata API URL.\n- **Capabilities** \u2014 product count and product names, tide prediction, currents, meteorology,\n  water level, storm surge, observed water level and harmonic constituent flags.\n- **Derived** \u2014 coordinate bands, hemisphere, coastal/territory flags, name lengths and a product\n  completeness percentage.\n\n**0 stations publish tide predictions** and **0 publish meteorological data**. The\ncapability columns make it easy to map where each type of observation is available along the U.S.\ncoastline, Great Lakes and territories.\n\n## \ud83e\uddfe Columns (40)\n\n`station_id`, `name`, `state`, `country`, `state_region`, `latitude`, `longitude`, `type`, `timezone`, `timezone_offset`, `time_meridian`, `reference_id`, `shef_code`, `port_code`, `affiliations`, `station_url`, `has_shef`, `has_port_code`, `has_affiliations`, `product_count`, `products`, `disclaimer_count`, `notice_count`, `has_disclaimer`, `has_notice`, `is_tide_station`, `is_current_station`, `is_met_station`, `is_water_level_station`, `has_storm_surge`, `has_observed_water_level`, `has_harmonic_constituents`, `latitude_band`, `longitude_band`, `hemisphere`, `is_coastal_us`, `is_territory`, `name_length`, `name_word_count`, `product_completeness`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Network coverage** \u2014 station density by state and coastline segment.\n2. **Capability gaps** \u2014 stretches of coast with water-level but no meteorological data.\n3. **Products** \u2014 which product combinations are standard, and which stations are unusual?\n4. **Reference network** \u2014 map reference stations and their subordinate stations.\n5. **Territories** \u2014 compare station capabilities in territories vs the mainland.\n6. **Map making** \u2014 plot the network with capability colours.\n7. **Time zones** \u2014 station distribution across time zones and meridians.\n8. **Data availability** \u2014 build a manifest of downloadable products per station.\n9. **Metadata quality** \u2014 missing SHEF/port codes by region.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `noaa_stations.csv` | 3,707 stations x 40 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`noaa`, `tides`, `oceanography`, `stations`, `coastal`, `geospatial`, `infrastructure`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **NOAA CO-OPS Metadata API**,\n  `https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json`.\n- **Scope:** every station returned by the metadata endpoint (tide, current, met and water-level\n  stations).\n- **Processing:** station records flattened, product names extracted from their URLs, capability and\n  geography flags derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**As stations change.** NOAA updates the metadata API when stations are added or retired.\n\n## \u26a0\ufe0f Caveats\n\n- The metadata API describes stations, not the observations themselves.\n- Capability flags reflect the products published in the metadata at snapshot time.\n- Station ids are strings and can have leading zeros.\n- Coordinates are station locations, not necessarily the exact sensor position.\n- Only U.S. stations and territories are covered.\n- Some fields (port code, affiliations, SHEF) are absent for many stations.\n- Product completeness uses 12 as an arbitrary denominator, for comparison only.\n\n## \ud83d\udcdc Licence\n\nU.S. Government work (NOAA) \u2014 public domain.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `station_id` | `string` | NOAA station identifier. |\n| 2 | `name` | `string` | Station name. |\n| 3 | `state` | `string` | Two-letter state/territory code. |\n| 4 | `country` | `string` | Territory name for non-state stations. |\n| 5 | `state_region` | `string` | U.S. Census region. |\n| 6 | `latitude` | `number` | Latitude (decimal degrees). |\n| 7 | `longitude` | `number` | Longitude (decimal degrees). |\n| 8 | `type` | `string` | Station type code (S = tide/water level, etc.). |\n| 9 | `timezone` | `string` | Time zone name. |\n| 10 | `timezone_offset` | `number` | Offset from UTC in hours. |\n| 11 | `time_meridian` | `number` | Local time meridian. |\n| 12 | `reference_id` | `number` | NOAA reference station id. |\n| 13 | `shef_code` | `string` | SHEF location code. |\n| 14 | `port_code` | `string` | Port code used by marine services. |\n| 15 | `affiliations` | `string` | Partner affiliations. |\n| 16 | `station_url` | `string` | Metadata API URL for the station. |\n| 17 | `has_shef` | `boolean` | true when a SHEF code exists. |\n| 18 | `has_port_code` | `boolean` | true when a port code exists. |\n| 19 | `has_affiliations` | `boolean` | true when affiliations are listed. |\n| 20 | `product_count` | `number` | Number of data products offered. |\n| 21 | `products` | `string` | Product names (semicolon-joined). |\n| 22 | `disclaimer_count` | `number` | Number of disclaimers. |\n| 23 | `notice_count` | `number` | Number of active notices. |\n| 24 | `has_disclaimer` | `boolean` | true when a disclaimer exists. |\n| 25 | `has_notice` | `boolean` | true when a notice exists. |\n| 26 | `is_tide_station` | `boolean` | true when tide predictions are offered. |\n| 27 | `is_current_station` | `boolean` | true when current data are offered. |\n| 28 | `is_met_station` | `boolean` | true when meteorological data are offered. |\n| 29 | `is_water_level_station` | `boolean` | true when water-level data are offered. |\n| 30 | `has_storm_surge` | `boolean` | true when storm-surge data are offered. |\n| 31 | `has_observed_water_level` | `boolean` | true when observed water levels are available. |\n| 32 | `has_harmonic_constituents` | `boolean` | true when harmonic constituents are published. |\n| 33 | `latitude_band` | `string` | 5-degree latitude band. |\n| 34 | `longitude_band` | `string` | 10-degree longitude band. |\n| 35 | `hemisphere` | `string` | N/S + E/W hemisphere pair. |\n| 36 | `is_coastal_us` | `boolean` | true for U.S. coastal states. |\n| 37 | `is_territory` | `boolean` | true for U.S. territories and freely associated states. |\n| 38 | `name_length` | `number` | Characters in the station name. |\n| 39 | `name_word_count` | `number` | Words in the station name. |\n| 40 | `product_completeness` | `number` | product_count as a percentage of 12. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "noaa_stations.csv",
+      "description": "Primary dataset file containing 3,707 records across 40 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "station_id",
+            "type": "string",
+            "description": "NOAA station identifier."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Station name."
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "Two-letter state/territory code."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Territory name for non-state stations."
+          },
+          {
+            "name": "state_region",
+            "type": "string",
+            "description": "U.S. Census region."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude (decimal degrees)."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude (decimal degrees)."
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "Station type code (S = tide/water level, etc.)."
+          },
+          {
+            "name": "timezone",
+            "type": "string",
+            "description": "Time zone name."
+          },
+          {
+            "name": "timezone_offset",
+            "type": "number",
+            "description": "Offset from UTC in hours."
+          },
+          {
+            "name": "time_meridian",
+            "type": "number",
+            "description": "Local time meridian."
+          },
+          {
+            "name": "reference_id",
+            "type": "number",
+            "description": "NOAA reference station id."
+          },
+          {
+            "name": "shef_code",
+            "type": "string",
+            "description": "SHEF location code."
+          },
+          {
+            "name": "port_code",
+            "type": "string",
+            "description": "Port code used by marine services."
+          },
+          {
+            "name": "affiliations",
+            "type": "string",
+            "description": "Partner affiliations."
+          },
+          {
+            "name": "station_url",
+            "type": "string",
+            "description": "Metadata API URL for the station."
+          },
+          {
+            "name": "has_shef",
+            "type": "boolean",
+            "description": "true when a SHEF code exists."
+          },
+          {
+            "name": "has_port_code",
+            "type": "boolean",
+            "description": "true when a port code exists."
+          },
+          {
+            "name": "has_affiliations",
+            "type": "boolean",
+            "description": "true when affiliations are listed."
+          },
+          {
+            "name": "product_count",
+            "type": "number",
+            "description": "Number of data products offered."
+          },
+          {
+            "name": "products",
+            "type": "string",
+            "description": "Product names (semicolon-joined)."
+          },
+          {
+            "name": "disclaimer_count",
+            "type": "number",
+            "description": "Number of disclaimers."
+          },
+          {
+            "name": "notice_count",
+            "type": "number",
+            "description": "Number of active notices."
+          },
+          {
+            "name": "has_disclaimer",
+            "type": "boolean",
+            "description": "true when a disclaimer exists."
+          },
+          {
+            "name": "has_notice",
+            "type": "boolean",
+            "description": "true when a notice exists."
+          },
+          {
+            "name": "is_tide_station",
+            "type": "boolean",
+            "description": "true when tide predictions are offered."
+          },
+          {
+            "name": "is_current_station",
+            "type": "boolean",
+            "description": "true when current data are offered."
+          },
+          {
+            "name": "is_met_station",
+            "type": "boolean",
+            "description": "true when meteorological data are offered."
+          },
+          {
+            "name": "is_water_level_station",
+            "type": "boolean",
+            "description": "true when water-level data are offered."
+          },
+          {
+            "name": "has_storm_surge",
+            "type": "boolean",
+            "description": "true when storm-surge data are offered."
+          },
+          {
+            "name": "has_observed_water_level",
+            "type": "boolean",
+            "description": "true when observed water levels are available."
+          },
+          {
+            "name": "has_harmonic_constituents",
+            "type": "boolean",
+            "description": "true when harmonic constituents are published."
+          },
+          {
+            "name": "latitude_band",
+            "type": "string",
+            "description": "5-degree latitude band."
+          },
+          {
+            "name": "longitude_band",
+            "type": "string",
+            "description": "10-degree longitude band."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "N/S + E/W hemisphere pair."
+          },
+          {
+            "name": "is_coastal_us",
+            "type": "boolean",
+            "description": "true for U.S. coastal states."
+          },
+          {
+            "name": "is_territory",
+            "type": "boolean",
+            "description": "true for U.S. territories and freely associated states."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the station name."
+          },
+          {
+            "name": "name_word_count",
+            "type": "number",
+            "description": "Words in the station name."
+          },
+          {
+            "name": "product_completeness",
+            "type": "number",
+            "description": "product_count as a percentage of 12."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

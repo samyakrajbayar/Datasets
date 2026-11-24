@@ -1,0 +1,46 @@
+column,data_type,description
+cid,number,PubChem compound identifier.
+molecular_formula,string,Molecular formula.
+molecular_weight,number,Average molecular weight (g/mol).
+exact_mass,number,Exact mass of the formula.
+monoisotopic_mass,number,Monoisotopic mass.
+xlogp,number,Computed XLogP3 octanol-water partition coefficient.
+tpsa,number,Topological polar surface area (A^2).
+complexity,number,PubChem complexity score.
+charge,number,Net formal charge.
+heavy_atom_count,number,Non-hydrogen atom count.
+h_bond_donors,number,Hydrogen-bond donor count.
+h_bond_acceptors,number,Hydrogen-bond acceptor count.
+rotatable_bonds,number,Rotatable bond count.
+covalent_unit_count,number,PubChem computed property or derived attribute.
+atom_stereo_count,number,Number of stereogenic atoms.
+defined_atom_stereo,number,Stereocentres with defined configuration.
+undefined_atom_stereo,number,PubChem computed property or derived attribute.
+bond_stereo_count,number,Number of stereogenic bonds.
+defined_bond_stereo,number,PubChem computed property or derived attribute.
+undefined_bond_stereo,number,PubChem computed property or derived attribute.
+canonical_smiles,string,Canonical SMILES.
+isomeric_smiles,string,Isomeric/connectivity SMILES.
+inchi_key,string,Standard InChIKey.
+iupac_name,string,IUPAC name.
+halogen_atoms,number,"Count of F, Cl, Br and I atoms parsed from the formula."
+carbon_atoms,number,Carbon atoms parsed from the formula.
+nitrogen_atoms,number,Nitrogen atoms parsed from the formula.
+oxygen_atoms,number,Oxygen atoms parsed from the formula.
+sulfur_atoms,number,Sulfur atoms parsed from the formula.
+ring_flag,string,PubChem computed property or derived attribute.
+rule_of_five_violations,number,"Lipinski rule-of-five violations (MW, logP, donors, acceptors)."
+lipinski_pass,boolean,true when the molecule has no rule-of-five violation.
+has_stereo,boolean,true when the molecule has at least one stereocentre.
+stereo_defined_ratio,number,Defined stereocentres divided by total.
+is_fragment,boolean,true when molecular weight is below 250.
+is_large_molecule,boolean,true when molecular weight exceeds 800.
+mass_band,string,Molecular-weight band.
+logp_band,string,XLogP band.
+tpsa_band,string,Polar-surface-area band.
+heavy_atom_band,string,Heavy-atom-count band.
+hetero_atom_count,number,N + O + S + halogen atom count.
+has_smiles,boolean,true when a SMILES string exists.
+has_iupac_name,boolean,true when an IUPAC name exists.
+has_xlogp,boolean,true when XLogP is available.
+formula_length,number,Characters in the molecular formula.

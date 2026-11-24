@@ -1,0 +1,8 @@
+column,data_type,description
+rank,integer,Market-cap rank of the coin at snapshot time.
+id,string,CoinGecko coin identifier.
+symbol,string,Upper-case ticker symbol.
+name,string,Coin name.
+timestamp_utc,datetime,Hourly timestamp reconstructed from the 7-day sparkline.
+hours_ago,integer,Hours before the snapshot (167 = oldest point).
+price_usd,float,Hourly price in US dollars.

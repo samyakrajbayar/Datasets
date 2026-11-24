@@ -1,0 +1,39 @@
+column,data_type,description
+icao24,string,24-bit ICAO transponder address.
+callsign,string,Callsign broadcast by the aircraft.
+origin_country,string,Country inferred from the ICAO address.
+time_position,number,Unix time of the last position update.
+last_contact,number,Unix time of the last message received.
+longitude,number,Longitude in degrees (WGS-84).
+latitude,number,Latitude in degrees (WGS-84).
+baro_altitude_m,number,Barometric altitude in metres.
+on_ground,boolean,true when the aircraft reports being on the ground.
+velocity_ms,number,Ground speed in m/s.
+true_track,number,"Track angle clockwise from north, degrees."
+vertical_rate_ms,number,Vertical rate in m/s.
+sensors,number,Sensor ids that contributed to the state vector.
+geo_altitude_m,number,Geometric (GNSS) altitude in metres.
+squawk,number,Transponder squawk code.
+spi,boolean,Special purpose indicator.
+position_source,number,"0=ADS-B, 1=ASTERIX, 2=MLAT, 3=FLARM."
+category,number,ADS-B emitter category code.
+category_label,string,Decoded emitter category.
+altitude_ft,number,Barometric altitude converted to feet.
+geo_altitude_ft,number,Geometric altitude converted to feet.
+speed_kmh,number,Ground speed in km/h.
+speed_knots,number,Ground speed in knots.
+vertical_rate_fpm,number,Vertical rate in feet per minute.
+age_seconds,number,Seconds since the last message.
+position_age_seconds,number,Seconds since the last position fix.
+has_position,boolean,true when coordinates are present.
+is_climbing,boolean,true when vertical rate exceeds +0.5 m/s.
+is_descending,boolean,true when vertical rate is below -0.5 m/s.
+is_moving,boolean,true when ground speed exceeds 20 m/s.
+is_ground,boolean,true when the aircraft is on the ground.
+altitude_band,string,Altitude bucket.
+speed_band,string,Speed bucket.
+hemisphere,string,"Quadrant from the coordinates (NE, NW, SE, SW)."
+callsign_prefix,string,"First three callsign characters, usually the airline ICAO code."
+callsign_length,number,Characters in the callsign.
+is_emergency_squawk,boolean,true for 7500/7600/7700 squawks.
+sensor_count,number,Number of sensors contributing.

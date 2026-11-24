@@ -1,0 +1,243 @@
+{
+  "title": "Active Satellite Orbits",
+  "id": "samyakrajbayar/active-satellite-orbits",
+  "subtitle": "8,000 active satellites with orbital elements, country and operator",
+  "description": "# Active Satellite Orbits\n\n**Subtitle:** 12,901 satellites with full orbital mechanics, geometry & constellation labels\n\n**Tags:** `space`, `satellites`, `astronomy`, `orbital-mechanics`, `engineering`, `geospatial`, `telecommunications`, `science`, `tabular`, `clustering`\n\n**Dataset File:** `satellites.csv` (12,901 rows, 41 columns, 4.0 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### Everything currently in orbit, with its orbital mechanics worked out\n\nA snapshot of the **CelesTrak** general-perturbations catalogue, derived from US Space Force tracking\ndata: **12,901 satellites** described by **41 parameters**, including the full set of orbital\nelements plus the geometry analysts usually have to compute themselves.\n\nEach row contains:\n- **Identity** \u2014 object name, international designator (whose prefix is the launch year),\n  NORAD catalogue number and the general-perturbations record id.\n- **Orbital elements** \u2014 epoch, mean motion, eccentricity, inclination, right ascension of the ascending\n  node, argument of perigee, mean anomaly, B* drag term and its derivatives, element set number and\n  revolution count at epoch.\n- **Geometry** \u2014 semi-major axis, period, perigee and apogee (computed from mean motion and\n  eccentricity) and mean altitude above the Earth's surface.\n- **Derived mechanics** \u2014 orbital regime (LEO/MEO/GEO/HEO), geostationary and geosynchronous flags,\n  sun-synchronous, polar and retrograde flags, mean orbital speed from the vis-viva equation,\n  revolutions per day, and inclination and altitude bands.\n- **Fleet structure** \u2014 an inferred constellation label (Starlink, OneWeb, Planet, Iridium, GPS, ...),\n  operator group, number of catalogue objects in that constellation, launch year and satellite age.\n\n**12,199 objects are in low Earth orbit**, **396 are geostationary**, and the largest constellations\nin the file are Starlink (11,206), OneWeb (651), BeiDou (56), GPS (32), Galileo (32) \u2014 a direct measurement of the\nmega-constellation era.\n\n## \ud83e\uddfe Columns (41)\n\n`object_name`, `object_id`, `norad_cat_id`, `epoch`, `mean_motion`, `eccentricity`, `inclination`, `ra_of_asc_node`, `arg_of_pericenter`, `mean_anomaly`, `ephemeris_type`, `classification_type`, `element_set_no`, `rev_at_epoch`, `bstar`, `mean_motion_dot`, `mean_motion_ddot`, `semimajor_axis`, `period`, `apoapsis`, `periapsis`, `mean_altitude_km`, `perigee_altitude_km`, `apogee_altitude_km`, `orbital_regime`, `is_geostationary`, `is_geosynchronous`, `is_sun_synchronous`, `is_polar`, `is_retrograde`, `constellation`, `operator_group`, `launch_year`, `satellite_age_years`, `orbit_speed_kms`, `revolutions_per_day`, `inclination_band`, `altitude_band`, `is_leo`, `n_same_constellation`, `source_group`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Mega-constellation shells** \u2014 Starlink altitude versus inclination clusters; count satellites per orbital shell.\n2. **Orbital regimes** \u2014 LEO/MEO/GEO/HEO counts, and which operators use each.\n3. **Launch waves** \u2014 satellites per launch year; visualise the post-2019 explosion.\n4. **Sun-synchronous imaging fleet** \u2014 who operates polar-orbiting Earth-observation satellites?\n5. **Decay risk** \u2014 age distribution and B* drag values for objects in low, decaying orbits.\n6. **Operator concentration** \u2014 HHI over inferred operators and constellations.\n7. **Geometry** \u2014 inclination against altitude exposes the shell structure of the catalogue.\n8. **Anomaly detection** \u2014 flag objects whose period or eccentricity is inconsistent with their constellation.\n9. **Classification** \u2014 predict object type (payload vs rocket body) from the orbit alone.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `satellites.csv` | 12,901 satellites x 41 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: constellation shells, regimes, launch waves. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`space`, `satellites`, `astronomy`, `orbital-mechanics`, `engineering`, `geospatial`, `telecommunications`, `science`, `tabular`, `clustering`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **CelesTrak** GP data, `https://celestrak.org/NORAD/elements/gp.php`, union of the\n  Starlink, OneWeb, GEO, GNSS, weather, science, space-station, CubeSat, military, engineering, radar\n  and amateur groups; duplicates removed by NORAD catalogue number. Where CelesTrak rate-limits a\n  group file, its supplemental GP file or a name query supplies the same records.\n- **Upstream:** orbital elements originate from the US Space Force 18th Space Defense Squadron and are\n  redistributed by CelesTrak as general-perturbations records.\n- **Transformation:** GP JSON reshaped to named columns. Semi-major axis, period, apogee, perigee and\n  mean altitude are computed from mean motion and eccentricity; speed uses the vis-viva equation;\n  regime, sun-synchronous, polar and band flags are derived; constellation and operator labels are\n  inferred from object names.\n- **Snapshot date:** 20 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily upstream (this file is a single snapshot).** CelesTrak refreshes element sets roughly every two hours; re-run `scripts/20_satellites.py` for a current catalogue.\n\n## \u26a0\ufe0f Caveats\n\n- Orbital elements are a snapshot at their individual epochs, not a common instant; positions drift within days.\n- The catalogue is built from CelesTrak's constellation and operational groups rather than the aggregate `active` file, so objects outside those groups are not included.\n- Constellation and operator labels are **inferred from name prefixes** and are heuristic, not authoritative.\n- The GP feed does not carry launch site, launching state, radar cross-section or decay dates, so those columns are omitted rather than left empty.\n- Launch year is parsed from the international designator, so objects catalogued before designators were standardised have no launch year.\n- Semi-major axis and altitudes assume a spherical Earth of radius 6,378.137 km.\n\n## \ud83d\udcdc Licence\n\nCelesTrak data are provided free of charge for research and educational use; attribution to CelesTrak and the US Space Force is expected. The upstream provider gives no warranty of accuracy.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `object_name` | `string` | Satellite name as catalogued by CelesTrak / US Space Force. |\n| 2 | `object_id` | `string` | International designator (launch year-number-piece). |\n| 3 | `norad_cat_id` | `number` | NORAD catalogue number. |\n| 4 | `epoch` | `datetime` | Epoch of the orbital elements. |\n| 5 | `mean_motion` | `number` | Mean motion in revolutions per day. |\n| 6 | `eccentricity` | `number` | Orbital eccentricity (0 = circular). |\n| 7 | `inclination` | `number` | Orbital inclination in degrees. |\n| 8 | `ra_of_asc_node` | `number` | Right ascension of the ascending node (degrees). |\n| 9 | `arg_of_pericenter` | `number` | Argument of perigee (degrees). |\n| 10 | `mean_anomaly` | `number` | Mean anomaly at epoch (degrees). |\n| 11 | `ephemeris_type` | `number` | Ephemeris type code used by the propagator. |\n| 12 | `classification_type` | `string` | U (unclassified), C (classified) or S (secret). |\n| 13 | `element_set_no` | `number` | Element set number, incremented with each new orbit fit. |\n| 14 | `rev_at_epoch` | `number` | Revolution count at epoch. |\n| 15 | `bstar` | `number` | B* drag term (1/Earth radii). |\n| 16 | `mean_motion_dot` | `number` | First derivative of mean motion divided by two (rev/day^2). |\n| 17 | `mean_motion_ddot` | `number` | Second derivative of mean motion divided by six (rev/day^3). |\n| 18 | `semimajor_axis` | `number` | Semi-major axis in kilometres, computed from the mean motion. |\n| 19 | `period` | `number` | Orbital period in minutes, computed as 1440 / mean motion. |\n| 20 | `apoapsis` | `number` | Apogee altitude above the Earth's surface (km), computed as a(1+e) - R_earth. |\n| 21 | `periapsis` | `number` | Perigee altitude above the Earth's surface (km), computed as a(1-e) - R_earth. |\n| 22 | `mean_altitude_km` | `number` | Semi-major axis minus the Earth's equatorial radius. |\n| 23 | `perigee_altitude_km` | `number` | Perigee altitude above the Earth's surface. |\n| 24 | `apogee_altitude_km` | `number` | Apogee altitude above the Earth's surface. |\n| 25 | `orbital_regime` | `string` | LEO, MEO, GEO or HEO, derived from period and eccentricity. |\n| 26 | `is_geostationary` | `boolean` | true when the period is ~24 h and the orbit is near-circular and equatorial. |\n| 27 | `is_geosynchronous` | `boolean` | true when the orbital period is close to one sidereal day. |\n| 28 | `is_sun_synchronous` | `boolean` | true for near-polar, sun-synchronous orbits (~96-102 deg inclination, 400-1100 km). |\n| 29 | `is_polar` | `boolean` | true when the inclination is within 10 degrees of 90. |\n| 30 | `is_retrograde` | `boolean` | true when the inclination exceeds 90 degrees. |\n| 31 | `constellation` | `string` | Commercial or institutional constellation inferred from the object name. |\n| 32 | `operator_group` | `string` | Operator/owner inferred from the object name prefix. |\n| 33 | `launch_year` | `number` | Year of launch. |\n| 34 | `satellite_age_years` | `number` | Years since launch at the snapshot date. |\n| 35 | `orbit_speed_kms` | `number` | Mean orbital speed from the vis-viva equation. |\n| 36 | `revolutions_per_day` | `number` | Mean motion in revolutions per day. |\n| 37 | `inclination_band` | `string` | Inclination band label. |\n| 38 | `altitude_band` | `string` | Altitude band from very low LEO to beyond GEO. |\n| 39 | `is_leo` | `boolean` | true for low Earth orbit objects (period < 128 minutes and eccentricity < 0.25). |\n| 40 | `n_same_constellation` | `number` | Number of catalogue objects sharing the same inferred constellation. |\n| 41 | `source_group` | `string` | CelesTrak group file the object was retrieved from. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "satellites.csv",
+      "description": "Primary data file containing 12,901 records across 41 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "object_name",
+            "type": "string",
+            "description": "Satellite name as catalogued by CelesTrak / US Space Force."
+          },
+          {
+            "name": "object_id",
+            "type": "string",
+            "description": "International designator (launch year-number-piece)."
+          },
+          {
+            "name": "norad_cat_id",
+            "type": "number",
+            "description": "NORAD catalogue number."
+          },
+          {
+            "name": "epoch",
+            "type": "datetime",
+            "description": "Epoch of the orbital elements."
+          },
+          {
+            "name": "mean_motion",
+            "type": "number",
+            "description": "Mean motion in revolutions per day."
+          },
+          {
+            "name": "eccentricity",
+            "type": "number",
+            "description": "Orbital eccentricity (0 = circular)."
+          },
+          {
+            "name": "inclination",
+            "type": "number",
+            "description": "Orbital inclination in degrees."
+          },
+          {
+            "name": "ra_of_asc_node",
+            "type": "number",
+            "description": "Right ascension of the ascending node (degrees)."
+          },
+          {
+            "name": "arg_of_pericenter",
+            "type": "number",
+            "description": "Argument of perigee (degrees)."
+          },
+          {
+            "name": "mean_anomaly",
+            "type": "number",
+            "description": "Mean anomaly at epoch (degrees)."
+          },
+          {
+            "name": "ephemeris_type",
+            "type": "number",
+            "description": "Ephemeris type code used by the propagator."
+          },
+          {
+            "name": "classification_type",
+            "type": "string",
+            "description": "U (unclassified), C (classified) or S (secret)."
+          },
+          {
+            "name": "element_set_no",
+            "type": "number",
+            "description": "Element set number, incremented with each new orbit fit."
+          },
+          {
+            "name": "rev_at_epoch",
+            "type": "number",
+            "description": "Revolution count at epoch."
+          },
+          {
+            "name": "bstar",
+            "type": "number",
+            "description": "B* drag term (1/Earth radii)."
+          },
+          {
+            "name": "mean_motion_dot",
+            "type": "number",
+            "description": "First derivative of mean motion divided by two (rev/day^2)."
+          },
+          {
+            "name": "mean_motion_ddot",
+            "type": "number",
+            "description": "Second derivative of mean motion divided by six (rev/day^3)."
+          },
+          {
+            "name": "semimajor_axis",
+            "type": "number",
+            "description": "Semi-major axis in kilometres, computed from the mean motion."
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "description": "Orbital period in minutes, computed as 1440 / mean motion."
+          },
+          {
+            "name": "apoapsis",
+            "type": "number",
+            "description": "Apogee altitude above the Earth's surface (km), computed as a(1+e) - R_earth."
+          },
+          {
+            "name": "periapsis",
+            "type": "number",
+            "description": "Perigee altitude above the Earth's surface (km), computed as a(1-e) - R_earth."
+          },
+          {
+            "name": "mean_altitude_km",
+            "type": "number",
+            "description": "Semi-major axis minus the Earth's equatorial radius."
+          },
+          {
+            "name": "perigee_altitude_km",
+            "type": "number",
+            "description": "Perigee altitude above the Earth's surface."
+          },
+          {
+            "name": "apogee_altitude_km",
+            "type": "number",
+            "description": "Apogee altitude above the Earth's surface."
+          },
+          {
+            "name": "orbital_regime",
+            "type": "string",
+            "description": "LEO, MEO, GEO or HEO, derived from period and eccentricity."
+          },
+          {
+            "name": "is_geostationary",
+            "type": "boolean",
+            "description": "true when the period is ~24 h and the orbit is near-circular and equatorial."
+          },
+          {
+            "name": "is_geosynchronous",
+            "type": "boolean",
+            "description": "true when the orbital period is close to one sidereal day."
+          },
+          {
+            "name": "is_sun_synchronous",
+            "type": "boolean",
+            "description": "true for near-polar, sun-synchronous orbits (~96-102 deg inclination, 400-1100 km)."
+          },
+          {
+            "name": "is_polar",
+            "type": "boolean",
+            "description": "true when the inclination is within 10 degrees of 90."
+          },
+          {
+            "name": "is_retrograde",
+            "type": "boolean",
+            "description": "true when the inclination exceeds 90 degrees."
+          },
+          {
+            "name": "constellation",
+            "type": "string",
+            "description": "Commercial or institutional constellation inferred from the object name."
+          },
+          {
+            "name": "operator_group",
+            "type": "string",
+            "description": "Operator/owner inferred from the object name prefix."
+          },
+          {
+            "name": "launch_year",
+            "type": "number",
+            "description": "Year of launch."
+          },
+          {
+            "name": "satellite_age_years",
+            "type": "number",
+            "description": "Years since launch at the snapshot date."
+          },
+          {
+            "name": "orbit_speed_kms",
+            "type": "number",
+            "description": "Mean orbital speed from the vis-viva equation."
+          },
+          {
+            "name": "revolutions_per_day",
+            "type": "number",
+            "description": "Mean motion in revolutions per day."
+          },
+          {
+            "name": "inclination_band",
+            "type": "string",
+            "description": "Inclination band label."
+          },
+          {
+            "name": "altitude_band",
+            "type": "string",
+            "description": "Altitude band from very low LEO to beyond GEO."
+          },
+          {
+            "name": "is_leo",
+            "type": "boolean",
+            "description": "true for low Earth orbit objects (period < 128 minutes and eccentricity < 0.25)."
+          },
+          {
+            "name": "n_same_constellation",
+            "type": "number",
+            "description": "Number of catalogue objects sharing the same inferred constellation."
+          },
+          {
+            "name": "source_group",
+            "type": "string",
+            "description": "CelesTrak group file the object was retrieved from."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "userSpecifiedSources": "CelesTrak / US Space Force general-perturbations orbital catalogue",
+  "expectedUpdateFrequency": "quarterly",
+  "ownerSlug": "samyakrajbayar"
+}

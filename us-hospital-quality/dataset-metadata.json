@@ -1,0 +1,31 @@
+{
+  "title": "U.S. Hospital Quality - CMS Star Ratings",
+  "id": "samyakrajbayar/us-hospital-quality",
+  "subtitle": "5,435 hospitals with overall ratings, mortality measure profiles, ownership a...",
+  "description": "### 5,435 U.S. hospitals with CMS quality ratings\n\nCMS Hospital Compare publishes the official star ratings and measure counts for every hospital that\nreports to Medicare. This dataset contains **5,435 facilities** across **56 states** with\n**53 parameters**.\n\n- **Facility** \u2014 CCN, name, address, county, state, ZIP and phone.\n- **Classification** \u2014 hospital type, ownership and emergency-services status.\n- **Quality** \u2014 overall star rating, mortality measure counts (better, no different, worse) and their\n  footnotes.\n- **Derived** \u2014 ownership groups and flags, acute-care/emergency/birthing flags, rating bands,\n  measure coverage, better/worse ratios, net measure score, high-rated and unrated flags, and each\n  hospital's share of its state's facilities.\n\n**3,166 hospitals carry an overall rating** and **4,501 provide emergency services** \u2014\nthe base table for hospital-quality, access and ownership research.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "hospitals.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

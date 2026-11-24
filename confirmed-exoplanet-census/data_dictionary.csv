@@ -1,0 +1,99 @@
+column,data_type,description
+pl_name,string,Planet name as used by the NASA Exoplanet Archive.
+hostname,string,Host star name.
+hd_name,string,HD catalogue identifier of the host star.
+hip_name,string,Hipparcos catalogue identifier of the host star.
+tic_id,string,TESS Input Catalog identifier of the host star.
+gaia_dr2_id,string,Gaia Data Release 2 source id of the host star.
+gaia_dr3_id,string,Gaia Data Release 3 source id of the host star.
+pl_letter,string,"Letter designating the planet within its system (b, c, d...)."
+default_flag,number,1 if this is the archive's default parameter set for the planet.
+pl_controv_flag,number,1 if the planet's existence or parameters are disputed.
+disc_locale,string,"Where the discovery was announced (Ground, Space, ...)."
+discoverymethod,string,"Detection technique (Transit, Radial Velocity, Imaging, Microlensing...)."
+disc_year,number,Year the discovery was announced.
+disc_facility,string,Facility credited with the discovery.
+disc_instrument,string,Instrument credited with the discovery.
+disc_telescope,string,Telescope credited with the discovery.
+disc_pubdate,string,Publication date of the discovery paper.
+disc_refname,string,Reference string for the discovery paper.
+pl_orbper,number,Orbital period in days.
+pl_orbpererr1,number,Lower 1-sigma uncertainty on orbital period (days).
+pl_orbpererr2,number,Upper 1-sigma uncertainty on orbital period (days).
+pl_orbsmax,number,Semi-major axis of the orbit in AU.
+pl_orbsmaxerr1,number,Lower uncertainty on semi-major axis (AU).
+pl_orbsmaxerr2,number,Upper uncertainty on semi-major axis (AU).
+pl_orbeccen,number,Orbital eccentricity.
+pl_orbeccenerr1,number,Lower uncertainty on eccentricity.
+pl_orbeccenerr2,number,Upper uncertainty on eccentricity.
+pl_orbtper,number,Time of periastron passage (BJD).
+pl_orblper,number,Argument of periastron (degrees).
+pl_imppar,number,Transit impact parameter (stellar radii).
+pl_trandur,number,Transit duration (hours).
+pl_tranmid,number,Transit midpoint (BJD).
+ttv_flag,number,1 if transit timing variations are detected.
+pl_occdep,number,Occultation depth (ppm).
+pl_ratdor,number,Ratio of semi-major axis to stellar radius.
+pl_ratror,number,Ratio of planet radius to stellar radius.
+pl_rade,number,Planet radius in Earth radii.
+pl_radeerr1,number,Lower uncertainty on planet radius (Earth radii).
+pl_radeerr2,number,Upper uncertainty on planet radius (Earth radii).
+pl_radj,number,Planet radius in Jupiter radii.
+pl_bmasse,number,Planet mass or mass*sin(i) in Earth masses.
+pl_bmasseerr1,number,Lower uncertainty on planet mass (Earth masses).
+pl_bmasseerr2,number,Upper uncertainty on planet mass (Earth masses).
+pl_bmassj,number,Planet mass in Jupiter masses.
+pl_bmassprov,string,"How the mass was measured (Mass, Msini, Msin(i)/sin(i)...)."
+pl_dens,number,Planet bulk density (g/cm^3).
+pl_denserr1,number,Lower uncertainty on planet density.
+pl_denserr2,number,Upper uncertainty on planet density.
+pl_eqt,number,"Equilibrium temperature (K), assuming zero albedo."
+pl_insol,number,Insolation flux received by the planet (Earth flux).
+pl_insolerr1,number,Lower uncertainty on insolation flux.
+pl_insolerr2,number,Upper uncertainty on insolation flux.
+pl_orbincl,number,Orbital inclination (degrees).
+st_spectype,string,Stellar spectral type.
+st_teff,number,Stellar effective temperature (K).
+st_tefferr1,number,Lower uncertainty on stellar temperature.
+st_tefferr2,number,Upper uncertainty on stellar temperature.
+st_rad,number,Stellar radius (solar radii).
+st_raderr1,number,Lower uncertainty on stellar radius.
+st_mass,number,Stellar mass (solar masses).
+st_masserr1,number,Lower uncertainty on stellar mass.
+st_met,number,Stellar metallicity [Fe/H] (dex).
+st_metratio,string,Stellar metallicity as a raw abundance ratio.
+st_logg,number,Stellar surface gravity log10(g) (cgs).
+st_age,number,Stellar age (Gyr).
+st_lum,number,Stellar luminosity log10(L/L_sun).
+st_vsin,number,Stellar projected rotational velocity (km/s).
+st_rotp,number,Stellar rotation period (days).
+st_radv,number,Stellar radial velocity (km/s).
+sy_snum,number,Number of stars in the system.
+sy_pnum,number,Number of confirmed planets in the system.
+sy_mnum,number,Number of moons in the system.
+sy_dist,number,Distance to the system (parsecs).
+sy_disterr1,number,Lower uncertainty on system distance.
+sy_vmag,number,V-band apparent magnitude of the host star.
+sy_kmag,number,K-band apparent magnitude of the host star.
+sy_gaiamag,number,Gaia G-band apparent magnitude of the host star.
+sy_plx,number,Parallax of the system (mas).
+cb_flag,number,1 if the planet orbits a circumbinary system.
+st_nphot,number,Number of photometric observation sets in the archive.
+st_nrvc,number,Number of radial-velocity observation sets.
+st_nspec,number,Number of spectroscopic observation sets.
+ra,number,Right ascension of the host star (degrees).
+dec,number,Declination of the host star (degrees).
+glat,number,Galactic latitude (degrees).
+glon,number,Galactic longitude (degrees).
+orbital_period_years,number,Orbital period converted to Earth years.
+orbital_speed_kms,number,Mean orbital speed (km/s) from semi-major axis and period.
+planet_type,string,"Radius class: Sub-Earth, Earth-size, Super-Earth, Mini-Neptune, Neptune-size, Jupiter-size, Giant."
+mass_class,string,"Mass class from Earth masses (<2, 2-10, 10-50, 50-300, >300)."
+density_class,string,Rocky / Intermediate / Gaseous from bulk density.
+in_habitable_zone,boolean,true when insolation flux is between 0.35 and 1.5 Earth fluxes.
+teq_class,string,"Equilibrium-temperature band (Cold, Temperate, Warm, Hot, Ultra-hot)."
+transit_depth_ppm,number,Derived transit depth in ppm from (Rp/Rs)^2.
+discovery_decade,string,Decade of the discovery year.
+star_type_group,string,"Coarse spectral group (O/B, A, F, G, K, M, other)."
+distance_light_years,number,System distance converted to light years.
+system_planet_rank,number,Planet letter index within the system (b=1).

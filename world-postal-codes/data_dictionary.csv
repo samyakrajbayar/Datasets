@@ -1,0 +1,30 @@
+column,data_type,description
+country_code,string,ISO 3166-1 alpha-2 country code.
+postal_code,string,"Postal code as used nationally (may contain letters, spaces or hyphens)."
+place_name,string,Primary place name for the code.
+admin1_name,string,"First-level administrative division (state, region, province)."
+admin1_code,number,GeoNames code for the first-level division.
+admin2_name,string,"Second-level division (county, district)."
+admin2_code,number,GeoNames code for the second-level division.
+admin3_name,string,"Third-level division (municipality, commune)."
+admin3_code,number,GeoNames code for the third-level division.
+latitude,number,Latitude of the place centroid (decimal degrees).
+longitude,number,Longitude of the place centroid (decimal degrees).
+accuracy,number,"GeoNames accuracy code: 1 estimated, 4 region/state, 6 admin2 centroid."
+country_name,string,Country common name.
+country_region,number,World Bank region.
+country_subregion,number,World Bank subregion.
+postal_length,number,Number of characters in the postal code.
+is_numeric_postal,boolean,true when the code contains only digits.
+postal_prefix,string,First two characters of the postal code (sorting/region prefix).
+postal_first_char,string,First character of the postal code.
+hemisphere,string,N/S + E/W hemisphere pair.
+latitude_band,string,10-degree latitude band.
+longitude_band,string,15-degree longitude band.
+accuracy_label,string,Human-readable accuracy class.
+has_admin2,boolean,true when a second-level division is recorded.
+has_admin3,boolean,true when a third-level division is recorded.
+admin_depth,number,Number of administrative levels present (1-3 plus country).
+place_word_count,number,Words in the place name.
+place_name_length,number,Characters in the place name.
+geohash,string,"9-character geohash of the coordinates (spatial joins, binning)."

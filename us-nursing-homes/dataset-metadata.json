@@ -1,0 +1,31 @@
+{
+  "title": "U.S. Nursing Homes - Ownership, Capacity and CMS R",
+  "id": "samyakrajbayar/us-nursing-homes",
+  "subtitle": "14,686 certified nursing homes with star ratings, ownership, chains, beds and...",
+  "description": "### 14,686 U.S. nursing homes with quality ratings\n\nThe CMS Provider Data Catalog publishes every Medicare- and Medicaid-certified nursing home with its\nstar ratings, ownership, capacity and inspection flags. This dataset contains **14,686 providers** and\n**117 parameters**.\n\n- **Provider** \u2014 CCN, name, address, county, state, ZIP, phone, provider type and legal business name.\n- **Ownership** \u2014 ownership type, chain name and id.\n- **Capacity** \u2014 certified beds, average daily residents and their footnotes.\n- **Quality** \u2014 overall, health-inspection, quality-measure, staffing, long-stay and short-stay star\n  ratings, plus CMS abuse and special-focus flags where supplied.\n- **Derived** \u2014 ownership group, for-profit/non-profit/government flags, chain flag, occupancy rate,\n  bed and resident bands, rating mean and high/low-rated flags, tenure years and state bed share.\n\nThe file covers **1,567,009 certified beds**, **10,227 chain-affiliated homes** and\n**14,560 homes with at least one star rating** \u2014 a complete market map for elder-care research.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "nursing_homes.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

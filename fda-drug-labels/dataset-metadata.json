@@ -1,0 +1,31 @@
+{
+  "title": "FDA Drug Labels - SPL Section Corpus",
+  "id": "samyakrajbayar/fda-drug-labels",
+  "subtitle": "25,000 drug labels with product identity, pharmacologic classes and 22 sectio...",
+  "description": "### 25,000 FDA drug labels with full section coverage\n\nThe openFDA drug label endpoint exposes the Structured Product Labeling (SPL) documents that accompany\nevery FDA-regulated drug. This dataset contains **25,000 labels** and **78 parameters**.\n\n- **Product identity** \u2014 set id, label id, version, effective date, brand, generic, manufacturer,\n  NDCs, UNII, RxCUI and pharmacologic classes.\n- **Classification** \u2014 product type, routes and substance names with counts.\n- **Label content** \u2014 presence and length of 22 sections: indications, warnings, dosage, contraindications,\n  adverse reactions, interactions, use in pregnancy, storage, description and more.\n- **Derived** \u2014 section coverage, OTC/prescription/biological/vaccine and generic flags, label age,\n  total text length and route bands.\n\n**4,993 labels are over-the-counter** and **3,593 are prescription** products. The section\nlengths and coverage make this a strong corpus for pharmacovigilance NLP and label-quality research.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "drug_labels.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

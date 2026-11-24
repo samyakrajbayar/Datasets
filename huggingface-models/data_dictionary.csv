@@ -1,0 +1,44 @@
+column,data_type,description
+model_id,string,Repository id (author/name).
+author,string,Owner namespace.
+sha,string,Latest commit SHA.
+created_at,datetime,Creation timestamp.
+last_modified,datetime,Last update timestamp.
+downloads,number,Downloads in the last 30 days.
+likes,number,Number of likes.
+trending_score,number,Hub trending score.
+pipeline_tag,string,"Task/pipeline (text-generation, ...)."
+library_name,string,Library the model is built for.
+tags,string,"Model tags, semicolon-separated (truncated)."
+tag_count,number,Number of tags.
+license,string,Licence parsed from the tags.
+dataset_count,number,Number of dataset tags.
+base_model_count,number,Number of base-model tags.
+gated,string,Gating flag from the API.
+private,boolean,Private flag.
+file_count,number,Number of files in the repository.
+age_days,number,Days since creation.
+days_since_update,number,Days since the last update.
+downloads_per_day,number,Downloads divided by age in days.
+likes_per_1k_downloads,number,"Likes per 1,000 downloads."
+is_gated,boolean,true when access is gated.
+is_private,boolean,Hugging Face model field or derived attribute.
+has_license,boolean,true when a licence tag exists.
+has_dataset,boolean,true when the model cites a dataset.
+has_base_model,boolean,true when the model is a fine-tune.
+is_text_generation,boolean,true for text-generation models.
+is_text_classification,boolean,true for text-classification models.
+is_image_generation,boolean,true for image-generation models.
+is_speech,boolean,true for speech models.
+is_embedding,boolean,true for feature-extraction models.
+is_recent,boolean,true when created in the last 90 days.
+is_stale,boolean,true when not updated for a year.
+is_llama_family,boolean,true when tags mention Llama.
+is_mistral_family,boolean,true when tags mention Mistral.
+is_qwen_family,boolean,true when tags mention Qwen.
+is_diffusers,boolean,true for diffusers models.
+download_band,string,Download band.
+likes_band,string,Likes band.
+tag_to_download_ratio,number,"Tags per 1,000 downloads."
+model_id_length,number,Characters in the model id.
+is_org_model,boolean,true when the author looks like an organisation namespace.

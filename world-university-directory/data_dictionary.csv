@@ -1,0 +1,18 @@
+column,data_type,description
+name,string,Name of the university as listed in the source registry.
+country,string,Country where the institution is located.
+alpha_two_code,string,ISO 3166-1 alpha-2 country code.
+state_province,string,"State or province, mostly populated for US/Canadian institutions."
+primary_domain,string,First email/institutional domain on record.
+n_domains,integer,Number of domains associated with the institution.
+domains,string list,Semicolon-separated list of all domains.
+primary_website,string,First official web page URL on record.
+n_web_pages,integer,Number of official web pages on record.
+web_pages,string list,Semicolon-separated list of all web pages.
+region,string,Continent-level region derived from the ISO country code.
+subregion,string,Sub-region derived from the ISO country code.
+name_length,integer,Character length of the institution name.
+name_word_count,integer,Number of words in the institution name.
+has_state,boolean,True when a state/province value is present.
+country_university_count,integer,Number of institutions listed for the same country.
+is_duplicate_name,boolean,True if another row shares the same normalised name.

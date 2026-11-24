@@ -1,0 +1,44 @@
+column,data_type,description
+airport_id,number,OpenFlights airport identifier.
+name,string,Airport name.
+city,string,City served.
+country,string,Country name as recorded by OpenFlights.
+iata,string,3-letter IATA code (\N when unassigned).
+icao,string,4-letter ICAO code (\N when unassigned).
+latitude,number,Latitude in decimal degrees.
+longitude,number,Longitude in decimal degrees.
+altitude_ft,number,Elevation above sea level in feet.
+tz_offset_hours,number,UTC offset in hours (fractional where applicable).
+dst,string,Daylight-saving-time rule letter used by OpenFlights.
+tz_database,string,IANA time-zone name.
+type,string,"Facility type: airport, heliport, seaplane base, closed."
+source,string,Upstream data source for the record.
+continent,string,Continent of the airport's country.
+region,string,UN macro-region of the airport's country.
+subregion,string,UN sub-region of the airport's country.
+hemisphere,string,Northern or Southern hemisphere.
+altitude_band,string,Elevation band from sea level to high plateau.
+has_iata,boolean,true when the airport has an IATA code (i.e. is commercially ticketed).
+is_scheduled_service,boolean,"true for records typed `airport` (as opposed to heliport, seaplane base, closed)."
+utc_offset_band,number,UTC offset rounded to the nearest whole hour.
+n_routes_out,number,Number of scheduled route records departing this airport.
+n_routes_in,number,Number of scheduled route records arriving at this airport.
+n_airlines,number,Distinct airlines operating to or from the airport.
+n_destinations,number,Distinct airports reachable in one non-stop hop.
+n_destinations_international,number,Distinct destination airports outside the airport's own country.
+n_countries_served,number,Distinct foreign countries reachable non-stop.
+n_domestic_routes,number,Route records whose origin and destination are in the same country.
+share_international_pct,number,Percentage of this airport's route records that cross a border.
+top_airline,string,Airline with the most route records at this airport.
+top_airline_routes,number,Route records operated by that airline.
+mean_route_distance_km,number,Mean great-circle distance of this airport's routes.
+max_route_distance_km,number,Longest non-stop route from this airport.
+farthest_destination,string,Airport code of that longest route.
+hub_class,string,"Network role from route count: Isolated, Feeder, Regional, Major, Global hub."
+capital_distance_km,string,Great-circle distance to the country's capital city.
+is_near_capital,string,true when the airport is within 40 km of its country's capital.
+routes_per_million_people,number,Route records divided by country population in millions.
+country_population,number,"Country population (World Bank, joined)."
+country_gdp_per_capita_usd,number,"Country GDP per capita (World Bank, joined)."
+airports_in_country,number,Number of airports in this file for the same country.
+name_word_count,number,Number of words in the airport name.

@@ -1,0 +1,82 @@
+column,data_type,description
+id,string,Project record id.
+projectid,string,World Bank project id (P-number).
+project_name,string,Project name.
+countryname,string,Country or countries.
+countrycode,string,ISO country code.
+countryshortname,string,World Bank project field or derived attribute.
+regionname,string,World Bank region.
+region_code,number,World Bank project field or derived attribute.
+prodline,string,Product line.
+prodlinetext,string,Product line description.
+lendinginstr,string,Lending instrument.
+lendinginstrtype,string,Lending instrument type.
+projectfinancialtype,string,"Financial type (IDA, IBRD, ...)."
+projectstatusdisplay,string,Project status.
+status,string,World Bank project field or derived attribute.
+statusdate,string,World Bank project field or derived attribute.
+boardapprovaldate,datetime,Board approval date.
+closingdate,string,Closing date.
+laststatusdate,string,World Bank project field or derived attribute.
+approvalfy,number,Approval fiscal year.
+fiscalyear,number,World Bank project field or derived attribute.
+lendprojectcost,number,World Bank project field or derived attribute.
+totalamt,number,Total commitment in USD.
+totalcommamt,number,Total commitment amount.
+grant_usd_amt,string,Grant component in USD.
+ibrdcommamt,number,IBRD commitment.
+idacommamt,number,IDA commitment.
+curr_total_commitment,number,Current total commitment.
+curr_ibrd_commitment,number,World Bank project field or derived attribute.
+curr_ida_commitment,number,World Bank project field or derived attribute.
+curr_project_cost,number,World Bank project field or derived attribute.
+disbursement,string,Amount disbursed.
+commitment,string,Commitment amount.
+repayment,string,World Bank project field or derived attribute.
+interestandcharges,string,World Bank project field or derived attribute.
+fees,string,World Bank project field or derived attribute.
+loanid,string,Loan/credit id.
+loantype,string,Loan type.
+loantypedesc,string,World Bank project field or derived attribute.
+financierdesc,string,World Bank project field or derived attribute.
+financiertype,string,World Bank project field or derived attribute.
+sector1,string,Primary sector.
+theme1,string,Primary theme.
+mjthemecode,number,World Bank project field or derived attribute.
+mjtheme_namecode,string,World Bank project field or derived attribute.
+mttheme1name,number,World Bank project field or derived attribute.
+project_abstract,string,Project abstract.
+project_gp_info,string,World Bank project field or derived attribute.
+teamleadname,string,Task team leader.
+teamleademail,string,World Bank project field or derived attribute.
+locations,number,World Bank project field or derived attribute.
+url,string,Project page URL.
+listing_relative_url,string,World Bank project field or derived attribute.
+source,string,World Bank project field or derived attribute.
+p2a_flag,string,World Bank project field or derived attribute.
+overall_currentrating,string,World Bank project field or derived attribute.
+performance_currentrating,string,World Bank project field or derived attribute.
+mequality,string,World Bank project field or derived attribute.
+environment_riskdo,number,World Bank project field or derived attribute.
+completion_riskdo,string,World Bank project field or derived attribute.
+proj_last_upd_date,datetime,World Bank project field or derived attribute.
+approval_year,number,Year of board approval.
+approval_month,number,Month of board approval.
+closing_year,number,Year of closing.
+duration_days,number,Days between approval and closing.
+age_years,number,Years since approval.
+is_active,boolean,true for active projects.
+is_closed,boolean,true for closed projects.
+is_dropped,boolean,true for dropped projects.
+is_ida,boolean,true when IDA funds are involved.
+is_ibrd,boolean,true when IBRD funds are involved.
+has_grant,boolean,true when a grant component exists.
+has_abstract,boolean,true when an abstract is present.
+totalamt_band,string,Commitment-size band.
+grant_share,number,Grant amount divided by total commitment.
+disbursement_ratio,number,Disbursed amount divided by total commitment.
+abstract_length,number,Characters in the abstract.
+is_africa,boolean,true for African projects.
+is_asia,boolean,true for Asian projects.
+is_latin_america,boolean,true for Latin American/Caribbean projects.
+is_europe_central_asia,boolean,true for Europe and Central Asia projects.

@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/global-health-panel-2000-2025-starter-notebook",
+  "title": "Global Health Panel 2000-2025 Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/global-health-panel"
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "title": "Steam Games Market",
+  "id": "samyakrajbayar/steam-games-market",
+  "subtitle": "20,000 Steam games with owner estimates, reviews, playtime and pricing",
+  "description": "# Steam Games Market\n\n**Subtitle:** 20,000 Steam games with owner estimates, reviews, playtime and pricing\n\n**Tags:** `video-games`, `pricing`, `entertainment`, `tabular`\n\n**Dataset File:** `steam_games.csv` (2,488 rows, 41 columns, 621.5 KB)\n\n**Provenance & Source:** Steam Storefront API & SteamSpy Community API\n\n**Expected Update Frequency:** `quarterly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The Steam catalogue as a market dataset\n\nSteamSpy publishes an estimate of every game on Steam: ownership bands, review counts, playtime,\nprice and concurrency. This snapshot covers **2,488 games** with **41 parameters** per title.\n\nColumns cover:\n- **Identity** \u2014 app id, title, developer, publisher, and how many titles in the file that\n  developer and publisher have.\n- **Reviews** \u2014 positive, negative and total review counts, the positive ratio, a review band,\n  user score and SteamSpy's score rank.\n- **Audience** \u2014 estimated owner range with its bounds and midpoint, plus review and concurrency\n  rates per estimated owner.\n- **Engagement** \u2014 average and median lifetime playtime (minutes and hours), two-week playtime,\n  the median/average ratio and playtime per owner.\n- **Commerce** \u2014 current and initial price, discount percentage and amount, a price band,\n  free-to-play and discount flags, peak concurrent users.\n- **Title features** \u2014 length, word count, sequel heuristic, leading \"The\".\n\n**304 titles (12.2%)** are free to play. Owner figures are SteamSpy's own\ninterval estimates, not Valve disclosures, which makes the dataset a good exercise in working with\nbanded, uncertain quantities.\n\n## \ud83e\uddfe Columns (41)\n\n`appid`, `name`, `developer`, `publisher`, `score_rank`, `positive_reviews`, `negative_reviews`, `total_reviews`, `review_ratio_pct`, `userscore`, `owners_range`, `owners_min`, `owners_max`, `owners_mid`, `average_playtime_minutes`, `average_playtime_hours`, `median_playtime_minutes`, `median_playtime_hours`, `average_2weeks_minutes`, `median_2weeks_minutes`, `price_cents`, `price_usd`, `initial_price_usd`, `discount_pct`, `discount_usd`, `ccu`, `is_free`, `is_discounted`, `has_score_rank`, `publisher_game_count`, `developer_game_count`, `name_length`, `name_word_count`, `is_sequel`, `review_band`, `price_band`, `engagement_ratio`, `playtime_per_owner_minutes`, `ccu_per_owner_pct`, `review_per_owner_pct`, `name_starts_with_the`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Price and reception** \u2014 does price correlate with review ratio once you control for genre size?\n2. **Free-to-play economics** \u2014 compare owner estimates, review counts and concurrency for free vs paid titles.\n3. **Engagement tails** \u2014 median/average playtime ratio as a proxy for how top-heavy a game's audience is.\n4. **Publisher portfolios** \u2014 which publishers have the most titles, and do their games cluster in quality bands?\n5. **Review propensity** \u2014 reviews per owner varies widely; model it and use it to improve owner estimates.\n6. **Title conventions** \u2014 sequel and 'The' heuristics versus commercial performance.\n7. **Discount behaviour** \u2014 discount depth by price band and age proxy (`appid` order).\n8. **Long-tail analysis** \u2014 log-log distribution of owners and reviews; fit a power law.\n9. **Recommendation baseline** \u2014 build a content-free popularity ranker and measure precision against review counts.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `steam_games.csv` | 2,488 Steam games x 41 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: pricing, reviews, owners, engagement. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`gaming`, `steam`, `video-games`, `market-analysis`, `entertainment`, `pricing`, `reviews`, `tabular`, `consumer`, `economics`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **SteamSpy** public API (`https://steamspy.com/api.php?request=all&page=N`),\n  pages 0\u201319, retrieved at one request per second.\n- **Upstream:** SteamSpy derives ownership bands and playtime from Steam profiles and the public\n  store API; review and price fields come from Steam itself.\n- **Processing:** 20 pages of 1,000 app records were merged by app id (duplicates overwritten),\n  owners strings were parsed into bounds and a midpoint, prices converted from cents.\n- **Derived columns:** review totals and ratios, owner statistics, playtime conversions, price bands,\n  discount flags, publisher/developer catalogue sizes, engagement ratios, title features.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous upstream; snapshot here.** SteamSpy refreshes daily. Re-run `scripts/24_steam_games.py` for a new snapshot.\n\n## \u26a0\ufe0f Caveats\n\n- Ownership is an estimate published as a range; `owners_mid` is a convenience midpoint, not a measurement.\n- SteamSpy's `all` listing is popularity-ordered and capped here at 20 pages (20,000 slots), so very obscure titles may be missing.\n- Playtime and concurrency figures lag and are sampled from public profiles, which skew toward engaged players.\n- Prices are USD and reflect the moment of capture; regional pricing is not included.\n- `userscore` and `score_rank` are empty for many titles \u2014 SteamSpy only fills them above review thresholds.\n- The sequel heuristic is a string match, not a curated franchise table.\n- No genre or tag columns are present because SteamSpy's bulk listing does not expose them.\n\n## \ud83d\udcdc Licence\n\nSteamSpy data is published for public use; Steam store metadata belongs to Valve and the respective publishers. Included for non-commercial research with attribution.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `appid` | `number` | Steam application id. |\n| 2 | `name` | `string` | Game title as listed on Steam. |\n| 3 | `developer` | `string` | Developer studio. |\n| 4 | `publisher` | `string` | Publisher. |\n| 5 | `score_rank` | `number` | SteamSpy's proprietary ranking score (empty for most titles). |\n| 6 | `positive_reviews` | `number` | Number of positive user reviews. |\n| 7 | `negative_reviews` | `number` | Number of negative user reviews. |\n| 8 | `total_reviews` | `number` | Positive plus negative reviews. |\n| 9 | `review_ratio_pct` | `number` | Share of reviews that are positive, in percent. |\n| 10 | `userscore` | `number` | Metacritic-style user score (0-100) where available. |\n| 11 | `owners_range` | `string` | Estimated owner range as published (e.g. '200,000 .. 500,000'). |\n| 12 | `owners_min` | `number` | Lower bound of the owner range. |\n| 13 | `owners_max` | `number` | Upper bound of the owner range. |\n| 14 | `owners_mid` | `number` | Midpoint of the owner range, used as an estimate. |\n| 15 | `average_playtime_minutes` | `number` | Average total playtime in minutes, all players. |\n| 16 | `average_playtime_hours` | `number` | Average total playtime in hours. |\n| 17 | `median_playtime_minutes` | `number` | Median total playtime in minutes. |\n| 18 | `median_playtime_hours` | `number` | Median total playtime in hours. |\n| 19 | `average_2weeks_minutes` | `number` | Average playtime in the last two weeks, minutes. |\n| 20 | `median_2weeks_minutes` | `number` | Median playtime in the last two weeks, minutes. |\n| 21 | `price_cents` | `number` | Current price in US cents. |\n| 22 | `price_usd` | `number` | Current price in US dollars. |\n| 23 | `initial_price_usd` | `number` | Pre-discount price in US dollars. |\n| 24 | `discount_pct` | `number` | Current discount percentage. |\n| 25 | `discount_usd` | `number` | Absolute discount in US dollars. |\n| 26 | `ccu` | `number` | Peak concurrent users recorded by SteamSpy. |\n| 27 | `is_free` | `boolean` | true when the game is free to play. |\n| 28 | `is_discounted` | `boolean` | true when a discount is active. |\n| 29 | `has_score_rank` | `boolean` | true when SteamSpy assigns a score rank. |\n| 30 | `publisher_game_count` | `number` | Number of games in this file from the same publisher. |\n| 31 | `developer_game_count` | `number` | Number of games in this file from the same developer. |\n| 32 | `name_length` | `number` | Characters in the title. |\n| 33 | `name_word_count` | `number` | Words in the title. |\n| 34 | `is_sequel` | `boolean` | Heuristic flag for numbered or colon-titled sequels. |\n| 35 | `review_band` | `string` | Review-count band from <100 to 100k+. |\n| 36 | `price_band` | `string` | Price band: Free, Budget, Mid, Premium, AAA. |\n| 37 | `engagement_ratio` | `number` | Median playtime divided by average playtime \u2014 how top-heavy engagement is. |\n| 38 | `playtime_per_owner_minutes` | `number` | Average playtime divided by estimated owners. |\n| 39 | `ccu_per_owner_pct` | `number` | Peak concurrent users as a percentage of estimated owners. |\n| 40 | `review_per_owner_pct` | `number` | Reviews as a percentage of estimated owners (review propensity). |\n| 41 | `name_starts_with_the` | `boolean` | true when the title begins with 'The '. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "games"
+  ],
+  "resources": [
+    {
+      "path": "steam_games.csv",
+      "description": "Primary dataset file containing 2,488 records across 41 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "appid",
+            "type": "number",
+            "description": "Steam application id."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Game title as listed on Steam."
+          },
+          {
+            "name": "developer",
+            "type": "string",
+            "description": "Developer studio."
+          },
+          {
+            "name": "publisher",
+            "type": "string",
+            "description": "Publisher."
+          },
+          {
+            "name": "score_rank",
+            "type": "number",
+            "description": "SteamSpy's proprietary ranking score (empty for most titles)."
+          },
+          {
+            "name": "positive_reviews",
+            "type": "number",
+            "description": "Number of positive user reviews."
+          },
+          {
+            "name": "negative_reviews",
+            "type": "number",
+            "description": "Number of negative user reviews."
+          },
+          {
+            "name": "total_reviews",
+            "type": "number",
+            "description": "Positive plus negative reviews."
+          },
+          {
+            "name": "review_ratio_pct",
+            "type": "number",
+            "description": "Share of reviews that are positive, in percent."
+          },
+          {
+            "name": "userscore",
+            "type": "number",
+            "description": "Metacritic-style user score (0-100) where available."
+          },
+          {
+            "name": "owners_range",
+            "type": "string",
+            "description": "Estimated owner range as published (e.g. '200,000 .. 500,000')."
+          },
+          {
+            "name": "owners_min",
+            "type": "number",
+            "description": "Lower bound of the owner range."
+          },
+          {
+            "name": "owners_max",
+            "type": "number",
+            "description": "Upper bound of the owner range."
+          },
+          {
+            "name": "owners_mid",
+            "type": "number",
+            "description": "Midpoint of the owner range, used as an estimate."
+          },
+          {
+            "name": "average_playtime_minutes",
+            "type": "number",
+            "description": "Average total playtime in minutes, all players."
+          },
+          {
+            "name": "average_playtime_hours",
+            "type": "number",
+            "description": "Average total playtime in hours."
+          },
+          {
+            "name": "median_playtime_minutes",
+            "type": "number",
+            "description": "Median total playtime in minutes."
+          },
+          {
+            "name": "median_playtime_hours",
+            "type": "number",
+            "description": "Median total playtime in hours."
+          },
+          {
+            "name": "average_2weeks_minutes",
+            "type": "number",
+            "description": "Average playtime in the last two weeks, minutes."
+          },
+          {
+            "name": "median_2weeks_minutes",
+            "type": "number",
+            "description": "Median playtime in the last two weeks, minutes."
+          },
+          {
+            "name": "price_cents",
+            "type": "number",
+            "description": "Current price in US cents."
+          },
+          {
+            "name": "price_usd",
+            "type": "number",
+            "description": "Current price in US dollars."
+          },
+          {
+            "name": "initial_price_usd",
+            "type": "number",
+            "description": "Pre-discount price in US dollars."
+          },
+          {
+            "name": "discount_pct",
+            "type": "number",
+            "description": "Current discount percentage."
+          },
+          {
+            "name": "discount_usd",
+            "type": "number",
+            "description": "Absolute discount in US dollars."
+          },
+          {
+            "name": "ccu",
+            "type": "number",
+            "description": "Peak concurrent users recorded by SteamSpy."
+          },
+          {
+            "name": "is_free",
+            "type": "boolean",
+            "description": "true when the game is free to play."
+          },
+          {
+            "name": "is_discounted",
+            "type": "boolean",
+            "description": "true when a discount is active."
+          },
+          {
+            "name": "has_score_rank",
+            "type": "boolean",
+            "description": "true when SteamSpy assigns a score rank."
+          },
+          {
+            "name": "publisher_game_count",
+            "type": "number",
+            "description": "Number of games in this file from the same publisher."
+          },
+          {
+            "name": "developer_game_count",
+            "type": "number",
+            "description": "Number of games in this file from the same developer."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "name_word_count",
+            "type": "number",
+            "description": "Words in the title."
+          },
+          {
+            "name": "is_sequel",
+            "type": "boolean",
+            "description": "Heuristic flag for numbered or colon-titled sequels."
+          },
+          {
+            "name": "review_band",
+            "type": "string",
+            "description": "Review-count band from <100 to 100k+."
+          },
+          {
+            "name": "price_band",
+            "type": "string",
+            "description": "Price band: Free, Budget, Mid, Premium, AAA."
+          },
+          {
+            "name": "engagement_ratio",
+            "type": "number",
+            "description": "Median playtime divided by average playtime \u2014 how top-heavy engagement is."
+          },
+          {
+            "name": "playtime_per_owner_minutes",
+            "type": "number",
+            "description": "Average playtime divided by estimated owners."
+          },
+          {
+            "name": "ccu_per_owner_pct",
+            "type": "number",
+            "description": "Peak concurrent users as a percentage of estimated owners."
+          },
+          {
+            "name": "review_per_owner_pct",
+            "type": "number",
+            "description": "Reviews as a percentage of estimated owners (review propensity)."
+          },
+          {
+            "name": "name_starts_with_the",
+            "type": "boolean",
+            "description": "true when the title begins with 'The '."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

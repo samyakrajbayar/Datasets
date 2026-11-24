@@ -1,0 +1,83 @@
+column,data_type,description
+id,number,Vehicle record id.
+make,string,Manufacturer.
+model,string,Model.
+baseModel,string,Base model.
+year,number,Model year.
+VClass,string,EPA vehicle class.
+drive,string,Drivetrain description.
+trany,string,Transmission.
+trans_dscr,string,Transmission description.
+displ,number,Engine displacement (litres).
+cylinders,number,Cylinder count.
+fuelType,string,Primary fuel type.
+fuelType1,string,Fuel type 1.
+fuelType2,string,Fuel type 2 (flex/plug-in vehicles).
+atvType,string,Alternative-technology type.
+evMotor,string,Electric motor description.
+city08,number,City MPG (test cycle 2008+).
+highway08,number,Highway MPG.
+comb08,number,Combined MPG.
+cityA08,number,"City MPG, alternative fuel."
+highwayA08,number,fueleconomy.gov field or derived attribute.
+combA08,number,fueleconomy.gov field or derived attribute.
+cityE,number,fueleconomy.gov field or derived attribute.
+highwayE,number,fueleconomy.gov field or derived attribute.
+combE,number,fueleconomy.gov field or derived attribute.
+co2,number,Tailpipe CO2 in grams per mile.
+co2A,number,fueleconomy.gov field or derived attribute.
+co2TailpipeGpm,number,Tailpipe CO2 (g/mi).
+fuelCost08,number,Annual fuel cost (USD).
+fuelCostA08,number,fueleconomy.gov field or derived attribute.
+ghgScore,number,Greenhouse-gas score (1-10).
+ghgScoreA,number,fueleconomy.gov field or derived attribute.
+feScore,number,Fuel-economy score (1-10).
+youSaveSpend,number,Fuel savings/spend over five years.
+range,number,Electric range (miles).
+rangeCity,number,fueleconomy.gov field or derived attribute.
+rangeHwy,number,fueleconomy.gov field or derived attribute.
+rangeA,number,fueleconomy.gov field or derived attribute.
+phevCity,number,fueleconomy.gov field or derived attribute.
+phevHwy,number,fueleconomy.gov field or derived attribute.
+phevComb,number,fueleconomy.gov field or derived attribute.
+barrels08,number,Barrels of petroleum per year.
+barrelsA08,number,fueleconomy.gov field or derived attribute.
+UCity,number,City unadjusted MPG.
+UHighway,number,Highway unadjusted MPG.
+sCharger,string,fueleconomy.gov field or derived attribute.
+tCharger,string,fueleconomy.gov field or derived attribute.
+startStop,string,fueleconomy.gov field or derived attribute.
+guzzler,string,fueleconomy.gov field or derived attribute.
+mpgData,string,fueleconomy.gov field or derived attribute.
+phevBlended,boolean,fueleconomy.gov field or derived attribute.
+charge120,number,fueleconomy.gov field or derived attribute.
+charge240,number,fueleconomy.gov field or derived attribute.
+mfrCode,string,fueleconomy.gov field or derived attribute.
+eng_dscr,string,fueleconomy.gov field or derived attribute.
+createdOn,string,fueleconomy.gov field or derived attribute.
+modifiedOn,string,fueleconomy.gov field or derived attribute.
+is_electric,boolean,true for battery-electric vehicles.
+is_hybrid,boolean,true for hybrids.
+is_plugin_hybrid,boolean,true for plug-in hybrids.
+is_flex_fuel,boolean,true for flex-fuel vehicles.
+is_diesel,boolean,true for diesel vehicles.
+is_manual,boolean,true for manual transmissions.
+is_awd,boolean,true for all-wheel drive.
+is_4wd,boolean,true for four-wheel drive.
+is_fwd,boolean,true for front-wheel drive.
+is_rwd,boolean,true for rear-wheel drive.
+gears,number,Number of transmission speeds parsed from the transmission string.
+displacement_l,number,fueleconomy.gov field or derived attribute.
+annual_gallons,number,Petroleum use in gallons per year.
+cost_per_mile,number,"Annual fuel cost divided by 15,000 miles."
+co2_per_mile_g,number,Tailpipe CO2 per mile.
+mpg_band,string,Combined-MPG band.
+cost_band,string,Annual-fuel-cost band.
+co2_band,string,CO2 band.
+range_band,string,Electric-range band.
+vehicle_age,number,Years since the model year.
+is_turbo,boolean,true for turbocharged engines.
+is_supercharged,boolean,true for supercharged engines.
+is_start_stop,boolean,true for start-stop equipped vehicles.
+is_guzzler,boolean,true when the gas-guzzler tax applies.
+is_model_year_2026,boolean,fueleconomy.gov field or derived attribute.

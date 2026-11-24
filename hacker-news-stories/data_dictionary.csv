@@ -1,0 +1,31 @@
+column,data_type,description
+object_id,number,Hacker News item id.
+title,string,Story title.
+url,string,"Linked URL, where the story links out."
+domain,string,Domain of the linked URL.
+author,string,Submitter username.
+points,number,Points at snapshot time.
+num_comments,number,Comment count.
+created_at,datetime,Submission timestamp (ISO).
+created_at_i,number,Submission Unix timestamp.
+story_text,string,"Self-post text (Ask HN, Show HN, ...)."
+has_url,boolean,true when the story links to an external URL.
+has_text,boolean,true when the story has self-post text.
+is_ask_hn,boolean,true for Ask HN posts.
+is_show_hn,boolean,true for Show HN posts.
+is_job,boolean,true for job posts.
+title_length,number,Characters in the title.
+title_word_count,number,Words in the title.
+url_length,number,Characters in the URL.
+tag_count,number,Number of Algolia tags.
+age_days,number,Days since submission at 2026-11-22.
+age_hours,number,Hours since submission.
+points_per_hour,number,Points divided by age in hours.
+comments_per_point,number,Comments divided by points.
+year,number,Submission year.
+month,number,Submission month.
+day,number,Submission day of month.
+hour,number,Submission hour (UTC).
+day_of_week,string,Submission weekday.
+is_weekend,boolean,true for Saturday/Sunday.
+engagement_score,number,Comments + points (simple engagement total).

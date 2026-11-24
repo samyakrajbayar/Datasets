@@ -1,0 +1,39 @@
+column,data_type,description
+volcano_number,number,Smithsonian Global Volcanism Program volcano number.
+volcano_name,string,Volcano name.
+primary_volcano_type,string,"Primary morphological type (Stratovolcano(es), Shield, Caldera...)."
+volcanic_landform,string,Broader landform classification.
+last_eruption_year,number,"Year of the last known eruption; negative values are BCE, empty means undated."
+country,string,Country as recorded by the GVP.
+region,string,Volcanic region.
+subregion,string,Volcanic sub-region (usually the specific arc).
+latitude,number,Latitude in decimal degrees.
+longitude,number,Longitude in decimal degrees.
+elevation_m,number,Summit elevation in metres (negative for submarine volcanoes).
+tectonic_setting,string,Tectonic setting of the volcano.
+geologic_epoch,string,Geologic epoch of the volcano's formation.
+evidence_category,string,How the Holocene age of the last eruption is evidenced.
+major_rock_type,string,Dominant rock type(s).
+geological_summary,string,Free-text geological summary from the GVP.
+primary_photo_link,string,URL of the primary photograph.
+primary_photo_caption,string,Caption of the primary photograph.
+primary_photo_credit,string,Photographer credit for the primary photograph.
+country_cca3,string,ISO-3166 alpha-3 code of the volcano's country.
+continent,string,Continent of the volcano's country.
+un_region,string,UN macro-region of the country.
+hemisphere,string,Northern or Southern hemisphere.
+abs_latitude,number,"Absolute latitude, for latitude-band analysis."
+latitude_band,string,10-degree latitude band.
+elevation_band,string,Elevation band from submarine to high-Andean.
+volcano_type_group,string,"Coarse type: Stratovolcano, Shield, Caldera, Complex, Cone, Fissure, Submarine, Other."
+is_subduction_zone,boolean,true when the tectonic setting involves subduction.
+is_holocene_dated,boolean,true when the last eruption is dated rather than only inferred.
+eruption_year_display,string,Last eruption year rendered as CE or BCE.
+years_since_last_eruption,number,Years between the last eruption and 2026 (negative is impossible; empty if undated).
+last_eruption_decade,string,Decade of the last eruption.
+eruption_recency_class,string,"Historical (since 1500), Holocene (10k years), Pleistocene, or undated."
+is_historical_eruption,boolean,true when the last eruption is documented history (year >= 1500).
+is_undated,boolean,true when no last-eruption year is recorded.
+summary_length,number,Length of the geological summary text in characters.
+has_photo,boolean,true when a primary photograph is linked.
+name_word_count,number,Number of words in the volcano name.

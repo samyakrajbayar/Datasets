@@ -1,0 +1,56 @@
+column,data_type,description
+recall_number,string,FDA recall number.
+event_id,number,FDA enforcement event identifier.
+classification,string,"Class I (serious harm), II (temporary harm) or III (unlikely harm)."
+status,string,"Ongoing, completed or terminated."
+product_type,string,Product type reported by FDA.
+recalling_firm,string,Firm that initiated the recall.
+address_1,string,Firm street address.
+address_2,string,Firm address line 2.
+city,string,Firm city.
+state,string,Firm state.
+country,string,Firm country.
+postal_code,string,Firm postal code.
+voluntary_mandated,string,Whether the recall was voluntary or mandated.
+initial_firm_notification,string,How the firm notified customers.
+distribution_pattern,string,Free-text description of where the product went.
+product_description,string,Product description from the enforcement report.
+reason_for_recall,string,Stated reason for the recall.
+product_quantity,string,"Quantity recalled, as reported."
+recall_initiation_date,date,Date the recall began (ISO).
+center_classification_date,date,Date FDA assigned the classification (ISO).
+report_date,date,Date the enforcement report was published (ISO).
+termination_date,date,Date the recall was terminated (ISO).
+openfda_brand_name,string,Brand name from the openFDA product record.
+openfda_generic_name,string,Generic name from the openFDA product record.
+openfda_manufacturer_name,string,Manufacturer from the openFDA product record.
+openfda_product_ndc,string,NDC code from the openFDA product record.
+openfda_route,string,Route of administration.
+openfda_substance_name,string,Active substance name(s).
+openfda_application_number,string,NDA/ANDA application number.
+openfda_spl_id,string,Structured Product Labeling identifier.
+openfda_count,number,Number of openFDA product records attached.
+year,number,Year of the recall initiation date.
+quarter,number,Quarter of the recall initiation date.
+month,number,Month of the recall initiation date.
+days_initiation_to_classification,number,Classification date minus initiation date.
+days_classification_to_report,number,Report date minus classification date.
+days_initiation_to_termination,number,Termination date minus initiation date.
+recall_duration_days,number,"Initiation to termination, or initiation to 2026-11-22 if ongoing."
+is_class_i,boolean,true for Class I recalls.
+is_class_ii,boolean,true for Class II recalls.
+is_class_iii,boolean,true for Class III recalls.
+is_ongoing,boolean,true when status is Ongoing.
+is_completed,boolean,true when status is Completed.
+is_terminated,boolean,true when status is Terminated.
+is_voluntary,boolean,true when the recall was voluntary.
+is_mandated,boolean,true when the recall was mandated.
+is_nationwide,boolean,true when the distribution pattern says nationwide.
+is_international,boolean,true when the distribution pattern mentions international/foreign.
+reason_category,string,Derived reason category from keyword matching.
+distribution_word_count,number,Words in the distribution pattern.
+product_description_len,number,Characters in the product description.
+reason_len,number,Characters in the reason text.
+quantity_numeric,number,First number parsed from product_quantity.
+has_openfda,boolean,true when an openFDA product record is attached.
+firm_state,string,"Recalling firm state (same as `state`, kept for clarity)."

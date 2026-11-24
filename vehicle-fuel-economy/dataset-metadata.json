@@ -1,0 +1,30 @@
+{
+  "title": "U.S. Vehicle Fuel Economy & Emissions",
+  "id": "samyakrajbayar/vehicle-fuel-economy",
+  "subtitle": "50,744 vehicle configurations with MPG, CO2, fuel costs, powertrains and tech...",
+  "description": "### 50,744 U.S. vehicle configurations with fuel economy and emissions\n\nThe DOE/EPA Fuel Economy dataset lists every vehicle configuration sold in the United States, with\ntested MPG, fuel costs, CO2 emissions and technology descriptors. This dataset contains **50,744\nconfigurations** and **82 parameters**.\n\n- **Vehicle** \u2014 id, make, model, base model, model year and EPA class.\n- **Powertrain** \u2014 engine displacement, cylinders, transmission, drivetrain, fuel types and\n  alternative-technology type.\n- **Economy** \u2014 city, highway and combined MPG on both test cycles, unadjusted values and scores.\n- **Emissions and cost** \u2014 tailpipe CO2, greenhouse-gas score, annual fuel cost, petroleum use and\n  five-year savings.\n- **Derived** \u2014 electric/hybrid/plug-in/flex/diesel flags, drivetrain flags, manual flag, gears,\n  gallons per year, cost per mile, MPG/cost/CO2/range bands, vehicle age, turbo/supercharger and\n  start-stop flags.\n\n**1,693 configurations are battery-electric** and **2,427 are hybrids**, spread across\n**146 manufacturers** and five decades of model years \u2014 the standard table for fleet, emissions\nand consumer-economics analysis.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "fuel_economy.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

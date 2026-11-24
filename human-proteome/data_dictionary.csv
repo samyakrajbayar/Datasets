@@ -1,0 +1,61 @@
+column,data_type,description
+accession,string,UniProtKB primary accession.
+entry_name,string,UniProt entry name (e.g. MOTSC_HUMAN).
+protein_name,string,"Recommended protein name, with synonyms."
+gene_names,string,Gene name(s) mapped to the entry.
+organism,string,Source organism (Homo sapiens).
+length,number,Protein sequence length in amino acids.
+mass_da,number,Computed molecular mass in daltons.
+sequence_version,number,UniProt sequence version.
+ec_number,string,"Enzyme Commission number(s), where assigned."
+function,string,"Curated function annotation (truncated to 2,000 characters)."
+domains,string,Domain boundaries from the feature table.
+go_ids,string,Gene Ontology term IDs (semicolon-joined).
+keywords,number,UniProt keyword annotations (semicolon-joined).
+subcellular_location,string,Curated subcellular location text.
+involvement_in_disease,string,"Disease association text (truncated to 1,500 characters)."
+pdb_ids,string,PDB structure identifiers.
+sequence_similarity,string,Sequence similarity family annotation.
+binding_sites,string,Binding-site features.
+active_sites,string,Active-site features.
+sequence,string,Full amino-acid sequence.
+catalytic_activity,number,Catalytic activity annotation.
+cofactor,number,Cofactor annotation.
+subunit,number,Subunit / complex composition.
+pathway,number,Pathway annotation.
+pharmaceutical_use,number,Pharmaceutical use annotation.
+tissue_specificity,number,Tissue expression specificity.
+signal_peptide,number,Signal peptide feature.
+transit_peptide,number,Transit peptide feature.
+chains,number,Chain features.
+disulfide_bonds,number,Disulfide bond features.
+variants,number,Natural variant features.
+modified_residues,number,Post-translational modification features.
+caution,number,Caution / annotation warning text.
+gene_count,number,Number of gene names listed.
+function_length,number,Characters in the function annotation.
+domain_count,number,Number of domain features.
+go_term_count,number,Number of GO terms.
+pdb_structure_count,number,Number of PDB structures.
+keyword_count,number,Number of UniProt keywords.
+subcellular_location_count,number,Number of subcellular location terms.
+binding_site_count,number,Number of binding-site features.
+active_site_count,number,Number of active-site features.
+variant_count,number,Number of natural variants.
+disulfide_count,number,Number of disulfide bonds.
+modified_residue_count,number,Number of modified residues.
+is_enzyme,boolean,true when an EC number is assigned.
+ec_class,number,First digit of the EC number (enzyme class).
+has_structure,boolean,true when at least one PDB structure exists.
+has_signal_peptide,boolean,true when a signal peptide is annotated.
+has_transit_peptide,boolean,true when a transit peptide is annotated.
+has_disease_association,boolean,true when a disease association is annotated.
+is_transmembrane,boolean,true when the keyword Transmembrane is present.
+is_secreted,boolean,true when the location mentions secreted.
+is_membrane_protein,boolean,true when the location mentions membrane.
+is_nuclear,boolean,true when the location mentions nucleus.
+is_mitochondrial,boolean,true when the location mentions mitochondria.
+has_caution,boolean,true when a caution annotation exists.
+mass_per_residue_da,number,Mass divided by sequence length.
+length_band,string,Protein length band (aa).
+is_reviewed,boolean,true — the query restricts to reviewed Swiss-Prot entries.

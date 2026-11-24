@@ -1,0 +1,79 @@
+column,data_type,description
+set_id,string,SPL document set id (stable across versions).
+label_id,string,SPL document id.
+version,number,Label version number.
+effective_time,number,Label effective date (YYYYMMDD).
+effective_year,number,Year the label became effective.
+effective_month,number,Month the label became effective.
+brand_name,string,Brand name(s).
+generic_name,string,Generic name(s).
+manufacturer_name,string,Labeler/manufacturer.
+product_ndc,string,Product NDC.
+package_ndc,string,"Package NDCs, semicolon-separated."
+product_type,string,"HUMAN OTC DRUG, HUMAN PRESCRIPTION DRUG, ..."
+route,string,Administration routes.
+route_count,number,Number of routes.
+substance_name,string,Active substance names.
+substance_count,number,Number of substances.
+unii,string,UNII codes.
+rxcui,string,RxNorm CUIs.
+pharm_class_epc,string,Established pharmacologic class.
+pharm_class_moa,string,Mechanism of action class.
+brand_count,number,"openFDA label field, section length or derived attribute."
+has_openfda,boolean,"openFDA label field, section length or derived attribute."
+active_ingredient_length,number,"openFDA label field, section length or derived attribute."
+has_active_ingredient,boolean,"openFDA label field, section length or derived attribute."
+inactive_ingredient_length,number,"openFDA label field, section length or derived attribute."
+has_inactive_ingredient,boolean,"openFDA label field, section length or derived attribute."
+purpose_length,number,"openFDA label field, section length or derived attribute."
+has_purpose,boolean,"openFDA label field, section length or derived attribute."
+indications_and_usage_length,number,"openFDA label field, section length or derived attribute."
+has_indications_and_usage,boolean,"openFDA label field, section length or derived attribute."
+warnings_length,number,"openFDA label field, section length or derived attribute."
+has_warnings,boolean,"openFDA label field, section length or derived attribute."
+dosage_and_administration_length,number,"openFDA label field, section length or derived attribute."
+has_dosage_and_administration,boolean,"openFDA label field, section length or derived attribute."
+contraindications_length,number,"openFDA label field, section length or derived attribute."
+has_contraindications,boolean,"openFDA label field, section length or derived attribute."
+adverse_reactions_length,number,"openFDA label field, section length or derived attribute."
+has_adverse_reactions,boolean,"openFDA label field, section length or derived attribute."
+drug_interactions_length,number,"openFDA label field, section length or derived attribute."
+has_drug_interactions,boolean,"openFDA label field, section length or derived attribute."
+pregnancy_or_breast_feeding_length,number,"openFDA label field, section length or derived attribute."
+has_pregnancy_or_breast_feeding,boolean,"openFDA label field, section length or derived attribute."
+stop_use_length,number,"openFDA label field, section length or derived attribute."
+has_stop_use,boolean,"openFDA label field, section length or derived attribute."
+do_not_use_length,number,"openFDA label field, section length or derived attribute."
+has_do_not_use,boolean,"openFDA label field, section length or derived attribute."
+storage_and_handling_length,number,"openFDA label field, section length or derived attribute."
+has_storage_and_handling,boolean,"openFDA label field, section length or derived attribute."
+keep_out_of_reach_of_children_length,number,"openFDA label field, section length or derived attribute."
+has_keep_out_of_reach_of_children,boolean,"openFDA label field, section length or derived attribute."
+questions_length,number,"openFDA label field, section length or derived attribute."
+has_questions,boolean,"openFDA label field, section length or derived attribute."
+package_label_principal_display_panel_length,number,"openFDA label field, section length or derived attribute."
+has_package_label_principal_display_panel,boolean,"openFDA label field, section length or derived attribute."
+spl_product_data_elements_length,number,"openFDA label field, section length or derived attribute."
+has_spl_product_data_elements,boolean,"openFDA label field, section length or derived attribute."
+geriatric_use_length,number,"openFDA label field, section length or derived attribute."
+has_geriatric_use,boolean,"openFDA label field, section length or derived attribute."
+pediatric_use_length,number,"openFDA label field, section length or derived attribute."
+has_pediatric_use,boolean,"openFDA label field, section length or derived attribute."
+overdosage_length,number,"openFDA label field, section length or derived attribute."
+has_overdosage,boolean,"openFDA label field, section length or derived attribute."
+description_length,number,"openFDA label field, section length or derived attribute."
+has_description,boolean,"openFDA label field, section length or derived attribute."
+clinical_pharmacology_length,number,"openFDA label field, section length or derived attribute."
+has_clinical_pharmacology,boolean,"openFDA label field, section length or derived attribute."
+section_coverage,number,Number of label sections with text.
+section_coverage_ratio,number,Share of the tracked sections present.
+is_otc,boolean,true for over-the-counter products.
+is_prescription,boolean,true for prescription products.
+is_biological,boolean,true for biological products.
+is_vaccine,boolean,true for vaccines.
+is_generic,boolean,true when brand and generic names differ.
+has_dosage,boolean,"openFDA label field, section length or derived attribute."
+label_age_years,number,Years since the label became effective.
+is_recent_label,boolean,"openFDA label field, section length or derived attribute."
+total_text_length,number,Total characters across tracked sections.
+route_band,string,Administration-route band.

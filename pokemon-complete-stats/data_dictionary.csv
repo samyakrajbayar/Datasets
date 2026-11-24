@@ -1,0 +1,47 @@
+column,data_type,description
+pokemon_id,integer,National Pokédex number / API id.
+name,string,Lower-case English species identifier.
+generation,string,Generation name (e.g. generation-i).
+generation_id,integer,Generation number (1-9).
+is_legendary,boolean,True for legendary Pokémon.
+is_mythical,boolean,True for mythical Pokémon.
+is_baby,boolean,True for baby Pokémon.
+is_default_form,boolean,True for the default form of the species.
+type_1,category,Primary elemental type.
+type_2,category,"Secondary elemental type, empty for mono-type Pokémon."
+type_count,integer,Number of types (1 or 2).
+height_dm,integer,Height in decimetres as stored by the API.
+height_m,float,Height in metres.
+weight_hg,integer,Weight in hectograms as stored by the API.
+weight_kg,float,Weight in kilograms.
+bmi,float,"Body mass index computed as kg / m² (a fun derived feature, not a health measure)."
+base_experience,integer,Experience yield when defeated.
+hp,integer,Base HP stat.
+attack,integer,Base physical attack stat.
+defense,integer,Base physical defense stat.
+special_attack,integer,Base special attack stat.
+special_defense,integer,Base special defense stat.
+speed,integer,Base speed stat.
+stat_total,integer,Sum of all six base stats.
+stat_average,float,Mean of the six base stats.
+physique_score,integer,HP + attack + defense (bulk/physical proxy).
+special_score,integer,Special attack + special defense.
+offense_score,integer,Attack + special attack.
+defense_score,integer,Defense + special defense.
+speed_score,integer,Speed stat (duplicated for convenience in modelling).
+n_abilities,integer,Number of abilities including hidden ones.
+abilities,string list,Semicolon-separated ability identifiers.
+hidden_ability,string,"Hidden ability identifier, if any."
+capture_rate,integer,"Catch rate, 3 (hardest) to 255 (easiest)."
+capture_difficulty,float,Derived 255 / capture_rate; higher means harder to catch.
+base_happiness,integer,Base friendship value.
+gender_ratio_male_pct,float,"Percentage of males in the species, -1 for genderless."
+hatch_counter,integer,Egg cycles required to hatch.
+hatch_steps_estimate,integer,(hatch_counter + 1) × 255 steps.
+growth_rate_id,integer,Growth-rate curve identifier.
+evolves_from_species_id,integer,"Species id this Pokémon evolves from, empty if base form."
+color,category,Pokédex colour category.
+habitat,category,Pokédex habitat category.
+shape,category,Pokédex body shape category.
+has_gender_differences,boolean,True when sprite differs by gender.
+name_length,integer,Character length of the species name.

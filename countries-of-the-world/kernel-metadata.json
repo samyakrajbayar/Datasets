@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/countries-of-the-world-2026-ma-starter-notebook",
+  "title": "Countries of the World 2026 & Ma Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/countries-of-the-world"
+  ]
+}

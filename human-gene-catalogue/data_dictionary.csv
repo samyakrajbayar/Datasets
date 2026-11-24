@@ -1,0 +1,74 @@
+column,data_type,description
+hgnc_id,string,Stable HGNC identifier (HGNC:nnnn).
+symbol,string,Approved gene symbol.
+name,string,Approved gene name.
+locus_group,string,"protein-coding gene, non-coding RNA, pseudogene or other."
+locus_type,string,Detailed locus type.
+status,string,"Approval status (Approved, Entry Withdrawn, ...)."
+location,string,Cytogenetic location as published.
+chromosome,string,Chromosome parsed from the cytogenetic location.
+cytoband,string,Cytogenetic band parsed from the location.
+alias_symbol,string,"Alternative symbols, pipe-separated."
+alias_count,number,Number of alternative symbols.
+alias_name,string,HGNC field or derived attribute.
+prev_symbol,string,"Previous symbols, pipe-separated."
+prev_symbol_count,number,Number of previous symbols.
+prev_name,string,HGNC field or derived attribute.
+gene_group,string,"HGNC gene group memberships, pipe-separated."
+gene_group_id,string,HGNC field or derived attribute.
+gene_group_count,number,Number of gene groups.
+date_approved_reserved,date,HGNC field or derived attribute.
+date_symbol_changed,date,HGNC field or derived attribute.
+date_name_changed,date,HGNC field or derived attribute.
+date_modified,date,HGNC field or derived attribute.
+entrez_id,number,HGNC field or derived attribute.
+ensembl_gene_id,string,Ensembl gene identifier.
+vega_id,string,HGNC field or derived attribute.
+ucsc_id,string,HGNC field or derived attribute.
+ena,string,HGNC field or derived attribute.
+refseq_accession,string,HGNC field or derived attribute.
+ccds_id,string,HGNC field or derived attribute.
+uniprot_ids,string,"UniProt accessions, pipe-separated."
+pubmed_id,string,"PubMed identifiers, pipe-separated."
+pubmed_count,number,Number of linked PubMed records.
+mgd_id,string,HGNC field or derived attribute.
+rgd_id,string,HGNC field or derived attribute.
+lsdb,string,HGNC field or derived attribute.
+cosmic,string,HGNC field or derived attribute.
+omim_id,number,OMIM phenotype/gene identifier.
+mirbase,string,HGNC field or derived attribute.
+homeodb,number,HGNC field or derived attribute.
+snornabase,string,HGNC field or derived attribute.
+bioparadigms_slc,string,HGNC field or derived attribute.
+orphanet,number,HGNC field or derived attribute.
+pseudogene_org,string,HGNC field or derived attribute.
+horde_id,string,HGNC field or derived attribute.
+merops,string,HGNC field or derived attribute.
+imgt,string,HGNC field or derived attribute.
+iuphar,string,HGNC field or derived attribute.
+kznf_gene_catalog,number,HGNC field or derived attribute.
+mamit_trnadb,number,HGNC field or derived attribute.
+cd,string,HGNC field or derived attribute.
+lncrnadb,string,HGNC field or derived attribute.
+enzyme_id,string,HGNC field or derived attribute.
+intermediate_filament_db,number,HGNC field or derived attribute.
+rna_central_id,string,HGNC field or derived attribute.
+lncipedia,string,HGNC field or derived attribute.
+gtrnadb,string,HGNC field or derived attribute.
+agr,string,HGNC field or derived attribute.
+mane_select,string,MANE Select transcript.
+gencc,string,HGNC field or derived attribute.
+is_protein_coding,boolean,true when the locus encodes a protein.
+is_pseudogene,boolean,true for pseudogenes.
+is_non_coding,boolean,true for non-coding RNA loci.
+is_approved,boolean,true when the entry status is Approved.
+has_ensembl,boolean,true when an Ensembl id exists.
+has_uniprot,boolean,true when a UniProt accession exists.
+has_omim,boolean,true when an OMIM id exists.
+has_refseq,boolean,true when a RefSeq accession exists.
+has_ccds,boolean,true when a CCDS id exists.
+has_mane_select,boolean,true when a MANE Select transcript exists.
+has_gene_group,boolean,true when the gene belongs to a HGNC group.
+symbol_length,number,Characters in the symbol.
+name_length,number,Characters in the name.
+alias_density,number,Alias symbols per linked PubMed record.

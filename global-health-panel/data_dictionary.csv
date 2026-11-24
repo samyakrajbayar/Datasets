@@ -1,0 +1,42 @@
+column,data_type,description
+country_code,string,ISO-3166 alpha-3 country code.
+country_name,string,Country name from the WHO country dimension.
+year,number,Year of the observation.
+continent,string,Continent of the country.
+region,string,UN macro-region of the country.
+subregion,string,UN sub-region of the country.
+who_region,string,"WHO administrative region code (AFR, AMR, EMR, EUR, SEAR, WPR)."
+population,number,Country population (World Bank).
+gdp_per_capita_usd,number,Country GDP per capita (World Bank).
+life_expectancy,number,"Life expectancy at birth, both sexes (years)."
+healthy_life_expectancy,number,"Healthy life expectancy at birth, both sexes (years)."
+under5_mortality_per_1000,number,"Probability of dying before age 5, per 1,000 live births."
+neonatal_mortality_per_1000,number,"Neonatal deaths per 1,000 live births."
+infant_mortality_per_1000,number,"Infant deaths per 1,000 live births."
+maternal_mortality_per_100k,number,"Maternal deaths per 100,000 live births."
+obesity_pct,number,Age-standardised prevalence of obesity among adults (%).
+diabetes_pct,number,Age-standardised prevalence of diabetes among adults (%).
+doctors_per_10k,number,"Medical doctors per 10,000 population."
+nurses_per_10k,number,"Nursing and midwifery personnel per 10,000 population."
+hospital_beds_per_10k,number,"Hospital beds per 10,000 population."
+health_spend_pct_gdp,number,Current health expenditure as a share of GDP (%).
+suicide_rate_per_100k,number,"Suicide mortality rate per 100,000 population."
+road_death_rate_per_100k,number,"Estimated road traffic death rate per 100,000 population."
+tb_incidence_per_100k,number,"Tuberculosis incidence per 100,000 population."
+dtp3_coverage_pct,number,DTP3 immunisation coverage among 1-year-olds (%).
+measles_coverage_pct,number,Measles-containing vaccine first-dose coverage (%).
+sanitation_pct,number,Population using safely managed sanitation services (%).
+drinking_water_pct,number,Population using at least basic drinking-water services (%).
+alcohol_litres_per_capita,number,"Total alcohol consumption per capita, litres of pure alcohol."
+skilled_birth_pct,number,Births attended by skilled health personnel (%).
+health_adjusted_years_lost,number,Life expectancy minus healthy life expectancy: years lived in poor health.
+health_spend_per_capita_usd,number,Health expenditure per person implied by spend share of GDP and GDP per capita.
+doctors_per_1000,number,"Medical doctors per 1,000 population."
+nurses_per_1000,number,"Nursing and midwifery personnel per 1,000 population."
+hospital_beds_per_1000,number,"Hospital beds per 1,000 population."
+n_indicators_reported,number,How many of the tracked indicators have a value in this country-year.
+indicator_coverage_pct,number,"Share of the tracked indicators reported, in percent."
+decade,string,Decade of the observation year.
+life_expectancy_band,string,Life-expectancy band from <55 to 80+ years.
+child_mortality_class,string,Under-5 mortality band from Very low to Very high.
+health_spend_class,string,Health-spending band as a share of GDP.

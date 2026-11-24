@@ -1,0 +1,52 @@
+column,data_type,description
+recall_number,string,Unique device recall number.
+event_id,number,FDA event identifier.
+recalling_firm,string,Firm initiating the recall.
+city,string,openFDA device enforcement field or derived attribute.
+state,string,openFDA device enforcement field or derived attribute.
+country,string,openFDA device enforcement field or derived attribute.
+postal_code,string,openFDA device enforcement field or derived attribute.
+address_1,string,openFDA device enforcement field or derived attribute.
+address_2,string,openFDA device enforcement field or derived attribute.
+product_type,string,openFDA device enforcement field or derived attribute.
+classification,string,Class I/II/III severity.
+class_rank,number,Numeric class rank (I=3).
+status,string,Recall status.
+voluntary_mandated,string,Voluntary or FDA-mandated.
+initial_firm_notification,string,Notification method.
+distribution_pattern,string,Distribution description (truncated).
+product_description,string,Device description (truncated).
+product_quantity,string,Quantity affected.
+reason_for_recall,string,"Reason text (truncated to 1,000 characters)."
+code_info,string,openFDA device enforcement field or derived attribute.
+more_code_info,string,openFDA device enforcement field or derived attribute.
+recall_initiation_date,number,Recall start date.
+center_classification_date,number,FDA classification date.
+report_date,number,Enforcement report date.
+termination_date,number,Recall termination date.
+initiation_year,number,openFDA device enforcement field or derived attribute.
+initiation_month,number,openFDA device enforcement field or derived attribute.
+classification_lag_days,number,Days from initiation to classification.
+report_lag_days,number,Days from initiation to publication.
+recall_duration_days,number,Days from initiation to termination.
+is_class_i,boolean,true for Class I recalls.
+is_class_ii,boolean,openFDA device enforcement field or derived attribute.
+is_class_iii,boolean,openFDA device enforcement field or derived attribute.
+is_ongoing,boolean,true while ongoing.
+is_completed,boolean,openFDA device enforcement field or derived attribute.
+is_terminated,boolean,true when terminated.
+is_voluntary,boolean,openFDA device enforcement field or derived attribute.
+has_termination,boolean,openFDA device enforcement field or derived attribute.
+has_openfda,boolean,true when openFDA device data is attached.
+openfda_key_count,number,openFDA device enforcement field or derived attribute.
+k_number_count,number,Number of 510(k) numbers attached.
+reason_length,number,openFDA device enforcement field or derived attribute.
+description_length,number,openFDA device enforcement field or derived attribute.
+mentions_software,boolean,true when software or firmware is mentioned.
+mentions_battery,boolean,true when batteries are mentioned.
+mentions_sterility,boolean,true when sterility is mentioned.
+mentions_labeling,boolean,openFDA device enforcement field or derived attribute.
+mentions_component,boolean,openFDA device enforcement field or derived attribute.
+mentions_packaging,boolean,openFDA device enforcement field or derived attribute.
+mentions_material,boolean,openFDA device enforcement field or derived attribute.
+is_device,boolean,true for device recalls.

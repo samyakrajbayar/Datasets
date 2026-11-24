@@ -1,0 +1,56 @@
+column,data_type,description
+om,number,Sequential record number in the SPC database.
+yr,number,Year of the tornado.
+mo,number,Month (1-12).
+dy,number,Day of month.
+date,date,Local calendar date (YYYY-MM-DD).
+time,string,Local start time (HH:MM:SS); 00:00 when unknown.
+tz,number,Time-zone code used by the source.
+st,string,Two-letter state code.
+stf,number,State FIPS code.
+stn,number,Station number in the source.
+mag,number,"F-scale (1950-2006) or EF-scale (2007+) magnitude, 0-5."
+inj,number,Number of injuries.
+fat,number,Number of fatalities.
+loss,number,"Property damage in millions of US dollars, unadjusted."
+closs,number,"Crop damage in millions of US dollars, unadjusted."
+slat,number,Start latitude (degrees).
+slon,number,Start longitude (degrees).
+elat,number,End latitude (degrees).
+elon,number,End longitude (degrees).
+len,number,Path length in miles.
+wid,number,Path width in yards.
+ns,number,Number of states affected (1 or 2).
+sn,number,State number for multi-state tracks.
+sg,number,Segment number for multi-segment tracks.
+f1,number,F-scale injury code (legacy field).
+f2,number,F-scale fatality code (legacy field).
+f3,number,F-scale loss code (legacy field).
+f4,number,F-scale crop-loss code (legacy field).
+fc,number,Flood/other code (legacy field).
+state_name,string,Full state name.
+region,string,"Census-style region: Northeast, Midwest, South or West."
+decade,number,Decade of the year.
+month_name,string,Month name.
+season,string,"Meteorological season (DJF, MAM, JJA, SON)."
+day_of_year,number,Day number within the year (1-366).
+hour_local,number,"Start hour in local time, 0-23."
+time_of_day,string,"Hour band: Overnight, Morning, Afternoon, Evening."
+scale,string,Magnitude scale in force that year: F (through 2006) or EF (2007+).
+magnitude_label,string,"Scale plus rating, e.g. EF4 or F2."
+is_violent,boolean,true for F4/EF4 and stronger.
+is_significant,boolean,true for F2/EF2 and stronger.
+path_area_sq_miles,number,"Path length x width, converted to square miles."
+midpoint_lat,number,Latitude midway between start and end.
+midpoint_lon,number,Longitude midway between start and end.
+path_bearing_deg,number,"Initial bearing from start to end, in degrees."
+path_direction,string,Compass direction of the track.
+is_killer,boolean,true when at least one fatality was reported.
+is_injurious,boolean,true when at least one injury was reported.
+fatalities_per_mile,number,Fatalities divided by path length.
+injuries_per_mile,number,Injuries divided by path length.
+casualties,number,Fatalities plus injuries.
+damage_class,string,Property-damage band in the source's unadjusted millions of dollars.
+has_crop_loss,boolean,true when crop damage was reported.
+length_width_ratio,number,Path length in yards divided by width — how elongated the track is.
+record_seq,number,Row number in the filtered file.

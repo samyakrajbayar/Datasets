@@ -1,0 +1,32 @@
+column,data_type,description
+track_id,number,Deezer track id.
+title,string,Track title.
+title_short,string,Short title.
+title_version,string,"Version suffix (remix, live, ...)."
+duration_seconds,number,Track duration in seconds.
+duration_minutes,number,Duration in minutes.
+rank,number,Deezer popularity rank (higher is more popular).
+rank_band,string,Popularity band.
+explicit_lyrics,boolean,true when lyrics are explicit.
+explicit_content_lyrics,number,Explicit-content code for lyrics.
+explicit_content_cover,number,Explicit-content code for cover art.
+preview_url,string,30-second preview MP3 URL.
+cover_url,string,Album cover URL.
+artist_id,number,Artist id.
+artist_name,string,Artist name.
+artist_picture,string,Artist image URL.
+album_id,number,Album id.
+album_title,string,Album title.
+album_cover,string,Album cover URL.
+query,string,Search query that surfaced the track.
+duration_band,string,Duration band.
+is_explicit,boolean,true when the track is explicit.
+has_version,boolean,true when the title has a version suffix.
+has_preview,boolean,true when a preview URL exists.
+title_length,number,Characters in the title.
+title_word_count,number,Words in the title.
+artist_name_length,number,Characters in the artist name.
+album_title_length,number,Characters in the album title.
+is_long_track,boolean,true when longer than six minutes.
+is_short_track,boolean,true when shorter than two minutes.
+is_popular,boolean,"true when rank is 500,000 or higher."

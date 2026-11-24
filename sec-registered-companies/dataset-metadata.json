@@ -1,0 +1,364 @@
+{
+  "title": "SEC-Registered Companies",
+  "id": "samyakrajbayar/sec-registered-companies",
+  "subtitle": "10,399 EDGAR registrants with industry, jurisdiction and filing counts",
+  "description": "# SEC-Registered Companies\n\n**Subtitle:** 10,399 EDGAR registrants with industry, jurisdiction and filing counts\n\n**Tags:** `finance`, `business`, `investing`, `tabular`\n\n**Dataset File:** `sec_companies.csv` (10,399 rows, 66 columns, 4.9 MB)\n\n**Provenance & Source:** US Securities and Exchange Commission (SEC) EDGAR submissions API\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every SEC-registered company, with its filing footprint\n\nEDGAR is the U.S. Securities and Exchange Commission's filing system. This dataset lists\n**10,399 registrants** \u2014 operating companies, funds and trusts \u2014 with **66 parameters**\nderived from their submissions record.\n\nPer company:\n- **Identity** \u2014 CIK, name, tickers and exchanges, entity type, filer category, EIN and LEI.\n- **Industry** \u2014 SIC code, description and a derived SIC division (manufacturing, finance, services, ...).\n- **Incorporation and contact** \u2014 state/country of incorporation, fiscal year end, business and mailing\n  addresses, phone, website and investor-relations site.\n- **Filing footprint** \u2014 counts of 10-K, 10-Q, 8-K, Form 4, DEF 14A, S-1, 20-F, 6-K, 13F and SC 13G\n  filings in EDGAR's recent table, latest filing / annual report / quarterly report dates, the filing\n  span and the latest accession number.\n- **Derived activity** \u2014 active-filer flag, days since the last filing, filings per year, insider-filing\n  share, annual-report lag, fund/foreign-issuer/proxy/quarterly-filer flags.\n\n**9,937 companies (95.6%)** filed within 400 days of the snapshot. Because the\nrecent-filings table is capped by EDGAR, the counts measure recent activity rather than all-time volume \u2014\nand the mix of annual, quarterly and insider filings is a good proxy for corporate form.\n\n## \ud83e\uddfe Columns (66)\n\n`cik`, `name`, `tickers`, `ticker_count`, `primary_ticker`, `exchanges`, `exchange_count`, `entity_type`, `category`, `sic_code`, `sic_description`, `sic_division`, `owner_org`, `fiscal_year_end`, `fiscal_year_end_month`, `state_of_incorporation`, `state_of_incorporation_name`, `is_foreign_incorporated`, `ein`, `lei`, `has_lei`, `description`, `website`, `investor_website`, `phone`, `business_street`, `business_city`, `business_state`, `business_zip`, `mailing_city`, `mailing_state`, `former_name_count`, `latest_former_name`, `latest_filing_date`, `latest_10k_date`, `latest_10q_date`, `filing_count_recent`, `filings_10k`, `filings_10q`, `filings_8k`, `filings_form4`, `filings_def14a`, `filings_s1`, `filings_20f`, `filings_6k`, `filings_13f`, `filings_sc13g`, `insider_transactions_issuer`, `insider_transactions_owner`, `has_recent_filings`, `first_recent_filing`, `latest_accession`, `latest_primary_document`, `filing_span_days`, `is_operating_company`, `is_investment_fund`, `is_large_accelerated`, `is_smaller_reporting`, `is_foreign_issuer`, `files_quarterly`, `has_proxy`, `days_since_latest_filing`, `is_active_filer`, `filings_per_year`, `insider_filing_share`, `annual_report_lag_days`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Filer landscape** \u2014 entity type and filer category mix; how many registrants are actually operating companies?\n2. **Industry map** \u2014 SIC division distribution, and which divisions file the most 8-Ks per year.\n3. **Activity decay** \u2014 `days_since_latest_filing` distribution; find dormant shell companies and delisted names.\n4. **Foreign issuers** \u2014 20-F/6-K filers by incorporation jurisdiction.\n5. **Insider activity** \u2014 Form 4 share of filings as a proxy for insider-trading intensity by industry.\n6. **Annual-report lag** \u2014 how long after fiscal year end do companies file their 10-K?\n7. **Geographic clustering** \u2014 business city/state versus SIC division (Delaware incorporations, NYC finance).\n8. **Fund universe** \u2014 investment funds versus operating companies: different filing rhythms, different columns.\n9. **Registry quality** \u2014 tickers, LEI and website completeness by filer category.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `sec_companies.csv` | 10,399 SEC registrants x 66 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: industries, activity, filing mix. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`finance`, `sec`, `edgar`, `companies`, `stock-market`, `business`, `corporate`, `regulation`, `tabular`, `investment`\n\n## \ud83d\udd17 Provenance\n\n- **Sources:** SEC EDGAR **company_tickers.json** (CIK \u2194 ticker mapping) and the\n  **submissions API** (`https://data.sec.gov/submissions/CIK##########.json`) for each registrant.\n- **Coverage:** the first 12,000 entries of the ticker file, enriched with their submissions records;\n  a small number of CIKs have no submissions JSON and were skipped.\n- **Processing:** recent-filings arrays were counted by form type; addresses, former names and\n  entity metadata flattened; SIC codes mapped to divisions.\n- **Derived columns:** SIC division, fiscal-year-end month, filing counts and rates, activity flags,\n  insider share, annual-report lag.\n- **Snapshot date:** 21 November 2026. Requests used a descriptive User-Agent at 5 concurrent\n  connections, within EDGAR's 10-requests-per-second limit.\n\n## \ud83d\udd04 Update frequency\n\n**Daily upstream.** EDGAR accepts filings every business day; re-run `scripts/30_sec_companies.py` for a fresh snapshot.\n\n## \u26a0\ufe0f Caveats\n\n- EDGAR's `filings.recent` table holds only the most recent ~1,000 filings, so counts are recent activity, not lifetime totals.\n- The ticker file covers companies with listed securities; private registrants without tickers are absent.\n- `stateOfIncorporation` uses SEC codes; `is_foreign_incorporated` is a heuristic on those codes.\n- Descriptions and addresses are self-reported and go stale after mergers or delistings.\n- Some CIKs return no submissions JSON (funds with separate series, recent registrants) and were skipped.\n- Phone, website and EIN are corporate contact data, not personal data.\n- The 12,000-company cap means the file is a large sample of EDGAR, not its entire registry.\n\n## \ud83d\udcdc Licence\n\nPublic domain \u2014 U.S. Securities and Exchange Commission. EDGAR data is a U.S. Government work and may be reused freely.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `cik` | `number` | SEC Central Index Key. |\n| 2 | `name` | `string` | Company name as registered with the SEC. |\n| 3 | `tickers` | `string` | Ticker symbols (semicolon-joined). |\n| 4 | `ticker_count` | `number` | Number of listed tickers. |\n| 5 | `primary_ticker` | `string` | First listed ticker. |\n| 6 | `exchanges` | `string` | Exchanges the tickers trade on. |\n| 7 | `exchange_count` | `number` | Number of exchanges. |\n| 8 | `entity_type` | `string` | SEC entity type (operating company, investment fund, ...). |\n| 9 | `category` | `string` | Filer category (Large accelerated filer, Smaller reporting company, ...). |\n| 10 | `sic_code` | `number` | Standard Industrial Classification code. |\n| 11 | `sic_description` | `string` | SIC industry description. |\n| 12 | `sic_division` | `string` | SIC division name derived from the code range. |\n| 13 | `owner_org` | `string` | SEC office that handles the filer. |\n| 14 | `fiscal_year_end` | `number` | Fiscal year end as MMDD. |\n| 15 | `fiscal_year_end_month` | `number` | Fiscal year end month (1-12). |\n| 16 | `state_of_incorporation` | `string` | State or country of incorporation code. |\n| 17 | `state_of_incorporation_name` | `string` | Full name of the incorporation jurisdiction. |\n| 18 | `is_foreign_incorporated` | `boolean` | true when the incorporation code indicates a non-US jurisdiction. |\n| 19 | `ein` | `number` | Employer Identification Number. |\n| 20 | `lei` | `string` | Legal Entity Identifier, when registered. |\n| 21 | `has_lei` | `boolean` | true when a LEI is present. |\n| 22 | `description` | `number` | Company self-description (truncated to 600 characters). |\n| 23 | `website` | `number` | Company website. |\n| 24 | `investor_website` | `number` | Investor-relations website. |\n| 25 | `phone` | `string` | Business phone. |\n| 26 | `business_street` | `string` | Business address street. |\n| 27 | `business_city` | `string` | Business address city. |\n| 28 | `business_state` | `string` | Business address state/country code. |\n| 29 | `business_zip` | `string` | Business address ZIP code. |\n| 30 | `mailing_city` | `string` | Mailing address city. |\n| 31 | `mailing_state` | `string` | Mailing address state/country code. |\n| 32 | `former_name_count` | `number` | Number of previous names. |\n| 33 | `latest_former_name` | `string` | Most recent previous name. |\n| 34 | `latest_filing_date` | `date` | Date of the most recent EDGAR filing. |\n| 35 | `latest_10k_date` | `date` | Date of the most recent annual report (10-K). |\n| 36 | `latest_10q_date` | `date` | Date of the most recent quarterly report (10-Q). |\n| 37 | `filing_count_recent` | `number` | Number of filings in EDGAR's recent-filings table. |\n| 38 | `filings_10k` | `number` | 10-K annual reports in the recent table. |\n| 39 | `filings_10q` | `number` | 10-Q quarterly reports in the recent table. |\n| 40 | `filings_8k` | `number` | 8-K current reports in the recent table. |\n| 41 | `filings_form4` | `number` | Form 4 insider-transaction filings. |\n| 42 | `filings_def14a` | `number` | DEF 14A proxy statements. |\n| 43 | `filings_s1` | `number` | S-1 registration statements. |\n| 44 | `filings_20f` | `number` | 20-F annual reports for foreign private issuers. |\n| 45 | `filings_6k` | `number` | 6-K foreign issuer reports. |\n| 46 | `filings_13f` | `number` | 13F institutional holdings reports. |\n| 47 | `filings_sc13g` | `number` | SC 13G beneficial-ownership filings. |\n| 48 | `insider_transactions_issuer` | `number` | true when insider transactions exist for the issuer. |\n| 49 | `insider_transactions_owner` | `number` | true when insider transactions exist for the owner. |\n| 50 | `has_recent_filings` | `boolean` | true when the recent-filings table is non-empty. |\n| 51 | `first_recent_filing` | `date` | Oldest filing date in the recent table. |\n| 52 | `latest_accession` | `string` | Accession number of the latest filing. |\n| 53 | `latest_primary_document` | `string` | Primary document filename of the latest filing. |\n| 54 | `filing_span_days` | `number` | Days between the oldest and newest filing in the recent table. |\n| 55 | `is_operating_company` | `boolean` | true when the entity type is a standard operating company. |\n| 56 | `is_investment_fund` | `boolean` | true for funds and trusts. |\n| 57 | `is_large_accelerated` | `boolean` | true for large accelerated filers. |\n| 58 | `is_smaller_reporting` | `boolean` | true for smaller reporting companies. |\n| 59 | `is_foreign_issuer` | `boolean` | true when the filer files 20-F or 6-K reports. |\n| 60 | `files_quarterly` | `boolean` | true when the company files 10-Q reports. |\n| 61 | `has_proxy` | `boolean` | true when a DEF 14A proxy statement is present. |\n| 62 | `days_since_latest_filing` | `number` | Days between the latest filing and the snapshot date. |\n| 63 | `is_active_filer` | `boolean` | true when the latest filing is within 400 days of the snapshot. |\n| 64 | `filings_per_year` | `number` | Recent filings divided by the span of the recent table, annualised. |\n| 65 | `insider_filing_share` | `number` | Share of recent filings that are Form 4 insider reports. |\n| 66 | `annual_report_lag_days` | `number` | Days between the latest 10-K and the latest filing. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "sec_companies.csv",
+      "description": "Primary dataset file containing 10,399 records across 66 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "cik",
+            "type": "number",
+            "description": "SEC Central Index Key."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Company name as registered with the SEC."
+          },
+          {
+            "name": "tickers",
+            "type": "string",
+            "description": "Ticker symbols (semicolon-joined)."
+          },
+          {
+            "name": "ticker_count",
+            "type": "number",
+            "description": "Number of listed tickers."
+          },
+          {
+            "name": "primary_ticker",
+            "type": "string",
+            "description": "First listed ticker."
+          },
+          {
+            "name": "exchanges",
+            "type": "string",
+            "description": "Exchanges the tickers trade on."
+          },
+          {
+            "name": "exchange_count",
+            "type": "number",
+            "description": "Number of exchanges."
+          },
+          {
+            "name": "entity_type",
+            "type": "string",
+            "description": "SEC entity type (operating company, investment fund, ...)."
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "description": "Filer category (Large accelerated filer, Smaller reporting company, ...)."
+          },
+          {
+            "name": "sic_code",
+            "type": "number",
+            "description": "Standard Industrial Classification code."
+          },
+          {
+            "name": "sic_description",
+            "type": "string",
+            "description": "SIC industry description."
+          },
+          {
+            "name": "sic_division",
+            "type": "string",
+            "description": "SIC division name derived from the code range."
+          },
+          {
+            "name": "owner_org",
+            "type": "string",
+            "description": "SEC office that handles the filer."
+          },
+          {
+            "name": "fiscal_year_end",
+            "type": "number",
+            "description": "Fiscal year end as MMDD."
+          },
+          {
+            "name": "fiscal_year_end_month",
+            "type": "number",
+            "description": "Fiscal year end month (1-12)."
+          },
+          {
+            "name": "state_of_incorporation",
+            "type": "string",
+            "description": "State or country of incorporation code."
+          },
+          {
+            "name": "state_of_incorporation_name",
+            "type": "string",
+            "description": "Full name of the incorporation jurisdiction."
+          },
+          {
+            "name": "is_foreign_incorporated",
+            "type": "boolean",
+            "description": "true when the incorporation code indicates a non-US jurisdiction."
+          },
+          {
+            "name": "ein",
+            "type": "number",
+            "description": "Employer Identification Number."
+          },
+          {
+            "name": "lei",
+            "type": "string",
+            "description": "Legal Entity Identifier, when registered."
+          },
+          {
+            "name": "has_lei",
+            "type": "boolean",
+            "description": "true when a LEI is present."
+          },
+          {
+            "name": "description",
+            "type": "number",
+            "description": "Company self-description (truncated to 600 characters)."
+          },
+          {
+            "name": "website",
+            "type": "number",
+            "description": "Company website."
+          },
+          {
+            "name": "investor_website",
+            "type": "number",
+            "description": "Investor-relations website."
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "description": "Business phone."
+          },
+          {
+            "name": "business_street",
+            "type": "string",
+            "description": "Business address street."
+          },
+          {
+            "name": "business_city",
+            "type": "string",
+            "description": "Business address city."
+          },
+          {
+            "name": "business_state",
+            "type": "string",
+            "description": "Business address state/country code."
+          },
+          {
+            "name": "business_zip",
+            "type": "string",
+            "description": "Business address ZIP code."
+          },
+          {
+            "name": "mailing_city",
+            "type": "string",
+            "description": "Mailing address city."
+          },
+          {
+            "name": "mailing_state",
+            "type": "string",
+            "description": "Mailing address state/country code."
+          },
+          {
+            "name": "former_name_count",
+            "type": "number",
+            "description": "Number of previous names."
+          },
+          {
+            "name": "latest_former_name",
+            "type": "string",
+            "description": "Most recent previous name."
+          },
+          {
+            "name": "latest_filing_date",
+            "type": "date",
+            "description": "Date of the most recent EDGAR filing."
+          },
+          {
+            "name": "latest_10k_date",
+            "type": "date",
+            "description": "Date of the most recent annual report (10-K)."
+          },
+          {
+            "name": "latest_10q_date",
+            "type": "date",
+            "description": "Date of the most recent quarterly report (10-Q)."
+          },
+          {
+            "name": "filing_count_recent",
+            "type": "number",
+            "description": "Number of filings in EDGAR's recent-filings table."
+          },
+          {
+            "name": "filings_10k",
+            "type": "number",
+            "description": "10-K annual reports in the recent table."
+          },
+          {
+            "name": "filings_10q",
+            "type": "number",
+            "description": "10-Q quarterly reports in the recent table."
+          },
+          {
+            "name": "filings_8k",
+            "type": "number",
+            "description": "8-K current reports in the recent table."
+          },
+          {
+            "name": "filings_form4",
+            "type": "number",
+            "description": "Form 4 insider-transaction filings."
+          },
+          {
+            "name": "filings_def14a",
+            "type": "number",
+            "description": "DEF 14A proxy statements."
+          },
+          {
+            "name": "filings_s1",
+            "type": "number",
+            "description": "S-1 registration statements."
+          },
+          {
+            "name": "filings_20f",
+            "type": "number",
+            "description": "20-F annual reports for foreign private issuers."
+          },
+          {
+            "name": "filings_6k",
+            "type": "number",
+            "description": "6-K foreign issuer reports."
+          },
+          {
+            "name": "filings_13f",
+            "type": "number",
+            "description": "13F institutional holdings reports."
+          },
+          {
+            "name": "filings_sc13g",
+            "type": "number",
+            "description": "SC 13G beneficial-ownership filings."
+          },
+          {
+            "name": "insider_transactions_issuer",
+            "type": "number",
+            "description": "true when insider transactions exist for the issuer."
+          },
+          {
+            "name": "insider_transactions_owner",
+            "type": "number",
+            "description": "true when insider transactions exist for the owner."
+          },
+          {
+            "name": "has_recent_filings",
+            "type": "boolean",
+            "description": "true when the recent-filings table is non-empty."
+          },
+          {
+            "name": "first_recent_filing",
+            "type": "date",
+            "description": "Oldest filing date in the recent table."
+          },
+          {
+            "name": "latest_accession",
+            "type": "string",
+            "description": "Accession number of the latest filing."
+          },
+          {
+            "name": "latest_primary_document",
+            "type": "string",
+            "description": "Primary document filename of the latest filing."
+          },
+          {
+            "name": "filing_span_days",
+            "type": "number",
+            "description": "Days between the oldest and newest filing in the recent table."
+          },
+          {
+            "name": "is_operating_company",
+            "type": "boolean",
+            "description": "true when the entity type is a standard operating company."
+          },
+          {
+            "name": "is_investment_fund",
+            "type": "boolean",
+            "description": "true for funds and trusts."
+          },
+          {
+            "name": "is_large_accelerated",
+            "type": "boolean",
+            "description": "true for large accelerated filers."
+          },
+          {
+            "name": "is_smaller_reporting",
+            "type": "boolean",
+            "description": "true for smaller reporting companies."
+          },
+          {
+            "name": "is_foreign_issuer",
+            "type": "boolean",
+            "description": "true when the filer files 20-F or 6-K reports."
+          },
+          {
+            "name": "files_quarterly",
+            "type": "boolean",
+            "description": "true when the company files 10-Q reports."
+          },
+          {
+            "name": "has_proxy",
+            "type": "boolean",
+            "description": "true when a DEF 14A proxy statement is present."
+          },
+          {
+            "name": "days_since_latest_filing",
+            "type": "number",
+            "description": "Days between the latest filing and the snapshot date."
+          },
+          {
+            "name": "is_active_filer",
+            "type": "boolean",
+            "description": "true when the latest filing is within 400 days of the snapshot."
+          },
+          {
+            "name": "filings_per_year",
+            "type": "number",
+            "description": "Recent filings divided by the span of the recent table, annualised."
+          },
+          {
+            "name": "insider_filing_share",
+            "type": "number",
+            "description": "Share of recent filings that are Form 4 insider reports."
+          },
+          {
+            "name": "annual_report_lag_days",
+            "type": "number",
+            "description": "Days between the latest 10-K and the latest filing."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

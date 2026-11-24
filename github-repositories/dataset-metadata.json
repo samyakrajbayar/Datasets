@@ -1,0 +1,30 @@
+{
+  "title": "Most-Starred GitHub Repositories",
+  "id": "samyakrajbayar/github-repositories",
+  "subtitle": "1,000 repositories above 10,000 stars with languages, licences, topics and ac...",
+  "description": "### 1,000 most-starred GitHub repositories\n\nGitHub's search API reports several thousand public repositories above 10,000 stars but only\nexposes the first 1,000 results. This dataset contains **all 1,000 of them** with\n**50 parameters**.\n\n- **Repository** \u2014 id, name, owner and owner type, description, homepage and default branch.\n- **Activity** \u2014 stars, forks, watchers, open issues, size, creation/update/push timestamps.\n- **Metadata** \u2014 primary language, licence, topics, archived/fork/template/visibility flags and\n  feature switches (issues, wiki, pages, discussions).\n- **Derived** \u2014 age, days since push, stars per day, forks and issues per star, size in MB, licence/\n  topic/description flags, language flags, org/active/stale flags and star bands.\n\nThe set carries **71,749,189 stars** across **43 languages**, with **29 archived**\nprojects \u2014 a snapshot of what the open-source world considers important.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "github_repositories.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

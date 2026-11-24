@@ -1,0 +1,42 @@
+column,data_type,description
+appid,number,Steam application id.
+name,string,Game title as listed on Steam.
+developer,string,Developer studio.
+publisher,string,Publisher.
+score_rank,number,SteamSpy's proprietary ranking score (empty for most titles).
+positive_reviews,number,Number of positive user reviews.
+negative_reviews,number,Number of negative user reviews.
+total_reviews,number,Positive plus negative reviews.
+review_ratio_pct,number,"Share of reviews that are positive, in percent."
+userscore,number,Metacritic-style user score (0-100) where available.
+owners_range,string,"Estimated owner range as published (e.g. '200,000 .. 500,000')."
+owners_min,number,Lower bound of the owner range.
+owners_max,number,Upper bound of the owner range.
+owners_mid,number,"Midpoint of the owner range, used as an estimate."
+average_playtime_minutes,number,"Average total playtime in minutes, all players."
+average_playtime_hours,number,Average total playtime in hours.
+median_playtime_minutes,number,Median total playtime in minutes.
+median_playtime_hours,number,Median total playtime in hours.
+average_2weeks_minutes,number,"Average playtime in the last two weeks, minutes."
+median_2weeks_minutes,number,"Median playtime in the last two weeks, minutes."
+price_cents,number,Current price in US cents.
+price_usd,number,Current price in US dollars.
+initial_price_usd,number,Pre-discount price in US dollars.
+discount_pct,number,Current discount percentage.
+discount_usd,number,Absolute discount in US dollars.
+ccu,number,Peak concurrent users recorded by SteamSpy.
+is_free,boolean,true when the game is free to play.
+is_discounted,boolean,true when a discount is active.
+has_score_rank,boolean,true when SteamSpy assigns a score rank.
+publisher_game_count,number,Number of games in this file from the same publisher.
+developer_game_count,number,Number of games in this file from the same developer.
+name_length,number,Characters in the title.
+name_word_count,number,Words in the title.
+is_sequel,boolean,Heuristic flag for numbered or colon-titled sequels.
+review_band,string,Review-count band from <100 to 100k+.
+price_band,string,"Price band: Free, Budget, Mid, Premium, AAA."
+engagement_ratio,number,Median playtime divided by average playtime — how top-heavy engagement is.
+playtime_per_owner_minutes,number,Average playtime divided by estimated owners.
+ccu_per_owner_pct,number,Peak concurrent users as a percentage of estimated owners.
+review_per_owner_pct,number,Reviews as a percentage of estimated owners (review propensity).
+name_starts_with_the,boolean,true when the title begins with 'The '.

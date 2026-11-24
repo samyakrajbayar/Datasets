@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/chicago-food-inspections-2023-20-starter-notebook",
+  "title": "Chicago Food Inspections 2023-20 Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/chicago-food-inspections"
+  ]
+}

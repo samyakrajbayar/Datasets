@@ -1,0 +1,89 @@
+column,data_type,description
+player_id,number,MLB person identifier.
+player_name,string,Player full name.
+team_id,number,Team identifier.
+team_name,string,Team name.
+league_id,number,League identifier.
+league_name,string,League name.
+season,number,Season year.
+group,string,hitting or pitching.
+position,string,Position abbreviation.
+is_pitcher,boolean,true for pitching rows.
+is_batter,boolean,true for hitting rows.
+age,number,MLB StatsAPI field or derived metric.
+air_outs,number,MLB StatsAPI field or derived metric.
+at_bats,number,MLB StatsAPI field or derived metric.
+at_bats_per_home_run,string,MLB StatsAPI field or derived metric.
+avg,number,MLB StatsAPI field or derived metric.
+babip,string,MLB StatsAPI field or derived metric.
+balks,number,MLB StatsAPI field or derived metric.
+base_on_balls,number,MLB StatsAPI field or derived metric.
+batters_faced,number,MLB StatsAPI field or derived metric.
+blown_saves,number,MLB StatsAPI field or derived metric.
+catchers_interference,number,MLB StatsAPI field or derived metric.
+caught_stealing,number,MLB StatsAPI field or derived metric.
+caught_stealing_percentage,string,MLB StatsAPI field or derived metric.
+complete_games,number,MLB StatsAPI field or derived metric.
+doubles,number,MLB StatsAPI field or derived metric.
+earned_runs,number,MLB StatsAPI field or derived metric.
+era,number,MLB StatsAPI field or derived metric.
+games_finished,number,MLB StatsAPI field or derived metric.
+games_pitched,number,MLB StatsAPI field or derived metric.
+games_played,number,MLB StatsAPI field or derived metric.
+games_started,number,MLB StatsAPI field or derived metric.
+ground_into_double_play,number,MLB StatsAPI field or derived metric.
+ground_outs,number,MLB StatsAPI field or derived metric.
+ground_outs_to_airouts,string,MLB StatsAPI field or derived metric.
+hit_batsmen,number,MLB StatsAPI field or derived metric.
+hit_by_pitch,number,MLB StatsAPI field or derived metric.
+hits,number,MLB StatsAPI field or derived metric.
+hits_per9_inn,number,MLB StatsAPI field or derived metric.
+holds,number,MLB StatsAPI field or derived metric.
+home_runs,number,MLB StatsAPI field or derived metric.
+home_runs_per9,number,MLB StatsAPI field or derived metric.
+inherited_runners,number,MLB StatsAPI field or derived metric.
+inherited_runners_scored,number,MLB StatsAPI field or derived metric.
+innings_pitched,number,MLB StatsAPI field or derived metric.
+intentional_walks,number,MLB StatsAPI field or derived metric.
+left_on_base,number,MLB StatsAPI field or derived metric.
+losses,number,MLB StatsAPI field or derived metric.
+number_of_pitches,number,MLB StatsAPI field or derived metric.
+obp,number,MLB StatsAPI field or derived metric.
+ops,number,MLB StatsAPI field or derived metric.
+outs,number,MLB StatsAPI field or derived metric.
+pickoffs,number,MLB StatsAPI field or derived metric.
+pitches_per_inning,number,MLB StatsAPI field or derived metric.
+plate_appearances,number,MLB StatsAPI field or derived metric.
+rbi,number,MLB StatsAPI field or derived metric.
+runs,number,MLB StatsAPI field or derived metric.
+runs_scored_per9,number,MLB StatsAPI field or derived metric.
+sac_bunts,number,MLB StatsAPI field or derived metric.
+sac_flies,number,MLB StatsAPI field or derived metric.
+save_opportunities,number,MLB StatsAPI field or derived metric.
+saves,number,MLB StatsAPI field or derived metric.
+shutouts,number,MLB StatsAPI field or derived metric.
+slg,number,MLB StatsAPI field or derived metric.
+stolen_base_percentage,string,MLB StatsAPI field or derived metric.
+stolen_bases,number,MLB StatsAPI field or derived metric.
+strike_outs,number,MLB StatsAPI field or derived metric.
+strike_percentage,number,MLB StatsAPI field or derived metric.
+strikeout_walk_ratio,string,MLB StatsAPI field or derived metric.
+strikeouts_per9_inn,number,MLB StatsAPI field or derived metric.
+strikes,number,MLB StatsAPI field or derived metric.
+total_bases,number,MLB StatsAPI field or derived metric.
+triples,number,MLB StatsAPI field or derived metric.
+walks_per9_inn,number,MLB StatsAPI field or derived metric.
+whip,number,MLB StatsAPI field or derived metric.
+wild_pitches,number,MLB StatsAPI field or derived metric.
+win_percentage,string,MLB StatsAPI field or derived metric.
+wins,number,MLB StatsAPI field or derived metric.
+extra_base_hits,number,Doubles + triples + 2 x home runs.
+strikeout_rate,number,Strikeouts per plate appearance (batters) or per batter faced (pitchers).
+walk_rate,number,Walks per plate appearance or batter faced.
+home_run_rate,number,Home runs per plate appearance.
+slg_minus_avg,number,Slugging percentage minus batting average (isolated power).
+innings_pitched_decimal,number,Innings pitched converted to decimal (outs / 3).
+ops_band,string,OPS band for batters.
+era_band,string,ERA band for pitchers.
+is_qualified_batter,boolean,true when the batter had 300+ plate appearances.
+is_qualified_pitcher,boolean,true when the pitcher threw 100+ innings.

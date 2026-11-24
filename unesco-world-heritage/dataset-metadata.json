@@ -1,0 +1,32 @@
+{
+  "title": "UNESCO World Heritage List",
+  "id": "samyakrajbayar/unesco-world-heritage",
+  "subtitle": "1,273 World Heritage sites with criteria, states parties, regions, coordinate...",
+  "description": "### 1,273 UNESCO World Heritage sites\n\nThe World Heritage List names the cultural and natural properties of outstanding universal value.\nThis dataset parses the official XML export into **1,273 sites** with **46 parameters**.\n\n- **Identity** \u2014 id, unique number, site name, dossier and URLs.\n- **Geography** \u2014 states parties with counts, ISO codes, UNESCO region and region flags, location and\n  parsed coordinates.\n- **Heritage values** \u2014 category, criteria text and count, year inscribed, extensions and\n  transnational/danger flags.\n- **Content** \u2014 cleaned justification and short description with lengths.\n- **Derived** \u2014 age, decade, state/region/criteria/extension counts and category flags.\n\nThe list covers **174 states parties**, **51 transnational properties** and\n**54 sites on the in-danger list** \u2014 a compact base for heritage, tourism and conservation\nresearch.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "history",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "world_heritage_sites.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

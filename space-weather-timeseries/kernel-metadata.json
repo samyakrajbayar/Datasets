@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/space-weather-time-series-x-ra-starter-notebook",
+  "title": "Space Weather Time Series - X-Ra Starter Notebook",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/space-weather-timeseries"
+  ]
+}

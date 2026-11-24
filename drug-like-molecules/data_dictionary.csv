@@ -1,0 +1,54 @@
+column,data_type,description
+chembl_id,string,ChEMBL molecule identifier.
+pref_name,string,Preferred compound name.
+molecule_type,string,"Small molecule, protein, antibody, oligosaccharide, ..."
+max_phase,number,Highest clinical phase reached (4 = approved).
+first_approval,number,"Year of first approval, where approved."
+indication_class,number,Therapeutic indication class.
+oral,boolean,true when the molecule is orally administered.
+parenteral,boolean,true when parenterally administered.
+topical,boolean,true when topically administered.
+black_box_warning,number,1 when a black-box warning applies.
+natural_product,number,1 when the compound is a natural product.
+first_in_class,number,1 when flagged as first in class.
+chirality,number,"Chirality flag (-1 unknown, 0 achiral, 1 chiral, 2 racemic)."
+prodrug,number,1 when the compound is a prodrug.
+inorganic_flag,number,1 when inorganic.
+polymer_flag,number,1 when a polymer.
+availability_type,number,Prescription / over-the-counter availability code.
+atc_classifications,string,ATC codes assigned to the molecule.
+canonical_smiles,string,Canonical SMILES structure string.
+standard_inchi,string,Standard InChI identifier.
+standard_inchi_key,string,Standard InChIKey (27 characters).
+mw_freebase,number,Molecular weight of the free base (Da).
+full_mwt,number,Molecular weight including salts (Da).
+alogp,number,Calculated ALogP lipophilicity.
+hba,number,Hydrogen-bond acceptors.
+hbd,number,Hydrogen-bond donors.
+psa,number,Polar surface area (A^2).
+rtb,number,Rotatable bonds.
+ro3_pass,string,Lipinski rule-of-three pass flag (Y/N).
+num_ro5_violations,number,Number of Lipinski rule-of-five violations.
+qed_weighted,number,QED drug-likeness score (0-1).
+aromatic_rings,number,Number of aromatic rings.
+heavy_atoms,number,Number of heavy (non-hydrogen) atoms.
+np_likeness_score,number,Natural-product likeness score.
+full_molformula,string,Molecular formula including salts.
+atc_count,number,Number of ATC codes.
+property_count,number,How many of the 12 core computed properties are present.
+property_completeness_pct,number,property_count as a percentage of 12.
+is_approved,boolean,true when max_phase is 4.
+is_clinical,boolean,true when the molecule reached phase 1 or later.
+is_preclinical,boolean,true when max_phase is below 1 or unknown.
+is_small_molecule,boolean,true when molecule_type is Small molecule.
+is_biologic,boolean,true for protein/antibody/oligonucleotide modalities.
+has_black_box_warning,boolean,true when black_box_warning is 1.
+is_withdrawn,boolean,true when the withdrawn flag is set.
+is_oral,boolean,true when oral administration is flagged.
+passes_ro5,boolean,true when num_ro5_violations is 0.
+mw_band,string,Molecular-weight band (Da).
+logp_band,string,ALogP band.
+qed_band,string,QED drug-likeness band.
+smiles_length,number,Characters in the SMILES string.
+heavy_atom_fraction_of_mw,number,Heavy atoms divided by molecular weight.
+has_structure,boolean,true when a SMILES string exists.

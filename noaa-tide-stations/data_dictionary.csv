@@ -1,0 +1,41 @@
+column,data_type,description
+station_id,string,NOAA station identifier.
+name,string,Station name.
+state,string,Two-letter state/territory code.
+country,string,Territory name for non-state stations.
+state_region,string,U.S. Census region.
+latitude,number,Latitude (decimal degrees).
+longitude,number,Longitude (decimal degrees).
+type,string,"Station type code (S = tide/water level, etc.)."
+timezone,string,Time zone name.
+timezone_offset,number,Offset from UTC in hours.
+time_meridian,number,Local time meridian.
+reference_id,number,NOAA reference station id.
+shef_code,string,SHEF location code.
+port_code,string,Port code used by marine services.
+affiliations,string,Partner affiliations.
+station_url,string,Metadata API URL for the station.
+has_shef,boolean,true when a SHEF code exists.
+has_port_code,boolean,true when a port code exists.
+has_affiliations,boolean,true when affiliations are listed.
+product_count,number,Number of data products offered.
+products,string,Product names (semicolon-joined).
+disclaimer_count,number,Number of disclaimers.
+notice_count,number,Number of active notices.
+has_disclaimer,boolean,true when a disclaimer exists.
+has_notice,boolean,true when a notice exists.
+is_tide_station,boolean,true when tide predictions are offered.
+is_current_station,boolean,true when current data are offered.
+is_met_station,boolean,true when meteorological data are offered.
+is_water_level_station,boolean,true when water-level data are offered.
+has_storm_surge,boolean,true when storm-surge data are offered.
+has_observed_water_level,boolean,true when observed water levels are available.
+has_harmonic_constituents,boolean,true when harmonic constituents are published.
+latitude_band,string,5-degree latitude band.
+longitude_band,string,10-degree longitude band.
+hemisphere,string,N/S + E/W hemisphere pair.
+is_coastal_us,boolean,true for U.S. coastal states.
+is_territory,boolean,true for U.S. territories and freely associated states.
+name_length,number,Characters in the station name.
+name_word_count,number,Words in the station name.
+product_completeness,number,product_count as a percentage of 12.

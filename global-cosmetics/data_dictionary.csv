@@ -1,0 +1,57 @@
+column,data_type,description
+code,number,Product barcode (EAN/UPC).
+product_name,string,Product name.
+generic_name,string,Generic product name.
+brands,string,"Brand(s), comma-separated."
+brand_count,number,Number of brands listed.
+categories,string,Category path.
+categories_tags,string,Normalised category tags.
+category_count,number,Number of category tags.
+category_group,string,Coarse product group.
+countries,string,Countries where the product is sold.
+countries_tags,string,Normalised country tags.
+country_count,number,Number of countries.
+quantity,string,Net quantity as printed.
+product_quantity_g,number,Net quantity parsed to grams where possible.
+packaging,string,Packaging description.
+packaging_tags,string,Normalised packaging tags.
+packaging_count,number,Number of packaging tags.
+labels,string,Labels and certifications.
+labels_tags,string,Normalised label tags.
+label_count,number,Number of label tags.
+allergens,string,Allergens as printed.
+allergens_tags,string,Normalised allergen tags.
+allergen_count,number,Number of allergens.
+additives_tags,string,Additive tags.
+additive_count,number,Number of additives.
+ingredients_text,string,"Ingredient list (truncated to 1,000 characters)."
+ingredient_count,number,Comma-separated ingredient count.
+image_url,string,Product image URL.
+image_front_url,string,Front-of-pack image URL.
+ecoscore_grade,string,"Eco-Score letter, where computed."
+ecoscore_score,number,Eco-Score numeric score.
+nova_group,number,NOVA processing group.
+manufacturing_places,string,Manufacturing locations.
+stores,string,Retailers listed.
+origins,string,Country of origin as declared.
+origins_tags,string,Normalised origin tags.
+origin_count,number,Number of origin tags.
+lang,string,Record language.
+conservation_conditions,string,Storage conditions.
+warning,number,Safety warning text.
+period_after_opening,number,Period after opening.
+emb_codes,string,European manufacturer codes.
+link,string,Product page URL.
+obsolete,boolean,true when the product is marked obsolete.
+is_vegan,boolean,true when a vegan label is present.
+is_organic,boolean,true when an organic label is present.
+is_natural,boolean,true when a natural label is present.
+is_hypoallergenic,boolean,true when a hypoallergenic label is present.
+is_paraben_free,boolean,true when a paraben-free claim is present.
+is_sulfate_free,boolean,true when a sulfate-free claim is present.
+has_ecoscore,boolean,true when an Eco-Score exists.
+has_nova,boolean,true when a NOVA group exists.
+is_ultra_processed,boolean,true when NOVA group is 4.
+has_image,boolean,true when an image URL exists.
+name_length,number,Characters in the product name.
+ingredients_text_length,number,Characters in the stored ingredient list.

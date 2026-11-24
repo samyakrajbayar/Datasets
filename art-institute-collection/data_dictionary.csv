@@ -1,0 +1,63 @@
+column,data_type,description
+id,number,Art Institute of Chicago artwork id.
+title,string,Object title.
+main_reference_number,string,Museum accession number.
+date_display,string,Date as displayed in the gallery.
+date_start,number,Earliest year of creation (negative = BCE).
+date_end,number,Latest year of creation.
+place_of_origin,string,Place of origin as catalogued.
+medium_display,string,"Materials and technique, free text."
+medium_class,string,"Materials normalised into painting, print, sculpture, photograph, drawing, etc."
+dimensions,string,Dimensions as catalogued (free text).
+credit_line,string,Acquisition credit line.
+classification_title,string,"Primary classification (painting, print, sculpture, ...)."
+classification_titles,string,All classifications assigned.
+department_title,string,Curatorial department.
+department_id,string,Curatorial department id.
+artwork_type_title,string,Object type.
+style_title,string,Primary style or period.
+style_titles,string,All styles and periods assigned.
+theme_titles,string,Themes assigned by the museum.
+subject_titles,string,Subject tags assigned by the museum.
+artist_id,number,Artist id (empty for unknown makers).
+artist_title,string,Artist name.
+artist_display,string,Artist name with nationality and dates.
+is_public_domain,boolean,true when the work is in the public domain.
+is_boosted,boolean,true when the museum promotes the object.
+colorfulness,number,Computed colourfulness score of the image.
+color_hue,number,Dominant hue (0-360).
+color_saturation,number,Dominant colour saturation (0-1).
+color_lightness,number,Dominant colour lightness (0-1).
+color_population,number,Share of pixels in the dominant colour cluster.
+has_thumbnail,boolean,true when a thumbnail image is available.
+thumbnail_width,number,Thumbnail width in pixels.
+thumbnail_height,number,Thumbnail height in pixels.
+latitude,number,"Gallery latitude, when the object is on view."
+longitude,number,"Gallery longitude, when the object is on view."
+gallery_title,string,Gallery where the object is displayed.
+fiscal_year,number,Fiscal year the record was last touched.
+copyright_notice,string,"Copyright statement, when applicable."
+alt_image_count,number,Number of alternative images.
+document_count,number,Number of attached documents.
+sound_count,number,Number of audio files.
+has_educational_resources,boolean,true when educational resources exist.
+has_multimedia_resources,boolean,true when multimedia resources exist.
+is_zoomable,boolean,true when a deep-zoom image is available.
+max_zoom_window_size,number,Maximum zoom window size.
+description_length,number,Characters in the catalogue description.
+provenance_text_length,number,Characters in the provenance text.
+api_link,string,Canonical API URL for the object.
+century,string,Creation century derived from date_start.
+creation_year,number,"Preferred creation year (date_start, else date_end)."
+creation_decade,number,Decade of creation.
+object_age_years,number,Years between creation and 2026.
+has_artist,boolean,true when an artist is attributed.
+is_anonymous,boolean,true when no artist is attributed.
+is_on_view,boolean,true when a gallery is assigned.
+image_aspect_ratio,number,Thumbnail width divided by height.
+title_length,number,Characters in the title.
+tag_count,number,Style + theme + subject tag count.
+is_painting,boolean,true when the classification is painting.
+is_print,boolean,true when the classification is print.
+is_photograph,boolean,true when the medium is photographic.
+is_sculpture,boolean,true when the object is sculpture.

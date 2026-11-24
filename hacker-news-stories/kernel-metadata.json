@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/hacker-news-stories-2023-2026-analysis",
+  "title": "Hacker News Stories 2023-2026 Analysis",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/hacker-news-stories"
+  ]
+}

@@ -1,0 +1,37 @@
+column,data_type,description
+work_key,string,Open Library work identifier (e.g. /works/OL27448W).
+title,string,Book title.
+subtitle,string,"Subtitle, when recorded."
+primary_author,string,First listed author name.
+n_authors,integer,Number of listed authors.
+authors,string list,Semicolon-separated author names.
+first_publish_year,integer,Earliest known publication year.
+publication_decade,category,Decade of first publication (e.g. 1980s).
+age_years,integer,Years since first publication (relative to 2026).
+n_languages,integer,Number of languages the work has been published in.
+languages,string list,"Semicolon-separated language codes (eng, fre, ger, ...)."
+n_subjects,integer,Number of subject tags on the work.
+subjects,string list,Up to 12 subject tags.
+n_people,integer,Number of associated people tags.
+n_places,integer,Number of associated place tags.
+n_times,integer,Number of associated time-period tags.
+number_of_pages_median,integer,Median page count across editions.
+edition_count,integer,Number of editions recorded.
+ratings_average,float,"Average user rating, 1-5."
+ratings_count,integer,Number of ratings.
+readinglog_count,integer,Number of readers who logged the book.
+want_to_read_count,integer,Users who marked it want-to-read.
+currently_reading_count,integer,Users currently reading it.
+already_read_count,integer,Users who marked it as read.
+completion_rate,float,already_read_count / ratings_count.
+ebook_access,category,"borrowable, printdisabled, public or no_ebook."
+has_fulltext,boolean,True if a full-text scan exists.
+public_scan,boolean,True if a public-domain scan is available.
+n_ia_scans,integer,Number of Internet Archive scan identifiers.
+n_isbn,integer,Number of ISBNs recorded.
+n_publishers,integer,Number of publishers recorded.
+publisher,string,First listed publisher.
+publish_place,string,First listed place of publication.
+title_length,integer,Character length of the title.
+title_word_count,integer,Word count of the title.
+source_subject,category,Subject query that surfaced the work.

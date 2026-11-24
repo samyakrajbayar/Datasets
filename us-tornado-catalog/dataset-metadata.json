@@ -1,0 +1,311 @@
+{
+  "title": "U.S. Tornado Catalog 1950-2024",
+  "id": "samyakrajbayar/us-tornado-catalog",
+  "subtitle": "Every recorded US tornado with coordinates, path size, F/EF scale & damage",
+  "description": "# U.S. Tornado Catalog 1950-2024\n\n**Subtitle:** Every recorded US tornado with coordinates, path size, F/EF scale & damage\n\n**Tags:** `weather`, `climate`, `time-series`, `tabular`\n\n**Dataset File:** `tornadoes.csv` (71,813 rows, 55 columns, 18.3 MB)\n\n**Provenance & Source:** NOAA Storm Prediction Center (SPC) Tornado Database\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every recorded U.S. tornado, 1950\u20132024\n\nThe NOAA Storm Prediction Center's tornado database is the canonical record of U.S. tornadoes:\n**71,813 events** with start and end coordinates, path dimensions, F/EF magnitude, casualties and\ndamage estimates. This file keeps all 29 source fields and adds **26\nderived parameters** for a total of **55 columns**.\n\nEach row includes:\n- **Identity and timing** \u2014 year, month, day, full date, local start time and time-zone code,\n  decade, month name, meteorological season, day-of-year, hour band.\n- **Location** \u2014 state code and FIPS, full state name, region, start/end latitude and longitude,\n  track midpoint and compass bearing.\n- **Magnitude** \u2014 raw F/EF value, the scale in force that year, a label such as `EF4`,\n  significant (2+) and violent (4+) flags.\n- **Path** \u2014 length in miles, width in yards, computed area in square miles, length-to-width ratio.\n- **Impact** \u2014 injuries, fatalities, casualties, property and crop damage in unadjusted millions,\n  a damage band, fatalities/injuries per mile, killer and injurious flags, crop-loss flag.\n- **Legacy codes** \u2014 the original SPC F1\u2013F4 and FC fields, preserved for reproducibility.\n\n**22,517 events** are from the EF era (2007+), and the file spans the shift from the original\nFujita scale to the Enhanced Fujita scale \u2014 a built-in discontinuity that makes trend analysis\ngenuinely interesting.\n\n## \ud83e\uddfe Columns (55)\n\n`om`, `yr`, `mo`, `dy`, `date`, `time`, `tz`, `st`, `stf`, `stn`, `mag`, `inj`, `fat`, `loss`, `closs`, `slat`, `slon`, `elat`, `elon`, `len`, `wid`, `ns`, `sn`, `sg`, `f1`, `f2`, `f3`, `f4`, `fc`, `state_name`, `region`, `decade`, `month_name`, `season`, `day_of_year`, `hour_local`, `time_of_day`, `scale`, `magnitude_label`, `is_violent`, `is_significant`, `path_area_sq_miles`, `midpoint_lat`, `midpoint_lon`, `path_bearing_deg`, `path_direction`, `is_killer`, `is_injurious`, `fatalities_per_mile`, `injuries_per_mile`, `casualties`, `damage_class`, `has_crop_loss`, `length_width_ratio`, `record_seq`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Tornado Alley is moving?** \u2014 spatial density by decade; compare the classic Plains hotspot with the Southeast.\n2. **Rating drift** \u2014 how the F-to-EF transition in 2007 changed the distribution of ratings, and how to correct for it.\n3. **Casualty modelling** \u2014 predict fatalities from path length, width, magnitude and time of day.\n4. **Night-time risk** \u2014 `time_of_day` versus casualties; are overnight tornadoes deadlier per unit of damage?\n5. **Damage curves** \u2014 property loss as a function of magnitude and path area.\n6. **Seasonality** \u2014 day-of-year density plots by region; find the Southeast's winter secondary season.\n7. **Track geometry** \u2014 distribution of path bearings and length/width ratios; do long-track events cluster?\n8. **Outbreak detection** \u2014 group by date and state to find the biggest tornado outbreaks since 1950.\n9. **Reporting bias** \u2014 annual counts before/after NEXRAD (1990s); how many weak tornadoes were simply missed?\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `tornadoes.csv` | 71,813 tornadoes x 55 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: trends, geography, casualties, ratings. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`tornado`, `weather`, `natural-disasters`, `climate`, `meteorology`, `usa`, `geospatial`, `time-series`, `tabular`, `risk-analysis`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** NOAA Storm Prediction Center, **SPC Severe Weather Database**,\n  file `1950-2024_actual_tornadoes.csv` (`https://www.spc.noaa.gov/wcm/`).\n- **Upstream curation:** SPC compiles local storm reports and NWS damage surveys; the file is the\n  standard research extract used in climatology and actuarial work.\n- **Processing:** every one of the 29 source columns is preserved; coordinates are kept as decimals;\n  dates and times are parsed for derived features.\n- **Derived columns:** state name, region, decade, season, day-of-year, hour band, magnitude label,\n  significant/violent flags, path area, midpoint, bearing, casualty rates, damage band, ratio.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Annual.** SPC updates the database when each year's surveys are finalised (usually spring); re-run `scripts/23_tornadoes.py`.\n\n## \u26a0\ufe0f Caveats\n\n- F-scale (1950\u20132006) and EF-scale (2007+) ratings are not strictly comparable; the `scale` column marks the break.\n- Damage (`loss`, `closs`) is in unadjusted historical dollars \u2014 do not compare across decades without deflating.\n- Weak tornadoes were under-reported before the NEXRAD era, so the apparent upward trend in counts is largely observational.\n- Time is local clock time and 00:00 is used when unknown, which conflates midnight events with missing data.\n- Path length and width are survey estimates and are rounded (length to 0.1 mi, width to 1 yd).\n- Multi-state and multi-segment tornadoes appear as several rows linked by `sn`/`sg`.\n- The file covers U.S. tornadoes only, including Puerto Rico and territories where reported.\n\n## \ud83d\udcdc Licence\n\nPublic domain \u2014 NOAA Storm Prediction Center (U.S. Government work).\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `om` | `number` | Sequential record number in the SPC database. |\n| 2 | `yr` | `number` | Year of the tornado. |\n| 3 | `mo` | `number` | Month (1-12). |\n| 4 | `dy` | `number` | Day of month. |\n| 5 | `date` | `date` | Local calendar date (YYYY-MM-DD). |\n| 6 | `time` | `string` | Local start time (HH:MM:SS); 00:00 when unknown. |\n| 7 | `tz` | `number` | Time-zone code used by the source. |\n| 8 | `st` | `string` | Two-letter state code. |\n| 9 | `stf` | `number` | State FIPS code. |\n| 10 | `stn` | `number` | Station number in the source. |\n| 11 | `mag` | `number` | F-scale (1950-2006) or EF-scale (2007+) magnitude, 0-5. |\n| 12 | `inj` | `number` | Number of injuries. |\n| 13 | `fat` | `number` | Number of fatalities. |\n| 14 | `loss` | `number` | Property damage in millions of US dollars, unadjusted. |\n| 15 | `closs` | `number` | Crop damage in millions of US dollars, unadjusted. |\n| 16 | `slat` | `number` | Start latitude (degrees). |\n| 17 | `slon` | `number` | Start longitude (degrees). |\n| 18 | `elat` | `number` | End latitude (degrees). |\n| 19 | `elon` | `number` | End longitude (degrees). |\n| 20 | `len` | `number` | Path length in miles. |\n| 21 | `wid` | `number` | Path width in yards. |\n| 22 | `ns` | `number` | Number of states affected (1 or 2). |\n| 23 | `sn` | `number` | State number for multi-state tracks. |\n| 24 | `sg` | `number` | Segment number for multi-segment tracks. |\n| 25 | `f1` | `number` | F-scale injury code (legacy field). |\n| 26 | `f2` | `number` | F-scale fatality code (legacy field). |\n| 27 | `f3` | `number` | F-scale loss code (legacy field). |\n| 28 | `f4` | `number` | F-scale crop-loss code (legacy field). |\n| 29 | `fc` | `number` | Flood/other code (legacy field). |\n| 30 | `state_name` | `string` | Full state name. |\n| 31 | `region` | `string` | Census-style region: Northeast, Midwest, South or West. |\n| 32 | `decade` | `number` | Decade of the year. |\n| 33 | `month_name` | `string` | Month name. |\n| 34 | `season` | `string` | Meteorological season (DJF, MAM, JJA, SON). |\n| 35 | `day_of_year` | `number` | Day number within the year (1-366). |\n| 36 | `hour_local` | `number` | Start hour in local time, 0-23. |\n| 37 | `time_of_day` | `string` | Hour band: Overnight, Morning, Afternoon, Evening. |\n| 38 | `scale` | `string` | Magnitude scale in force that year: F (through 2006) or EF (2007+). |\n| 39 | `magnitude_label` | `string` | Scale plus rating, e.g. EF4 or F2. |\n| 40 | `is_violent` | `boolean` | true for F4/EF4 and stronger. |\n| 41 | `is_significant` | `boolean` | true for F2/EF2 and stronger. |\n| 42 | `path_area_sq_miles` | `number` | Path length x width, converted to square miles. |\n| 43 | `midpoint_lat` | `number` | Latitude midway between start and end. |\n| 44 | `midpoint_lon` | `number` | Longitude midway between start and end. |\n| 45 | `path_bearing_deg` | `number` | Initial bearing from start to end, in degrees. |\n| 46 | `path_direction` | `string` | Compass direction of the track. |\n| 47 | `is_killer` | `boolean` | true when at least one fatality was reported. |\n| 48 | `is_injurious` | `boolean` | true when at least one injury was reported. |\n| 49 | `fatalities_per_mile` | `number` | Fatalities divided by path length. |\n| 50 | `injuries_per_mile` | `number` | Injuries divided by path length. |\n| 51 | `casualties` | `number` | Fatalities plus injuries. |\n| 52 | `damage_class` | `string` | Property-damage band in the source's unadjusted millions of dollars. |\n| 53 | `has_crop_loss` | `boolean` | true when crop damage was reported. |\n| 54 | `length_width_ratio` | `number` | Path length in yards divided by width \u2014 how elongated the track is. |\n| 55 | `record_seq` | `number` | Row number in the filtered file. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "environment",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "tornadoes.csv",
+      "description": "Primary dataset file containing 71,813 records across 55 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "om",
+            "type": "number",
+            "description": "Sequential record number in the SPC database."
+          },
+          {
+            "name": "yr",
+            "type": "number",
+            "description": "Year of the tornado."
+          },
+          {
+            "name": "mo",
+            "type": "number",
+            "description": "Month (1-12)."
+          },
+          {
+            "name": "dy",
+            "type": "number",
+            "description": "Day of month."
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "description": "Local calendar date (YYYY-MM-DD)."
+          },
+          {
+            "name": "time",
+            "type": "string",
+            "description": "Local start time (HH:MM:SS); 00:00 when unknown."
+          },
+          {
+            "name": "tz",
+            "type": "number",
+            "description": "Time-zone code used by the source."
+          },
+          {
+            "name": "st",
+            "type": "string",
+            "description": "Two-letter state code."
+          },
+          {
+            "name": "stf",
+            "type": "number",
+            "description": "State FIPS code."
+          },
+          {
+            "name": "stn",
+            "type": "number",
+            "description": "Station number in the source."
+          },
+          {
+            "name": "mag",
+            "type": "number",
+            "description": "F-scale (1950-2006) or EF-scale (2007+) magnitude, 0-5."
+          },
+          {
+            "name": "inj",
+            "type": "number",
+            "description": "Number of injuries."
+          },
+          {
+            "name": "fat",
+            "type": "number",
+            "description": "Number of fatalities."
+          },
+          {
+            "name": "loss",
+            "type": "number",
+            "description": "Property damage in millions of US dollars, unadjusted."
+          },
+          {
+            "name": "closs",
+            "type": "number",
+            "description": "Crop damage in millions of US dollars, unadjusted."
+          },
+          {
+            "name": "slat",
+            "type": "number",
+            "description": "Start latitude (degrees)."
+          },
+          {
+            "name": "slon",
+            "type": "number",
+            "description": "Start longitude (degrees)."
+          },
+          {
+            "name": "elat",
+            "type": "number",
+            "description": "End latitude (degrees)."
+          },
+          {
+            "name": "elon",
+            "type": "number",
+            "description": "End longitude (degrees)."
+          },
+          {
+            "name": "len",
+            "type": "number",
+            "description": "Path length in miles."
+          },
+          {
+            "name": "wid",
+            "type": "number",
+            "description": "Path width in yards."
+          },
+          {
+            "name": "ns",
+            "type": "number",
+            "description": "Number of states affected (1 or 2)."
+          },
+          {
+            "name": "sn",
+            "type": "number",
+            "description": "State number for multi-state tracks."
+          },
+          {
+            "name": "sg",
+            "type": "number",
+            "description": "Segment number for multi-segment tracks."
+          },
+          {
+            "name": "f1",
+            "type": "number",
+            "description": "F-scale injury code (legacy field)."
+          },
+          {
+            "name": "f2",
+            "type": "number",
+            "description": "F-scale fatality code (legacy field)."
+          },
+          {
+            "name": "f3",
+            "type": "number",
+            "description": "F-scale loss code (legacy field)."
+          },
+          {
+            "name": "f4",
+            "type": "number",
+            "description": "F-scale crop-loss code (legacy field)."
+          },
+          {
+            "name": "fc",
+            "type": "number",
+            "description": "Flood/other code (legacy field)."
+          },
+          {
+            "name": "state_name",
+            "type": "string",
+            "description": "Full state name."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "Census-style region: Northeast, Midwest, South or West."
+          },
+          {
+            "name": "decade",
+            "type": "number",
+            "description": "Decade of the year."
+          },
+          {
+            "name": "month_name",
+            "type": "string",
+            "description": "Month name."
+          },
+          {
+            "name": "season",
+            "type": "string",
+            "description": "Meteorological season (DJF, MAM, JJA, SON)."
+          },
+          {
+            "name": "day_of_year",
+            "type": "number",
+            "description": "Day number within the year (1-366)."
+          },
+          {
+            "name": "hour_local",
+            "type": "number",
+            "description": "Start hour in local time, 0-23."
+          },
+          {
+            "name": "time_of_day",
+            "type": "string",
+            "description": "Hour band: Overnight, Morning, Afternoon, Evening."
+          },
+          {
+            "name": "scale",
+            "type": "string",
+            "description": "Magnitude scale in force that year: F (through 2006) or EF (2007+)."
+          },
+          {
+            "name": "magnitude_label",
+            "type": "string",
+            "description": "Scale plus rating, e.g. EF4 or F2."
+          },
+          {
+            "name": "is_violent",
+            "type": "boolean",
+            "description": "true for F4/EF4 and stronger."
+          },
+          {
+            "name": "is_significant",
+            "type": "boolean",
+            "description": "true for F2/EF2 and stronger."
+          },
+          {
+            "name": "path_area_sq_miles",
+            "type": "number",
+            "description": "Path length x width, converted to square miles."
+          },
+          {
+            "name": "midpoint_lat",
+            "type": "number",
+            "description": "Latitude midway between start and end."
+          },
+          {
+            "name": "midpoint_lon",
+            "type": "number",
+            "description": "Longitude midway between start and end."
+          },
+          {
+            "name": "path_bearing_deg",
+            "type": "number",
+            "description": "Initial bearing from start to end, in degrees."
+          },
+          {
+            "name": "path_direction",
+            "type": "string",
+            "description": "Compass direction of the track."
+          },
+          {
+            "name": "is_killer",
+            "type": "boolean",
+            "description": "true when at least one fatality was reported."
+          },
+          {
+            "name": "is_injurious",
+            "type": "boolean",
+            "description": "true when at least one injury was reported."
+          },
+          {
+            "name": "fatalities_per_mile",
+            "type": "number",
+            "description": "Fatalities divided by path length."
+          },
+          {
+            "name": "injuries_per_mile",
+            "type": "number",
+            "description": "Injuries divided by path length."
+          },
+          {
+            "name": "casualties",
+            "type": "number",
+            "description": "Fatalities plus injuries."
+          },
+          {
+            "name": "damage_class",
+            "type": "string",
+            "description": "Property-damage band in the source's unadjusted millions of dollars."
+          },
+          {
+            "name": "has_crop_loss",
+            "type": "boolean",
+            "description": "true when crop damage was reported."
+          },
+          {
+            "name": "length_width_ratio",
+            "type": "number",
+            "description": "Path length in yards divided by width \u2014 how elongated the track is."
+          },
+          {
+            "name": "record_seq",
+            "type": "number",
+            "description": "Row number in the filtered file."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,51 @@
+column,data_type,description
+repo_id,number,GitHub repository id.
+name,string,Repository name.
+full_name,string,owner/name.
+owner,string,Owner login.
+owner_type,string,User or Organization.
+description,string,Repository description (truncated to 500 characters).
+homepage,string,Project homepage URL.
+language,string,Primary language.
+license,string,SPDX licence identifier.
+stars,number,Stargazer count.
+forks,number,Fork count.
+watchers,number,Watcher count.
+open_issues,number,Open issues and pull requests.
+size_kb,number,Repository size in kilobytes.
+created_at,datetime,Creation timestamp.
+updated_at,datetime,Last metadata update.
+pushed_at,datetime,Last push timestamp.
+topics,string,"Repository topics, semicolon-separated."
+topic_count,number,Number of topics.
+fork,boolean,Whether the repo is a fork.
+archived,boolean,Whether the repo is archived.
+is_template,boolean,GitHub repository field or derived attribute.
+has_issues,boolean,Issues enabled.
+has_wiki,boolean,Wiki enabled.
+has_pages,boolean,GitHub Pages enabled.
+has_discussions,boolean,Discussions enabled.
+default_branch,string,Default branch name.
+visibility,string,public/private.
+age_days,number,Days since creation.
+days_since_push,number,Days since the last push.
+stars_per_day,number,Average stars gained per day since creation.
+forks_per_star,number,Forks per star.
+issues_per_star,number,Open issues per star.
+size_mb,number,Repository size in megabytes.
+has_license,boolean,true when a licence is detected.
+has_topics,boolean,true when topics are set.
+has_description,boolean,GitHub repository field or derived attribute.
+is_archived,boolean,true for archived repositories.
+is_fork,boolean,true for forks.
+is_org_owned,boolean,true when owned by an organisation.
+is_active,boolean,true when pushed within 90 days.
+is_stale,boolean,true when not pushed for a year.
+is_python,boolean,true for Python repositories.
+is_javascript,boolean,true for JavaScript/TypeScript repositories.
+is_go,boolean,true for Go repositories.
+is_rust,boolean,true for Rust repositories.
+is_cpp,boolean,true for C/C++ repositories.
+star_band,string,Star band.
+description_length,number,Characters in the description.
+name_length,number,GitHub repository field or derived attribute.

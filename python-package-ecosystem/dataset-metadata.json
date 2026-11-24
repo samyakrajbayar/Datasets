@@ -1,0 +1,269 @@
+{
+  "title": "Python Package Ecosystem",
+  "id": "samyakrajbayar/python-package-ecosystem",
+  "subtitle": "4,999 top PyPI packages with downloads, licenses, dependencies & releases",
+  "description": "# Python Package Ecosystem\n\n**Subtitle:** 4,999 top PyPI packages with downloads, licenses, dependencies & releases\n\n**Tags:** `python`, `software`, `open-source`, `tabular`\n\n**Dataset File:** `pypi_packages.csv` (23,010 rows, 47 columns, 3.4 MB)\n\n**Provenance & Source:** PyPI JSON API & BigQuery PyPI Public Dataset\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The Python package ecosystem, ranked by real downloads\n\nPyPI serves millions of package downloads a day and publishes the numbers. This dataset combines the\n**top 4,999 projects by 30-day downloads** with each project's full PyPI metadata.\n\nPer package you get **47 parameters**:\n- **Reach** \u2014 download rank and count for the last 30 days, share of the ecosystem's downloads,\n  download concentration implied by the ranks.\n- **Identity** \u2014 name, summary, author, canonical URL, home page, project URLs (docs / source /\n  changelog), keywords.\n- **Licensing** \u2014 raw licence string plus a normalised class (MIT, Apache, GPL, BSD, MPL, LGPL,\n  public domain, Creative Commons, other, unknown).\n- **Compatibility** \u2014 `requires_python`, supported Python versions from classifiers, Python-3-only\n  flag, wheel and sdist availability, file sizes, yanked files.\n- **Dependencies** \u2014 runtime dependency count (extras excluded), extras entries, a has-dependencies flag.\n- **Release history** \u2014 version count, first and latest release dates, total and yanked file counts,\n  age, days since last release, releases per year, cadence and maturity bands.\n- **Packaging hygiene** \u2014 classifier and topic counts, development status, project-URL completeness,\n  pre-release flag.\n\nThe top 10 projects alone account for **11.1%** of all downloads in the file,\nwhich makes download concentration, release cadence and dependency counts directly comparable.\n\n## \ud83e\uddfe Columns (47)\n\n`rank`, `project`, `monthly_downloads`, `download_share_pct`, `latest_version`, `summary`, `author`, `license`, `license_class`, `requires_python`, `home_page`, `project_url`, `package_url`, `keywords`, `development_status`, `classifier_count`, `topic_count`, `python_versions_supported`, `python_version_count`, `requires_dist_count`, `dependency_count`, `release_count`, `total_file_count`, `yanked_file_count`, `first_release`, `latest_release`, `latest_upload`, `latest_size_bytes`, `summary_length`, `has_wheel`, `has_sdist`, `has_homepage`, `has_docs_url`, `has_source_url`, `has_changelog`, `project_url_count`, `is_prerelease`, `python3_only`, `name_length`, `is_single_word`, `major_version`, `age_days`, `days_since_release`, `releases_per_year`, `release_cadence`, `maturity`, `has_dependencies`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Download concentration** \u2014 Lorenz curve and Gini of `monthly_downloads`; the long tail is extreme.\n2. **Maintenance risk** \u2014 find widely used packages with long `days_since_release` or an inactive status.\n3. **Licence landscape** \u2014 licence class by download volume; how much of the ecosystem is permissively licensed?\n4. **Dependency weight** \u2014 packages with the most runtime dependencies versus their download share.\n5. **Release cadence** \u2014 cadence band versus rank; do the most-downloaded packages ship more or less often?\n6. **Packaging quality** \u2014 wheels, sdists and project URLs as a quality score, then check whether quality predicts downloads.\n7. **Python version adoption** \u2014 `python_versions_supported` over the ecosystem; who still lists 3.6?\n8. **Name economics** \u2014 name length and single-word names versus downloads (short names are scarce).\n9. **Supply-chain graph starter** \u2014 join `requires_dist_count` with per-package dependency lists fetched from PyPI for a network analysis.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `pypi_packages.csv` | 4,999 packages x 47 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: concentration, licences, cadence, dependencies. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`python`, `pypi`, `software`, `open-source`, `packages`, `programming`, `developer-tools`, `supply-chain`, `tabular`, `web-scraping`\n\n## \ud83d\udd17 Provenance\n\n- **Sources:** (1) the **top PyPI packages** list maintained by Hugo van Kemenade\n  (`hugovk.dev/top-pypi-packages/`), a 30-day rolling download ranking built from the official\n  PyPI download logs; (2) the **PyPI JSON API** (`https://pypi.org/pypi/<project>/json`) for each\n  project's metadata, classifiers, dependencies and release files.\n- **Coverage:** the 5,000 highest-ranked projects at snapshot time.\n- **Processing:** list and per-package metadata were joined on project name; release dates and file\n  counts were derived from the `releases`/`urls` objects; licences normalised into classes.\n- **Derived columns:** download share, licence class, version counts, dependency counts, age,\n  days since release, releases per year, cadence and maturity bands, URL completeness flags.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Monthly.** The download ranking is a rolling 30-day window; re-run `scripts/25_pypi_ecosystem.py` for a fresh snapshot.\n\n## \u26a0\ufe0f Caveats\n\n- Download counts include CI, mirrors and bots, so they measure installs rather than users.\n- The ranking covers only the top 5,000 projects; the long tail (hundreds of thousands of packages) is absent.\n- `author` and `summary` are free text and inconsistently filled.\n- `license` is often a full licence sentence or 'UNKNOWN'; use `license_class` for grouping.\n- Release dates come from file upload timestamps, which can be re-uploads rather than original publication.\n- Dependency counts use `requires_dist` and exclude environment markers beyond extras.\n- 5,000 API calls were made politely; a handful of packages may be missing if PyPI errored.\n\n## \ud83d\udcdc Licence\n\nPackage metadata is published by PyPI and the respective authors; the download ranking is published by Hugo van Kemenade. Mixed open-source licences \u2014 check each package's `license` field.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `rank` | `number` | Rank in the 30-day download list (1 = most downloaded). |\n| 2 | `project` | `string` | Package name on PyPI. |\n| 3 | `monthly_downloads` | `number` | Downloads in the last 30 days (PyPI download statistics). |\n| 4 | `download_share_pct` | `number` | Share of the total downloads of all packages in this file. |\n| 5 | `latest_version` | `string` | Latest version on PyPI at snapshot time. |\n| 6 | `summary` | `string` | One-line package description. |\n| 7 | `author` | `string` | Author field as published. |\n| 8 | `license` | `string` | Licence string or classifier as published. |\n| 9 | `license_class` | `string` | Licence normalised into MIT, Apache, GPL, BSD, MPL, LGPL, Public domain, Creative Commons, Other, Unknown. |\n| 10 | `requires_python` | `string` | PEP 440 Python version specifier. |\n| 11 | `home_page` | `string` | Legacy home page URL. |\n| 12 | `project_url` | `string` | Legacy project URL. |\n| 13 | `package_url` | `string` | Canonical PyPI project URL. |\n| 14 | `keywords` | `string` | Comma-separated keywords as published. |\n| 15 | `development_status` | `string` | Development status from the trove classifiers. |\n| 16 | `classifier_count` | `number` | Number of trove classifiers. |\n| 17 | `topic_count` | `number` | Number of 'Topic ::' classifiers. |\n| 18 | `python_versions_supported` | `string` | Python versions named in the classifiers (semicolon-joined). |\n| 19 | `python_version_count` | `number` | Number of named Python versions. |\n| 20 | `requires_dist_count` | `number` | Raw number of entries in requires_dist, including extras. |\n| 21 | `dependency_count` | `number` | Number of runtime dependencies, excluding extras. |\n| 22 | `release_count` | `number` | Number of uploaded versions. |\n| 23 | `total_file_count` | `number` | Number of distribution files across all versions. |\n| 24 | `yanked_file_count` | `number` | Number of yanked files. |\n| 25 | `first_release` | `date` | Date of the earliest uploaded file (ISO). |\n| 26 | `latest_release` | `date` | Date of the most recent uploaded file (ISO). |\n| 27 | `latest_upload` | `date` | Upload date of the current version. |\n| 28 | `latest_size_bytes` | `number` | Size of the largest distribution file for the current version. |\n| 29 | `summary_length` | `number` | Characters in the summary. |\n| 30 | `has_wheel` | `boolean` | true when a wheel is published for the current version. |\n| 31 | `has_sdist` | `boolean` | true when a source distribution is published. |\n| 32 | `has_homepage` | `boolean` | true when a home page is declared. |\n| 33 | `has_docs_url` | `boolean` | true when a documentation URL appears in project_urls. |\n| 34 | `has_source_url` | `boolean` | true when a source/repository URL appears in project_urls. |\n| 35 | `has_changelog` | `boolean` | true when a changelog URL appears in project_urls. |\n| 36 | `project_url_count` | `number` | Number of project URLs declared. |\n| 37 | `is_prerelease` | `boolean` | true when the latest version looks like a pre-release. |\n| 38 | `python3_only` | `boolean` | true when requires_python allows Python 3 but not Python 2. |\n| 39 | `name_length` | `number` | Characters in the project name. |\n| 40 | `is_single_word` | `boolean` | true when the name has no spaces. |\n| 41 | `major_version` | `number` | Major component of the latest version. |\n| 42 | `age_days` | `number` | Days between the first release and the snapshot date. |\n| 43 | `days_since_release` | `number` | Days since the most recent release. |\n| 44 | `releases_per_year` | `number` | Average number of releases per year since the first release. |\n| 45 | `release_cadence` | `string` | Release cadence band: Dormant, Slow, Regular, Rapid, Very rapid. |\n| 46 | `maturity` | `string` | Maturity band from major version and age. |\n| 47 | `has_dependencies` | `boolean` | true when the package declares runtime dependencies. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "pypi_packages.csv",
+      "description": "Primary dataset file containing 23,010 records across 47 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "rank",
+            "type": "number",
+            "description": "Rank in the 30-day download list (1 = most downloaded)."
+          },
+          {
+            "name": "project",
+            "type": "string",
+            "description": "Package name on PyPI."
+          },
+          {
+            "name": "monthly_downloads",
+            "type": "number",
+            "description": "Downloads in the last 30 days (PyPI download statistics)."
+          },
+          {
+            "name": "download_share_pct",
+            "type": "number",
+            "description": "Share of the total downloads of all packages in this file."
+          },
+          {
+            "name": "latest_version",
+            "type": "string",
+            "description": "Latest version on PyPI at snapshot time."
+          },
+          {
+            "name": "summary",
+            "type": "string",
+            "description": "One-line package description."
+          },
+          {
+            "name": "author",
+            "type": "string",
+            "description": "Author field as published."
+          },
+          {
+            "name": "license",
+            "type": "string",
+            "description": "Licence string or classifier as published."
+          },
+          {
+            "name": "license_class",
+            "type": "string",
+            "description": "Licence normalised into MIT, Apache, GPL, BSD, MPL, LGPL, Public domain, Creative Commons, Other, Unknown."
+          },
+          {
+            "name": "requires_python",
+            "type": "string",
+            "description": "PEP 440 Python version specifier."
+          },
+          {
+            "name": "home_page",
+            "type": "string",
+            "description": "Legacy home page URL."
+          },
+          {
+            "name": "project_url",
+            "type": "string",
+            "description": "Legacy project URL."
+          },
+          {
+            "name": "package_url",
+            "type": "string",
+            "description": "Canonical PyPI project URL."
+          },
+          {
+            "name": "keywords",
+            "type": "string",
+            "description": "Comma-separated keywords as published."
+          },
+          {
+            "name": "development_status",
+            "type": "string",
+            "description": "Development status from the trove classifiers."
+          },
+          {
+            "name": "classifier_count",
+            "type": "number",
+            "description": "Number of trove classifiers."
+          },
+          {
+            "name": "topic_count",
+            "type": "number",
+            "description": "Number of 'Topic ::' classifiers."
+          },
+          {
+            "name": "python_versions_supported",
+            "type": "string",
+            "description": "Python versions named in the classifiers (semicolon-joined)."
+          },
+          {
+            "name": "python_version_count",
+            "type": "number",
+            "description": "Number of named Python versions."
+          },
+          {
+            "name": "requires_dist_count",
+            "type": "number",
+            "description": "Raw number of entries in requires_dist, including extras."
+          },
+          {
+            "name": "dependency_count",
+            "type": "number",
+            "description": "Number of runtime dependencies, excluding extras."
+          },
+          {
+            "name": "release_count",
+            "type": "number",
+            "description": "Number of uploaded versions."
+          },
+          {
+            "name": "total_file_count",
+            "type": "number",
+            "description": "Number of distribution files across all versions."
+          },
+          {
+            "name": "yanked_file_count",
+            "type": "number",
+            "description": "Number of yanked files."
+          },
+          {
+            "name": "first_release",
+            "type": "date",
+            "description": "Date of the earliest uploaded file (ISO)."
+          },
+          {
+            "name": "latest_release",
+            "type": "date",
+            "description": "Date of the most recent uploaded file (ISO)."
+          },
+          {
+            "name": "latest_upload",
+            "type": "date",
+            "description": "Upload date of the current version."
+          },
+          {
+            "name": "latest_size_bytes",
+            "type": "number",
+            "description": "Size of the largest distribution file for the current version."
+          },
+          {
+            "name": "summary_length",
+            "type": "number",
+            "description": "Characters in the summary."
+          },
+          {
+            "name": "has_wheel",
+            "type": "boolean",
+            "description": "true when a wheel is published for the current version."
+          },
+          {
+            "name": "has_sdist",
+            "type": "boolean",
+            "description": "true when a source distribution is published."
+          },
+          {
+            "name": "has_homepage",
+            "type": "boolean",
+            "description": "true when a home page is declared."
+          },
+          {
+            "name": "has_docs_url",
+            "type": "boolean",
+            "description": "true when a documentation URL appears in project_urls."
+          },
+          {
+            "name": "has_source_url",
+            "type": "boolean",
+            "description": "true when a source/repository URL appears in project_urls."
+          },
+          {
+            "name": "has_changelog",
+            "type": "boolean",
+            "description": "true when a changelog URL appears in project_urls."
+          },
+          {
+            "name": "project_url_count",
+            "type": "number",
+            "description": "Number of project URLs declared."
+          },
+          {
+            "name": "is_prerelease",
+            "type": "boolean",
+            "description": "true when the latest version looks like a pre-release."
+          },
+          {
+            "name": "python3_only",
+            "type": "boolean",
+            "description": "true when requires_python allows Python 3 but not Python 2."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the project name."
+          },
+          {
+            "name": "is_single_word",
+            "type": "boolean",
+            "description": "true when the name has no spaces."
+          },
+          {
+            "name": "major_version",
+            "type": "number",
+            "description": "Major component of the latest version."
+          },
+          {
+            "name": "age_days",
+            "type": "number",
+            "description": "Days between the first release and the snapshot date."
+          },
+          {
+            "name": "days_since_release",
+            "type": "number",
+            "description": "Days since the most recent release."
+          },
+          {
+            "name": "releases_per_year",
+            "type": "number",
+            "description": "Average number of releases per year since the first release."
+          },
+          {
+            "name": "release_cadence",
+            "type": "string",
+            "description": "Release cadence band: Dormant, Slow, Regular, Rapid, Very rapid."
+          },
+          {
+            "name": "maturity",
+            "type": "string",
+            "description": "Maturity band from major version and age."
+          },
+          {
+            "name": "has_dependencies",
+            "type": "boolean",
+            "description": "true when the package declares runtime dependencies."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

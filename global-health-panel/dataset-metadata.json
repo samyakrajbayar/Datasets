@@ -1,0 +1,241 @@
+{
+  "title": "Global Health Panel 2000-2025",
+  "id": "samyakrajbayar/global-health-panel",
+  "subtitle": "WHO health panel across countries: mortality, disease, spending and access",
+  "description": "# Global Health Panel 2000-2025\n\n**Subtitle:** WHO health panel across countries: mortality, disease, spending and access\n\n**Tags:** `health`, `public-health`, `who`, `global`, `epidemiology`, `demography`, `economics`, `time-series`, `tabular`, `social-science`\n\n**Dataset File:** `who_health_panel.csv` (5,914 rows, 41 columns, 1.4 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### 25 years of global health, one row per country per year\n\nA wide panel assembled from the **WHO Global Health Observatory** \u2014 the World Health Organization's\nopen data warehouse \u2014 covering **230 countries** from **2000 to 2025** in\n**5,914 country-year rows** with **41 parameters**.\n\nEach row carries 21 health indicators plus national context:\n- **Mortality and longevity** \u2014 life expectancy, healthy life expectancy, under-5, neonatal, infant and\n  maternal mortality.\n- **Disease burden** \u2014 age-standardised obesity and diabetes prevalence, tuberculosis incidence, suicide\n  rate and road-traffic death rate.\n- **Health system** \u2014 medical doctors, nursing and midwifery personnel and hospital beds per 10,000\n  people, current health expenditure as a share of GDP, and DTP3 and measles immunisation coverage.\n- **Access** \u2014 safely managed sanitation, basic drinking-water coverage, skilled birth attendance and\n  alcohol consumption.\n- **Context** \u2014 country name, ISO-3 code, continent, UN region/sub-region, WHO region, population and GDP\n  per capita.\n- **Derived** \u2014 years lived in poor health (life expectancy minus healthy life expectancy), health spend\n  per person, per-1,000 staffing and bed densities, indicator coverage, decade, and life-expectancy,\n  child-mortality and health-spending bands.\n\nNot every country reports every indicator in every year \u2014 the coverage columns make that explicit, so\nmissingness can be modelled rather than silently dropped.\n\n## \ud83e\uddfe Columns (41)\n\n`country_code`, `country_name`, `year`, `continent`, `region`, `subregion`, `who_region`, `population`, `gdp_per_capita_usd`, `life_expectancy`, `healthy_life_expectancy`, `under5_mortality_per_1000`, `neonatal_mortality_per_1000`, `infant_mortality_per_1000`, `maternal_mortality_per_100k`, `obesity_pct`, `diabetes_pct`, `doctors_per_10k`, `nurses_per_10k`, `hospital_beds_per_10k`, `health_spend_pct_gdp`, `suicide_rate_per_100k`, `road_death_rate_per_100k`, `tb_incidence_per_100k`, `dtp3_coverage_pct`, `measles_coverage_pct`, `sanitation_pct`, `drinking_water_pct`, `alcohol_litres_per_capita`, `skilled_birth_pct`, `health_adjusted_years_lost`, `health_spend_per_capita_usd`, `doctors_per_1000`, `nurses_per_1000`, `hospital_beds_per_1000`, `n_indicators_reported`, `indicator_coverage_pct`, `decade`, `life_expectancy_band`, `child_mortality_class`, `health_spend_class`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Life expectancy vs health spending** \u2014 the classic curve; identify outliers above and below it.\n2. **Child mortality decline** \u2014 animated or small-multiple time series by region since 2000.\n3. **Years lived in poor health** \u2014 `health_adjusted_years_lost` by country and income level.\n4. **Workforce density** \u2014 doctors and nurses per 1,000 versus under-5 mortality.\n5. **Panel regression** \u2014 fixed-effects model of life expectancy on spending, staffing and sanitation.\n6. **Missingness** \u2014 which indicators and countries are sparse, and does that bias global averages?\n7. **Clustering** \u2014 group countries into health-system archetypes from the indicator vector.\n8. **Forecasting** \u2014 predict 2030 life expectancy per country with a per-country time-series model.\n9. **Inequality** \u2014 Gini or ratio of top-to-bottom decile life expectancy across countries per year.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `who_health_panel.csv` | 5,914 country-year rows x 41 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: life expectancy, spending, workforce, missingness. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`health`, `public-health`, `who`, `global`, `epidemiology`, `demography`, `economics`, `time-series`, `tabular`, `social-science`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **WHO Global Health Observatory OData API**, `https://ghoapi.azureedge.net/api`.\n- **Indicators:** 21 codes selected automatically from the WHO indicator catalogue by name\n  matching, then fetched with `$filter=TimeDim ge 2000 and SpatialDimType eq 'COUNTRY'`.\n  The exact code used for each column is listed in the collection log below.\n- **Indicator codes used:** `WHOSIS_000001`, `WHOSIS_000002`, `MDG_0000000007`, `WHOSIS_000003`, `MDG_0000000001`, `MDG_0000000026`, `NCD_BMI_30A`, `NCD_DIABETES_TREATMENT_AGESTD`, `HWF_0005`, `HWF_0007`, `WHS6_102`, `GHED_CHEGDP_SHA2011`, `MH_12`, `RS_198`, `MDG_0000000020`, `WHS4_100`, `MCV2`, `WSH_SANITATION_SAFELY_MANAGED`, `WSH_WATER_BASIC`, `SA_0000001746`, `MDG_0000000025`.\n- **Transformation:** long indicator rows pivoted into a wide country-year panel; sex-split indicators\n  resolved to both-sexes values; derived ratios and bands computed.\n- **Context join:** continent, region, sub-region, population and GDP per capita from the World\n  Bank-backed `countries-of-the-world` table in this repository.\n- **Snapshot date:** 20 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Annual.** WHO refreshes the Global Health Observatory roughly once a year (typically with a one-to-two-year lag). Re-run `scripts/18_who_health.py` to extend the panel.\n\n## \u26a0\ufe0f Caveats\n\n- WHO estimates are modelled for many countries and years; they are not raw registry counts.\n- Coverage is uneven \u2014 health-workforce and expenditure series are often missing before 2005.\n- Some indicators are age-standardised and others are crude rates; the data dictionary notes which.\n- WHO revises historical estimates between releases, so values can differ from older publications.\n- Indicators whose WHO name did not match the keyword list were left out; see the log for the exact selection.\n- Country codes follow WHO/UN usage, so a few territories are absent from the World Bank join.\n\n## \ud83d\udcdc Licence\n\nCreative Commons Attribution-NonCommercial-ShareAlike 3.0 IGO (CC BY-NC-SA 3.0 IGO) \u2014 World Health Organization. Attribution to WHO is required; commercial use is restricted by the upstream licence.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `country_code` | `string` | ISO-3166 alpha-3 country code. |\n| 2 | `country_name` | `string` | Country name from the WHO country dimension. |\n| 3 | `year` | `number` | Year of the observation. |\n| 4 | `continent` | `string` | Continent of the country. |\n| 5 | `region` | `string` | UN macro-region of the country. |\n| 6 | `subregion` | `string` | UN sub-region of the country. |\n| 7 | `who_region` | `string` | WHO administrative region code (AFR, AMR, EMR, EUR, SEAR, WPR). |\n| 8 | `population` | `number` | Country population (World Bank). |\n| 9 | `gdp_per_capita_usd` | `number` | Country GDP per capita (World Bank). |\n| 10 | `life_expectancy` | `number` | Life expectancy at birth, both sexes (years). |\n| 11 | `healthy_life_expectancy` | `number` | Healthy life expectancy at birth, both sexes (years). |\n| 12 | `under5_mortality_per_1000` | `number` | Probability of dying before age 5, per 1,000 live births. |\n| 13 | `neonatal_mortality_per_1000` | `number` | Neonatal deaths per 1,000 live births. |\n| 14 | `infant_mortality_per_1000` | `number` | Infant deaths per 1,000 live births. |\n| 15 | `maternal_mortality_per_100k` | `number` | Maternal deaths per 100,000 live births. |\n| 16 | `obesity_pct` | `number` | Age-standardised prevalence of obesity among adults (%). |\n| 17 | `diabetes_pct` | `number` | Age-standardised prevalence of diabetes among adults (%). |\n| 18 | `doctors_per_10k` | `number` | Medical doctors per 10,000 population. |\n| 19 | `nurses_per_10k` | `number` | Nursing and midwifery personnel per 10,000 population. |\n| 20 | `hospital_beds_per_10k` | `number` | Hospital beds per 10,000 population. |\n| 21 | `health_spend_pct_gdp` | `number` | Current health expenditure as a share of GDP (%). |\n| 22 | `suicide_rate_per_100k` | `number` | Suicide mortality rate per 100,000 population. |\n| 23 | `road_death_rate_per_100k` | `number` | Estimated road traffic death rate per 100,000 population. |\n| 24 | `tb_incidence_per_100k` | `number` | Tuberculosis incidence per 100,000 population. |\n| 25 | `dtp3_coverage_pct` | `number` | DTP3 immunisation coverage among 1-year-olds (%). |\n| 26 | `measles_coverage_pct` | `number` | Measles-containing vaccine first-dose coverage (%). |\n| 27 | `sanitation_pct` | `number` | Population using safely managed sanitation services (%). |\n| 28 | `drinking_water_pct` | `number` | Population using at least basic drinking-water services (%). |\n| 29 | `alcohol_litres_per_capita` | `number` | Total alcohol consumption per capita, litres of pure alcohol. |\n| 30 | `skilled_birth_pct` | `number` | Births attended by skilled health personnel (%). |\n| 31 | `health_adjusted_years_lost` | `number` | Life expectancy minus healthy life expectancy: years lived in poor health. |\n| 32 | `health_spend_per_capita_usd` | `number` | Health expenditure per person implied by spend share of GDP and GDP per capita. |\n| 33 | `doctors_per_1000` | `number` | Medical doctors per 1,000 population. |\n| 34 | `nurses_per_1000` | `number` | Nursing and midwifery personnel per 1,000 population. |\n| 35 | `hospital_beds_per_1000` | `number` | Hospital beds per 1,000 population. |\n| 36 | `n_indicators_reported` | `number` | How many of the tracked indicators have a value in this country-year. |\n| 37 | `indicator_coverage_pct` | `number` | Share of the tracked indicators reported, in percent. |\n| 38 | `decade` | `string` | Decade of the observation year. |\n| 39 | `life_expectancy_band` | `string` | Life-expectancy band from <55 to 80+ years. |\n| 40 | `child_mortality_class` | `string` | Under-5 mortality band from Very low to Very high. |\n| 41 | `health_spend_class` | `string` | Health-spending band as a share of GDP. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health",
+    "economics"
+  ],
+  "resources": [
+    {
+      "path": "who_health_panel.csv",
+      "description": "Primary data file containing 5,914 records across 41 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "country_code",
+            "type": "string",
+            "description": "ISO-3166 alpha-3 country code."
+          },
+          {
+            "name": "country_name",
+            "type": "string",
+            "description": "Country name from the WHO country dimension."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Year of the observation."
+          },
+          {
+            "name": "continent",
+            "type": "string",
+            "description": "Continent of the country."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "UN macro-region of the country."
+          },
+          {
+            "name": "subregion",
+            "type": "string",
+            "description": "UN sub-region of the country."
+          },
+          {
+            "name": "who_region",
+            "type": "string",
+            "description": "WHO administrative region code (AFR, AMR, EMR, EUR, SEAR, WPR)."
+          },
+          {
+            "name": "population",
+            "type": "number",
+            "description": "Country population (World Bank)."
+          },
+          {
+            "name": "gdp_per_capita_usd",
+            "type": "number",
+            "description": "Country GDP per capita (World Bank)."
+          },
+          {
+            "name": "life_expectancy",
+            "type": "number",
+            "description": "Life expectancy at birth, both sexes (years)."
+          },
+          {
+            "name": "healthy_life_expectancy",
+            "type": "number",
+            "description": "Healthy life expectancy at birth, both sexes (years)."
+          },
+          {
+            "name": "under5_mortality_per_1000",
+            "type": "number",
+            "description": "Probability of dying before age 5, per 1,000 live births."
+          },
+          {
+            "name": "neonatal_mortality_per_1000",
+            "type": "number",
+            "description": "Neonatal deaths per 1,000 live births."
+          },
+          {
+            "name": "infant_mortality_per_1000",
+            "type": "number",
+            "description": "Infant deaths per 1,000 live births."
+          },
+          {
+            "name": "maternal_mortality_per_100k",
+            "type": "number",
+            "description": "Maternal deaths per 100,000 live births."
+          },
+          {
+            "name": "obesity_pct",
+            "type": "number",
+            "description": "Age-standardised prevalence of obesity among adults (%)."
+          },
+          {
+            "name": "diabetes_pct",
+            "type": "number",
+            "description": "Age-standardised prevalence of diabetes among adults (%)."
+          },
+          {
+            "name": "doctors_per_10k",
+            "type": "number",
+            "description": "Medical doctors per 10,000 population."
+          },
+          {
+            "name": "nurses_per_10k",
+            "type": "number",
+            "description": "Nursing and midwifery personnel per 10,000 population."
+          },
+          {
+            "name": "hospital_beds_per_10k",
+            "type": "number",
+            "description": "Hospital beds per 10,000 population."
+          },
+          {
+            "name": "health_spend_pct_gdp",
+            "type": "number",
+            "description": "Current health expenditure as a share of GDP (%)."
+          },
+          {
+            "name": "suicide_rate_per_100k",
+            "type": "number",
+            "description": "Suicide mortality rate per 100,000 population."
+          },
+          {
+            "name": "road_death_rate_per_100k",
+            "type": "number",
+            "description": "Estimated road traffic death rate per 100,000 population."
+          },
+          {
+            "name": "tb_incidence_per_100k",
+            "type": "number",
+            "description": "Tuberculosis incidence per 100,000 population."
+          },
+          {
+            "name": "dtp3_coverage_pct",
+            "type": "number",
+            "description": "DTP3 immunisation coverage among 1-year-olds (%)."
+          },
+          {
+            "name": "measles_coverage_pct",
+            "type": "number",
+            "description": "Measles-containing vaccine first-dose coverage (%)."
+          },
+          {
+            "name": "sanitation_pct",
+            "type": "number",
+            "description": "Population using safely managed sanitation services (%)."
+          },
+          {
+            "name": "drinking_water_pct",
+            "type": "number",
+            "description": "Population using at least basic drinking-water services (%)."
+          },
+          {
+            "name": "alcohol_litres_per_capita",
+            "type": "number",
+            "description": "Total alcohol consumption per capita, litres of pure alcohol."
+          },
+          {
+            "name": "skilled_birth_pct",
+            "type": "number",
+            "description": "Births attended by skilled health personnel (%)."
+          },
+          {
+            "name": "health_adjusted_years_lost",
+            "type": "number",
+            "description": "Life expectancy minus healthy life expectancy: years lived in poor health."
+          },
+          {
+            "name": "health_spend_per_capita_usd",
+            "type": "number",
+            "description": "Health expenditure per person implied by spend share of GDP and GDP per capita."
+          },
+          {
+            "name": "doctors_per_1000",
+            "type": "number",
+            "description": "Medical doctors per 1,000 population."
+          },
+          {
+            "name": "nurses_per_1000",
+            "type": "number",
+            "description": "Nursing and midwifery personnel per 1,000 population."
+          },
+          {
+            "name": "hospital_beds_per_1000",
+            "type": "number",
+            "description": "Hospital beds per 1,000 population."
+          },
+          {
+            "name": "n_indicators_reported",
+            "type": "number",
+            "description": "How many of the tracked indicators have a value in this country-year."
+          },
+          {
+            "name": "indicator_coverage_pct",
+            "type": "number",
+            "description": "Share of the tracked indicators reported, in percent."
+          },
+          {
+            "name": "decade",
+            "type": "string",
+            "description": "Decade of the observation year."
+          },
+          {
+            "name": "life_expectancy_band",
+            "type": "string",
+            "description": "Life-expectancy band from <55 to 80+ years."
+          },
+          {
+            "name": "child_mortality_class",
+            "type": "string",
+            "description": "Under-5 mortality band from Very low to Very high."
+          },
+          {
+            "name": "health_spend_class",
+            "type": "string",
+            "description": "Health-spending band as a share of GDP."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

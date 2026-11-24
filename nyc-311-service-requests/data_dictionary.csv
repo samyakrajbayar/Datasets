@@ -1,0 +1,53 @@
+column,data_type,description
+unique_key,number,Unique service-request identifier.
+created_date,datetime,Request creation timestamp (local time).
+closed_date,datetime,"Request closure timestamp, where closed."
+agency,string,Responsible agency code.
+agency_name,string,Responsible agency name.
+complaint_type,string,Complaint type as selected by the caller.
+descriptor,string,Complaint sub-type / descriptor.
+location_type,string,"Location type (residential, commercial, ...)."
+incident_zip,number,ZIP code of the incident.
+incident_address,string,Street address of the incident.
+street_name,string,Street name.
+cross_street_1,string,First cross street.
+cross_street_2,string,Second cross street.
+intersection_street_1,string,First intersection street.
+intersection_street_2,string,Second intersection street.
+address_type,string,"Address type (address, blockface, intersection, ...)."
+city,string,City (usually New York).
+landmark,string,"Landmark name, if any."
+facility_type,string,"Facility type, if the request concerns a facility."
+status,string,"Request status (Open, In Progress, Closed, ...)."
+due_date,datetime,Agency due date.
+resolution_description,string,Agency resolution text.
+resolution_action_updated_date,datetime,Last resolution update.
+community_board,string,Community board district.
+council_district,number,City council district.
+police_precinct,string,Police precinct.
+borough,string,Borough of the incident.
+park_borough,string,Parks department borough.
+open_data_channel_type,string,"How the request was submitted (phone, online, mobile, ...)."
+park_facility_name,string,Park or facility name.
+latitude,number,Latitude (WGS84).
+longitude,number,Longitude (WGS84).
+x_coordinate,number,State plane X coordinate.
+y_coordinate,number,State plane Y coordinate.
+response_hours,number,"Closed minus created, in hours."
+response_days,number,response_hours / 24.
+is_closed,boolean,true when a closed_date is present.
+is_open,boolean,true when status is Open.
+closed_within_1_day,boolean,true when closed within 24 hours.
+closed_within_7_days,boolean,true when closed within 7 days.
+year,number,Year the request was created.
+month,number,Month number.
+day_of_week,string,Weekday name.
+hour,number,Hour of creation (0-23).
+is_weekend,boolean,true for Saturday/Sunday.
+complaint_category,string,Coarse category derived from complaint_type.
+has_location,boolean,true when latitude and longitude are present.
+resolution_length,number,Characters in the resolution description.
+descriptor_length,number,Characters in the descriptor.
+is_noise,boolean,true for noise complaints.
+is_heat_hot_water,boolean,true for heat/hot-water complaints.
+is_street_condition,boolean,true for street-condition complaints.

@@ -1,0 +1,430 @@
+{
+  "title": "Global Biodiversity Occurrences",
+  "id": "samyakrajbayar/global-biodiversity-occurrences",
+  "subtitle": "100,000 GBIF records with taxonomy, coordinates, dates & quality flags",
+  "description": "# Global Biodiversity Occurrences\n\n**Subtitle:** 100,000 GBIF records with taxonomy, coordinates, dates & quality flags\n\n**Tags:** `biology`, `biodiversity`, `ecology`, `nature`, `species`, `gbif`, `geospatial`, `conservation`, `environment`, `tabular`\n\n**Dataset File:** `occurrences.csv` (102,000 rows, 79 columns, 91.0 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### A worldwide sample of biodiversity records\n\n**102,000 occurrence records** of living organisms, pulled from **GBIF** \u2014 the Global Biodiversity\nInformation Facility, which aggregates observations from museums, herbaria, research institutes and\ncitizen-science platforms. The sample spans **20 countries**,\n**2,109 families** and **18,797 species**, with **79 parameters** per record.\n\nEach row is one recorded occurrence:\n- **Taxonomy** \u2014 scientific name with authorship, the GBIF-backbone accepted name, rank, and the full\n  kingdom \u2192 phylum \u2192 class \u2192 order \u2192 family \u2192 genus \u2192 species chain plus taxon keys.\n- **Place** \u2014 decimal coordinates, coordinate uncertainty, country and country code, state/province,\n  locality, elevation, depth, water body, island group, continent and geodetic datum.\n- **Time** \u2014 year, month, day, full event date and the last-interpreted timestamp.\n- **Record provenance** \u2014 basis of record, institution and collection codes, catalogue number, recorder\n  and identifier, individual count, sex, life stage, establishment means, dataset and publishing\n  organisation, licence, media type and protocol.\n- **Quality** \u2014 GBIF's issue-flag list, plus flags for missing coordinates, elevation, depth and date parts.\n- **Derived** \u2014 hemisphere, absolute latitude, marine/elevation/coordinate flags, date completeness,\n  record age, uncertainty band, record-type group, specimen/observation/fossil flags, issue count, media\n  count, taxonomic depth, species-level flag, and the country's continent, region and sub-region.\n\nBecause records were sampled by country rather than by taxon, the file is a broad cross-section of how\nbiodiversity data actually looks upstream: uneven, geographically biased, and full of quality flags that\nare themselves worth studying.\n\n## \ud83e\uddfe Columns (79)\n\n`key`, `scientificName`, `acceptedScientificName`, `taxonRank`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `speciesKey`, `taxonKey`, `acceptedTaxonKey`, `country`, `countryCode`, `stateProvince`, `locality`, `decimalLatitude`, `decimalLongitude`, `coordinateUncertaintyInMeters`, `elevation`, `depth`, `year`, `month`, `day`, `eventDate`, `basisOfRecord`, `institutionCode`, `collectionCode`, `catalogNumber`, `recordedBy`, `identifiedBy`, `individualCount`, `sex`, `lifeStage`, `occurrenceStatus`, `establishmentMeans`, `datasetKey`, `datasetName`, `publishingOrgKey`, `license`, `issues`, `mediaType`, `protocol`, `continent`, `waterBody`, `islandGroup`, `typeStatus`, `lastInterpreted`, `geodeticDatum`, `higherClassification`, `occurrenceID`, `taxonConceptID`, `hemisphere`, `abs_latitude`, `is_marine`, `has_coordinates`, `has_elevation`, `has_depth`, `date_completeness`, `record_age_years`, `uncertainty_class`, `basis_group`, `is_specimen`, `is_human_observation`, `is_machine_observation`, `is_fossil`, `n_issues`, `has_issues`, `issues_list`, `n_media`, `taxon_depth`, `is_species_level`, `country_name`, `continent_name`, `region`, `subregion`, `latitude_band`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Species richness by latitude** \u2014 records per band of `abs_latitude`; reproduce the latitudinal diversity gradient.\n2. **Data bias** \u2014 which countries, taxa and decades dominate? Compare `basis_group` shares across regions.\n3. **Quality analysis** \u2014 `n_issues` distributions by publisher, country and basis of record.\n4. **Marine vs terrestrial** \u2014 compare depth and elevation coverage and taxonomic composition.\n5. **Temporal coverage** \u2014 records per year since 1990; spot the digitisation waves.\n6. **Taxonomic composition** \u2014 kingdom and family frequency, and how much of each is species-level identified.\n7. **Geospatial clustering** \u2014 DBSCAN over coordinates to find biodiversity hotspots (and the cities where observers live).\n8. **Sampling-effort model** \u2014 predict record density from country features; residual hotspots are true sampling gaps.\n9. **Text** \u2014 `recordedBy` and `locality` fields support name-entity and place-name extraction.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `occurrences.csv` | 102,000 occurrence records x 79 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: diversity gradient, sampling bias, quality flags. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`biology`, `biodiversity`, `ecology`, `nature`, `species`, `gbif`, `geospatial`, `conservation`, `environment`, `tabular`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **GBIF occurrence API**, `https://api.gbif.org/v1/occurrence/search`.\n- **Query:** `hasCoordinate=true`, `occurrenceStatus=PRESENT`, `year=1990,2025`, sampled across 20\n  countries at 5,000 records each (300 per page, offset paging).\n- **What GBIF is:** an intergovernmental network that indexes occurrence records published by museums,\n  herbaria, research institutes and citizen-science programmes; each record keeps its publisher's licence.\n- **Transformation:** selected fields flattened to columns, lists (issues, media) normalised, and 25 derived\n  columns added. Country context joined from the World Bank-backed countries table in this repository.\n- **Snapshot date:** 20 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Never (static snapshot).** GBIF grows continuously; re-run `scripts/17_biodiversity.py` for a fresh sample.\n\n## \u26a0\ufe0f Caveats\n\n- This is a **country-stratified sample**, not the full GBIF index (which holds well over a billion records).\n- Sampling effort is wildly uneven: a handful of species and regions dominate because they are heavily observed.\n- Records reflect where people and institutions collect, not where biodiversity is greatest.\n- Each record carries its publisher's licence (`license` column); check it before redistribution of subsets.\n- `occurrenceStatus=PRESENT` excludes absence records, so the file cannot be used for presence/absence modelling as-is.\n- Coordinate uncertainty is often missing or large; `uncertainty_class` buckets what is reported.\n\n## \ud83d\udcdc Licence\n\nMixed: each record is published under its own licence (CC0, CC BY or CC BY-NC), recorded in the `license` column. GBIF itself asks for attribution to GBIF and to the publishing institution. Check the per-record licence before any commercial use.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `key` | `number` | GBIF occurrence identifier. |\n| 2 | `scientificName` | `string` | Full scientific name as recorded, including authorship. |\n| 3 | `acceptedScientificName` | `string` | Name with authorship, matched to the GBIF backbone taxonomy. |\n| 4 | `taxonRank` | `string` | Rank of the identified taxon (SPECIES, GENUS, FAMILY...). |\n| 5 | `kingdom` | `string` | Kingdom of the record. |\n| 6 | `phylum` | `string` | Phylum of the record. |\n| 7 | `class` | `string` | Class of the record. |\n| 8 | `order` | `string` | Order of the record. |\n| 9 | `family` | `string` | Family of the record. |\n| 10 | `genus` | `string` | Genus of the record. |\n| 11 | `species` | `string` | Species binomial. |\n| 12 | `speciesKey` | `number` | GBIF occurrence field `speciesKey` (see the GBIF occurrence schema). |\n| 13 | `taxonKey` | `number` | GBIF occurrence field `taxonKey` (see the GBIF occurrence schema). |\n| 14 | `acceptedTaxonKey` | `number` | GBIF occurrence field `acceptedTaxonKey` (see the GBIF occurrence schema). |\n| 15 | `country` | `string` | Country name as supplied by the publisher. |\n| 16 | `countryCode` | `string` | ISO-3166 alpha-2 country code of the record. |\n| 17 | `stateProvince` | `string` | GBIF occurrence field `stateProvince` (see the GBIF occurrence schema). |\n| 18 | `locality` | `string` | GBIF occurrence field `locality` (see the GBIF occurrence schema). |\n| 19 | `decimalLatitude` | `number` | Latitude in decimal degrees (WGS84). |\n| 20 | `decimalLongitude` | `number` | Longitude in decimal degrees (WGS84). |\n| 21 | `coordinateUncertaintyInMeters` | `number` | Reported uncertainty of the coordinates, in metres. |\n| 22 | `elevation` | `string` | Elevation above sea level in metres. |\n| 23 | `depth` | `string` | Depth below sea level in metres. |\n| 24 | `year` | `number` | Year of the observation. |\n| 25 | `month` | `number` | Month of the observation. |\n| 26 | `day` | `number` | Day of the observation. |\n| 27 | `eventDate` | `datetime` | Full event date as recorded. |\n| 28 | `basisOfRecord` | `string` | How the record was made (PRESERVED_SPECIMEN, HUMAN_OBSERVATION...). |\n| 29 | `institutionCode` | `string` | GBIF occurrence field `institutionCode` (see the GBIF occurrence schema). |\n| 30 | `collectionCode` | `string` | GBIF occurrence field `collectionCode` (see the GBIF occurrence schema). |\n| 31 | `catalogNumber` | `string` | GBIF occurrence field `catalogNumber` (see the GBIF occurrence schema). |\n| 32 | `recordedBy` | `string` | GBIF occurrence field `recordedBy` (see the GBIF occurrence schema). |\n| 33 | `identifiedBy` | `string` | GBIF occurrence field `identifiedBy` (see the GBIF occurrence schema). |\n| 34 | `individualCount` | `number` | Number of individuals recorded. |\n| 35 | `sex` | `string` | GBIF occurrence field `sex` (see the GBIF occurrence schema). |\n| 36 | `lifeStage` | `string` | GBIF occurrence field `lifeStage` (see the GBIF occurrence schema). |\n| 37 | `occurrenceStatus` | `string` | GBIF occurrence field `occurrenceStatus` (see the GBIF occurrence schema). |\n| 38 | `establishmentMeans` | `string` | GBIF occurrence field `establishmentMeans` (see the GBIF occurrence schema). |\n| 39 | `datasetKey` | `string` | GBIF occurrence field `datasetKey` (see the GBIF occurrence schema). |\n| 40 | `datasetName` | `string` | Name of the publishing dataset. |\n| 41 | `publishingOrgKey` | `string` | GBIF occurrence field `publishingOrgKey` (see the GBIF occurrence schema). |\n| 42 | `license` | `string` | Licence under which the record is published. |\n| 43 | `issues` | `string` | GBIF data-quality issue flags attached to the record. |\n| 44 | `mediaType` | `string` | Media types attached to the record. |\n| 45 | `protocol` | `string` | GBIF occurrence field `protocol` (see the GBIF occurrence schema). |\n| 46 | `continent` | `string` | GBIF occurrence field `continent` (see the GBIF occurrence schema). |\n| 47 | `waterBody` | `string` | GBIF occurrence field `waterBody` (see the GBIF occurrence schema). |\n| 48 | `islandGroup` | `string` | GBIF occurrence field `islandGroup` (see the GBIF occurrence schema). |\n| 49 | `typeStatus` | `string` | GBIF occurrence field `typeStatus` (see the GBIF occurrence schema). |\n| 50 | `lastInterpreted` | `datetime` | Timestamp of GBIF's last interpretation of the record. |\n| 51 | `geodeticDatum` | `string` | GBIF occurrence field `geodeticDatum` (see the GBIF occurrence schema). |\n| 52 | `higherClassification` | `string` | Higher taxonomy string, pipe-separated. |\n| 53 | `occurrenceID` | `string` | GBIF occurrence field `occurrenceID` (see the GBIF occurrence schema). |\n| 54 | `taxonConceptID` | `string` | GBIF occurrence field `taxonConceptID` (see the GBIF occurrence schema). |\n| 55 | `hemisphere` | `string` | Northern or Southern hemisphere. |\n| 56 | `abs_latitude` | `number` | Absolute latitude, useful for species-richness gradients. |\n| 57 | `is_marine` | `boolean` | true when a water body or a depth value is recorded. |\n| 58 | `has_coordinates` | `boolean` | true when decimal latitude and longitude are present. |\n| 59 | `has_elevation` | `boolean` | true when an elevation value is recorded. |\n| 60 | `has_depth` | `boolean` | true when a depth value is recorded. |\n| 61 | `date_completeness` | `string` | Whether only the year, the year and month, or a full date is known. |\n| 62 | `record_age_years` | `number` | Years between the observation year and the snapshot year. |\n| 63 | `uncertainty_class` | `string` | Coordinate-uncertainty band in metres. |\n| 64 | `basis_group` | `string` | Coarse record type: specimen, observation, machine observation, fossil, other. |\n| 65 | `is_specimen` | `boolean` | true for preserved or living specimen records. |\n| 66 | `is_human_observation` | `boolean` | true for human observation records. |\n| 67 | `is_machine_observation` | `boolean` | true for sensor/camera records. |\n| 68 | `is_fossil` | `boolean` | true for fossil specimen records. |\n| 69 | `n_issues` | `number` | Number of data-quality flags GBIF attached to the record. |\n| 70 | `has_issues` | `boolean` | true when GBIF flagged at least one quality issue. |\n| 71 | `issues_list` | `string` | Semicolon-separated GBIF quality issue flags. |\n| 72 | `n_media` | `number` | Number of media items attached to the record. |\n| 73 | `taxon_depth` | `number` | Number of taxonomic ranks filled in (kingdom to species), 0-7. |\n| 74 | `is_species_level` | `boolean` | true when the record is identified to species rank. |\n| 75 | `country_name` | `string` | Country name from the GBIF country dimension. |\n| 76 | `continent_name` | `string` | Continent of the recording country. |\n| 77 | `region` | `string` | UN macro-region of the recording country. |\n| 78 | `subregion` | `string` | UN sub-region of the recording country. |\n| 79 | `latitude_band` | `string` | Absolute-latitude band. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "occurrences.csv",
+      "description": "Primary data file containing 102,000 records across 79 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "key",
+            "type": "number",
+            "description": "GBIF occurrence identifier."
+          },
+          {
+            "name": "scientificName",
+            "type": "string",
+            "description": "Full scientific name as recorded, including authorship."
+          },
+          {
+            "name": "acceptedScientificName",
+            "type": "string",
+            "description": "Name with authorship, matched to the GBIF backbone taxonomy."
+          },
+          {
+            "name": "taxonRank",
+            "type": "string",
+            "description": "Rank of the identified taxon (SPECIES, GENUS, FAMILY...)."
+          },
+          {
+            "name": "kingdom",
+            "type": "string",
+            "description": "Kingdom of the record."
+          },
+          {
+            "name": "phylum",
+            "type": "string",
+            "description": "Phylum of the record."
+          },
+          {
+            "name": "class",
+            "type": "string",
+            "description": "Class of the record."
+          },
+          {
+            "name": "order",
+            "type": "string",
+            "description": "Order of the record."
+          },
+          {
+            "name": "family",
+            "type": "string",
+            "description": "Family of the record."
+          },
+          {
+            "name": "genus",
+            "type": "string",
+            "description": "Genus of the record."
+          },
+          {
+            "name": "species",
+            "type": "string",
+            "description": "Species binomial."
+          },
+          {
+            "name": "speciesKey",
+            "type": "number",
+            "description": "GBIF occurrence field `speciesKey` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "taxonKey",
+            "type": "number",
+            "description": "GBIF occurrence field `taxonKey` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "acceptedTaxonKey",
+            "type": "number",
+            "description": "GBIF occurrence field `acceptedTaxonKey` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country name as supplied by the publisher."
+          },
+          {
+            "name": "countryCode",
+            "type": "string",
+            "description": "ISO-3166 alpha-2 country code of the record."
+          },
+          {
+            "name": "stateProvince",
+            "type": "string",
+            "description": "GBIF occurrence field `stateProvince` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "locality",
+            "type": "string",
+            "description": "GBIF occurrence field `locality` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "decimalLatitude",
+            "type": "number",
+            "description": "Latitude in decimal degrees (WGS84)."
+          },
+          {
+            "name": "decimalLongitude",
+            "type": "number",
+            "description": "Longitude in decimal degrees (WGS84)."
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "type": "number",
+            "description": "Reported uncertainty of the coordinates, in metres."
+          },
+          {
+            "name": "elevation",
+            "type": "string",
+            "description": "Elevation above sea level in metres."
+          },
+          {
+            "name": "depth",
+            "type": "string",
+            "description": "Depth below sea level in metres."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Year of the observation."
+          },
+          {
+            "name": "month",
+            "type": "number",
+            "description": "Month of the observation."
+          },
+          {
+            "name": "day",
+            "type": "number",
+            "description": "Day of the observation."
+          },
+          {
+            "name": "eventDate",
+            "type": "datetime",
+            "description": "Full event date as recorded."
+          },
+          {
+            "name": "basisOfRecord",
+            "type": "string",
+            "description": "How the record was made (PRESERVED_SPECIMEN, HUMAN_OBSERVATION...)."
+          },
+          {
+            "name": "institutionCode",
+            "type": "string",
+            "description": "GBIF occurrence field `institutionCode` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "collectionCode",
+            "type": "string",
+            "description": "GBIF occurrence field `collectionCode` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "catalogNumber",
+            "type": "string",
+            "description": "GBIF occurrence field `catalogNumber` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "recordedBy",
+            "type": "string",
+            "description": "GBIF occurrence field `recordedBy` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "identifiedBy",
+            "type": "string",
+            "description": "GBIF occurrence field `identifiedBy` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "individualCount",
+            "type": "number",
+            "description": "Number of individuals recorded."
+          },
+          {
+            "name": "sex",
+            "type": "string",
+            "description": "GBIF occurrence field `sex` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "lifeStage",
+            "type": "string",
+            "description": "GBIF occurrence field `lifeStage` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "occurrenceStatus",
+            "type": "string",
+            "description": "GBIF occurrence field `occurrenceStatus` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "establishmentMeans",
+            "type": "string",
+            "description": "GBIF occurrence field `establishmentMeans` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "datasetKey",
+            "type": "string",
+            "description": "GBIF occurrence field `datasetKey` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "datasetName",
+            "type": "string",
+            "description": "Name of the publishing dataset."
+          },
+          {
+            "name": "publishingOrgKey",
+            "type": "string",
+            "description": "GBIF occurrence field `publishingOrgKey` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "license",
+            "type": "string",
+            "description": "Licence under which the record is published."
+          },
+          {
+            "name": "issues",
+            "type": "string",
+            "description": "GBIF data-quality issue flags attached to the record."
+          },
+          {
+            "name": "mediaType",
+            "type": "string",
+            "description": "Media types attached to the record."
+          },
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "GBIF occurrence field `protocol` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "continent",
+            "type": "string",
+            "description": "GBIF occurrence field `continent` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "waterBody",
+            "type": "string",
+            "description": "GBIF occurrence field `waterBody` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "islandGroup",
+            "type": "string",
+            "description": "GBIF occurrence field `islandGroup` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "typeStatus",
+            "type": "string",
+            "description": "GBIF occurrence field `typeStatus` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "lastInterpreted",
+            "type": "datetime",
+            "description": "Timestamp of GBIF's last interpretation of the record."
+          },
+          {
+            "name": "geodeticDatum",
+            "type": "string",
+            "description": "GBIF occurrence field `geodeticDatum` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "higherClassification",
+            "type": "string",
+            "description": "Higher taxonomy string, pipe-separated."
+          },
+          {
+            "name": "occurrenceID",
+            "type": "string",
+            "description": "GBIF occurrence field `occurrenceID` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "taxonConceptID",
+            "type": "string",
+            "description": "GBIF occurrence field `taxonConceptID` (see the GBIF occurrence schema)."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "Northern or Southern hemisphere."
+          },
+          {
+            "name": "abs_latitude",
+            "type": "number",
+            "description": "Absolute latitude, useful for species-richness gradients."
+          },
+          {
+            "name": "is_marine",
+            "type": "boolean",
+            "description": "true when a water body or a depth value is recorded."
+          },
+          {
+            "name": "has_coordinates",
+            "type": "boolean",
+            "description": "true when decimal latitude and longitude are present."
+          },
+          {
+            "name": "has_elevation",
+            "type": "boolean",
+            "description": "true when an elevation value is recorded."
+          },
+          {
+            "name": "has_depth",
+            "type": "boolean",
+            "description": "true when a depth value is recorded."
+          },
+          {
+            "name": "date_completeness",
+            "type": "string",
+            "description": "Whether only the year, the year and month, or a full date is known."
+          },
+          {
+            "name": "record_age_years",
+            "type": "number",
+            "description": "Years between the observation year and the snapshot year."
+          },
+          {
+            "name": "uncertainty_class",
+            "type": "string",
+            "description": "Coordinate-uncertainty band in metres."
+          },
+          {
+            "name": "basis_group",
+            "type": "string",
+            "description": "Coarse record type: specimen, observation, machine observation, fossil, other."
+          },
+          {
+            "name": "is_specimen",
+            "type": "boolean",
+            "description": "true for preserved or living specimen records."
+          },
+          {
+            "name": "is_human_observation",
+            "type": "boolean",
+            "description": "true for human observation records."
+          },
+          {
+            "name": "is_machine_observation",
+            "type": "boolean",
+            "description": "true for sensor/camera records."
+          },
+          {
+            "name": "is_fossil",
+            "type": "boolean",
+            "description": "true for fossil specimen records."
+          },
+          {
+            "name": "n_issues",
+            "type": "number",
+            "description": "Number of data-quality flags GBIF attached to the record."
+          },
+          {
+            "name": "has_issues",
+            "type": "boolean",
+            "description": "true when GBIF flagged at least one quality issue."
+          },
+          {
+            "name": "issues_list",
+            "type": "string",
+            "description": "Semicolon-separated GBIF quality issue flags."
+          },
+          {
+            "name": "n_media",
+            "type": "number",
+            "description": "Number of media items attached to the record."
+          },
+          {
+            "name": "taxon_depth",
+            "type": "number",
+            "description": "Number of taxonomic ranks filled in (kingdom to species), 0-7."
+          },
+          {
+            "name": "is_species_level",
+            "type": "boolean",
+            "description": "true when the record is identified to species rank."
+          },
+          {
+            "name": "country_name",
+            "type": "string",
+            "description": "Country name from the GBIF country dimension."
+          },
+          {
+            "name": "continent_name",
+            "type": "string",
+            "description": "Continent of the recording country."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "UN macro-region of the recording country."
+          },
+          {
+            "name": "subregion",
+            "type": "string",
+            "description": "UN sub-region of the recording country."
+          },
+          {
+            "name": "latitude_band",
+            "type": "string",
+            "description": "Absolute-latitude band."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

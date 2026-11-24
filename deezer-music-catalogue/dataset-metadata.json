@@ -1,0 +1,190 @@
+{
+  "title": "Deezer Music Catalogue Sample",
+  "id": "samyakrajbayar/deezer-music-catalogue",
+  "subtitle": "14,654 tracks with artist, album, duration and popularity",
+  "description": "# Deezer Music Catalogue Sample\n\n**Subtitle:** 14,654 tracks with artist, album, duration, popularity & genre queries\n\n**Tags:** `tabular`, `music`, `audio`\n\n**Dataset File:** `deezer_tracks.csv` (14,654 rows, 31 columns, 8.3 MB)\n\n**Provenance & Source:** Deezer Public API (api.deezer.com)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 20,000 tracks from the Deezer catalogue\n\nDeezer's public search API exposes track metadata without a key. This dataset contains\n**14,654 unique tracks** from **9,098 artists** and **11,306 albums**, with\n**31 parameters** per track.\n\n- **Track** \u2014 id, title, short title, version suffix, duration, popularity rank, explicit flags,\n  preview URL and cover art.\n- **Artist** \u2014 id, name and image URL.\n- **Album** \u2014 id, title and cover URL.\n- **Provenance** \u2014 the search query that surfaced each track (genre, mood, decade or instrument).\n- **Derived** \u2014 duration in minutes and bands, explicit/version/preview flags, title, artist and album\n  name lengths, long/short track flags and popularity band.\n\n**2,432 tracks are explicit**. The query column makes the file usable as a genre and mood\nsample, while duration, popularity and title features support musicology and recommendation work.\n\n## \ud83e\uddfe Columns (31)\n\n`track_id`, `title`, `title_short`, `title_version`, `duration_seconds`, `duration_minutes`, `rank`, `rank_band`, `explicit_lyrics`, `explicit_content_lyrics`, `explicit_content_cover`, `preview_url`, `cover_url`, `artist_id`, `artist_name`, `artist_picture`, `album_id`, `album_title`, `album_cover`, `query`, `duration_band`, `is_explicit`, `has_version`, `has_preview`, `title_length`, `title_word_count`, `artist_name_length`, `album_title_length`, `is_long_track`, `is_short_track`, `is_popular`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Genre landscape** \u2014 track counts and popularity by search query.\n2. **Duration trends** \u2014 has song length changed by genre?\n3. **Explicit content** \u2014 prevalence by genre and artist.\n4. **Title patterns** \u2014 remix/live/version suffixes and title lengths.\n5. **Artist concentration** \u2014 the long tail of artists vs repeat appearances.\n6. **Album structure** \u2014 tracks per album in the sample.\n7. **Popularity vs duration** \u2014 do shorter tracks rank higher?\n8. **Text analysis** \u2014 title word frequencies by genre query.\n9. **Recommendation features** \u2014 a clean track-level feature table.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `deezer_tracks.csv` | 14,654 tracks x 31 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`music`, `deezer`, `tracks`, `audio`, `genres`, `catalogue`, `recommendation`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Deezer public API**, `https://api.deezer.com/search/track`, no key required.\n- **Scope:** the first 200 results for each of 80 genre/mood/decade/instrument queries, deduplicated\n  by track id \u2014 a query-stratified sample, not the full catalogue.\n- **Processing:** nested artist and album objects flattened; duration, popularity and title features\n  derived; the originating query retained.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous.** The catalogue changes as tracks are added and removed.\n\n## \u26a0\ufe0f Caveats\n\n- The sample is query-stratified and capped at 200 results per query, so it is not representative.\n- Deezer's `rank` is a proprietary popularity score, not a play count.\n- Preview URLs expire and may not resolve after the snapshot.\n- Release dates and genres are not returned by the track search endpoint.\n- Duplicate recordings under different ids are possible.\n- Metadata is user/label supplied and can contain inconsistencies.\n- The API is undocumented for bulk use; availability can change.\n\n## \ud83d\udcdc Licence\n\nDeezer metadata is provided for non-commercial use; recordings remain with their rights holders.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `track_id` | `number` | Deezer track id. |\n| 2 | `title` | `string` | Track title. |\n| 3 | `title_short` | `string` | Short title. |\n| 4 | `title_version` | `string` | Version suffix (remix, live, ...). |\n| 5 | `duration_seconds` | `number` | Track duration in seconds. |\n| 6 | `duration_minutes` | `number` | Duration in minutes. |\n| 7 | `rank` | `number` | Deezer popularity rank (higher is more popular). |\n| 8 | `rank_band` | `string` | Popularity band. |\n| 9 | `explicit_lyrics` | `boolean` | true when lyrics are explicit. |\n| 10 | `explicit_content_lyrics` | `number` | Explicit-content code for lyrics. |\n| 11 | `explicit_content_cover` | `number` | Explicit-content code for cover art. |\n| 12 | `preview_url` | `string` | 30-second preview MP3 URL. |\n| 13 | `cover_url` | `string` | Album cover URL. |\n| 14 | `artist_id` | `number` | Artist id. |\n| 15 | `artist_name` | `string` | Artist name. |\n| 16 | `artist_picture` | `string` | Artist image URL. |\n| 17 | `album_id` | `number` | Album id. |\n| 18 | `album_title` | `string` | Album title. |\n| 19 | `album_cover` | `string` | Album cover URL. |\n| 20 | `query` | `string` | Search query that surfaced the track. |\n| 21 | `duration_band` | `string` | Duration band. |\n| 22 | `is_explicit` | `boolean` | true when the track is explicit. |\n| 23 | `has_version` | `boolean` | true when the title has a version suffix. |\n| 24 | `has_preview` | `boolean` | true when a preview URL exists. |\n| 25 | `title_length` | `number` | Characters in the title. |\n| 26 | `title_word_count` | `number` | Words in the title. |\n| 27 | `artist_name_length` | `number` | Characters in the artist name. |\n| 28 | `album_title_length` | `number` | Characters in the album title. |\n| 29 | `is_long_track` | `boolean` | true when longer than six minutes. |\n| 30 | `is_short_track` | `boolean` | true when shorter than two minutes. |\n| 31 | `is_popular` | `boolean` | true when rank is 500,000 or higher. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "music"
+  ],
+  "resources": [
+    {
+      "path": "deezer_tracks.csv",
+      "description": "Primary dataset file containing 14,654 records across 31 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "track_id",
+            "type": "number",
+            "description": "Deezer track id."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Track title."
+          },
+          {
+            "name": "title_short",
+            "type": "string",
+            "description": "Short title."
+          },
+          {
+            "name": "title_version",
+            "type": "string",
+            "description": "Version suffix (remix, live, ...)."
+          },
+          {
+            "name": "duration_seconds",
+            "type": "number",
+            "description": "Track duration in seconds."
+          },
+          {
+            "name": "duration_minutes",
+            "type": "number",
+            "description": "Duration in minutes."
+          },
+          {
+            "name": "rank",
+            "type": "number",
+            "description": "Deezer popularity rank (higher is more popular)."
+          },
+          {
+            "name": "rank_band",
+            "type": "string",
+            "description": "Popularity band."
+          },
+          {
+            "name": "explicit_lyrics",
+            "type": "boolean",
+            "description": "true when lyrics are explicit."
+          },
+          {
+            "name": "explicit_content_lyrics",
+            "type": "number",
+            "description": "Explicit-content code for lyrics."
+          },
+          {
+            "name": "explicit_content_cover",
+            "type": "number",
+            "description": "Explicit-content code for cover art."
+          },
+          {
+            "name": "preview_url",
+            "type": "string",
+            "description": "30-second preview MP3 URL."
+          },
+          {
+            "name": "cover_url",
+            "type": "string",
+            "description": "Album cover URL."
+          },
+          {
+            "name": "artist_id",
+            "type": "number",
+            "description": "Artist id."
+          },
+          {
+            "name": "artist_name",
+            "type": "string",
+            "description": "Artist name."
+          },
+          {
+            "name": "artist_picture",
+            "type": "string",
+            "description": "Artist image URL."
+          },
+          {
+            "name": "album_id",
+            "type": "number",
+            "description": "Album id."
+          },
+          {
+            "name": "album_title",
+            "type": "string",
+            "description": "Album title."
+          },
+          {
+            "name": "album_cover",
+            "type": "string",
+            "description": "Album cover URL."
+          },
+          {
+            "name": "query",
+            "type": "string",
+            "description": "Search query that surfaced the track."
+          },
+          {
+            "name": "duration_band",
+            "type": "string",
+            "description": "Duration band."
+          },
+          {
+            "name": "is_explicit",
+            "type": "boolean",
+            "description": "true when the track is explicit."
+          },
+          {
+            "name": "has_version",
+            "type": "boolean",
+            "description": "true when the title has a version suffix."
+          },
+          {
+            "name": "has_preview",
+            "type": "boolean",
+            "description": "true when a preview URL exists."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "title_word_count",
+            "type": "number",
+            "description": "Words in the title."
+          },
+          {
+            "name": "artist_name_length",
+            "type": "number",
+            "description": "Characters in the artist name."
+          },
+          {
+            "name": "album_title_length",
+            "type": "number",
+            "description": "Characters in the album title."
+          },
+          {
+            "name": "is_long_track",
+            "type": "boolean",
+            "description": "true when longer than six minutes."
+          },
+          {
+            "name": "is_short_track",
+            "type": "boolean",
+            "description": "true when shorter than two minutes."
+          },
+          {
+            "name": "is_popular",
+            "type": "boolean",
+            "description": "true when rank is 500,000 or higher."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

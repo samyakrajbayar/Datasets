@@ -1,0 +1,31 @@
+{
+  "title": "Bike-Share Station Network - North America",
+  "id": "samyakrajbayar/bike-share-stations",
+  "subtitle": "7,167 stations across 7 bike-share systems with docks, location, station type...",
+  "description": "### 7,167 bike-share stations in 7 North American systems\n\nGeneral Bikeshare Feed Specification (GBFS) feeds publish every dock of a bike-share system. This\ndataset merges **7 systems across 7 cities** into one table of **7,167 stations** with\n**33 parameters**.\n\n- **System** \u2014 operator, city, country and station identifiers.\n- **Location** \u2014 latitude, longitude, hemisphere bands, address and region.\n- **Capacity and type** \u2014 docks, capacity band, classic/electric station type and kiosk presence.\n- **Access** \u2014 rental methods, key/credit-card/phone/transit-card/account support, app and web\n  rental links.\n- **Derived** \u2014 method counts, availability flags, electric surcharge waiver, name length.\n\nThe stations represent **137,285 docking points** in total. The table supports network\naccessibility analysis, dock-capacity planning and cross-city comparison of bike-share design.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "bike_share_stations.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

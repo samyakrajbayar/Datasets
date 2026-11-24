@@ -1,0 +1,31 @@
+{
+  "title": "Star Catalogue - HYG Hipparcos/Bright Star/Gliese",
+  "id": "samyakrajbayar/star-catalogue",
+  "subtitle": "119,626 stars with positions, distances, proper motions, spectral types and d...",
+  "description": "### 119,626 stars from the HYG catalogue\n\nThe HYG database merges the Hipparcos, Yale Bright Star and Gliese catalogues into one file with\npositions, distances, motions and spectral types. This dataset contains **119,626 stars** and\n**64 parameters**.\n\n- **Identity** \u2014 HYG id, Hipparcos, HD, HR and Gliese numbers, Bayer/Flamsteed designations and\n  proper names.\n- **Position** \u2014 right ascension, declination, galactic x/y/z and constellation.\n- **Distance and motion** \u2014 parsecs, light years, parallax, proper motions and radial velocity.\n- **Photometry** \u2014 apparent and absolute magnitude, colour index and luminosity.\n- **Derived** \u2014 spectral and luminosity classes, giant/supergiant/dwarf/white-dwarf flags, binary\n  and variable flags, total proper motion and space velocity, magnitude/colour/distance bands, naked-eye\n  and nearby flags and galactic-plane membership.\n\n**465 stars carry a proper name**, **8,921 are naked-eye objects** and **8,744 lie\nwithin 50 parsecs** \u2014 a base table for stellar populations, colour-magnitude diagrams and\nconstellation mapping.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-SA-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "hyg_stars.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

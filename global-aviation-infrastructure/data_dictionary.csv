@@ -1,0 +1,58 @@
+column,data_type,description
+id,number,OurAirports internal airport identifier.
+ident,string,Stable identifier (usually the ICAO code or local code).
+type,string,"Airport type: large_airport, medium_airport, small_airport, heliport, seaplane_base, closed."
+name,string,Airport name.
+latitude_deg,number,Latitude in decimal degrees (WGS84).
+longitude_deg,number,Longitude in decimal degrees (WGS84).
+elevation_ft,number,Elevation above sea level in feet.
+continent,string,"Continent code (AF, AN, AS, EU, NA, OC, SA)."
+iso_country,string,ISO 3166-1 alpha-2 country code.
+iso_region,string,ISO 3166-2 subdivision code.
+municipality,string,City or town served.
+scheduled_service,string,yes/no — whether scheduled commercial service exists.
+icao_code,string,ICAO airport code.
+iata_code,string,IATA airport code.
+gps_code,string,GPS/ICAO code used in navigation databases.
+local_code,string,Local national identifier.
+home_link,string,Official website.
+wikipedia_link,string,Wikipedia article.
+keywords,string,Comma-separated alternative names.
+country_name,string,Country common name (joined from the countries dataset).
+country_region,number,World Bank region of the country.
+country_subregion,number,World Bank subregion.
+elevation_m,number,Elevation in metres.
+hemisphere,string,N/S + E/W hemisphere pair.
+latitude_band,string,10-degree latitude band label.
+longitude_band,string,15-degree longitude band label.
+is_large_airport,boolean,true for large_airport records.
+is_medium_airport,boolean,true for medium_airport records.
+is_small_airport,boolean,true for small_airport records.
+is_heliport,boolean,true for heliports.
+is_seaplane_base,boolean,true for seaplane bases.
+has_iata,boolean,true when an IATA code is present.
+has_icao,boolean,true when an ICAO code is present.
+has_scheduled_service,boolean,true when scheduled_service is yes.
+has_home_link,boolean,true when a website is listed.
+has_wikipedia_link,boolean,true when a Wikipedia article is listed.
+name_length,number,Characters in the airport name.
+keyword_count,number,Number of alternative names.
+runway_count,number,Number of runway records (including closed).
+paved_runway_count,number,Runways with an asphalt/concrete surface.
+unpaved_runway_count,number,Open runways without a paved surface.
+lighted_runway_count,number,Runways flagged as lighted.
+closed_runway_count,number,Runways flagged as closed.
+longest_runway_ft,number,Longest runway length in feet.
+longest_runway_m,number,Longest runway length in metres.
+total_runway_length_ft,number,Sum of all runway lengths in feet.
+avg_runway_length_ft,number,Mean runway length in feet.
+max_runway_width_ft,number,Widest runway in feet.
+runway_surface_types,string,Distinct runway surface strings.
+frequency_count,number,Number of radio frequencies assigned.
+frequency_types,string,"Distinct frequency types (TWR, GND, ATIS, ...)."
+max_frequency_mhz,number,Highest assigned frequency in MHz.
+navaid_count,number,Navigational aids associated with the airport.
+navaid_types,string,Distinct navaid types.
+has_runway,boolean,true when at least one runway is recorded.
+has_frequency,boolean,true when at least one frequency is recorded.
+has_navaid,boolean,true when at least one navaid is associated.

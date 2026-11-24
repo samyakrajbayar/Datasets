@@ -1,0 +1,31 @@
+{
+  "title": "Chicago Food Inspections 2023-2026",
+  "id": "samyakrajbayar/chicago-food-inspections",
+  "subtitle": "71,290 food-establishment inspections with outcomes, violation text, risk cla...",
+  "description": "### 71,290 Chicago food-establishment inspections since 2023\n\nThe City of Chicago publishes every food inspection, the outcome and the violation text. This\ndataset covers inspections since January 2023 with **71,290 records** and **39 parameters**.\n\n- **Establishment** \u2014 DBA and AKA names, licence, facility type and derived facility group, risk\n  class and address.\n- **Inspection** \u2014 id, date, type, result and full violation text (truncated).\n- **Violations** \u2014 numbered violation count, text length and violation band.\n- **Derived** \u2014 pass/fail/conditional flags, complaint/canvass/re-inspection flags, year, month,\n  quarter, weekday, coordinates and coordinate block, name length.\n\n**46,512 inspections passed**, **13,344 failed** and **11,696 were complaint-driven**.\nThe violation text makes this a ready-made NLP corpus for food-safety risk modelling.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "chicago_food_inspections.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

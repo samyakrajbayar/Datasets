@@ -1,0 +1,54 @@
+column,data_type,description
+question_id,number,Stack Overflow question id.
+title,string,Question title.
+body,string,"Question body (HTML, truncated to 8,000 characters)."
+link,string,Canonical question URL.
+score,number,Question score (upvotes minus downvotes).
+view_count,number,Views.
+answer_count,number,Number of answers.
+comment_count,number,Number of comments.
+favorite_count,number,Times bookmarked.
+creation_date,datetime,"Creation timestamp (UTC, ISO)."
+last_activity_date,datetime,Last activity timestamp.
+last_edit_date,datetime,Last edit timestamp.
+closed_date,datetime,"Closure timestamp, where closed."
+closed_reason,string,Reason for closure.
+tags,string,Tags (semicolon-joined).
+owner_name,string,Asker display name.
+owner_reputation,number,Asker reputation at snapshot time.
+owner_user_id,number,Asker user id.
+owner_type,string,"User type (registered, unregistered, ...)."
+is_answered,boolean,true when the question has an accepted or upvoted answer.
+accepted_answer_id,number,"Accepted answer id, where present."
+bounty_amount,number,"Bounty amount, where one was offered."
+content_license,string,Content licence.
+protected_date,datetime,Date the question was protected.
+body_length,number,Characters in the HTML body.
+body_text_length,number,Characters after stripping HTML tags.
+code_block_count,number,Number of `<code>` blocks.
+link_count,number,Number of hyperlinks in the body.
+image_count,number,Number of images in the body.
+tag_count,number,Number of tags.
+has_accepted_answer,boolean,true when an answer was accepted.
+is_closed,boolean,true when the question is closed.
+has_bounty,boolean,true when a bounty was offered.
+has_body,boolean,true when the body is non-empty.
+has_owner,boolean,true when the asker is known.
+has_edit,boolean,true when the question was edited.
+title_length,number,Characters in the title.
+title_word_count,number,Words in the title.
+is_title_question,boolean,true when the title ends with a question mark.
+answer_rate,number,"Answers per 1,000 views."
+score_per_view,number,Score divided by views.
+age_days,number,Days between creation and 2026-11-22.
+year,number,Creation year.
+month,number,Creation month.
+hour,number,Creation hour (UTC).
+day_of_week,string,Creation weekday.
+is_weekend,boolean,true for Saturday/Sunday.
+is_python,boolean,true when tagged python.
+is_javascript,boolean,true when tagged javascript.
+is_java,boolean,true when tagged java.
+is_csharp,boolean,true when tagged c#.
+is_sql,boolean,true when tagged sql.
+is_php,boolean,true when tagged php.

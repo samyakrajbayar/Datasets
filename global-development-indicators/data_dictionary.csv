@@ -1,0 +1,80 @@
+column,data_type,description
+iso3,string,World Bank / ISO 3166-1 alpha-3 country code.
+country_name,string,Country name as used by the World Bank.
+country_iso2,string,ISO 3166-1 alpha-2 code.
+year,number,Calendar year of the observation.
+region,string,World Bank region.
+income_level,string,"World Bank income group (High, Upper middle, Lower middle, Low)."
+lending_type,string,World Bank lending category.
+capital_city,string,Capital city.
+latitude,number,Country centroid latitude.
+longitude,number,Country centroid longitude.
+population_total,number,Total population.
+population_growth_pct,number,Annual population growth rate (%).
+population_0_14_pct,number,Population aged 0-14 (% of total).
+population_15_64_pct,number,Population aged 15-64 (% of total).
+population_65plus_pct,number,Population aged 65+ (% of total).
+life_expectancy_years,number,"Life expectancy at birth, total (years)."
+life_expectancy_female_years,number,"Life expectancy at birth, female (years)."
+life_expectancy_male_years,number,"Life expectancy at birth, male (years)."
+infant_mortality_per_1000,number,"Infant mortality per 1,000 live births."
+fertility_rate,number,"Fertility rate, total births per woman."
+birth_rate_per_1000,number,"Crude birth rate per 1,000 people."
+death_rate_per_1000,number,"Crude death rate per 1,000 people."
+urban_population_pct,number,Urban population (% of total).
+population_density_per_km2,number,Population density (people per sq. km).
+gdp_current_usd,number,GDP at current prices (US$).
+gdp_per_capita_usd,number,GDP per capita (current US$).
+gdp_growth_pct,number,GDP growth (annual %).
+gdp_constant_2015_usd,number,GDP at constant 2015 prices (US$).
+manufacturing_value_added_pct,number,Manufacturing value added (% of GDP).
+agriculture_value_added_pct,number,Agriculture value added (% of GDP).
+services_value_added_pct,number,Services value added (% of GDP).
+exports_gdp_pct,number,Exports of goods and services (% of GDP).
+imports_gdp_pct,number,Imports of goods and services (% of GDP).
+trade_gdp_pct,number,Trade (% of GDP).
+fdi_inflow_usd,number,"Foreign direct investment, net inflows (US$)."
+central_govt_debt_pct,number,Central government debt (% of GDP).
+tax_revenue_pct,number,Tax revenue (% of GDP).
+govt_expense_pct,number,Expense (% of GDP).
+gini_index,number,Gini index (0-100).
+poverty_2_15_per_day_pct,number,"Poverty headcount at $2.15/day (2017 PPP, %)."
+unemployment_pct,number,"Unemployment, total (% of labour force)."
+labour_force_participation_pct,number,Labour force participation rate (%).
+employment_ratio_pct,number,Employment to population ratio (%).
+primary_enrolment_pct,number,"School enrolment, primary (% gross)."
+secondary_enrolment_pct,number,"School enrolment, secondary (% gross)."
+tertiary_enrolment_pct,number,"School enrolment, tertiary (% gross)."
+education_spend_pct,number,Government expenditure on education (% of GDP).
+literacy_rate_pct,number,Adult literacy rate (% of people aged 15+).
+health_spend_pct,number,Current health expenditure (% of GDP).
+health_spend_per_capita_usd,number,Current health expenditure per capita (US$).
+hospital_beds_per_1000,number,"Hospital beds per 1,000 people."
+physicians_per_1000,number,"Physicians per 1,000 people."
+measles_immunisation_pct,number,"Immunisation, measles (% of children 12-23 months)."
+maternal_mortality_per_100k,number,"Maternal mortality ratio per 100,000 live births."
+tuberculosis_per_100k,number,"Incidence of tuberculosis per 100,000 people."
+hiv_incidence_per_1000,number,"HIV incidence per 1,000 uninfected population."
+forest_area_pct,number,Forest area (% of land area).
+agricultural_land_pct,number,Agricultural land (% of land area).
+cereal_yield_kg_per_ha,number,Cereal yield (kg per hectare).
+freshwater_withdrawal_pct,number,Annual freshwater withdrawals (% of internal resources).
+electricity_access_pct,number,Access to electricity (% of population).
+energy_use_per_capita_kg,number,Energy use per capita (kg of oil equivalent).
+renewable_energy_pct,number,Renewable energy consumption (% of final energy).
+internet_users_pct,number,Individuals using the Internet (% of population).
+mobile_subscriptions_per_100,number,Mobile cellular subscriptions per 100 people.
+urban_population,number,Urban population (population x urban share).
+rural_population_pct,number,100 - urban population share.
+log10_gdp,number,log10 of GDP in current US$.
+log10_gdp_per_capita,number,log10 of GDP per capita.
+youth_dependency_ratio,number,Population 0-14 / population 15-64 x 100.
+old_age_dependency_ratio,number,Population 65+ / population 15-64 x 100.
+life_expectancy_gap_years,number,Female minus male life expectancy.
+electricity_access_gap_pct,number,100 - electricity access share.
+internet_nonusers_pct,number,100 - internet user share.
+health_spend_per_person_day_usd,number,Health spend per capita divided by 365.
+is_high_income,boolean,true for World Bank high-income countries.
+is_low_income,boolean,true for World Bank low-income countries.
+indicators_present,number,How many of the 55 indicators are non-null for this row.
+indicator_completeness_pct,number,indicators_present as a percentage of 55.

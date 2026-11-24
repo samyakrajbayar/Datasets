@@ -1,0 +1,245 @@
+{
+  "title": "Formula 1 Race Results",
+  "id": "samyakrajbayar/formula1-race-results",
+  "subtitle": "25,000 F1 race results with lap times, points and driver stats",
+  "description": "# Formula 1 Race Results 1950-2026\n\n**Subtitle:** 26,335 driver-race results with grid, finish, points & constructor data\n\n**Tags:** `tabular`, `sports`, `racing`\n\n**Dataset File:** `f1_results.csv` (26,335 rows, 42 columns, 6.9 MB)\n\n**Provenance & Source:** Jolpica F1 API (Ergast-compatible)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every Formula 1 race result, 1950\u20132026\n\nThe Jolpica API mirrors the Ergast Formula 1 database. This dataset expands **26,335 driver-race\nresults** across **77 seasons**, **820 drivers**, every circuit and constructor, with\n**42 parameters** per result.\n\n- **Race** \u2014 season, round, Grand Prix name, date and time, circuit id/name, locality, country and\n  coordinates.\n- **Driver** \u2014 id, code, permanent number, name, nationality.\n- **Constructor** \u2014 id, name and nationality.\n- **Result** \u2014 grid, finishing position and text, classification order, points, laps, status, total\n  time, fastest-lap rank/time/speed.\n- **Derived** \u2014 win/podium/points/finish/pole flags, grid delta, points per lap, finishing band,\n  decade and (where a birth date is available) driver age.\n\n**1,173 race wins** are included. The table supports driver and constructor comparisons, circuit\nanalysis, reliability studies and historical trends going back to the first world championship.\n\n## \ud83e\uddfe Columns (42)\n\n`season`, `round`, `race_name`, `race_date`, `race_time`, `circuit_id`, `circuit_name`, `locality`, `country`, `latitude`, `longitude`, `driver_id`, `driver_code`, `permanent_number`, `first_name`, `last_name`, `driver_nationality`, `constructor_id`, `constructor_name`, `constructor_nationality`, `grid`, `position`, `position_text`, `position_order`, `points`, `laps`, `status`, `finish_time_millis`, `finish_time`, `fastest_lap_rank`, `fastest_lap_time`, `fastest_lap_speed_kph`, `is_win`, `is_podium`, `is_points_finish`, `is_finished`, `is_pole`, `grid_delta`, `points_per_lap`, `position_band`, `driver_age_at_race`, `decade`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Driver rankings** \u2014 wins, podiums and points per start, adjusted for era.\n2. **Constructor dominance** \u2014 team performance by decade.\n3. **Grid to finish** \u2014 which circuits produce the most overtaking?\n4. **Reliability** \u2014 retirement causes by era and team.\n5. **Home advantage** \u2014 driver performance in their home country.\n6. **Circuit characteristics** \u2014 fastest-lap speeds and race times by circuit.\n7. **Points systems** \u2014 normalise points across the many scoring regimes.\n8. **Teammate battles** \u2014 compare drivers within the same constructor-season.\n9. **Age curves** \u2014 performance vs age for drivers with known birth dates.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `f1_results.csv` | 26,335 results x 42 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`formula-1`, `motorsport`, `racing`, `sports`, `results`, `historical`, `drivers`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Jolpica F1 API** (Ergast-compatible),\n  `https://api.jolpi.ca/ergast/f1/results.json`, paginated 1,000 results at a time.\n- **Scope:** every result in the database from the 1950 season through the 2026 season to date.\n- **Processing:** nested race, circuit, driver, constructor, time and fastest-lap objects flattened;\n  win/podium/finish/pole flags, grid delta and rates derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**After each Grand Prix.** Jolpica updates results during race weekends.\n\n## \u26a0\ufe0f Caveats\n\n- Older races have less complete data (no fastest-lap speed, no grid in some early events).\n- The points system changed many times; raw points are not comparable across eras.\n- `grid = 0` means a pit-lane start, not pole position.\n- Status strings are free text and change over time.\n- Driver birth dates are not included by this endpoint, so age is usually blank.\n- The 2026 season is partial at the snapshot date.\n- Jolpica is a community mirror of Ergast; occasional gaps are possible.\n\n## \ud83d\udcdc Licence\n\nErgast/Jolpica data is open; Formula 1 trademarks belong to their owners.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `season` | `number` | Championship season. |\n| 2 | `round` | `number` | Round number within the season. |\n| 3 | `race_name` | `string` | Grand Prix name. |\n| 4 | `race_date` | `date` | Race date. |\n| 5 | `race_time` | `string` | Scheduled start time (UTC), where published. |\n| 6 | `circuit_id` | `string` | Circuit identifier. |\n| 7 | `circuit_name` | `string` | Circuit name. |\n| 8 | `locality` | `string` | Circuit locality. |\n| 9 | `country` | `string` | Circuit country. |\n| 10 | `latitude` | `number` | Circuit latitude. |\n| 11 | `longitude` | `number` | Circuit longitude. |\n| 12 | `driver_id` | `string` | Driver identifier. |\n| 13 | `driver_code` | `string` | Three-letter driver code. |\n| 14 | `permanent_number` | `number` | Permanent driver number (modern era). |\n| 15 | `first_name` | `string` | Driver first name. |\n| 16 | `last_name` | `string` | Driver last name. |\n| 17 | `driver_nationality` | `string` | Driver nationality. |\n| 18 | `constructor_id` | `string` | Constructor identifier. |\n| 19 | `constructor_name` | `string` | Constructor name. |\n| 20 | `constructor_nationality` | `string` | Constructor nationality. |\n| 21 | `grid` | `number` | Starting grid position (0 = pit lane). |\n| 22 | `position` | `number` | Finishing position, where classified. |\n| 23 | `position_text` | `string` | Finishing position as text (R = retired, D = disqualified, ...). |\n| 24 | `position_order` | `number` | Official classification order. |\n| 25 | `points` | `number` | Championship points scored. |\n| 26 | `laps` | `number` | Laps completed. |\n| 27 | `status` | `string` | Finish status (Finished, Accident, Engine, ...). |\n| 28 | `finish_time_millis` | `number` | Total race time in milliseconds. |\n| 29 | `finish_time` | `string` | Total race time as text. |\n| 30 | `fastest_lap_rank` | `number` | Rank of the driver's fastest lap. |\n| 31 | `fastest_lap_time` | `string` | Driver's fastest lap time. |\n| 32 | `fastest_lap_speed_kph` | `number` | Driver's fastest lap average speed. |\n| 33 | `is_win` | `boolean` | true for a race win. |\n| 34 | `is_podium` | `boolean` | true for a top-three finish. |\n| 35 | `is_points_finish` | `boolean` | true when points were scored. |\n| 36 | `is_finished` | `boolean` | true when the car was classified as finished. |\n| 37 | `is_pole` | `boolean` | true when starting from first on the grid. |\n| 38 | `grid_delta` | `number` | Grid position minus finishing position (positive = gained places). |\n| 39 | `points_per_lap` | `number` | Points divided by laps completed. |\n| 40 | `position_band` | `string` | Finishing-position band. |\n| 41 | `driver_age_at_race` | `number` | Driver age at the race date, where birth date is known. |\n| 42 | `decade` | `number` | Season decade. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "sports"
+  ],
+  "resources": [
+    {
+      "path": "f1_results.csv",
+      "description": "Primary dataset file containing 26,335 records across 42 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "season",
+            "type": "number",
+            "description": "Championship season."
+          },
+          {
+            "name": "round",
+            "type": "number",
+            "description": "Round number within the season."
+          },
+          {
+            "name": "race_name",
+            "type": "string",
+            "description": "Grand Prix name."
+          },
+          {
+            "name": "race_date",
+            "type": "date",
+            "description": "Race date."
+          },
+          {
+            "name": "race_time",
+            "type": "string",
+            "description": "Scheduled start time (UTC), where published."
+          },
+          {
+            "name": "circuit_id",
+            "type": "string",
+            "description": "Circuit identifier."
+          },
+          {
+            "name": "circuit_name",
+            "type": "string",
+            "description": "Circuit name."
+          },
+          {
+            "name": "locality",
+            "type": "string",
+            "description": "Circuit locality."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Circuit country."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Circuit latitude."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Circuit longitude."
+          },
+          {
+            "name": "driver_id",
+            "type": "string",
+            "description": "Driver identifier."
+          },
+          {
+            "name": "driver_code",
+            "type": "string",
+            "description": "Three-letter driver code."
+          },
+          {
+            "name": "permanent_number",
+            "type": "number",
+            "description": "Permanent driver number (modern era)."
+          },
+          {
+            "name": "first_name",
+            "type": "string",
+            "description": "Driver first name."
+          },
+          {
+            "name": "last_name",
+            "type": "string",
+            "description": "Driver last name."
+          },
+          {
+            "name": "driver_nationality",
+            "type": "string",
+            "description": "Driver nationality."
+          },
+          {
+            "name": "constructor_id",
+            "type": "string",
+            "description": "Constructor identifier."
+          },
+          {
+            "name": "constructor_name",
+            "type": "string",
+            "description": "Constructor name."
+          },
+          {
+            "name": "constructor_nationality",
+            "type": "string",
+            "description": "Constructor nationality."
+          },
+          {
+            "name": "grid",
+            "type": "number",
+            "description": "Starting grid position (0 = pit lane)."
+          },
+          {
+            "name": "position",
+            "type": "number",
+            "description": "Finishing position, where classified."
+          },
+          {
+            "name": "position_text",
+            "type": "string",
+            "description": "Finishing position as text (R = retired, D = disqualified, ...)."
+          },
+          {
+            "name": "position_order",
+            "type": "number",
+            "description": "Official classification order."
+          },
+          {
+            "name": "points",
+            "type": "number",
+            "description": "Championship points scored."
+          },
+          {
+            "name": "laps",
+            "type": "number",
+            "description": "Laps completed."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "Finish status (Finished, Accident, Engine, ...)."
+          },
+          {
+            "name": "finish_time_millis",
+            "type": "number",
+            "description": "Total race time in milliseconds."
+          },
+          {
+            "name": "finish_time",
+            "type": "string",
+            "description": "Total race time as text."
+          },
+          {
+            "name": "fastest_lap_rank",
+            "type": "number",
+            "description": "Rank of the driver's fastest lap."
+          },
+          {
+            "name": "fastest_lap_time",
+            "type": "string",
+            "description": "Driver's fastest lap time."
+          },
+          {
+            "name": "fastest_lap_speed_kph",
+            "type": "number",
+            "description": "Driver's fastest lap average speed."
+          },
+          {
+            "name": "is_win",
+            "type": "boolean",
+            "description": "true for a race win."
+          },
+          {
+            "name": "is_podium",
+            "type": "boolean",
+            "description": "true for a top-three finish."
+          },
+          {
+            "name": "is_points_finish",
+            "type": "boolean",
+            "description": "true when points were scored."
+          },
+          {
+            "name": "is_finished",
+            "type": "boolean",
+            "description": "true when the car was classified as finished."
+          },
+          {
+            "name": "is_pole",
+            "type": "boolean",
+            "description": "true when starting from first on the grid."
+          },
+          {
+            "name": "grid_delta",
+            "type": "number",
+            "description": "Grid position minus finishing position (positive = gained places)."
+          },
+          {
+            "name": "points_per_lap",
+            "type": "number",
+            "description": "Points divided by laps completed."
+          },
+          {
+            "name": "position_band",
+            "type": "string",
+            "description": "Finishing-position band."
+          },
+          {
+            "name": "driver_age_at_race",
+            "type": "number",
+            "description": "Driver age at the race date, where birth date is known."
+          },
+          {
+            "name": "decade",
+            "type": "number",
+            "description": "Season decade."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,225 @@
+{
+  "title": "Holocene Volcanoes of the World",
+  "id": "samyakrajbayar/holocene-volcanoes",
+  "subtitle": "Global Holocene volcanoes with eruption history, morphology and coordinates",
+  "description": "# Holocene Volcanoes of the World\n\n**Subtitle:** Global Holocene volcanoes with eruption history, morphology and coordinates\n\n**Tags:** `geology`, `volcanoes`, `earth-science`, `natural-hazards`, `geospatial`, `environment`, `disaster`, `science`, `tabular`, `clustering`\n\n**Dataset File:** `volcanoes.csv` (1,221 rows, 38 columns, 1.9 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every volcano active in the Holocene\n\nThe Smithsonian Institution's **Global Volcanism Program** maintains the definitive catalogue of the\nworld's volcanoes. This dataset exports its Holocene layer as a flat table: **1,209 volcanoes** with\n**38 parameters** each, covering eruptive history, morphology, tectonics, location and\nphotography.\n\nEach row contains:\n- **Identity** \u2014 GVP volcano number (a stable 6-digit id) and name.\n- **Morphology** \u2014 primary volcano type, broader landform and dominant rock type.\n- **Eruption history** \u2014 last eruption year (negative for BCE), a CE/BCE display string, decade,\n  recency class, years since the last eruption, the evidence category for the Holocene date and a dated flag.\n- **Tectonics and geology** \u2014 tectonic setting, subduction-zone flag, geologic epoch and a full-text\n  geological summary.\n- **Geography** \u2014 latitude, longitude, summit elevation, country and ISO-3 code, volcanic region and\n  sub-region, continent, UN sub-region, hemisphere, latitude band and elevation band.\n- **Media** \u2014 link, caption and photographer credit for the primary photograph, plus a photo flag.\n\n**579 volcanoes have erupted since 1500** and **360 have no dated eruption at all** \u2014 a spread\nthat makes the file useful for hazard ranking, spatial statistics and text analysis of the summaries.\n\n## \ud83e\uddfe Columns (38)\n\n`volcano_number`, `volcano_name`, `primary_volcano_type`, `volcanic_landform`, `last_eruption_year`, `country`, `region`, `subregion`, `latitude`, `longitude`, `elevation_m`, `tectonic_setting`, `geologic_epoch`, `evidence_category`, `major_rock_type`, `geological_summary`, `primary_photo_link`, `primary_photo_caption`, `primary_photo_credit`, `country_cca3`, `continent`, `un_region`, `hemisphere`, `abs_latitude`, `latitude_band`, `elevation_band`, `volcano_type_group`, `is_subduction_zone`, `is_holocene_dated`, `eruption_year_display`, `years_since_last_eruption`, `last_eruption_decade`, `eruption_recency_class`, `is_historical_eruption`, `is_undated`, `summary_length`, `has_photo`, `name_word_count`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Ring of Fire** \u2014 map volcanoes by longitude/hemisphere and confirm the Pacific arc structure.\n2. **Elevation vs latitude** \u2014 do high volcanoes cluster in the tropics and subtropics?\n3. **Hazard ranking** \u2014 combine recency, elevation, population proximity (join with the cities dataset) and type.\n4. **Volcano morphology** \u2014 type frequency by tectonic setting; stratovolcanoes versus shields.\n5. **Submarine volcanism** \u2014 negative elevations and their spatial distribution.\n6. **Spatial clustering** \u2014 DBSCAN over coordinates to recover volcanic arcs without using the region labels.\n7. **Text analysis** \u2014 `geological_summary` is several sentences of expert prose; extract rock types, ages and hazard words.\n8. **Dating quality** \u2014 how the `evidence_category` mix differs between regions.\n9. **Country exposure** \u2014 volcanoes per country and per unit area, joined to population.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `volcanoes.csv` | 1,209 volcanoes x 38 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: Ring of Fire map, elevation, eruption recency. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`geology`, `volcanoes`, `earth-science`, `natural-hazards`, `geospatial`, `environment`, `disaster`, `science`, `tabular`, `clustering`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Smithsonian Institution Global Volcanism Program**, `Volcanoes of the World`\n  database, served as a WFS layer from `webservices.volcano.si.edu`\n  (`GVP-VOTW:Smithsonian_VOTW_Holocene_Volcanoes`).\n- **Query:** single GeoJSON feature collection request, no filtering.\n- **Transformation:** GVP property names renamed to snake_case, coordinates taken from the geometry-verified\n  latitude/longitude properties, and 21 derived columns added.\n- **Context join:** country ISO-3, continent and UN region from the World Bank-backed countries table in\n  this repository.\n- **Snapshot date:** 20 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Rarely.** The GVP revises the catalogue a few times a year as eruptions are dated and new volcanoes are added; re-run `scripts/19_volcanoes.py` annually at most.\n\n## \u26a0\ufe0f Caveats\n\n- `last_eruption_year` is negative for BCE dates and empty when the eruption is undated; it is not a usable continuous variable without care.\n- The Holocene window is ~11,700 years, so 'last eruption' spans a huge range of dating precision.\n- Submarine volcanoes have negative summit elevations.\n- The `geological_summary` field contains embedded newlines and long prose; parse it as text, not as CSV-safe short values.\n- Country names follow GVP conventions and a few do not map cleanly to ISO-3 codes.\n- Photos are credited individually \u2014 the `primary_photo_credit` column must be preserved if images are reused.\n\n## \ud83d\udcdc Licence\n\nSmithsonian Institution Global Volcanism Program data are free to use for non-commercial research and education with attribution to the GVP and to individual photographers for images.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `volcano_number` | `number` | Smithsonian Global Volcanism Program volcano number. |\n| 2 | `volcano_name` | `string` | Volcano name. |\n| 3 | `primary_volcano_type` | `string` | Primary morphological type (Stratovolcano(es), Shield, Caldera...). |\n| 4 | `volcanic_landform` | `string` | Broader landform classification. |\n| 5 | `last_eruption_year` | `number` | Year of the last known eruption; negative values are BCE, empty means undated. |\n| 6 | `country` | `string` | Country as recorded by the GVP. |\n| 7 | `region` | `string` | Volcanic region. |\n| 8 | `subregion` | `string` | Volcanic sub-region (usually the specific arc). |\n| 9 | `latitude` | `number` | Latitude in decimal degrees. |\n| 10 | `longitude` | `number` | Longitude in decimal degrees. |\n| 11 | `elevation_m` | `number` | Summit elevation in metres (negative for submarine volcanoes). |\n| 12 | `tectonic_setting` | `string` | Tectonic setting of the volcano. |\n| 13 | `geologic_epoch` | `string` | Geologic epoch of the volcano's formation. |\n| 14 | `evidence_category` | `string` | How the Holocene age of the last eruption is evidenced. |\n| 15 | `major_rock_type` | `string` | Dominant rock type(s). |\n| 16 | `geological_summary` | `string` | Free-text geological summary from the GVP. |\n| 17 | `primary_photo_link` | `string` | URL of the primary photograph. |\n| 18 | `primary_photo_caption` | `string` | Caption of the primary photograph. |\n| 19 | `primary_photo_credit` | `string` | Photographer credit for the primary photograph. |\n| 20 | `country_cca3` | `string` | ISO-3166 alpha-3 code of the volcano's country. |\n| 21 | `continent` | `string` | Continent of the volcano's country. |\n| 22 | `un_region` | `string` | UN macro-region of the country. |\n| 23 | `hemisphere` | `string` | Northern or Southern hemisphere. |\n| 24 | `abs_latitude` | `number` | Absolute latitude, for latitude-band analysis. |\n| 25 | `latitude_band` | `string` | 10-degree latitude band. |\n| 26 | `elevation_band` | `string` | Elevation band from submarine to high-Andean. |\n| 27 | `volcano_type_group` | `string` | Coarse type: Stratovolcano, Shield, Caldera, Complex, Cone, Fissure, Submarine, Other. |\n| 28 | `is_subduction_zone` | `boolean` | true when the tectonic setting involves subduction. |\n| 29 | `is_holocene_dated` | `boolean` | true when the last eruption is dated rather than only inferred. |\n| 30 | `eruption_year_display` | `string` | Last eruption year rendered as CE or BCE. |\n| 31 | `years_since_last_eruption` | `number` | Years between the last eruption and 2026 (negative is impossible; empty if undated). |\n| 32 | `last_eruption_decade` | `string` | Decade of the last eruption. |\n| 33 | `eruption_recency_class` | `string` | Historical (since 1500), Holocene (10k years), Pleistocene, or undated. |\n| 34 | `is_historical_eruption` | `boolean` | true when the last eruption is documented history (year >= 1500). |\n| 35 | `is_undated` | `boolean` | true when no last-eruption year is recorded. |\n| 36 | `summary_length` | `number` | Length of the geological summary text in characters. |\n| 37 | `has_photo` | `boolean` | true when a primary photograph is linked. |\n| 38 | `name_word_count` | `number` | Number of words in the volcano name. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "volcanoes.csv",
+      "description": "Primary data file containing 1,221 records across 38 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "volcano_number",
+            "type": "number",
+            "description": "Smithsonian Global Volcanism Program volcano number."
+          },
+          {
+            "name": "volcano_name",
+            "type": "string",
+            "description": "Volcano name."
+          },
+          {
+            "name": "primary_volcano_type",
+            "type": "string",
+            "description": "Primary morphological type (Stratovolcano(es), Shield, Caldera...)."
+          },
+          {
+            "name": "volcanic_landform",
+            "type": "string",
+            "description": "Broader landform classification."
+          },
+          {
+            "name": "last_eruption_year",
+            "type": "number",
+            "description": "Year of the last known eruption; negative values are BCE, empty means undated."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country as recorded by the GVP."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "Volcanic region."
+          },
+          {
+            "name": "subregion",
+            "type": "string",
+            "description": "Volcanic sub-region (usually the specific arc)."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude in decimal degrees."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude in decimal degrees."
+          },
+          {
+            "name": "elevation_m",
+            "type": "number",
+            "description": "Summit elevation in metres (negative for submarine volcanoes)."
+          },
+          {
+            "name": "tectonic_setting",
+            "type": "string",
+            "description": "Tectonic setting of the volcano."
+          },
+          {
+            "name": "geologic_epoch",
+            "type": "string",
+            "description": "Geologic epoch of the volcano's formation."
+          },
+          {
+            "name": "evidence_category",
+            "type": "string",
+            "description": "How the Holocene age of the last eruption is evidenced."
+          },
+          {
+            "name": "major_rock_type",
+            "type": "string",
+            "description": "Dominant rock type(s)."
+          },
+          {
+            "name": "geological_summary",
+            "type": "string",
+            "description": "Free-text geological summary from the GVP."
+          },
+          {
+            "name": "primary_photo_link",
+            "type": "string",
+            "description": "URL of the primary photograph."
+          },
+          {
+            "name": "primary_photo_caption",
+            "type": "string",
+            "description": "Caption of the primary photograph."
+          },
+          {
+            "name": "primary_photo_credit",
+            "type": "string",
+            "description": "Photographer credit for the primary photograph."
+          },
+          {
+            "name": "country_cca3",
+            "type": "string",
+            "description": "ISO-3166 alpha-3 code of the volcano's country."
+          },
+          {
+            "name": "continent",
+            "type": "string",
+            "description": "Continent of the volcano's country."
+          },
+          {
+            "name": "un_region",
+            "type": "string",
+            "description": "UN macro-region of the country."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "Northern or Southern hemisphere."
+          },
+          {
+            "name": "abs_latitude",
+            "type": "number",
+            "description": "Absolute latitude, for latitude-band analysis."
+          },
+          {
+            "name": "latitude_band",
+            "type": "string",
+            "description": "10-degree latitude band."
+          },
+          {
+            "name": "elevation_band",
+            "type": "string",
+            "description": "Elevation band from submarine to high-Andean."
+          },
+          {
+            "name": "volcano_type_group",
+            "type": "string",
+            "description": "Coarse type: Stratovolcano, Shield, Caldera, Complex, Cone, Fissure, Submarine, Other."
+          },
+          {
+            "name": "is_subduction_zone",
+            "type": "boolean",
+            "description": "true when the tectonic setting involves subduction."
+          },
+          {
+            "name": "is_holocene_dated",
+            "type": "boolean",
+            "description": "true when the last eruption is dated rather than only inferred."
+          },
+          {
+            "name": "eruption_year_display",
+            "type": "string",
+            "description": "Last eruption year rendered as CE or BCE."
+          },
+          {
+            "name": "years_since_last_eruption",
+            "type": "number",
+            "description": "Years between the last eruption and 2026 (negative is impossible; empty if undated)."
+          },
+          {
+            "name": "last_eruption_decade",
+            "type": "string",
+            "description": "Decade of the last eruption."
+          },
+          {
+            "name": "eruption_recency_class",
+            "type": "string",
+            "description": "Historical (since 1500), Holocene (10k years), Pleistocene, or undated."
+          },
+          {
+            "name": "is_historical_eruption",
+            "type": "boolean",
+            "description": "true when the last eruption is documented history (year >= 1500)."
+          },
+          {
+            "name": "is_undated",
+            "type": "boolean",
+            "description": "true when no last-eruption year is recorded."
+          },
+          {
+            "name": "summary_length",
+            "type": "number",
+            "description": "Length of the geological summary text in characters."
+          },
+          {
+            "name": "has_photo",
+            "type": "boolean",
+            "description": "true when a primary photograph is linked."
+          },
+          {
+            "name": "name_word_count",
+            "type": "number",
+            "description": "Number of words in the volcano name."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

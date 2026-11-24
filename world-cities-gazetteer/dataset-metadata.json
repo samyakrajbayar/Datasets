@@ -1,0 +1,250 @@
+{
+  "title": "World Cities Gazetteer",
+  "id": "samyakrajbayar/world-cities-gazetteer",
+  "subtitle": "34,248 cities above 15,000 people with admin divisions and national statistics",
+  "description": "# World Cities Gazetteer\n\n**Subtitle:** 34,248 cities above 15,000 people with admin divisions and national statistics\n\n**Tags:** `cities`, `urbanization`, `geography`, `population`, `geospatial`, `demography`, `world`, `geonames`, `tabular`, `clustering`\n\n**Dataset File:** `cities.csv` (34,248 rows, 43 columns, 14.6 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every city on Earth with more than 15,000 people\n\nA gazetteer of **34,248 cities** in **244 countries** and territories, exported from\nGeoNames and enriched with national statistics, administrative names and derived urban features \u2014\n**43 parameters per city**.\n\nEach row gives:\n- **Identity** \u2014 GeoNames id, name, ASCII name, full alternative-name list, feature class and feature code.\n- **Location** \u2014 latitude and longitude, elevation from records and from a digital elevation model, IANA\n  time zone and the last modification date.\n- **Administration** \u2014 ISO country code, alternate country codes for border towns, and the codes and\n  resolved name for the first-level administrative division, plus second-, third- and fourth-level codes.\n- **Status** \u2014 whether the city is the national capital (**241 capitals**), a first-level\n  administrative capital, or an ordinary populated place.\n- **Population** \u2014 city population, a population band, the city's share of its country's population and\n  its rank within that country.\n- **National context** \u2014 country name, continent, UN region and sub-region, total population, area,\n  population density, urbanisation rate and GDP per capita.\n- **Geometry and language** \u2014 hemisphere, latitude band, elevation band, distance to the capital,\n  alternative-name count, name length and a diacritics flag.\n\nThe alternative-name count is a surprisingly good proxy for international prominence, and the\ncapital-distance column lets you measure how primate a country's urban system is.\n\n## \ud83e\uddfe Columns (43)\n\n`geonameid`, `name`, `asciiname`, `alternatenames`, `latitude`, `longitude`, `feature_class`, `feature_code`, `country_code`, `cc2`, `admin1_code`, `admin2_code`, `admin3_code`, `admin4_code`, `population`, `elevation_m`, `dem_m`, `timezone`, `modification_date`, `country_name`, `continent`, `region`, `subregion`, `admin1_name`, `is_capital`, `is_admin_capital`, `hemisphere`, `latitude_band`, `population_class`, `population_share_country_pct`, `country_urban_pct`, `country_population`, `country_area_km2`, `country_pop_density_per_km2`, `city_rank_in_country`, `alt_names_count`, `name_length`, `has_diacritics`, `distance_to_capital_km`, `timezone_region`, `utc_offset_hours`, `elevation_band`, `gdp_per_capita_usd`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Urban hierarchy** \u2014 Zipf's law: rank versus population within each country.\n2. **Primacy** \u2014 share of the largest city in national population, and how far the second city lags.\n3. **Megacity map** \u2014 plot all cities over 5 million with a population-weighted scatter.\n4. **Coastal vs inland** \u2014 with elevation and distance-to-capital, classify settlement patterns.\n5. **Name linguistics** \u2014 diacritics, name length and alternative-name counts by region.\n6. **Capital effect** \u2014 does distance to the capital predict a city's population rank?\n7. **Country clustering** \u2014 build an urban profile per country (mean city size, primacy, density) and cluster.\n8. **Geospatial** \u2014 DBSCAN/HDBSCAN over coordinates to recover metropolitan agglomerations that GeoNames lists as separate cities.\n9. **Regression** \u2014 predict city population from country and geography features.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `cities.csv` | 34,248 cities x 43 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: Zipf's law, primacy, megacity map. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`cities`, `urbanization`, `geography`, `population`, `geospatial`, `demography`, `world`, `geonames`, `tabular`, `clustering`\n\n## \ud83d\udd17 Provenance\n\n- **Primary source:** **GeoNames** `cities15000.zip` \u2014 all populated places with a population above\n  15,000 (or capitals), `download.geonames.org/export/dump/`.\n- **Administrative names:** GeoNames `admin1CodesASCII.txt`, joined on `country_code.admin1_code`.\n- **Enrichment:** country name, continent, UN region/sub-region, population, area, urbanisation rate and\n  GDP per capita joined from the World Bank-backed `countries-of-the-world` table in this repository.\n- **Transformation:** TSV to CSV, alternative names normalised from commas to semicolons, plus 24 derived\n  columns (population bands and shares, capital flags, distance to capital, elevation bands and more).\n- **Snapshot date:** 20 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Never (static snapshot).** GeoNames updates daily upstream; this file is frozen at the snapshot date. Re-run `scripts/15_cities.py` for a refresh.\n\n## \u26a0\ufe0f Caveats\n\n- Population figures come from national censuses of varying years; comparability across countries is approximate.\n- GeoNames is crowd-edited, so a few coordinates and populations are stale or wrong.\n- `utc_offset_hours` is left empty by design \u2014 the offset must be derived from the IANA zone with a tz database.\n- The file is a list of individual populated places, not metropolitan areas; suburbs appear separately.\n- Coverage below 15,000 inhabitants is intentionally absent; small towns and villages are not included.\n- `elevation_m` is sparse while `dem_m` is dense \u2014 use `dem_m` for analysis and treat `elevation_m` as a quality check.\n\n## \ud83d\udcdc Licence\n\nCreative Commons Attribution 4.0 (CC BY 4.0) \u2014 GeoNames. Attribution to GeoNames is required for any redistribution or derived publication.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `geonameid` | `number` | GeoNames numeric identifier. |\n| 2 | `name` | `string` | City name (UTF-8). |\n| 3 | `asciiname` | `string` | ASCII transliteration of the name. |\n| 4 | `alternatenames` | `string` | Semicolon-separated alternative names (comma-separated upstream, normalised here). |\n| 5 | `latitude` | `number` | Latitude in decimal degrees. |\n| 6 | `longitude` | `number` | Longitude in decimal degrees. |\n| 7 | `feature_class` | `string` | GeoNames feature class; P for populated places. |\n| 8 | `feature_code` | `string` | GeoNames feature code (PPLC national capital, PPLA1 seat of a first-order division, PPL town...). |\n| 9 | `country_code` | `string` | ISO-3166 alpha-2 country code. |\n| 10 | `cc2` | `string` | Alternate country codes for places near a border. |\n| 11 | `admin1_code` | `string` | First-level administrative division code. |\n| 12 | `admin2_code` | `string` | Second-level administrative division code. |\n| 13 | `admin3_code` | `string` | Third-level administrative division code. |\n| 14 | `admin4_code` | `string` | Fourth-level administrative division code. |\n| 15 | `population` | `number` | City population. |\n| 16 | `elevation_m` | `number` | Elevation in metres as recorded (often empty). |\n| 17 | `dem_m` | `number` | Digital elevation model value in metres. |\n| 18 | `timezone` | `string` | IANA time-zone name. |\n| 19 | `modification_date` | `date` | Date the GeoNames record was last modified. |\n| 20 | `country_name` | `string` | Country common name (joined by ISO-3 code). |\n| 21 | `continent` | `string` | Continent of the country. |\n| 22 | `region` | `string` | UN macro-region of the country. |\n| 23 | `subregion` | `string` | UN sub-region of the country. |\n| 24 | `admin1_name` | `string` | Name of the first-level administrative division (state/province/region). |\n| 25 | `is_capital` | `boolean` | true when the city is the national capital (GeoNames feature code PPLC). |\n| 26 | `is_admin_capital` | `boolean` | true when the city is the capital of a first-level division (PPLA family). |\n| 27 | `hemisphere` | `string` | Northern or Southern hemisphere. |\n| 28 | `latitude_band` | `string` | Climate-style latitude band. |\n| 29 | `population_class` | `string` | Population band from small town to megacity. |\n| 30 | `population_share_country_pct` | `number` | City population as a percentage of its country's population. |\n| 31 | `country_urban_pct` | `number` | Urbanisation rate of the country (World Bank). |\n| 32 | `country_population` | `number` | Country population (World Bank). |\n| 33 | `country_area_km2` | `number` | Country area in square kilometres. |\n| 34 | `country_pop_density_per_km2` | `number` | Country population density. |\n| 35 | `city_rank_in_country` | `number` | Rank of the city by population within its country in this file. |\n| 36 | `alt_names_count` | `number` | Number of alternative names recorded (a proxy for international prominence). |\n| 37 | `name_length` | `number` | Length of the primary name in characters. |\n| 38 | `has_diacritics` | `boolean` | true when the primary name contains non-ASCII characters. |\n| 39 | `distance_to_capital_km` | `number` | Great-circle distance to the country's capital city. |\n| 40 | `timezone_region` | `string` | Geographic prefix of the IANA time zone (e.g. Europe, America, Asia). |\n| 41 | `utc_offset_hours` | `number` | Standard UTC offset implied by the time zone, from the country capital. |\n| 42 | `elevation_band` | `string` | Terrain band from sea level to high plateau. |\n| 43 | `gdp_per_capita_usd` | `number` | Country GDP per capita (World Bank). |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "cities.csv",
+      "description": "Primary data file containing 34,248 records across 43 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "geonameid",
+            "type": "number",
+            "description": "GeoNames numeric identifier."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "City name (UTF-8)."
+          },
+          {
+            "name": "asciiname",
+            "type": "string",
+            "description": "ASCII transliteration of the name."
+          },
+          {
+            "name": "alternatenames",
+            "type": "string",
+            "description": "Semicolon-separated alternative names (comma-separated upstream, normalised here)."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude in decimal degrees."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude in decimal degrees."
+          },
+          {
+            "name": "feature_class",
+            "type": "string",
+            "description": "GeoNames feature class; P for populated places."
+          },
+          {
+            "name": "feature_code",
+            "type": "string",
+            "description": "GeoNames feature code (PPLC national capital, PPLA1 seat of a first-order division, PPL town...)."
+          },
+          {
+            "name": "country_code",
+            "type": "string",
+            "description": "ISO-3166 alpha-2 country code."
+          },
+          {
+            "name": "cc2",
+            "type": "string",
+            "description": "Alternate country codes for places near a border."
+          },
+          {
+            "name": "admin1_code",
+            "type": "string",
+            "description": "First-level administrative division code."
+          },
+          {
+            "name": "admin2_code",
+            "type": "string",
+            "description": "Second-level administrative division code."
+          },
+          {
+            "name": "admin3_code",
+            "type": "string",
+            "description": "Third-level administrative division code."
+          },
+          {
+            "name": "admin4_code",
+            "type": "string",
+            "description": "Fourth-level administrative division code."
+          },
+          {
+            "name": "population",
+            "type": "number",
+            "description": "City population."
+          },
+          {
+            "name": "elevation_m",
+            "type": "number",
+            "description": "Elevation in metres as recorded (often empty)."
+          },
+          {
+            "name": "dem_m",
+            "type": "number",
+            "description": "Digital elevation model value in metres."
+          },
+          {
+            "name": "timezone",
+            "type": "string",
+            "description": "IANA time-zone name."
+          },
+          {
+            "name": "modification_date",
+            "type": "date",
+            "description": "Date the GeoNames record was last modified."
+          },
+          {
+            "name": "country_name",
+            "type": "string",
+            "description": "Country common name (joined by ISO-3 code)."
+          },
+          {
+            "name": "continent",
+            "type": "string",
+            "description": "Continent of the country."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "UN macro-region of the country."
+          },
+          {
+            "name": "subregion",
+            "type": "string",
+            "description": "UN sub-region of the country."
+          },
+          {
+            "name": "admin1_name",
+            "type": "string",
+            "description": "Name of the first-level administrative division (state/province/region)."
+          },
+          {
+            "name": "is_capital",
+            "type": "boolean",
+            "description": "true when the city is the national capital (GeoNames feature code PPLC)."
+          },
+          {
+            "name": "is_admin_capital",
+            "type": "boolean",
+            "description": "true when the city is the capital of a first-level division (PPLA family)."
+          },
+          {
+            "name": "hemisphere",
+            "type": "string",
+            "description": "Northern or Southern hemisphere."
+          },
+          {
+            "name": "latitude_band",
+            "type": "string",
+            "description": "Climate-style latitude band."
+          },
+          {
+            "name": "population_class",
+            "type": "string",
+            "description": "Population band from small town to megacity."
+          },
+          {
+            "name": "population_share_country_pct",
+            "type": "number",
+            "description": "City population as a percentage of its country's population."
+          },
+          {
+            "name": "country_urban_pct",
+            "type": "number",
+            "description": "Urbanisation rate of the country (World Bank)."
+          },
+          {
+            "name": "country_population",
+            "type": "number",
+            "description": "Country population (World Bank)."
+          },
+          {
+            "name": "country_area_km2",
+            "type": "number",
+            "description": "Country area in square kilometres."
+          },
+          {
+            "name": "country_pop_density_per_km2",
+            "type": "number",
+            "description": "Country population density."
+          },
+          {
+            "name": "city_rank_in_country",
+            "type": "number",
+            "description": "Rank of the city by population within its country in this file."
+          },
+          {
+            "name": "alt_names_count",
+            "type": "number",
+            "description": "Number of alternative names recorded (a proxy for international prominence)."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Length of the primary name in characters."
+          },
+          {
+            "name": "has_diacritics",
+            "type": "boolean",
+            "description": "true when the primary name contains non-ASCII characters."
+          },
+          {
+            "name": "distance_to_capital_km",
+            "type": "number",
+            "description": "Great-circle distance to the country's capital city."
+          },
+          {
+            "name": "timezone_region",
+            "type": "string",
+            "description": "Geographic prefix of the IANA time zone (e.g. Europe, America, Asia)."
+          },
+          {
+            "name": "utc_offset_hours",
+            "type": "number",
+            "description": "Standard UTC offset implied by the time zone, from the country capital."
+          },
+          {
+            "name": "elevation_band",
+            "type": "string",
+            "description": "Terrain band from sea level to high plateau."
+          },
+          {
+            "name": "gdp_per_capita_usd",
+            "type": "number",
+            "description": "Country GDP per capita (World Bank)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

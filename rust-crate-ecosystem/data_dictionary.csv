@@ -1,0 +1,45 @@
+column,data_type,description
+name,string,Crate name.
+created_at,date,First publication date.
+updated_at,date,Last update date.
+downloads,number,All-time downloads.
+recent_downloads,number,Downloads in the last 90 days.
+recent_share_pct,number,recent_downloads as a percentage of all-time downloads.
+num_versions,number,Number of published versions.
+max_version,string,Highest published version.
+newest_version,string,Newest published version.
+max_stable_version,string,Highest non-prerelease version.
+default_version,string,Default version shown by crates.io.
+yanked,boolean,true when the crate is yanked.
+description,string,Crate description.
+description_length,number,Characters in the description.
+homepage,string,Project homepage.
+documentation,string,Documentation URL.
+repository,string,Source repository URL.
+keywords,number,Keywords (semicolon-joined).
+categories,number,Categories (semicolon-joined).
+keyword_count,number,Number of keywords.
+category_count,number,Number of categories.
+has_homepage,boolean,true when a homepage is listed.
+has_documentation,boolean,true when documentation is listed.
+has_repository,boolean,true when a repository is listed.
+has_description,boolean,true when a description exists.
+is_prerelease,boolean,true when the newest version is a pre-release.
+is_major_zero,boolean,true when the newest version is 0.x.
+name_length,number,Characters in the crate name.
+name_has_underscore,boolean,true when the name contains an underscore.
+age_days,number,Days since first publication.
+days_since_update,number,Days since the last update.
+downloads_per_day,number,All-time downloads divided by age in days.
+recent_downloads_per_day,number,Recent downloads divided by 90.
+versions_per_year,number,Versions published per year of age.
+is_popular,boolean,true when all-time downloads exceed one million.
+download_band,string,All-time download band.
+is_async,boolean,true when the description or keywords mention async/tokio.
+is_cli,boolean,true when the description or keywords mention CLI/command line.
+is_wasm,boolean,true when the description or keywords mention wasm/webassembly.
+is_embedded,boolean,true when the description or keywords mention embedded/no_std.
+is_proc_macro,boolean,true when the description or keywords mention proc-macro.
+is_serialization,boolean,true when the description or keywords mention serde/serialization.
+created_year,number,Year of first publication.
+updated_year,number,Year of last update.

@@ -1,0 +1,14 @@
+{
+  "id": "samyakrajbayar/rust-crate-ecosystem-analysis",
+  "title": "Rust Crate Ecosystem Analysis",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "samyakrajbayar/rust-crate-ecosystem"
+  ]
+}

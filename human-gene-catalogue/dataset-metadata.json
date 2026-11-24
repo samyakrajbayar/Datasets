@@ -1,0 +1,30 @@
+{
+  "title": "Human Gene Catalogue - HGNC Complete Set",
+  "id": "samyakrajbayar/human-gene-catalogue",
+  "subtitle": "45,470 approved human gene loci with nomenclature, cytogenetics and 30+ datab...",
+  "description": "### 45,470 human genes from the HGNC complete set\n\nThe HUGO Gene Nomenclature Committee is the authority that assigns every approved human gene\nsymbol. Its complete set is the reference table behind nearly every human-genetics pipeline. This\ndataset contains **45,470 loci** and **73 parameters**, one row per HGNC record.\n\n- **Identity** \u2014 HGNC id, approved symbol and name, locus group and type, status, cytogenetic\n  location split into chromosome and band.\n- **Nomenclature history** \u2014 aliases, previous symbols and names, symbol/name change dates, approval\n  and modification dates.\n- **Cross-references** \u2014 Entrez, Ensembl, Vega, UCSC, ENA, RefSeq, CCDS, UniProt, MGD, RGD, OMIM,\n  miRBase, Orphanet, IUPHAR, lncRNA databases, MANE Select and GenCC.\n- **Grouping and literature** \u2014 gene groups with ids, linked PubMed records and counts.\n- **Derived** \u2014 coding/pseudogene/non-coding flags, cross-reference availability, alias and PubMed\n  counts, symbol/name lengths and alias density.\n\n**19,299 protein-coding genes** and **17,577 genes with an OMIM entry** are included across\n**2,004 distinct gene groups** \u2014 a base table for genomics, text mining and gene-set enrichment.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "hgnc_genes.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

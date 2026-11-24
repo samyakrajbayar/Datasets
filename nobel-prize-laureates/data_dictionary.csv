@@ -1,0 +1,47 @@
+column,data_type,description
+prize_year,number,Year the prize was awarded.
+category,string,"Nobel category (Physics, Chemistry, Medicine, Literature, Peace, Economic Sciences)."
+category_full_name,string,Full official name of the prize.
+date_awarded,date,Date the prize was announced/awarded.
+prize_amount_sek,number,Prize amount in Swedish kronor at the time of the award.
+prize_amount_adjusted_sek,number,Prize amount adjusted to a common price level (SEK).
+n_laureates,number,Number of laureates sharing this prize.
+laureate_id,number,Nobel Prize API laureate identifier.
+laureate_type,string,"person, organisation, or none when the prize was not awarded."
+known_name,string,Name the laureate is generally known by.
+full_name,string,Full name as recorded by the Nobel Foundation.
+given_name,string,Given name(s).
+family_name,string,Family name.
+gender,string,male or female (as recorded); empty for organisations.
+org_name,string,"Organisation name, for prizes awarded to institutions."
+portion,number,Fraction of the prize received (1 = the whole prize).
+motivation,string,Citation explaining why the prize was awarded.
+birth_date,date,Laureate date of birth.
+birth_city,string,City of birth.
+birth_country,string,Country of birth (as it was at the time).
+birth_country_now,string,Present-day country of the birthplace.
+birth_continent,string,Continent of the birthplace (supplied by the Nobel API).
+death_date,date,"Date of death, where applicable."
+death_city,string,City of death.
+death_country_now,string,Present-day country of death.
+affiliation_count,number,Number of affiliations recorded at the time of the award.
+first_affiliation,string,First affiliation listed.
+first_affiliation_city,string,City of that affiliation.
+first_affiliation_country,string,Country of that affiliation.
+affiliations_all,string,Semicolon-separated list of all affiliations.
+age_at_award,number,Laureate age in years at the award date (persons only).
+birth_year,number,Year of birth.
+death_year,number,Year of death.
+lifespan_years,number,"Age at death, or age at snapshot for living laureates."
+is_posthumous,boolean,true when the prize was awarded after the laureate's death.
+is_shared,boolean,true when the prize was split between two or more laureates.
+share_of_prize_pct,number,"Portion of the prize received, in percent."
+prize_amount_per_laureate_sek,number,Prize amount divided by the number of laureates.
+value_of_portion_sek,number,Prize amount multiplied by the laureate's portion.
+value_of_portion_adjusted_sek,number,Inflation-adjusted value of that portion.
+decade,string,Award decade.
+category_group,string,Coarse category grouping used for comparisons.
+birth_decade,string,Decade of birth.
+is_organisation,boolean,true when the laureate is an institution rather than a person.
+century,string,Century of the award.
+years_since_award,number,Years between the award and the snapshot date.

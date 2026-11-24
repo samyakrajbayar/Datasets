@@ -1,0 +1,32 @@
+{
+  "title": "NOAA Ocean Buoy Network - Stations and Live Observ",
+  "id": "samyakrajbayar/ocean-buoys",
+  "subtitle": "1,357 buoys and platforms with positions, sensors, winds, waves, temperatures...",
+  "description": "### 1,357 ocean buoys and platforms with live observations\n\nThe National Data Buoy Center operates the U.S. network of moored buoys, fixed platforms and coastal\nstations. This dataset merges the **station registry** with each station's **latest realtime\nobservation**, giving **1,357 rows** and **49 parameters**.\n\n- **Station** \u2014 id, name, owner, programme, platform type, position, elevation, sensor capabilities\n  and DART/tsunami flags.\n- **Meteorology** \u2014 wind direction, speed and gusts, air and water temperature, dew point, pressure\n  and its tendency, visibility.\n- **Oceanography** \u2014 significant wave height, dominant and average wave periods, wave direction and\n  tide.\n- **Derived** \u2014 metric/imperial conversions, wind chill, air-water temperature gap, observation age,\n  freshness flags, wind and wave bands, hemisphere and platform flags.\n\n**255 stations reported within the last two hours**, making this a usable live picture of\nsea state, winds and water temperature across the Atlantic, Pacific and Gulf.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "environment",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "ndbc_buoys.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

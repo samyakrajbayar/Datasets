@@ -1,0 +1,476 @@
+{
+  "title": "MLB Player Seasons",
+  "id": "samyakrajbayar/mlb-player-seasons",
+  "subtitle": "50,000 MLB player-season batting records with sabermetrics",
+  "description": "# MLB Player Seasons 2015-2025\n\n**Subtitle:** 20,318 player-season rows with batting, pitching and fielding stats\n\n**Tags:** `tabular`, `sports`, `baseball`\n\n**Dataset File:** `mlb_player_seasons.csv` (20,318 rows, 88 columns, 5.8 MB)\n\n**Provenance & Source:** MLB StatsAPI (statsapi.mlb.com)\n\n**Expected Update Frequency:** `annually`\n\n---\n\n## \ud83d\udcd6 Description\n\n### MLB player seasons, 2015\u20132025\n\nThe MLB StatsAPI exposes season totals for every player. This dataset contains **20,318 player-season\nrows** across **11 seasons**, with **88 parameters** \u2014 every statistic returned by the\nAPI plus identity and derived rate fields.\n\n- **Identity** \u2014 player id/name, team and league ids/names, season, position and group.\n- **Hitting stats** \u2014 games, plate appearances, at-bats, runs, hits, doubles, triples, home runs, RBI,\n  walks, strikeouts, stolen bases, average, OBP, slugging, OPS, BABIP and more (blank for pitchers).\n- **Pitching stats** \u2014 wins, losses, ERA, innings, strikeouts, saves, WHIP, home runs allowed, hit\n  batters and more (blank for batters).\n- **Derived** \u2014 pitcher/batter flags, extra-base hits, strikeout/walk/HR rates, isolated power,\n  decimal innings, OPS and ERA bands, and qualification flags.\n\n**11,350 batting rows** and **8,968 pitching rows** make this a complete two-way\nplayer-season table for sabermetrics and fantasy analysis.\n\n## \ud83e\uddfe Columns (88)\n\n`player_id`, `player_name`, `team_id`, `team_name`, `league_id`, `league_name`, `season`, `group`, `position`, `is_pitcher`, `is_batter`, `age`, `air_outs`, `at_bats`, `at_bats_per_home_run`, `avg`, `babip`, `balks`, `base_on_balls`, `batters_faced`, `blown_saves`, `catchers_interference`, `caught_stealing`, `caught_stealing_percentage`, `complete_games`, `doubles`, `earned_runs`, `era`, `games_finished`, `games_pitched`, `games_played`, `games_started`, `ground_into_double_play`, `ground_outs`, `ground_outs_to_airouts`, `hit_batsmen`, `hit_by_pitch`, `hits`, `hits_per9_inn`, `holds`, `home_runs`, `home_runs_per9`, `inherited_runners`, `inherited_runners_scored`, `innings_pitched`, `intentional_walks`, `left_on_base`, `losses`, `number_of_pitches`, `obp`, `ops`, `outs`, `pickoffs`, `pitches_per_inning`, `plate_appearances`, `rbi`, `runs`, `runs_scored_per9`, `sac_bunts`, `sac_flies`, `save_opportunities`, `saves`, `shutouts`, `slg`, `stolen_base_percentage`, `stolen_bases`, `strike_outs`, `strike_percentage`, `strikeout_walk_ratio`, `strikeouts_per9_inn`, `strikes`, `total_bases`, `triples`, `walks_per9_inn`, `whip`, `wild_pitches`, `win_percentage`, `wins`, `extra_base_hits`, `strikeout_rate`, `walk_rate`, `home_run_rate`, `slg_minus_avg`, `innings_pitched_decimal`, `ops_band`, `era_band`, `is_qualified_batter`, `is_qualified_pitcher`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Two-way players** \u2014 find players with meaningful batting and pitching rows.\n2. **Aging curves** \u2014 performance by age, separately for batters and pitchers.\n3. **Power vs contact** \u2014 home-run rate vs strikeout rate.\n4. **Team production** \u2014 aggregate team offence and pitching by season.\n5. **Breakout seasons** \u2014 largest year-over-year improvements.\n6. **Qualification effects** \u2014 how rate stats change when minimums are applied.\n7. **Position scarcity** \u2014 offensive output by position.\n8. **ERA vs WHIP** \u2014 pitcher profiles and outliers.\n9. **Forecasting** \u2014 predict next-season OPS or ERA from prior seasons.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `mlb_player_seasons.csv` | 20,318 player-seasons x 88 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`baseball`, `mlb`, `sports`, `statistics`, `players`, `sabermetrics`, `seasons`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **MLB StatsAPI**,\n  `https://statsapi.mlb.com/api/v1/stats?stats=season&group={group}&season={year}&sportId=1`.\n- **Scope:** all players with a season total in 2015\u20132025, for both hitting and pitching.\n- **Processing:** every stat key retained and snake-cased; player/team/league/position identity joined;\n  rate, band and qualification fields derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily during the season.** StatsAPI updates statistics after each game.\n\n## \u26a0\ufe0f Caveats\n\n- Stats are regular-season totals only; postseason is a separate endpoint.\n- Players traded mid-season appear once per team in some responses, so rows are team-specific.\n- Rate stats are not park- or league-adjusted.\n- Innings pitched uses baseball notation (outs) and is converted to decimal for analysis.\n- Very small sample sizes (few plate appearances) produce extreme rate stats.\n- The API can revise statistics after the season.\n- Column names follow the API's stat keys, snake-cased.\n\n## \ud83d\udcdc Licence\n\nMLB data is provided by MLB Advanced Media for public informational use.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `player_id` | `number` | MLB person identifier. |\n| 2 | `player_name` | `string` | Player full name. |\n| 3 | `team_id` | `number` | Team identifier. |\n| 4 | `team_name` | `string` | Team name. |\n| 5 | `league_id` | `number` | League identifier. |\n| 6 | `league_name` | `string` | League name. |\n| 7 | `season` | `number` | Season year. |\n| 8 | `group` | `string` | hitting or pitching. |\n| 9 | `position` | `string` | Position abbreviation. |\n| 10 | `is_pitcher` | `boolean` | true for pitching rows. |\n| 11 | `is_batter` | `boolean` | true for hitting rows. |\n| 12 | `age` | `number` | MLB StatsAPI field or derived metric. |\n| 13 | `air_outs` | `number` | MLB StatsAPI field or derived metric. |\n| 14 | `at_bats` | `number` | MLB StatsAPI field or derived metric. |\n| 15 | `at_bats_per_home_run` | `string` | MLB StatsAPI field or derived metric. |\n| 16 | `avg` | `number` | MLB StatsAPI field or derived metric. |\n| 17 | `babip` | `string` | MLB StatsAPI field or derived metric. |\n| 18 | `balks` | `number` | MLB StatsAPI field or derived metric. |\n| 19 | `base_on_balls` | `number` | MLB StatsAPI field or derived metric. |\n| 20 | `batters_faced` | `number` | MLB StatsAPI field or derived metric. |\n| 21 | `blown_saves` | `number` | MLB StatsAPI field or derived metric. |\n| 22 | `catchers_interference` | `number` | MLB StatsAPI field or derived metric. |\n| 23 | `caught_stealing` | `number` | MLB StatsAPI field or derived metric. |\n| 24 | `caught_stealing_percentage` | `string` | MLB StatsAPI field or derived metric. |\n| 25 | `complete_games` | `number` | MLB StatsAPI field or derived metric. |\n| 26 | `doubles` | `number` | MLB StatsAPI field or derived metric. |\n| 27 | `earned_runs` | `number` | MLB StatsAPI field or derived metric. |\n| 28 | `era` | `number` | MLB StatsAPI field or derived metric. |\n| 29 | `games_finished` | `number` | MLB StatsAPI field or derived metric. |\n| 30 | `games_pitched` | `number` | MLB StatsAPI field or derived metric. |\n| 31 | `games_played` | `number` | MLB StatsAPI field or derived metric. |\n| 32 | `games_started` | `number` | MLB StatsAPI field or derived metric. |\n| 33 | `ground_into_double_play` | `number` | MLB StatsAPI field or derived metric. |\n| 34 | `ground_outs` | `number` | MLB StatsAPI field or derived metric. |\n| 35 | `ground_outs_to_airouts` | `string` | MLB StatsAPI field or derived metric. |\n| 36 | `hit_batsmen` | `number` | MLB StatsAPI field or derived metric. |\n| 37 | `hit_by_pitch` | `number` | MLB StatsAPI field or derived metric. |\n| 38 | `hits` | `number` | MLB StatsAPI field or derived metric. |\n| 39 | `hits_per9_inn` | `number` | MLB StatsAPI field or derived metric. |\n| 40 | `holds` | `number` | MLB StatsAPI field or derived metric. |\n| 41 | `home_runs` | `number` | MLB StatsAPI field or derived metric. |\n| 42 | `home_runs_per9` | `number` | MLB StatsAPI field or derived metric. |\n| 43 | `inherited_runners` | `number` | MLB StatsAPI field or derived metric. |\n| 44 | `inherited_runners_scored` | `number` | MLB StatsAPI field or derived metric. |\n| 45 | `innings_pitched` | `number` | MLB StatsAPI field or derived metric. |\n| 46 | `intentional_walks` | `number` | MLB StatsAPI field or derived metric. |\n| 47 | `left_on_base` | `number` | MLB StatsAPI field or derived metric. |\n| 48 | `losses` | `number` | MLB StatsAPI field or derived metric. |\n| 49 | `number_of_pitches` | `number` | MLB StatsAPI field or derived metric. |\n| 50 | `obp` | `number` | MLB StatsAPI field or derived metric. |\n| 51 | `ops` | `number` | MLB StatsAPI field or derived metric. |\n| 52 | `outs` | `number` | MLB StatsAPI field or derived metric. |\n| 53 | `pickoffs` | `number` | MLB StatsAPI field or derived metric. |\n| 54 | `pitches_per_inning` | `number` | MLB StatsAPI field or derived metric. |\n| 55 | `plate_appearances` | `number` | MLB StatsAPI field or derived metric. |\n| 56 | `rbi` | `number` | MLB StatsAPI field or derived metric. |\n| 57 | `runs` | `number` | MLB StatsAPI field or derived metric. |\n| 58 | `runs_scored_per9` | `number` | MLB StatsAPI field or derived metric. |\n| 59 | `sac_bunts` | `number` | MLB StatsAPI field or derived metric. |\n| 60 | `sac_flies` | `number` | MLB StatsAPI field or derived metric. |\n| 61 | `save_opportunities` | `number` | MLB StatsAPI field or derived metric. |\n| 62 | `saves` | `number` | MLB StatsAPI field or derived metric. |\n| 63 | `shutouts` | `number` | MLB StatsAPI field or derived metric. |\n| 64 | `slg` | `number` | MLB StatsAPI field or derived metric. |\n| 65 | `stolen_base_percentage` | `string` | MLB StatsAPI field or derived metric. |\n| 66 | `stolen_bases` | `number` | MLB StatsAPI field or derived metric. |\n| 67 | `strike_outs` | `number` | MLB StatsAPI field or derived metric. |\n| 68 | `strike_percentage` | `number` | MLB StatsAPI field or derived metric. |\n| 69 | `strikeout_walk_ratio` | `string` | MLB StatsAPI field or derived metric. |\n| 70 | `strikeouts_per9_inn` | `number` | MLB StatsAPI field or derived metric. |\n| 71 | `strikes` | `number` | MLB StatsAPI field or derived metric. |\n| 72 | `total_bases` | `number` | MLB StatsAPI field or derived metric. |\n| 73 | `triples` | `number` | MLB StatsAPI field or derived metric. |\n| 74 | `walks_per9_inn` | `number` | MLB StatsAPI field or derived metric. |\n| 75 | `whip` | `number` | MLB StatsAPI field or derived metric. |\n| 76 | `wild_pitches` | `number` | MLB StatsAPI field or derived metric. |\n| 77 | `win_percentage` | `string` | MLB StatsAPI field or derived metric. |\n| 78 | `wins` | `number` | MLB StatsAPI field or derived metric. |\n| 79 | `extra_base_hits` | `number` | Doubles + triples + 2 x home runs. |\n| 80 | `strikeout_rate` | `number` | Strikeouts per plate appearance (batters) or per batter faced (pitchers). |\n| 81 | `walk_rate` | `number` | Walks per plate appearance or batter faced. |\n| 82 | `home_run_rate` | `number` | Home runs per plate appearance. |\n| 83 | `slg_minus_avg` | `number` | Slugging percentage minus batting average (isolated power). |\n| 84 | `innings_pitched_decimal` | `number` | Innings pitched converted to decimal (outs / 3). |\n| 85 | `ops_band` | `string` | OPS band for batters. |\n| 86 | `era_band` | `string` | ERA band for pitchers. |\n| 87 | `is_qualified_batter` | `boolean` | true when the batter had 300+ plate appearances. |\n| 88 | `is_qualified_pitcher` | `boolean` | true when the pitcher threw 100+ innings. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "sports",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "mlb_player_seasons.csv",
+      "description": "Primary dataset file containing 20,318 records across 88 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "player_id",
+            "type": "number",
+            "description": "MLB person identifier."
+          },
+          {
+            "name": "player_name",
+            "type": "string",
+            "description": "Player full name."
+          },
+          {
+            "name": "team_id",
+            "type": "number",
+            "description": "Team identifier."
+          },
+          {
+            "name": "team_name",
+            "type": "string",
+            "description": "Team name."
+          },
+          {
+            "name": "league_id",
+            "type": "number",
+            "description": "League identifier."
+          },
+          {
+            "name": "league_name",
+            "type": "string",
+            "description": "League name."
+          },
+          {
+            "name": "season",
+            "type": "number",
+            "description": "Season year."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "hitting or pitching."
+          },
+          {
+            "name": "position",
+            "type": "string",
+            "description": "Position abbreviation."
+          },
+          {
+            "name": "is_pitcher",
+            "type": "boolean",
+            "description": "true for pitching rows."
+          },
+          {
+            "name": "is_batter",
+            "type": "boolean",
+            "description": "true for hitting rows."
+          },
+          {
+            "name": "age",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "air_outs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "at_bats",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "at_bats_per_home_run",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "avg",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "babip",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "balks",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "base_on_balls",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "batters_faced",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "blown_saves",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "catchers_interference",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "caught_stealing",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "caught_stealing_percentage",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "complete_games",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "doubles",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "earned_runs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "era",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "games_finished",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "games_pitched",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "games_played",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "games_started",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "ground_into_double_play",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "ground_outs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "ground_outs_to_airouts",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "hit_batsmen",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "hit_by_pitch",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "hits",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "hits_per9_inn",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "holds",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "home_runs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "home_runs_per9",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "inherited_runners",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "inherited_runners_scored",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "innings_pitched",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "intentional_walks",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "left_on_base",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "losses",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "number_of_pitches",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "obp",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "ops",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "outs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "pickoffs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "pitches_per_inning",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "plate_appearances",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "rbi",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "runs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "runs_scored_per9",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "sac_bunts",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "sac_flies",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "save_opportunities",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "saves",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "shutouts",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "slg",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "stolen_base_percentage",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "stolen_bases",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "strike_outs",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "strike_percentage",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "strikeout_walk_ratio",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "strikeouts_per9_inn",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "strikes",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "total_bases",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "triples",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "walks_per9_inn",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "whip",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "wild_pitches",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "win_percentage",
+            "type": "string",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "wins",
+            "type": "number",
+            "description": "MLB StatsAPI field or derived metric."
+          },
+          {
+            "name": "extra_base_hits",
+            "type": "number",
+            "description": "Doubles + triples + 2 x home runs."
+          },
+          {
+            "name": "strikeout_rate",
+            "type": "number",
+            "description": "Strikeouts per plate appearance (batters) or per batter faced (pitchers)."
+          },
+          {
+            "name": "walk_rate",
+            "type": "number",
+            "description": "Walks per plate appearance or batter faced."
+          },
+          {
+            "name": "home_run_rate",
+            "type": "number",
+            "description": "Home runs per plate appearance."
+          },
+          {
+            "name": "slg_minus_avg",
+            "type": "number",
+            "description": "Slugging percentage minus batting average (isolated power)."
+          },
+          {
+            "name": "innings_pitched_decimal",
+            "type": "number",
+            "description": "Innings pitched converted to decimal (outs / 3)."
+          },
+          {
+            "name": "ops_band",
+            "type": "string",
+            "description": "OPS band for batters."
+          },
+          {
+            "name": "era_band",
+            "type": "string",
+            "description": "ERA band for pitchers."
+          },
+          {
+            "name": "is_qualified_batter",
+            "type": "boolean",
+            "description": "true when the batter had 300+ plate appearances."
+          },
+          {
+            "name": "is_qualified_pitcher",
+            "type": "boolean",
+            "description": "true when the pitcher threw 100+ innings."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

@@ -1,0 +1,65 @@
+column,data_type,description
+id,number,HYG record id.
+hip,number,Hipparcos catalogue number.
+hd,number,Henry Draper catalogue number.
+hr,number,Bright Star Catalogue number.
+gl,string,Gliese catalogue number.
+bf,string,Bayer/Flamsteed designation.
+proper,string,Proper name.
+ra,number,Right ascension (hours).
+dec,number,Declination (degrees).
+dist,number,Distance in parsecs.
+pmra,number,Proper motion in RA (mas/yr).
+pmdec,number,Proper motion in declination (mas/yr).
+rv,number,Radial velocity (km/s).
+mag,number,Apparent magnitude.
+absmag,number,Absolute magnitude.
+spect,string,Spectral type.
+ci,number,Colour index (B-V).
+x,number,Galactic Cartesian x (parsecs).
+y,number,Galactic Cartesian y (parsecs).
+z,number,Galactic Cartesian z (parsecs).
+vx,number,HYG star field or derived attribute.
+vy,number,HYG star field or derived attribute.
+vz,number,HYG star field or derived attribute.
+rarad,number,HYG star field or derived attribute.
+decrad,number,HYG star field or derived attribute.
+pmrarad,number,HYG star field or derived attribute.
+pmdecrad,number,HYG star field or derived attribute.
+bayer,string,HYG star field or derived attribute.
+flam,number,HYG star field or derived attribute.
+con,string,Constellation abbreviation.
+comp,number,Component count.
+comp_primary,number,HYG star field or derived attribute.
+base,string,HYG star field or derived attribute.
+lum,number,Luminosity in solar units.
+var,string,Variable-star designation.
+var_min,number,HYG star field or derived attribute.
+var_max,number,HYG star field or derived attribute.
+distance_ly,number,Distance in light years.
+distance_pc,number,Distance in parsecs.
+parallax_mas,number,Parallax in milliarcseconds.
+proper_motion_mas_yr,number,Total proper motion.
+space_velocity_kms,number,Space velocity from the velocity components.
+spectral_class,string,First spectral letter (OBAFGKMD).
+luminosity_class,string,Luminosity class parsed from the spectral type.
+is_giant,boolean,true for giants.
+is_supergiant,boolean,true for supergiants.
+is_dwarf_main_sequence,boolean,true for main-sequence stars.
+is_white_dwarf,boolean,true for white dwarfs.
+is_binary,boolean,true for multiple systems.
+is_variable,boolean,true for known variables.
+has_proper_name,boolean,true when the star has a proper name.
+has_bayer,boolean,true when a Bayer designation exists.
+has_spectral_type,boolean,HYG star field or derived attribute.
+is_naked_eye,boolean,true when magnitude is 6.5 or brighter.
+is_bright_star,boolean,true when magnitude is 3 or brighter.
+magnitude_band,string,Apparent-magnitude band.
+absmag_band,string,Absolute-magnitude band.
+color_band,string,Colour-index band.
+distance_band,string,Distance band.
+is_nearby,boolean,true within 50 parsecs.
+high_proper_motion,boolean,true above 200 mas/yr.
+constellation,string,Constellation abbreviation.
+hemisphere,string,Declination hemisphere.
+in_galactic_plane,boolean,true when |z| < 100 pc.

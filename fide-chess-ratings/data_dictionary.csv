@@ -1,0 +1,35 @@
+column,data_type,description
+fide_id,number,FIDE player identifier.
+name,string,Player name (last name first).
+country,string,FIDE country code.
+sex,string,M or F.
+title,string,"Open title (GM, IM, FM, CM)."
+woman_title,string,"Women's title (WGM, WIM, WFM, WCM)."
+organiser_title,string,Organiser title.
+foa_title,string,FIDE Online Arena title.
+rating,number,Standard classical rating.
+games,number,Rated games in the period.
+k_factor,number,FIDE K-factor.
+birth_year,number,Year of birth.
+flag,string,FIDE flag field (i = inactive).
+age,number,Age in 2026.
+rating_band,string,Rating band.
+is_rated,boolean,true when the rating is positive.
+is_titled,boolean,true when the player holds any title.
+is_grandmaster,boolean,true for GMs.
+is_international_master,boolean,true for IMs.
+is_fide_master,boolean,true for FMs.
+is_candidate_master,boolean,true for CMs.
+is_woman_grandmaster,boolean,true for WGMs.
+is_woman_master,boolean,true for WIM/WFM/WCM.
+is_active,boolean,true when rated games > 0.
+is_male,boolean,true when sex is M.
+is_female,boolean,true when sex is F.
+has_birth_year,boolean,true when a birth year is listed.
+is_junior,boolean,true when aged 20 or under.
+is_veteran,boolean,true when aged 60 or over.
+is_inactive_flag,boolean,true when the FIDE inactive flag is set.
+k_factor_band,string,K-factor band.
+name_length,number,Characters in the name.
+name_word_count,number,Words in the name.
+rating_per_game,number,Rating divided by rated games.

@@ -1,0 +1,31 @@
+{
+  "title": "Space Weather Time Series - X-Ray Flux, Kp and F10",
+  "id": "samyakrajbayar/space-weather-timeseries",
+  "subtitle": "20,148 minute-resolution solar X-ray, geomagnetic Kp and F10.7 observations f...",
+  "description": "### 20,148 minutes of solar and geomagnetic activity\n\nNOAA's Space Weather Prediction Center publishes GOES X-ray flux, the planetary K-index and the\nF10.7 radio flux. This dataset joins the three into one minute-resolution table of **20,148 rows** and\n**22 parameters**.\n\n- **Solar X-rays** \u2014 long-channel flux, observed and electron flux, satellite id and flare class.\n- **Geomagnetic field** \u2014 Kp index, estimated Kp and Kp label for the same minute.\n- **Solar radio** \u2014 daily F10.7 flux, the classic solar-activity proxy.\n- **Derived** \u2014 A/B/C/M/X classes, detailed class magnitude, flare/storm/active/quiet flags, flux to\n  F10.7 ratio, hour, minute, day of year and a scaled flux column.\n\nThe window contains **1,982 minutes at C-class or above** and **0 minutes with Kp \u2265 5**;\npeak flux reaches **2.40e-05 W/m\u00b2**. It is a compact time series for space-weather forecasting,\npower-grid risk and satellite-operations analytics.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "space_weather.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

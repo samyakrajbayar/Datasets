@@ -1,0 +1,67 @@
+column,data_type,description
+cik,number,SEC Central Index Key.
+name,string,Company name as registered with the SEC.
+tickers,string,Ticker symbols (semicolon-joined).
+ticker_count,number,Number of listed tickers.
+primary_ticker,string,First listed ticker.
+exchanges,string,Exchanges the tickers trade on.
+exchange_count,number,Number of exchanges.
+entity_type,string,"SEC entity type (operating company, investment fund, ...)."
+category,string,"Filer category (Large accelerated filer, Smaller reporting company, ...)."
+sic_code,number,Standard Industrial Classification code.
+sic_description,string,SIC industry description.
+sic_division,string,SIC division name derived from the code range.
+owner_org,string,SEC office that handles the filer.
+fiscal_year_end,number,Fiscal year end as MMDD.
+fiscal_year_end_month,number,Fiscal year end month (1-12).
+state_of_incorporation,string,State or country of incorporation code.
+state_of_incorporation_name,string,Full name of the incorporation jurisdiction.
+is_foreign_incorporated,boolean,true when the incorporation code indicates a non-US jurisdiction.
+ein,number,Employer Identification Number.
+lei,string,"Legal Entity Identifier, when registered."
+has_lei,boolean,true when a LEI is present.
+description,number,Company self-description (truncated to 600 characters).
+website,number,Company website.
+investor_website,number,Investor-relations website.
+phone,string,Business phone.
+business_street,string,Business address street.
+business_city,string,Business address city.
+business_state,string,Business address state/country code.
+business_zip,string,Business address ZIP code.
+mailing_city,string,Mailing address city.
+mailing_state,string,Mailing address state/country code.
+former_name_count,number,Number of previous names.
+latest_former_name,string,Most recent previous name.
+latest_filing_date,date,Date of the most recent EDGAR filing.
+latest_10k_date,date,Date of the most recent annual report (10-K).
+latest_10q_date,date,Date of the most recent quarterly report (10-Q).
+filing_count_recent,number,Number of filings in EDGAR's recent-filings table.
+filings_10k,number,10-K annual reports in the recent table.
+filings_10q,number,10-Q quarterly reports in the recent table.
+filings_8k,number,8-K current reports in the recent table.
+filings_form4,number,Form 4 insider-transaction filings.
+filings_def14a,number,DEF 14A proxy statements.
+filings_s1,number,S-1 registration statements.
+filings_20f,number,20-F annual reports for foreign private issuers.
+filings_6k,number,6-K foreign issuer reports.
+filings_13f,number,13F institutional holdings reports.
+filings_sc13g,number,SC 13G beneficial-ownership filings.
+insider_transactions_issuer,number,true when insider transactions exist for the issuer.
+insider_transactions_owner,number,true when insider transactions exist for the owner.
+has_recent_filings,boolean,true when the recent-filings table is non-empty.
+first_recent_filing,date,Oldest filing date in the recent table.
+latest_accession,string,Accession number of the latest filing.
+latest_primary_document,string,Primary document filename of the latest filing.
+filing_span_days,number,Days between the oldest and newest filing in the recent table.
+is_operating_company,boolean,true when the entity type is a standard operating company.
+is_investment_fund,boolean,true for funds and trusts.
+is_large_accelerated,boolean,true for large accelerated filers.
+is_smaller_reporting,boolean,true for smaller reporting companies.
+is_foreign_issuer,boolean,true when the filer files 20-F or 6-K reports.
+files_quarterly,boolean,true when the company files 10-Q reports.
+has_proxy,boolean,true when a DEF 14A proxy statement is present.
+days_since_latest_filing,number,Days between the latest filing and the snapshot date.
+is_active_filer,boolean,true when the latest filing is within 400 days of the snapshot.
+filings_per_year,number,"Recent filings divided by the span of the recent table, annualised."
+insider_filing_share,number,Share of recent filings that are Form 4 insider reports.
+annual_report_lag_days,number,Days between the latest 10-K and the latest filing.

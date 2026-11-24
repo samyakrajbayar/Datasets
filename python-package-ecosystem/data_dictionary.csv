@@ -1,0 +1,48 @@
+column,data_type,description
+rank,number,Rank in the 30-day download list (1 = most downloaded).
+project,string,Package name on PyPI.
+monthly_downloads,number,Downloads in the last 30 days (PyPI download statistics).
+download_share_pct,number,Share of the total downloads of all packages in this file.
+latest_version,string,Latest version on PyPI at snapshot time.
+summary,string,One-line package description.
+author,string,Author field as published.
+license,string,Licence string or classifier as published.
+license_class,string,"Licence normalised into MIT, Apache, GPL, BSD, MPL, LGPL, Public domain, Creative Commons, Other, Unknown."
+requires_python,string,PEP 440 Python version specifier.
+home_page,string,Legacy home page URL.
+project_url,string,Legacy project URL.
+package_url,string,Canonical PyPI project URL.
+keywords,string,Comma-separated keywords as published.
+development_status,string,Development status from the trove classifiers.
+classifier_count,number,Number of trove classifiers.
+topic_count,number,Number of 'Topic ::' classifiers.
+python_versions_supported,string,Python versions named in the classifiers (semicolon-joined).
+python_version_count,number,Number of named Python versions.
+requires_dist_count,number,"Raw number of entries in requires_dist, including extras."
+dependency_count,number,"Number of runtime dependencies, excluding extras."
+release_count,number,Number of uploaded versions.
+total_file_count,number,Number of distribution files across all versions.
+yanked_file_count,number,Number of yanked files.
+first_release,date,Date of the earliest uploaded file (ISO).
+latest_release,date,Date of the most recent uploaded file (ISO).
+latest_upload,date,Upload date of the current version.
+latest_size_bytes,number,Size of the largest distribution file for the current version.
+summary_length,number,Characters in the summary.
+has_wheel,boolean,true when a wheel is published for the current version.
+has_sdist,boolean,true when a source distribution is published.
+has_homepage,boolean,true when a home page is declared.
+has_docs_url,boolean,true when a documentation URL appears in project_urls.
+has_source_url,boolean,true when a source/repository URL appears in project_urls.
+has_changelog,boolean,true when a changelog URL appears in project_urls.
+project_url_count,number,Number of project URLs declared.
+is_prerelease,boolean,true when the latest version looks like a pre-release.
+python3_only,boolean,true when requires_python allows Python 3 but not Python 2.
+name_length,number,Characters in the project name.
+is_single_word,boolean,true when the name has no spaces.
+major_version,number,Major component of the latest version.
+age_days,number,Days between the first release and the snapshot date.
+days_since_release,number,Days since the most recent release.
+releases_per_year,number,Average number of releases per year since the first release.
+release_cadence,string,"Release cadence band: Dormant, Slow, Regular, Rapid, Very rapid."
+maturity,string,Maturity band from major version and age.
+has_dependencies,boolean,true when the package declares runtime dependencies.

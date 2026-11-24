@@ -1,0 +1,206 @@
+{
+  "title": "FIDE Chess Ratings",
+  "id": "samyakrajbayar/fide-chess-ratings",
+  "subtitle": "100,000 rated chess players with Elo, federation and title",
+  "description": "# FIDE Chess Ratings\n\n**Subtitle:** 573,475 FIDE-rated players with classical ratings, titles & federations\n\n**Tags:** `tabular`, `games`, `sports`\n\n**Dataset File:** `fide_players.csv` (573,475 rows, 34 columns, 94.6 MB)\n\n**Provenance & Source:** FIDE Standard Rating List (ratings.fide.com)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### Every FIDE-rated chess player\n\nFIDE publishes its standard rating list as XML each month. This dataset contains **573,475 players\nfrom 208 federations**, with **34 parameters** each.\n\n- **Identity** \u2014 FIDE id, name, country, sex, open/women's/organiser/online titles.\n- **Rating** \u2014 classical rating, rated games, K-factor and derived rating bands.\n- **Demographics** \u2014 birth year, age in 2026, junior/veteran flags.\n- **Status** \u2014 rated, titled, active, inactive-flag and title-category flags.\n- **Derived** \u2014 name length/word count and rating per rated game.\n\n**573,475 players have a published rating** and **1,904 are grandmasters**. The list supports\nrating-distribution, title-pathway and national-federation analysis.\n\n## \ud83e\uddfe Columns (34)\n\n`fide_id`, `name`, `country`, `sex`, `title`, `woman_title`, `organiser_title`, `foa_title`, `rating`, `games`, `k_factor`, `birth_year`, `flag`, `age`, `rating_band`, `is_rated`, `is_titled`, `is_grandmaster`, `is_international_master`, `is_fide_master`, `is_candidate_master`, `is_woman_grandmaster`, `is_woman_master`, `is_active`, `is_male`, `is_female`, `has_birth_year`, `is_junior`, `is_veteran`, `is_inactive_flag`, `k_factor_band`, `name_length`, `name_word_count`, `rating_per_game`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Rating distribution** \u2014 the long tail of club players vs the elite.\n2. **Country strength** \u2014 players, GMs and mean rating by federation.\n3. **Age curves** \u2014 rating vs age, and the peak rating age.\n4. **Title pathways** \u2014 how many players reach each title, by country and sex.\n5. **Activity** \u2014 rated games vs rating and inactivity flags.\n6. **Gender gaps** \u2014 participation and rating distributions.\n7. **Name analysis** \u2014 naming conventions and country-specific name structures.\n8. **K-factor** \u2014 K-factor distribution by age and rating.\n9. **Elite table** \u2014 build a top-100 board with title and age context.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `fide_players.csv` | 573,475 players x 34 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`chess`, `fide`, `ratings`, `sports`, `players`, `rankings`, `demographics`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **FIDE standard rating list**,\n  `https://ratings.fide.com/download/standard_rating_list_xml.zip` (monthly download).\n- **Scope:** every player on the standard (classical) list at snapshot time.\n- **Processing:** XML streamed with `iterparse`, fields normalised, title/age/activity flags and\n  rating bands derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Monthly.** FIDE publishes new standard rating lists at the start of each month.\n\n## \u26a0\ufe0f Caveats\n\n- The list covers classical ratings only; rapid and blitz lists are separate downloads.\n- Birth year is optional and missing for many players.\n- Country codes are FIDE/IOC codes, which differ from ISO for some federations.\n- Ratings and game counts change every month.\n- The `flag` field's meaning is not fully documented; `i` is treated as inactive.\n- Name order and diacritics follow FIDE's formatting.\n- Unrated players may appear with a rating of 0.\n\n## \ud83d\udcdc Licence\n\nFIDE rating lists are published for public information; FIDE retains the rights.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `fide_id` | `number` | FIDE player identifier. |\n| 2 | `name` | `string` | Player name (last name first). |\n| 3 | `country` | `string` | FIDE country code. |\n| 4 | `sex` | `string` | M or F. |\n| 5 | `title` | `string` | Open title (GM, IM, FM, CM). |\n| 6 | `woman_title` | `string` | Women's title (WGM, WIM, WFM, WCM). |\n| 7 | `organiser_title` | `string` | Organiser title. |\n| 8 | `foa_title` | `string` | FIDE Online Arena title. |\n| 9 | `rating` | `number` | Standard classical rating. |\n| 10 | `games` | `number` | Rated games in the period. |\n| 11 | `k_factor` | `number` | FIDE K-factor. |\n| 12 | `birth_year` | `number` | Year of birth. |\n| 13 | `flag` | `string` | FIDE flag field (i = inactive). |\n| 14 | `age` | `number` | Age in 2026. |\n| 15 | `rating_band` | `string` | Rating band. |\n| 16 | `is_rated` | `boolean` | true when the rating is positive. |\n| 17 | `is_titled` | `boolean` | true when the player holds any title. |\n| 18 | `is_grandmaster` | `boolean` | true for GMs. |\n| 19 | `is_international_master` | `boolean` | true for IMs. |\n| 20 | `is_fide_master` | `boolean` | true for FMs. |\n| 21 | `is_candidate_master` | `boolean` | true for CMs. |\n| 22 | `is_woman_grandmaster` | `boolean` | true for WGMs. |\n| 23 | `is_woman_master` | `boolean` | true for WIM/WFM/WCM. |\n| 24 | `is_active` | `boolean` | true when rated games > 0. |\n| 25 | `is_male` | `boolean` | true when sex is M. |\n| 26 | `is_female` | `boolean` | true when sex is F. |\n| 27 | `has_birth_year` | `boolean` | true when a birth year is listed. |\n| 28 | `is_junior` | `boolean` | true when aged 20 or under. |\n| 29 | `is_veteran` | `boolean` | true when aged 60 or over. |\n| 30 | `is_inactive_flag` | `boolean` | true when the FIDE inactive flag is set. |\n| 31 | `k_factor_band` | `string` | K-factor band. |\n| 32 | `name_length` | `number` | Characters in the name. |\n| 33 | `name_word_count` | `number` | Words in the name. |\n| 34 | `rating_per_game` | `number` | Rating divided by rated games. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "games",
+    "sports"
+  ],
+  "resources": [
+    {
+      "path": "fide_players.csv",
+      "description": "Primary dataset file containing 573,475 records across 34 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "fide_id",
+            "type": "number",
+            "description": "FIDE player identifier."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Player name (last name first)."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "FIDE country code."
+          },
+          {
+            "name": "sex",
+            "type": "string",
+            "description": "M or F."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Open title (GM, IM, FM, CM)."
+          },
+          {
+            "name": "woman_title",
+            "type": "string",
+            "description": "Women's title (WGM, WIM, WFM, WCM)."
+          },
+          {
+            "name": "organiser_title",
+            "type": "string",
+            "description": "Organiser title."
+          },
+          {
+            "name": "foa_title",
+            "type": "string",
+            "description": "FIDE Online Arena title."
+          },
+          {
+            "name": "rating",
+            "type": "number",
+            "description": "Standard classical rating."
+          },
+          {
+            "name": "games",
+            "type": "number",
+            "description": "Rated games in the period."
+          },
+          {
+            "name": "k_factor",
+            "type": "number",
+            "description": "FIDE K-factor."
+          },
+          {
+            "name": "birth_year",
+            "type": "number",
+            "description": "Year of birth."
+          },
+          {
+            "name": "flag",
+            "type": "string",
+            "description": "FIDE flag field (i = inactive)."
+          },
+          {
+            "name": "age",
+            "type": "number",
+            "description": "Age in 2026."
+          },
+          {
+            "name": "rating_band",
+            "type": "string",
+            "description": "Rating band."
+          },
+          {
+            "name": "is_rated",
+            "type": "boolean",
+            "description": "true when the rating is positive."
+          },
+          {
+            "name": "is_titled",
+            "type": "boolean",
+            "description": "true when the player holds any title."
+          },
+          {
+            "name": "is_grandmaster",
+            "type": "boolean",
+            "description": "true for GMs."
+          },
+          {
+            "name": "is_international_master",
+            "type": "boolean",
+            "description": "true for IMs."
+          },
+          {
+            "name": "is_fide_master",
+            "type": "boolean",
+            "description": "true for FMs."
+          },
+          {
+            "name": "is_candidate_master",
+            "type": "boolean",
+            "description": "true for CMs."
+          },
+          {
+            "name": "is_woman_grandmaster",
+            "type": "boolean",
+            "description": "true for WGMs."
+          },
+          {
+            "name": "is_woman_master",
+            "type": "boolean",
+            "description": "true for WIM/WFM/WCM."
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "description": "true when rated games > 0."
+          },
+          {
+            "name": "is_male",
+            "type": "boolean",
+            "description": "true when sex is M."
+          },
+          {
+            "name": "is_female",
+            "type": "boolean",
+            "description": "true when sex is F."
+          },
+          {
+            "name": "has_birth_year",
+            "type": "boolean",
+            "description": "true when a birth year is listed."
+          },
+          {
+            "name": "is_junior",
+            "type": "boolean",
+            "description": "true when aged 20 or under."
+          },
+          {
+            "name": "is_veteran",
+            "type": "boolean",
+            "description": "true when aged 60 or over."
+          },
+          {
+            "name": "is_inactive_flag",
+            "type": "boolean",
+            "description": "true when the FIDE inactive flag is set."
+          },
+          {
+            "name": "k_factor_band",
+            "type": "string",
+            "description": "K-factor band."
+          },
+          {
+            "name": "name_length",
+            "type": "number",
+            "description": "Characters in the name."
+          },
+          {
+            "name": "name_word_count",
+            "type": "number",
+            "description": "Words in the name."
+          },
+          {
+            "name": "rating_per_game",
+            "type": "number",
+            "description": "Rating divided by rated games."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

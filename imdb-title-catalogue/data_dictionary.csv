@@ -1,0 +1,40 @@
+column,data_type,description
+tconst,string,IMDb title identifier.
+title_type,string,"movie, tvSeries or tvMiniSeries."
+primary_title,string,Primary title.
+original_title,string,Original-language title.
+is_adult,number,true for adult titles.
+start_year,number,Release / start year.
+end_year,number,End year for series.
+runtime_minutes,number,Runtime in minutes.
+genres,string,Genres (comma-separated).
+average_rating,number,IMDb weighted average rating (1-10).
+num_votes,number,Number of votes.
+decade,number,Start-year decade.
+age_years,number,Years since release at 2026.
+is_adult_film,boolean,true when flagged adult.
+runtime_band,string,Runtime band.
+genre_count,number,Number of genres.
+is_drama,boolean,true when Drama is a genre.
+is_comedy,boolean,true when Comedy is a genre.
+is_documentary,boolean,true when Documentary is a genre.
+is_action,boolean,true when Action is a genre.
+is_horror,boolean,true when Horror is a genre.
+is_thriller,boolean,true when Thriller is a genre.
+is_romance,boolean,true when Romance is a genre.
+is_scifi,boolean,true when Sci-Fi is a genre.
+is_animation,boolean,true when Animation is a genre.
+is_movie,boolean,true for feature films.
+is_series,boolean,true for series.
+title_length,number,Characters in the primary title.
+title_word_count,number,Words in the primary title.
+same_title,boolean,true when primary and original titles match.
+rating_band,string,Rating band.
+votes_band,string,Vote-count band.
+is_highly_rated,boolean,true when rating is 8.0 or higher.
+is_popular,boolean,"true when votes are 10,000 or more."
+votes_per_year,number,Votes divided by age in years.
+bayesian_rating,number,"Rating shrunk toward the global mean (m = 5,000 votes)."
+has_runtime,boolean,true when a runtime is listed.
+is_ongoing,boolean,true when a series has no end year.
+rating_votes_product,number,"Rating x log10(votes), a simple popularity-weighted score."

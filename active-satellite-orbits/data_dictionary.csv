@@ -1,0 +1,42 @@
+column,data_type,description
+object_name,string,Satellite name as catalogued by CelesTrak / US Space Force.
+object_id,string,International designator (launch year-number-piece).
+norad_cat_id,number,NORAD catalogue number.
+epoch,datetime,Epoch of the orbital elements.
+mean_motion,number,Mean motion in revolutions per day.
+eccentricity,number,Orbital eccentricity (0 = circular).
+inclination,number,Orbital inclination in degrees.
+ra_of_asc_node,number,Right ascension of the ascending node (degrees).
+arg_of_pericenter,number,Argument of perigee (degrees).
+mean_anomaly,number,Mean anomaly at epoch (degrees).
+ephemeris_type,number,Ephemeris type code used by the propagator.
+classification_type,string,"U (unclassified), C (classified) or S (secret)."
+element_set_no,number,"Element set number, incremented with each new orbit fit."
+rev_at_epoch,number,Revolution count at epoch.
+bstar,number,B* drag term (1/Earth radii).
+mean_motion_dot,number,First derivative of mean motion divided by two (rev/day^2).
+mean_motion_ddot,number,Second derivative of mean motion divided by six (rev/day^3).
+semimajor_axis,number,"Semi-major axis in kilometres, computed from the mean motion."
+period,number,"Orbital period in minutes, computed as 1440 / mean motion."
+apoapsis,number,"Apogee altitude above the Earth's surface (km), computed as a(1+e) - R_earth."
+periapsis,number,"Perigee altitude above the Earth's surface (km), computed as a(1-e) - R_earth."
+mean_altitude_km,number,Semi-major axis minus the Earth's equatorial radius.
+perigee_altitude_km,number,Perigee altitude above the Earth's surface.
+apogee_altitude_km,number,Apogee altitude above the Earth's surface.
+orbital_regime,string,"LEO, MEO, GEO or HEO, derived from period and eccentricity."
+is_geostationary,boolean,true when the period is ~24 h and the orbit is near-circular and equatorial.
+is_geosynchronous,boolean,true when the orbital period is close to one sidereal day.
+is_sun_synchronous,boolean,"true for near-polar, sun-synchronous orbits (~96-102 deg inclination, 400-1100 km)."
+is_polar,boolean,true when the inclination is within 10 degrees of 90.
+is_retrograde,boolean,true when the inclination exceeds 90 degrees.
+constellation,string,Commercial or institutional constellation inferred from the object name.
+operator_group,string,Operator/owner inferred from the object name prefix.
+launch_year,number,Year of launch.
+satellite_age_years,number,Years since launch at the snapshot date.
+orbit_speed_kms,number,Mean orbital speed from the vis-viva equation.
+revolutions_per_day,number,Mean motion in revolutions per day.
+inclination_band,string,Inclination band label.
+altitude_band,string,Altitude band from very low LEO to beyond GEO.
+is_leo,boolean,true for low Earth orbit objects (period < 128 minutes and eccentricity < 0.25).
+n_same_constellation,number,Number of catalogue objects sharing the same inferred constellation.
+source_group,string,CelesTrak group file the object was retrieved from.

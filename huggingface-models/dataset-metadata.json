@@ -1,0 +1,30 @@
+{
+  "title": "Hugging Face Model Hub Catalogue",
+  "id": "samyakrajbayar/huggingface-models",
+  "subtitle": "20,000 open models with tasks, libraries, downloads, likes, licences and prov...",
+  "description": "### 20,000 models from the Hugging Face Hub\n\nHugging Face hosts the largest open model registry. This dataset pages the model API and captures\n**20,000 repositories** with **43 parameters** each.\n\n- **Repository** \u2014 id, author, SHA, creation and update timestamps, file count and privacy/gating.\n- **Popularity** \u2014 downloads, likes, trending score, downloads per day and likes per 1,000 downloads.\n- **Task and library** \u2014 pipeline tag, library name, full tag list and derived task flags.\n- **Provenance** \u2014 licence, dataset tags and base-model tags.\n- **Derived** \u2014 tag counts, age and update recency, model-family flags, download/like bands and\n  organisation flag.\n\nThe sample spans **54 pipeline tasks** and **4,472 authors**, with **2,645,129,388\ndownloads** in the last 30 days \u2014 a map of the open-model ecosystem for trend and adoption analysis.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "hf_models.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

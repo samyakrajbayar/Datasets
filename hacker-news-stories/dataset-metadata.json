@@ -1,0 +1,184 @@
+{
+  "title": "Hacker News Stories",
+  "id": "samyakrajbayar/hacker-news-stories",
+  "subtitle": "100,000 HN posts with score, comment count, author and URL",
+  "description": "# Hacker News Stories 2023-2026\n\n**Subtitle:** 36,000 stories with points, comments, domains, author & timestamp info\n\n**Tags:** `tabular`, `technology`, `social-media`\n\n**Dataset File:** `hacker_news_stories.csv` (41,784 rows, 30 columns, 12.8 MB)\n\n**Provenance & Source:** Algolia Hacker News Search API (hn.algolia.com)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 36,000 Hacker News stories\n\nHacker News is the technology community's most-read link board. This dataset samples **36,000 stories\nsubmitted between December 2023 and November 2026** with **30 parameters**.\n\n- **Story** \u2014 item id, title, URL and derived domain, submitter, points, comment count and timestamps.\n- **Post type** \u2014 self text plus Ask HN, Show HN and job flags.\n- **Derived** \u2014 title/url lengths, tag count, age in days and hours, points per hour, comments per\n  point, year/month/day/hour/weekday, weekend flag and an engagement score.\n\nStories link to **14,158 distinct domains**, and **1,637 Ask HN** plus **3,420 Show HN**\nposts are included. The monthly sampling covers every month in the window, so the file supports both\ntime-series and content analysis.\n\n## \ud83e\uddfe Columns (30)\n\n`object_id`, `title`, `url`, `domain`, `author`, `points`, `num_comments`, `created_at`, `created_at_i`, `story_text`, `has_url`, `has_text`, `is_ask_hn`, `is_show_hn`, `is_job`, `title_length`, `title_word_count`, `url_length`, `tag_count`, `age_days`, `age_hours`, `points_per_hour`, `comments_per_point`, `year`, `month`, `day`, `hour`, `day_of_week`, `is_weekend`, `engagement_score`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **What goes viral** \u2014 points and comments vs domain, title style and post type.\n2. **Domain influence** \u2014 which domains dominate the front page over time?\n3. **Show HN vs Ask HN** \u2014 engagement differences and best posting times.\n4. **Title linguistics** \u2014 clickbait patterns, question titles and word choice.\n5. **Temporal patterns** \u2014 hour-of-week heatmaps of submissions and engagement.\n6. **Topic clustering** \u2014 TF-IDF on titles to find recurring technology themes.\n7. **Aging curve** \u2014 points per hour for old vs recent stories (survivorship caveat).\n8. **Domain diversity** \u2014 concentration of links across the long tail.\n9. **Predicting engagement** \u2014 regress log points on title and domain features.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `hacker_news_stories.csv` | 36,000 stories x 30 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`hacker-news`, `technology`, `social-media`, `engagement`, `text`, `time-series`, `links`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **Algolia Hacker News Search API**,\n  `https://hn.algolia.com/api/v1/search_by_date?tags=story` (unofficial mirror of the official\n  Firebase HN API).\n- **Scope:** up to 1,000 stories per month for December 2023 through November 2026.\n- **Processing:** monthly queries with `numericFilters` on `created_at_i`, deduplicated by item id;\n  domains parsed from URLs; engagement and calendar features derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous.** New stories are submitted constantly.\n\n## \u26a0\ufe0f Caveats\n\n- Algolia caps each query at 1,000 hits, so months with more stories are truncated.\n- Points and comments are point-in-time snapshot values, not final totals.\n- Deleted or dead stories are not returned.\n- `story_text` is HTML and only present for self-posts.\n- Domain is empty for self-posts and for some non-standard URLs.\n- November 2026 is partial (through the snapshot date).\n- Algolia is an unofficial mirror; ids and timestamps match HN but availability is not guaranteed.\n\n## \ud83d\udcdc Licence\n\nHacker News content belongs to its authors; metadata is provided for research use.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `object_id` | `number` | Hacker News item id. |\n| 2 | `title` | `string` | Story title. |\n| 3 | `url` | `string` | Linked URL, where the story links out. |\n| 4 | `domain` | `string` | Domain of the linked URL. |\n| 5 | `author` | `string` | Submitter username. |\n| 6 | `points` | `number` | Points at snapshot time. |\n| 7 | `num_comments` | `number` | Comment count. |\n| 8 | `created_at` | `datetime` | Submission timestamp (ISO). |\n| 9 | `created_at_i` | `number` | Submission Unix timestamp. |\n| 10 | `story_text` | `string` | Self-post text (Ask HN, Show HN, ...). |\n| 11 | `has_url` | `boolean` | true when the story links to an external URL. |\n| 12 | `has_text` | `boolean` | true when the story has self-post text. |\n| 13 | `is_ask_hn` | `boolean` | true for Ask HN posts. |\n| 14 | `is_show_hn` | `boolean` | true for Show HN posts. |\n| 15 | `is_job` | `boolean` | true for job posts. |\n| 16 | `title_length` | `number` | Characters in the title. |\n| 17 | `title_word_count` | `number` | Words in the title. |\n| 18 | `url_length` | `number` | Characters in the URL. |\n| 19 | `tag_count` | `number` | Number of Algolia tags. |\n| 20 | `age_days` | `number` | Days since submission at 2026-11-22. |\n| 21 | `age_hours` | `number` | Hours since submission. |\n| 22 | `points_per_hour` | `number` | Points divided by age in hours. |\n| 23 | `comments_per_point` | `number` | Comments divided by points. |\n| 24 | `year` | `number` | Submission year. |\n| 25 | `month` | `number` | Submission month. |\n| 26 | `day` | `number` | Submission day of month. |\n| 27 | `hour` | `number` | Submission hour (UTC). |\n| 28 | `day_of_week` | `string` | Submission weekday. |\n| 29 | `is_weekend` | `boolean` | true for Saturday/Sunday. |\n| 30 | `engagement_score` | `number` | Comments + points (simple engagement total). |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular"
+  ],
+  "resources": [
+    {
+      "path": "hacker_news_stories.csv",
+      "description": "Primary dataset file containing 41,784 records across 30 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "number",
+            "description": "Hacker News item id."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Story title."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "Linked URL, where the story links out."
+          },
+          {
+            "name": "domain",
+            "type": "string",
+            "description": "Domain of the linked URL."
+          },
+          {
+            "name": "author",
+            "type": "string",
+            "description": "Submitter username."
+          },
+          {
+            "name": "points",
+            "type": "number",
+            "description": "Points at snapshot time."
+          },
+          {
+            "name": "num_comments",
+            "type": "number",
+            "description": "Comment count."
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "description": "Submission timestamp (ISO)."
+          },
+          {
+            "name": "created_at_i",
+            "type": "number",
+            "description": "Submission Unix timestamp."
+          },
+          {
+            "name": "story_text",
+            "type": "string",
+            "description": "Self-post text (Ask HN, Show HN, ...)."
+          },
+          {
+            "name": "has_url",
+            "type": "boolean",
+            "description": "true when the story links to an external URL."
+          },
+          {
+            "name": "has_text",
+            "type": "boolean",
+            "description": "true when the story has self-post text."
+          },
+          {
+            "name": "is_ask_hn",
+            "type": "boolean",
+            "description": "true for Ask HN posts."
+          },
+          {
+            "name": "is_show_hn",
+            "type": "boolean",
+            "description": "true for Show HN posts."
+          },
+          {
+            "name": "is_job",
+            "type": "boolean",
+            "description": "true for job posts."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "title_word_count",
+            "type": "number",
+            "description": "Words in the title."
+          },
+          {
+            "name": "url_length",
+            "type": "number",
+            "description": "Characters in the URL."
+          },
+          {
+            "name": "tag_count",
+            "type": "number",
+            "description": "Number of Algolia tags."
+          },
+          {
+            "name": "age_days",
+            "type": "number",
+            "description": "Days since submission at 2026-11-22."
+          },
+          {
+            "name": "age_hours",
+            "type": "number",
+            "description": "Hours since submission."
+          },
+          {
+            "name": "points_per_hour",
+            "type": "number",
+            "description": "Points divided by age in hours."
+          },
+          {
+            "name": "comments_per_point",
+            "type": "number",
+            "description": "Comments divided by points."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Submission year."
+          },
+          {
+            "name": "month",
+            "type": "number",
+            "description": "Submission month."
+          },
+          {
+            "name": "day",
+            "type": "number",
+            "description": "Submission day of month."
+          },
+          {
+            "name": "hour",
+            "type": "number",
+            "description": "Submission hour (UTC)."
+          },
+          {
+            "name": "day_of_week",
+            "type": "string",
+            "description": "Submission weekday."
+          },
+          {
+            "name": "is_weekend",
+            "type": "boolean",
+            "description": "true for Saturday/Sunday."
+          },
+          {
+            "name": "engagement_score",
+            "type": "number",
+            "description": "Comments + points (simple engagement total)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

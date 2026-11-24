@@ -1,0 +1,235 @@
+{
+  "title": "Chicago Crime Incidents",
+  "id": "samyakrajbayar/chicago-crime-incidents",
+  "subtitle": "200,000 recent Chicago crimes with type and arrest status",
+  "description": "# Chicago Crime Incidents\n\n**Subtitle:** 200,000 recent Chicago crimes with type, block location & arrest status\n\n**Tags:** `tabular`, `crime`, `chicago`\n\n**Dataset File:** `chicago_crimes.csv` (200,000 rows, 40 columns, 59.6 MB)\n\n**Provenance & Source:** City of Chicago Open Data Portal (data.cityofchicago.org)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 200,000 recent Chicago crime incidents\n\nThe City of Chicago publishes every reported crime with a block-level location, IUCR/FBI codes and\narrest status. This dataset contains the **200,000 most recent incidents** with **40 parameters**.\n\n- **Incident** \u2014 id, case number, date/time, IUCR code, primary type, description, FBI code and the\n  derived FBI category and coarse crime band.\n- **Location** \u2014 block address, location description, beat, district, ward, community area,\n  State Plane coordinates and latitude/longitude.\n- **Outcome** \u2014 arrest and domestic flags.\n- **Derived** \u2014 violent/property/drug/public-order and theft flags, firearm mention, night and weekend\n  flags, hour/month/weekday, year-month, location and text-length measures.\n\n**69,249 incidents are violent**, **10,411 mention a firearm**, and **30,919**\n(15.5%) resulted in an arrest. The block-level geography supports hot-spot mapping\nwithout exposing exact addresses.\n\n## \ud83e\uddfe Columns (40)\n\n`id`, `case_number`, `date`, `block`, `iucr`, `primary_type`, `description`, `location_description`, `arrest`, `domestic`, `beat`, `district`, `ward`, `community_area`, `fbi_code`, `x_coordinate`, `y_coordinate`, `year`, `updated_on`, `latitude`, `longitude`, `fbi_category`, `crime_category`, `is_violent`, `is_property`, `is_drug`, `is_public_order`, `is_theft`, `is_firearm`, `is_arrest`, `is_domestic`, `hour`, `month`, `day_of_week`, `is_weekend`, `has_location`, `block_length`, `description_length`, `is_night`, `year_month`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Hot-spot mapping** \u2014 hex-bin the coordinates and compare violent vs property crime.\n2. **Temporal patterns** \u2014 hour-of-week heatmaps by crime category.\n3. **Arrest propensity** \u2014 which crime types and districts clear cases by arrest?\n4. **Firearm incidents** \u2014 spatial and temporal clustering of firearm mentions.\n5. **District comparison** \u2014 crime mix and arrest rates across the 22 police districts.\n6. **Seasonality** \u2014 monthly counts by category over the sample window.\n7. **Location type** \u2014 street vs residence vs commercial mix by crime type.\n8. **Forecasting** \u2014 build a weekly district-level count model.\n9. **Equity analysis** \u2014 join community areas to census data (external) and test enforcement patterns.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `chicago_crimes.csv` | 200,000 crime incidents x 40 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`crime`, `chicago`, `open-data`, `urban`, `geospatial`, `public-safety`, `socrata`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **City of Chicago Open Data Portal**, Crimes 2001 to present,\n  `https://data.cityofchicago.org/resource/ijzp-q8t2.json` (Socrata).\n- **Scope:** the 200,000 most recent incidents by `date`, five pages of 40,000.\n- **Processing:** timestamps parsed, crime and FBI categories mapped, temporal and text features\n  derived; no addresses below block level are included upstream.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily.** The Chicago data portal updates the crime dataset continuously.\n\n## \u26a0\ufe0f Caveats\n\n- This is a recency sample, not the full 2001-present history.\n- Crime data reflects reports to police, not actual crime incidence.\n- Records can be reclassified or updated after initial publication.\n- Coordinates are block-level and occasionally missing or rounded.\n- The `year` column follows the source and may differ from the parsed date year at year boundaries.\n- Firearm flag is a keyword match on the description and will miss some cases.\n- Arrest does not imply conviction.\n\n## \ud83d\udcdc Licence\n\nCity of Chicago Open Data is licensed CC BY 4.0 \u2014 attribution required.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `id` | `number` | Incident record identifier. |\n| 2 | `case_number` | `string` | Chicago Police Department case number. |\n| 3 | `date` | `datetime` | Incident date and time (local). |\n| 4 | `block` | `string` | Block-level address (hundred-block, not an exact address). |\n| 5 | `iucr` | `string` | Illinois Uniform Crime Reporting code. |\n| 6 | `primary_type` | `string` | Primary crime type. |\n| 7 | `description` | `string` | Secondary description / subtype. |\n| 8 | `location_description` | `string` | Location type (street, residence, apartment, ...). |\n| 9 | `arrest` | `boolean` | true when an arrest was made. |\n| 10 | `domestic` | `boolean` | true when the incident was domestic. |\n| 11 | `beat` | `number` | Police beat. |\n| 12 | `district` | `number` | Police district. |\n| 13 | `ward` | `number` | City ward. |\n| 14 | `community_area` | `number` | Community area number. |\n| 15 | `fbi_code` | `string` | FBI crime code. |\n| 16 | `x_coordinate` | `number` | State plane X coordinate. |\n| 17 | `y_coordinate` | `number` | State plane Y coordinate. |\n| 18 | `year` | `number` | Year reported in the source. |\n| 19 | `updated_on` | `datetime` | Last update timestamp of the record. |\n| 20 | `latitude` | `number` | Latitude (WGS84). |\n| 21 | `longitude` | `number` | Longitude (WGS84). |\n| 22 | `fbi_category` | `string` | Human-readable FBI crime category. |\n| 23 | `crime_category` | `string` | Derived Violent / Property / Drug / Public order / Other band. |\n| 24 | `is_violent` | `boolean` | true for violent crime types. |\n| 25 | `is_property` | `boolean` | true for property crime types. |\n| 26 | `is_drug` | `boolean` | true for narcotics offences. |\n| 27 | `is_public_order` | `boolean` | true for public-order offences. |\n| 28 | `is_theft` | `boolean` | true for theft/larceny. |\n| 29 | `is_firearm` | `boolean` | true when the description mentions a firearm/handgun. |\n| 30 | `is_arrest` | `boolean` | true when arrest is true. |\n| 31 | `is_domestic` | `boolean` | true when domestic is true. |\n| 32 | `hour` | `number` | Hour of day (0-23). |\n| 33 | `month` | `number` | Month number. |\n| 34 | `day_of_week` | `string` | Weekday name. |\n| 35 | `is_weekend` | `boolean` | true for Saturday/Sunday. |\n| 36 | `has_location` | `boolean` | true when latitude and longitude are present. |\n| 37 | `block_length` | `number` | Characters in the block address. |\n| 38 | `description_length` | `number` | Characters in the secondary description. |\n| 39 | `is_night` | `boolean` | true for incidents between 20:00 and 05:59. |\n| 40 | `year_month` | `string` | Year-month string for monthly aggregation. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "chicago_crimes.csv",
+      "description": "Primary dataset file containing 200,000 records across 40 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "number",
+            "description": "Incident record identifier."
+          },
+          {
+            "name": "case_number",
+            "type": "string",
+            "description": "Chicago Police Department case number."
+          },
+          {
+            "name": "date",
+            "type": "datetime",
+            "description": "Incident date and time (local)."
+          },
+          {
+            "name": "block",
+            "type": "string",
+            "description": "Block-level address (hundred-block, not an exact address)."
+          },
+          {
+            "name": "iucr",
+            "type": "string",
+            "description": "Illinois Uniform Crime Reporting code."
+          },
+          {
+            "name": "primary_type",
+            "type": "string",
+            "description": "Primary crime type."
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Secondary description / subtype."
+          },
+          {
+            "name": "location_description",
+            "type": "string",
+            "description": "Location type (street, residence, apartment, ...)."
+          },
+          {
+            "name": "arrest",
+            "type": "boolean",
+            "description": "true when an arrest was made."
+          },
+          {
+            "name": "domestic",
+            "type": "boolean",
+            "description": "true when the incident was domestic."
+          },
+          {
+            "name": "beat",
+            "type": "number",
+            "description": "Police beat."
+          },
+          {
+            "name": "district",
+            "type": "number",
+            "description": "Police district."
+          },
+          {
+            "name": "ward",
+            "type": "number",
+            "description": "City ward."
+          },
+          {
+            "name": "community_area",
+            "type": "number",
+            "description": "Community area number."
+          },
+          {
+            "name": "fbi_code",
+            "type": "string",
+            "description": "FBI crime code."
+          },
+          {
+            "name": "x_coordinate",
+            "type": "number",
+            "description": "State plane X coordinate."
+          },
+          {
+            "name": "y_coordinate",
+            "type": "number",
+            "description": "State plane Y coordinate."
+          },
+          {
+            "name": "year",
+            "type": "number",
+            "description": "Year reported in the source."
+          },
+          {
+            "name": "updated_on",
+            "type": "datetime",
+            "description": "Last update timestamp of the record."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude (WGS84)."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude (WGS84)."
+          },
+          {
+            "name": "fbi_category",
+            "type": "string",
+            "description": "Human-readable FBI crime category."
+          },
+          {
+            "name": "crime_category",
+            "type": "string",
+            "description": "Derived Violent / Property / Drug / Public order / Other band."
+          },
+          {
+            "name": "is_violent",
+            "type": "boolean",
+            "description": "true for violent crime types."
+          },
+          {
+            "name": "is_property",
+            "type": "boolean",
+            "description": "true for property crime types."
+          },
+          {
+            "name": "is_drug",
+            "type": "boolean",
+            "description": "true for narcotics offences."
+          },
+          {
+            "name": "is_public_order",
+            "type": "boolean",
+            "description": "true for public-order offences."
+          },
+          {
+            "name": "is_theft",
+            "type": "boolean",
+            "description": "true for theft/larceny."
+          },
+          {
+            "name": "is_firearm",
+            "type": "boolean",
+            "description": "true when the description mentions a firearm/handgun."
+          },
+          {
+            "name": "is_arrest",
+            "type": "boolean",
+            "description": "true when arrest is true."
+          },
+          {
+            "name": "is_domestic",
+            "type": "boolean",
+            "description": "true when domestic is true."
+          },
+          {
+            "name": "hour",
+            "type": "number",
+            "description": "Hour of day (0-23)."
+          },
+          {
+            "name": "month",
+            "type": "number",
+            "description": "Month number."
+          },
+          {
+            "name": "day_of_week",
+            "type": "string",
+            "description": "Weekday name."
+          },
+          {
+            "name": "is_weekend",
+            "type": "boolean",
+            "description": "true for Saturday/Sunday."
+          },
+          {
+            "name": "has_location",
+            "type": "boolean",
+            "description": "true when latitude and longitude are present."
+          },
+          {
+            "name": "block_length",
+            "type": "number",
+            "description": "Characters in the block address."
+          },
+          {
+            "name": "description_length",
+            "type": "number",
+            "description": "Characters in the secondary description."
+          },
+          {
+            "name": "is_night",
+            "type": "boolean",
+            "description": "true for incidents between 20:00 and 05:59."
+          },
+          {
+            "name": "year_month",
+            "type": "string",
+            "description": "Year-month string for monthly aggregation."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

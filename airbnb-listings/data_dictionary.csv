@@ -1,0 +1,77 @@
+column,data_type,description
+id,number,Inside Airbnb listing id.
+listing_url,string,Listing page URL.
+name,string,Listing title (truncated to 200 characters).
+host_id,number,Host id.
+host_name,string,Host first name.
+host_since,number,Date the host joined.
+host_location,string,Inside Airbnb listing field or derived attribute.
+host_response_time,number,Reported host response time.
+host_response_rate,number,Reported response rate.
+host_acceptance_rate,number,Reported acceptance rate.
+host_is_superhost,string,t/f superhost flag from the feed.
+host_listings_count,number,Listings attributed to the host.
+host_total_listings_count,number,Inside Airbnb listing field or derived attribute.
+host_verifications,string,"Verification methods, as a list string."
+host_has_profile_pic,string,Inside Airbnb listing field or derived attribute.
+host_identity_verified,string,Inside Airbnb listing field or derived attribute.
+neighbourhood,number,Inside Airbnb listing field or derived attribute.
+neighbourhood_cleansed,string,Inside Airbnb listing field or derived attribute.
+neighbourhood_group_cleansed,string,Inside Airbnb listing field or derived attribute.
+latitude,number,Inside Airbnb listing field or derived attribute.
+longitude,number,Inside Airbnb listing field or derived attribute.
+property_type,string,"Property type (entire apartment, private room, ...)."
+room_type,string,Room type.
+accommodates,number,Maximum guests.
+bathrooms,number,Bathrooms.
+bedrooms,number,Bedrooms.
+beds,number,Beds.
+amenities,string,Amenity list (truncated to 600 characters).
+price,string,Price string as published (local currency).
+minimum_nights,number,Minimum stay.
+maximum_nights,number,Maximum stay.
+availability_30,number,Available nights in the next 30 days.
+availability_60,number,Inside Airbnb listing field or derived attribute.
+availability_90,number,Inside Airbnb listing field or derived attribute.
+availability_365,number,Inside Airbnb listing field or derived attribute.
+number_of_reviews,number,Total reviews.
+number_of_reviews_ltm,number,Inside Airbnb listing field or derived attribute.
+number_of_reviews_l30d,number,Inside Airbnb listing field or derived attribute.
+first_review,date,Inside Airbnb listing field or derived attribute.
+last_review,date,Inside Airbnb listing field or derived attribute.
+review_scores_rating,number,Overall review score.
+review_scores_accuracy,number,Inside Airbnb listing field or derived attribute.
+review_scores_cleanliness,number,Inside Airbnb listing field or derived attribute.
+review_scores_checkin,number,Inside Airbnb listing field or derived attribute.
+review_scores_communication,number,Inside Airbnb listing field or derived attribute.
+review_scores_location,number,Inside Airbnb listing field or derived attribute.
+review_scores_value,number,Inside Airbnb listing field or derived attribute.
+license,string,Inside Airbnb listing field or derived attribute.
+instant_bookable,number,Inside Airbnb listing field or derived attribute.
+calculated_host_listings_count,number,Inside Airbnb listing field or derived attribute.
+calculated_host_listings_count_entire_homes,number,Inside Airbnb listing field or derived attribute.
+calculated_host_listings_count_private_rooms,number,Inside Airbnb listing field or derived attribute.
+calculated_host_listings_count_shared_rooms,number,Inside Airbnb listing field or derived attribute.
+reviews_per_month,number,Average reviews per month.
+estimated_occupancy_l365d,number,Estimated occupied nights in the last 365 days.
+estimated_revenue_l365d,number,Estimated revenue in the last 365 days.
+city,string,City (derived from the feed).
+price_numeric,number,Price parsed to a number (currency symbols removed).
+amenities_count,number,Number of amenities listed.
+is_entire_home,boolean,true for entire-home listings.
+is_private_room,boolean,true for private-room listings.
+is_shared_room,boolean,true for shared-room listings.
+is_superhost,boolean,true for superhosts.
+is_instant_bookable,boolean,true when instant booking is enabled.
+has_license,boolean,true when a licence number is present.
+has_reviews,boolean,true when the listing has reviews.
+review_score_mean,number,Mean of the six sub-scores.
+bedrooms_per_guest,number,Bedrooms divided by guest capacity.
+beds_per_guest,number,Beds divided by guest capacity.
+bathrooms_per_bedroom,number,Bathrooms divided by bedrooms.
+price_band,string,Nightly-price band.
+occupancy_band,string,Occupancy band.
+revenue_band,string,Annual revenue band.
+availability_ratio,number,Availability in the next year as a fraction.
+reviews_per_month_numeric,number,Inside Airbnb listing field or derived attribute.
+name_length,number,Characters in the listing title.

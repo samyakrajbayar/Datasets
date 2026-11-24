@@ -1,0 +1,78 @@
+column,data_type,description
+title,string,Journal title.
+journal_url,string,Journal website.
+doaj_url,string,DOAJ record URL.
+oa_start_year,number,Year the journal began publishing all content under an open licence.
+alternative_title,string,Alternative title.
+pissn,string,Print ISSN.
+eissn,string,Electronic ISSN.
+keywords,string,Author keywords (comma-separated).
+languages,string,Manuscript languages accepted.
+publisher,string,Publisher name.
+country,string,Country of the publisher.
+other_organisation,string,Other supporting organisation.
+other_organisation_country,string,Country of the other organisation.
+licenses,string,Licences used by the journal.
+license_attributes,string,"Licence attributes (e.g. CC BY, CC BY-NC)."
+license_url,string,Licence terms URL.
+cc_machine_readable,string,Whether CC licensing is machine-readable in articles.
+author_holds_copyright,string,Whether authors retain copyright.
+copyright_url,string,Copyright policy URL.
+review_process,string,Peer-review process description.
+review_url,string,Peer-review policy URL.
+plagiarism_policy,string,Plagiarism screening policy.
+aims_url,string,Aims and scope URL.
+editorial_board_url,string,Editorial board URL.
+instructions_url,string,Author instructions URL.
+weeks_to_publication,number,Average weeks from submission to publication (as reported).
+apc,string,Whether an article processing charge applies.
+apc_url,string,APC information URL.
+apc_amount,string,APC amount as reported (free text).
+waiver_policy,string,APC waiver policy.
+waiver_url,string,Waiver policy URL.
+other_fees,string,Whether other fees apply.
+other_fees_url,string,Other fees URL.
+preservation_services,string,Preservation services listed.
+preservation_national_library,string,National-library preservation partner.
+preservation_url,string,Preservation policy URL.
+deposit_policy,string,Deposit policy directories.
+deposit_url,string,Deposit policy URL.
+persistent_identifiers,string,Persistent article identifiers used.
+doaj_compliant,string,Whether the journal meets DOAJ's open-access definition.
+continues,string,Journal(s) this title continues.
+continued_by,string,Journal(s) that continue this title.
+lcc_codes,string,Library of Congress Classification codes.
+subscribe_to_open,string,Subscribe-to-Open participation.
+mirror_journal,string,Mirror journal flag.
+open_journals_collective,string,Open Journals Collective participation.
+subjects,string,Subject terms.
+added_date,datetime,Date added to DOAJ.
+last_updated,datetime,Date the DOAJ record was last updated.
+last_full_review,date,Date of the last full DOAJ review.
+article_records,number,Number of article records indexed.
+most_recent_article,datetime,Date of the most recent indexed article.
+title_length,number,Characters in the title.
+is_multilingual,boolean,true when more than one manuscript language is accepted.
+language_count,number,Number of accepted manuscript languages.
+keyword_count,number,Number of keywords.
+subject_count,number,Number of subject terms.
+lcc_count,number,Number of LCC codes.
+has_apc,boolean,true when an APC applies.
+apc_amount_numeric,number,First numeric APC amount parsed from the text.
+apc_band,string,APC amount band.
+has_waiver,boolean,true when an APC waiver policy exists.
+has_other_fees,boolean,true when other fees apply.
+is_diamond,boolean,true when there is no APC and no other fees.
+is_cc_licensed,boolean,true when a Creative Commons licence is used.
+has_cc_machine_readable,boolean,true when CC licensing is machine-readable.
+author_retains_copyright,boolean,true when authors retain copyright.
+has_persistent_identifier,boolean,true when persistent identifiers are used.
+preservation_count,number,Number of preservation services.
+has_preservation,boolean,true when a preservation service is listed.
+has_deposit_policy,boolean,true when a deposit policy is listed.
+weeks_to_publication_numeric,number,Parsed weeks-to-publication value.
+added_year,number,Year added to DOAJ.
+days_since_update,number,Days between last update and 2026-11-22.
+has_review_process,boolean,true when a review process is described.
+has_plagiarism_policy,boolean,true when a plagiarism policy is declared.
+has_doaj_record_url,boolean,true when a DOAJ record URL exists.

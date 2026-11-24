@@ -1,0 +1,48 @@
+column,data_type,description
+collection_id,number,iTunes podcast collection id.
+track_id,number,iTunes track id.
+artist_name,string,Publisher / artist name.
+collection_name,string,Podcast title.
+censored_name,string,Censored podcast title.
+feed_url,string,RSS feed URL.
+track_count,number,Number of episodes in the feed.
+artwork_url,string,Artwork URL (600 px).
+collection_price,number,Collection price.
+currency,string,Price currency.
+country,string,iTunes store country.
+release_date,date,Release date of the latest episode (ISO).
+primary_genre,string,Primary genre.
+genre_ids,string,iTunes genre ids.
+genres,string,All genres (semicolon-joined).
+explicitness,string,Explicit-content rating.
+content_advisory,string,Content advisory rating.
+kind,string,Result kind.
+wrapper_type,string,Wrapper type.
+view_url,string,iTunes page URL.
+artist_view_url,string,Publisher page URL.
+track_view_url,string,Latest episode URL.
+track_time_millis,number,Latest episode duration in ms.
+track_duration_minutes,number,Latest episode duration in minutes.
+query,string,Search term that surfaced the podcast.
+store_country,string,Store country of the query.
+release_year,number,Release year.
+age_days,number,Days since release at 2026-11-22.
+genre_count,number,Number of genres.
+is_explicit,boolean,true when marked explicit.
+is_free,boolean,true when the collection price is zero.
+price_band,string,Price band.
+has_feed,boolean,true when an RSS feed URL exists.
+has_artwork,boolean,true when artwork exists.
+episode_count_band,string,Episode-count band.
+episodes_per_year,number,Episodes divided by podcast age in years.
+name_length,number,Characters in the title.
+is_comedy,boolean,true for comedy podcasts.
+is_news,boolean,true for news podcasts.
+is_true_crime,boolean,true for true-crime podcasts.
+is_business,boolean,true for business podcasts.
+is_technology,boolean,true for technology podcasts.
+is_health,boolean,true for health podcasts.
+is_sports,boolean,true for sports podcasts.
+is_education,boolean,true for education podcasts.
+is_fiction,boolean,true for fiction/drama podcasts.
+is_kids,boolean,true for kids/family podcasts.

@@ -1,0 +1,250 @@
+{
+  "title": "arXiv Preprints",
+  "id": "samyakrajbayar/arxiv-preprints",
+  "subtitle": "18,226 recent arXiv papers with abstracts, authors, categories and dates",
+  "description": "# arXiv Preprints\n\n**Subtitle:** 18,226 recent arXiv papers with abstracts, authors, categories and dates\n\n**Tags:** `research`, `papers`, `nlp`, `tabular`\n\n**Dataset File:** `arxiv_papers.csv` (18,226 rows, 43 columns, 33.4 MB)\n\n**Provenance & Source:** arXiv Open Access Metadata Ingestion API (OAI-PMH & export.arxiv.org)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### A cross-section of arXiv, the world's preprint server\n\narXiv hosts close to three million preprints in physics, mathematics, computer science, quantitative\nbiology, economics and electrical engineering. This snapshot samples the **most recent\n18,226 papers** across 12 major categories and flattens each Atom record into **43 parameters**.\n\nEach row includes:\n- **Identity** \u2014 arXiv id with version, base id, title, abstract, abstract page and PDF URLs.\n- **Authorship** \u2014 ordered author list, author count, affiliations and distinct affiliation count,\n  single-author and large-collaboration flags, abstract length per author.\n- **Classification** \u2014 primary category, all cross-listed categories, category count, top-level archive.\n- **Publication state** \u2014 comment, journal reference, DOI, and flags for whether the paper has been\n  published, mentions code, or states a page count.\n- **Dates** \u2014 first submission and latest version timestamps, date/year/month/weekday, revision count,\n  days to latest version, age at snapshot.\n- **Title and abstract features** \u2014 word and character counts, colon-in-title, short-title flag.\n\n**8,241 papers (45.2%)** come from computer-science categories. The abstracts are included\nverbatim, which makes the file usable for topic modelling, citation-free summarisation and\nresearch-metadata prediction.\n\n## \ud83e\uddfe Columns (43)\n\n`arxiv_id`, `base_id`, `version`, `title`, `abstract`, `authors`, `author_count`, `affiliations`, `affiliation_count`, `primary_category`, `categories`, `category_count`, `comment`, `journal_ref`, `doi`, `published`, `updated`, `abs_url`, `pdf_url`, `primary_group`, `published_date`, `published_year`, `published_month`, `published_weekday`, `days_to_latest_version`, `revision_count`, `title_words`, `title_length`, `abstract_words`, `abstract_length`, `has_journal_ref`, `has_doi`, `has_comment`, `mentions_code`, `mentions_pages`, `is_cross_listed`, `is_short_title`, `abstract_per_author`, `is_single_author`, `large_collaboration`, `title_has_colon`, `age_days`, `is_recent_30d`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Topic modelling** \u2014 LDA or BERTopic over abstracts; compare the topical map of cs, physics and math.\n2. **Title conventions** \u2014 colon usage, length and 'A ... for ...' patterns by archive and year.\n3. **Authorship** \u2014 author-count distribution by field; find the boundary between normal collaborations and mega-author papers.\n4. **Preprint-to-journal** \u2014 which categories actually get a `journal_ref` or DOI, and how quickly?\n5. **Version churn** \u2014 revision count and days-to-latest-version as a proxy for how much papers change after posting.\n6. **Code availability** \u2014 text-mine comments for GitHub links; estimate reproducibility signals by category.\n7. **Abstract readability** \u2014 sentence length and jargon density across fields.\n8. **Classification** \u2014 train a classifier to predict the primary category from the title and abstract.\n9. **Submission rhythm** \u2014 weekday and month patterns; when do researchers post?\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `arxiv_papers.csv` | 18,226 preprints x 43 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: categories, authors, text lengths, dates. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`arxiv`, `research`, `papers`, `science`, `machine-learning`, `physics`, `bibliometrics`, `nlp`, `tabular`, `academia`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **arXiv export API** (`https://export.arxiv.org/api/query`), Atom XML,\n  sorted by submission date descending, 1,000 records per request.\n- **Sampling:** the most recent records in 12 categories (cs.LG, cs.CV, cs.CL, cs.AI, stat.ML,\n  quant-ph, astro-ph.GA, cond-mat.mtrl-sci, math.OC, eess.SY, q-bio.NC, econ.EM), 1,000\u20132,200 each.\n- **Processing:** Atom entries parsed with `xml.etree`, whitespace normalised in titles and abstracts,\n  duplicate versions collapsed to the newest record per base id.\n- **Derived columns:** date parts, revision count, text lengths, authorship features, publication and\n  code flags, age at snapshot.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous upstream; snapshot here.** arXiv receives thousands of submissions a day. Re-run `scripts/28_arxiv.py` for a new slice.\n\n## \u26a0\ufe0f Caveats\n\n- This is a recent cross-section, not the full arXiv corpus; older and less active categories are under-represented.\n- Only 12 categories were sampled, so category-level comparisons reflect the chosen slice.\n- The API returns at most 1,000 records per request and throttles aggressively; requests were spaced 3 s apart.\n- Abstracts are author-supplied and sometimes contain LaTeX macros rather than plain prose.\n- `affiliations` are frequently missing because arXiv does not require them.\n- `journal_ref` and `doi` are optional and manually entered, so absence does not mean unpublished.\n- Duplicates across categories were collapsed by base id, keeping the most recent version.\n\n## \ud83d\udcdc Licence\n\narXiv metadata is distributed under CC0 by Cornell University; abstracts remain the property of their authors. Attribution to arXiv is requested.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `arxiv_id` | `string` | arXiv identifier including version (e.g. 2511.01234v1). |\n| 2 | `base_id` | `number` | arXiv identifier without the version suffix. |\n| 3 | `version` | `number` | Version number of the posting. |\n| 4 | `title` | `string` | Paper title, whitespace-normalised. |\n| 5 | `abstract` | `string` | Full abstract text. |\n| 6 | `authors` | `string` | Author names in order, semicolon-joined. |\n| 7 | `author_count` | `number` | Number of authors. |\n| 8 | `affiliations` | `string` | Author affiliations as supplied, semicolon-joined. |\n| 9 | `affiliation_count` | `number` | Distinct affiliations listed. |\n| 10 | `primary_category` | `string` | Primary arXiv category. |\n| 11 | `categories` | `string` | All cross-listed categories. |\n| 12 | `category_count` | `number` | Number of categories. |\n| 13 | `comment` | `string` | Author comment field (page count, accepted-at, code links). |\n| 14 | `journal_ref` | `string` | Journal reference, when the paper was published. |\n| 15 | `doi` | `string` | DOI, when supplied. |\n| 16 | `published` | `datetime` | First submission timestamp (UTC). |\n| 17 | `updated` | `datetime` | Latest version timestamp (UTC). |\n| 18 | `abs_url` | `string` | Abstract page URL. |\n| 19 | `pdf_url` | `string` | PDF URL. |\n| 20 | `primary_group` | `string` | Top-level archive of the primary category (cs, math, physics, ...). |\n| 21 | `published_date` | `date` | Date part of the first submission. |\n| 22 | `published_year` | `number` | Year of first submission. |\n| 23 | `published_month` | `number` | Month of first submission (1-12). |\n| 24 | `published_weekday` | `string` | Weekday of first submission. |\n| 25 | `days_to_latest_version` | `number` | Days between first submission and latest version. |\n| 26 | `revision_count` | `number` | Number of versions implied by the version suffix. |\n| 27 | `title_words` | `number` | Word count of the title. |\n| 28 | `title_length` | `number` | Characters in the title. |\n| 29 | `abstract_words` | `number` | Word count of the abstract. |\n| 30 | `abstract_length` | `number` | Characters in the abstract. |\n| 31 | `has_journal_ref` | `boolean` | true when a journal reference is supplied. |\n| 32 | `has_doi` | `boolean` | true when a DOI is supplied. |\n| 33 | `has_comment` | `boolean` | true when the comment field is filled. |\n| 34 | `mentions_code` | `boolean` | true when the comment mentions code, GitHub or a URL. |\n| 35 | `mentions_pages` | `boolean` | true when the comment states a page count. |\n| 36 | `is_cross_listed` | `boolean` | true when more than one category is assigned. |\n| 37 | `is_short_title` | `boolean` | true when the title is under 60 characters. |\n| 38 | `abstract_per_author` | `number` | Abstract words per author. |\n| 39 | `is_single_author` | `boolean` | true for single-author papers. |\n| 40 | `large_collaboration` | `boolean` | true when the paper has 20 or more authors. |\n| 41 | `title_has_colon` | `boolean` | true when the title contains a colon. |\n| 42 | `age_days` | `number` | Days between first submission and the snapshot date. |\n| 43 | `is_recent_30d` | `boolean` | true when submitted within 30 days of the snapshot. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "arxiv_papers.csv",
+      "description": "Primary dataset file containing 18,226 records across 43 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "arxiv_id",
+            "type": "string",
+            "description": "arXiv identifier including version (e.g. 2511.01234v1)."
+          },
+          {
+            "name": "base_id",
+            "type": "number",
+            "description": "arXiv identifier without the version suffix."
+          },
+          {
+            "name": "version",
+            "type": "number",
+            "description": "Version number of the posting."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Paper title, whitespace-normalised."
+          },
+          {
+            "name": "abstract",
+            "type": "string",
+            "description": "Full abstract text."
+          },
+          {
+            "name": "authors",
+            "type": "string",
+            "description": "Author names in order, semicolon-joined."
+          },
+          {
+            "name": "author_count",
+            "type": "number",
+            "description": "Number of authors."
+          },
+          {
+            "name": "affiliations",
+            "type": "string",
+            "description": "Author affiliations as supplied, semicolon-joined."
+          },
+          {
+            "name": "affiliation_count",
+            "type": "number",
+            "description": "Distinct affiliations listed."
+          },
+          {
+            "name": "primary_category",
+            "type": "string",
+            "description": "Primary arXiv category."
+          },
+          {
+            "name": "categories",
+            "type": "string",
+            "description": "All cross-listed categories."
+          },
+          {
+            "name": "category_count",
+            "type": "number",
+            "description": "Number of categories."
+          },
+          {
+            "name": "comment",
+            "type": "string",
+            "description": "Author comment field (page count, accepted-at, code links)."
+          },
+          {
+            "name": "journal_ref",
+            "type": "string",
+            "description": "Journal reference, when the paper was published."
+          },
+          {
+            "name": "doi",
+            "type": "string",
+            "description": "DOI, when supplied."
+          },
+          {
+            "name": "published",
+            "type": "datetime",
+            "description": "First submission timestamp (UTC)."
+          },
+          {
+            "name": "updated",
+            "type": "datetime",
+            "description": "Latest version timestamp (UTC)."
+          },
+          {
+            "name": "abs_url",
+            "type": "string",
+            "description": "Abstract page URL."
+          },
+          {
+            "name": "pdf_url",
+            "type": "string",
+            "description": "PDF URL."
+          },
+          {
+            "name": "primary_group",
+            "type": "string",
+            "description": "Top-level archive of the primary category (cs, math, physics, ...)."
+          },
+          {
+            "name": "published_date",
+            "type": "date",
+            "description": "Date part of the first submission."
+          },
+          {
+            "name": "published_year",
+            "type": "number",
+            "description": "Year of first submission."
+          },
+          {
+            "name": "published_month",
+            "type": "number",
+            "description": "Month of first submission (1-12)."
+          },
+          {
+            "name": "published_weekday",
+            "type": "string",
+            "description": "Weekday of first submission."
+          },
+          {
+            "name": "days_to_latest_version",
+            "type": "number",
+            "description": "Days between first submission and latest version."
+          },
+          {
+            "name": "revision_count",
+            "type": "number",
+            "description": "Number of versions implied by the version suffix."
+          },
+          {
+            "name": "title_words",
+            "type": "number",
+            "description": "Word count of the title."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "abstract_words",
+            "type": "number",
+            "description": "Word count of the abstract."
+          },
+          {
+            "name": "abstract_length",
+            "type": "number",
+            "description": "Characters in the abstract."
+          },
+          {
+            "name": "has_journal_ref",
+            "type": "boolean",
+            "description": "true when a journal reference is supplied."
+          },
+          {
+            "name": "has_doi",
+            "type": "boolean",
+            "description": "true when a DOI is supplied."
+          },
+          {
+            "name": "has_comment",
+            "type": "boolean",
+            "description": "true when the comment field is filled."
+          },
+          {
+            "name": "mentions_code",
+            "type": "boolean",
+            "description": "true when the comment mentions code, GitHub or a URL."
+          },
+          {
+            "name": "mentions_pages",
+            "type": "boolean",
+            "description": "true when the comment states a page count."
+          },
+          {
+            "name": "is_cross_listed",
+            "type": "boolean",
+            "description": "true when more than one category is assigned."
+          },
+          {
+            "name": "is_short_title",
+            "type": "boolean",
+            "description": "true when the title is under 60 characters."
+          },
+          {
+            "name": "abstract_per_author",
+            "type": "number",
+            "description": "Abstract words per author."
+          },
+          {
+            "name": "is_single_author",
+            "type": "boolean",
+            "description": "true for single-author papers."
+          },
+          {
+            "name": "large_collaboration",
+            "type": "boolean",
+            "description": "true when the paper has 20 or more authors."
+          },
+          {
+            "name": "title_has_colon",
+            "type": "boolean",
+            "description": "true when the title contains a colon."
+          },
+          {
+            "name": "age_days",
+            "type": "number",
+            "description": "Days between first submission and the snapshot date."
+          },
+          {
+            "name": "is_recent_30d",
+            "type": "boolean",
+            "description": "true when submitted within 30 days of the snapshot."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

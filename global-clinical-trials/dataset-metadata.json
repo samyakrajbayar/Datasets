@@ -1,0 +1,440 @@
+{
+  "title": "Global Clinical Trials Registry",
+  "id": "samyakrajbayar/global-clinical-trials",
+  "subtitle": "10,000 ClinicalTrials.gov studies with design, sponsors, eligibility & outcomes",
+  "description": "# Global Clinical Trials Registry\n\n**Subtitle:** 10,000 ClinicalTrials.gov studies with design, sponsors, eligibility & outcomes\n\n**Tags:** `health`, `medicine`, `research`, `tabular`\n\n**Dataset File:** `clinical_trials.csv` (10,003 rows, 81 columns, 9.2 MB)\n\n**Provenance & Source:** ClinicalTrials.gov Modernized REST API (National Library of Medicine)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### The world's clinical trial registry, flattened for analysis\n\nClinicalTrials.gov is the largest trial registry on earth. This snapshot takes\n**10,000 study records** (the most recently updated ones) and flattens the registration\ndocument into **81 tidy columns** \u2014 one row per trial.\n\nWhat each row carries:\n- **Identity** \u2014 NCT number, brief and official title, acronym, sponsor protocol id,\n  submitting organisation and its class, secondary identifiers.\n- **Status and dates** \u2014 overall and last-known status, why a trial stopped, start,\n  primary-completion and completion dates, first-posted, last-updated and results-posted dates.\n- **Design** \u2014 study type, phase (raw list plus a cleaned label), allocation, intervention\n  model, masking, primary purpose, number of arms, enrollment count and type.\n- **Conditions and interventions** \u2014 full condition and keyword lists, intervention names\n  and types, arm-group count.\n- **Outcomes** \u2014 primary outcome measures and counts, secondary and other outcome counts.\n- **Eligibility** \u2014 sex, minimum and maximum age, standard age groups, healthy-volunteer flag,\n  sampling method.\n- **Geography and sponsorship** \u2014 every country with a site, site and facility counts,\n  US-site flag, lead sponsor and class, collaborator list.\n- **Oversight and sharing** \u2014 FDA drug/device regulation flags, data-monitoring-committee flag,\n  individual-patient-data sharing statement, reference count.\n- **Derived features** \u2014 planned duration in days, start year, age bounds in years,\n  pediatric/adult/senior flags, industry/academic sponsor flags, enrollment size band,\n  randomised/blinded flags, update lag and title/abstract lengths.\n\n**0 trials (0.0%)** are industry-sponsored and **1,354** have posted results,\nso the file supports both registry science and meta-research on reporting bias.\n\n## \ud83e\uddfe Columns (81)\n\n`nct_id`, `brief_title`, `official_title`, `acronym`, `org_study_id`, `secondary_id_count`, `organization`, `organization_class`, `study_type`, `overall_status`, `last_known_status`, `why_stopped`, `phase`, `phase_clean`, `lead_sponsor`, `lead_sponsor_class`, `collaborator_count`, `collaborators`, `enrollment_count`, `enrollment_type`, `start_date`, `primary_completion_date`, `completion_date`, `first_posted`, `last_update_posted`, `results_first_posted`, `has_results`, `condition_count`, `conditions`, `keywords`, `intervention_count`, `interventions`, `intervention_types`, `arm_group_count`, `primary_outcome_count`, `primary_outcome_measures`, `secondary_outcome_count`, `other_outcome_count`, `sex`, `minimum_age`, `maximum_age`, `healthy_volunteers`, `std_ages`, `sampling_method`, `primary_purpose`, `allocation`, `intervention_model`, `observational_model`, `masking`, `site_count`, `country_count`, `countries`, `has_us_site`, `facility_count`, `has_dmc`, `is_fda_regulated_drug`, `is_fda_regulated_device`, `ipd_sharing`, `reference_count`, `brief_summary_length`, `detailed_description_length`, `is_interventional`, `is_observational`, `is_industry_sponsored`, `is_academic_sponsored`, `is_network_sponsored`, `start_year`, `planned_duration_days`, `days_since_last_update`, `days_to_first_post`, `min_age_years`, `max_age_years`, `is_pediatric`, `is_older_adult`, `is_randomized`, `is_blinded`, `enrollment_band`, `title_length`, `condition_count_clean`, `is_oncology`, `accepts_healthy_volunteers`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Trial geography** \u2014 map site countries; which conditions are studied where, and which countries are under-represented?\n2. **Sponsor landscape** \u2014 industry vs academic vs NIH share over time, and how design choices differ between them.\n3. **Reporting bias** \u2014 compare `has_results` and `results_first_posted` against `completion_date`; how long do results take, and which sponsors never post?\n4. **Phase pipeline** \u2014 phase distribution by condition and start year; where does the pipeline thin out?\n5. **Enrollment reality** \u2014 distribution of `enrollment_count` by phase and sponsor class; find implausibly small or huge trials.\n6. **Design choices** \u2014 randomised vs single-arm, blinded vs open-label, and how they correlate with phase and condition.\n7. **Stopped trials** \u2014 text-mine `why_stopped` for failure reasons (futility, slow accrual, safety).\n8. **Pediatric gap** \u2014 share of trials with `is_pediatric` by condition; compare with disease burden.\n9. **Text classification** \u2014 predict study type or phase from the title and brief summary.\n10. **Duration modelling** \u2014 regress `planned_duration_days` on phase, sponsor class and condition area.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `clinical_trials.csv` | 10,000 clinical trial registrations x 81 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: status mix, sponsors, phases, reporting lag. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`clinical-trials`, `health`, `medicine`, `research`, `pharmaceutical`, `medical-research`, `tabular`, `public-health`, `biology`, `statistics`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** U.S. National Library of Medicine, **ClinicalTrials.gov API v2**\n  (`https://clinicaltrials.gov/api/v2/studies`), JSON format, 10 pages of 1,000 records.\n- **Selection:** the API's default ordering (last update, newest first), so this is a\n  *recent-activity sample* of the registry rather than its full 500,000+ record history.\n- **Flattening:** nested `protocolSection` modules were flattened field by field; list-valued\n  fields (conditions, countries, interventions, collaborators, outcome measures) are joined\n  with semicolons.\n- **Derived columns:** duration, start year, ages in years, pediatric/adult/senior flags,\n  sponsor class flags, enrollment bands, randomised/blinded flags, update lag, text lengths.\n- **Snapshot date:** 21 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Daily upstream.** ClinicalTrials.gov updates continuously; re-run `scripts/21_clinical_trials.py` to take a fresh snapshot.\n\n## \u26a0\ufe0f Caveats\n\n- This is a sample of the 10,000 most recently updated studies, not the full registry \u2014 treat it as a recent cross-section.\n- Registration quality varies enormously: some records are missing enrollment, dates, or outcome measures entirely.\n- `enrollment_count` is *planned* enrollment (`enrollment_type` says actual or anticipated).\n- Countries come from listed site locations; multi-country trials with sparse site lists under-count.\n- Free-text fields (`why_stopped`, titles, summaries) are multilingual and inconsistently formatted.\n- The registry includes observational studies and expanded-access records; filter on `study_type` for interventional-only analysis.\n- No patient-level data is present; only aggregate registration metadata.\n\n## \ud83d\udcdc Licence\n\nPublic domain \u2014 U.S. National Library of Medicine. ClinicalTrials.gov data is downloadable and reusable without restriction; cite NLM as the source.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `nct_id` | `string` | ClinicalTrials.gov identifier (NCT number). |\n| 2 | `brief_title` | `string` | Short public title of the study. |\n| 3 | `official_title` | `string` | Full scientific title, when supplied. |\n| 4 | `acronym` | `string` | Study acronym, when supplied. |\n| 5 | `org_study_id` | `string` | Sponsor's own protocol identifier. |\n| 6 | `secondary_id_count` | `number` | Number of secondary identifiers (other registries, grants). |\n| 7 | `organization` | `string` | Organisation that submitted the registration. |\n| 8 | `organization_class` | `string` | Class of the submitting organisation (e.g. INDUSTRY, NIH). |\n| 9 | `study_type` | `string` | Interventional, Observational or Expanded Access. |\n| 10 | `overall_status` | `string` | Current recruitment/conduct status. |\n| 11 | `last_known_status` | `string` | Last status before the study was withdrawn or unknown. |\n| 12 | `why_stopped` | `string` | Free-text reason the study stopped, when given. |\n| 13 | `phase` | `string` | Raw phase list as registered (semicolon-joined). |\n| 14 | `phase_clean` | `string` | Phase collapsed to a single label, Early Phase 1 / Phase 1 / Phase 2 / Phase 3 / Phase 4 / Not applicable. |\n| 15 | `lead_sponsor` | `string` | Primary sponsoring organisation. |\n| 16 | `lead_sponsor_class` | `string` | Sponsor type: Industry, Academic, NIH, Network, Other. |\n| 17 | `collaborator_count` | `number` | Number of collaborating organisations. |\n| 18 | `collaborators` | `string` | Collaborating organisations (semicolon-joined). |\n| 19 | `enrollment_count` | `number` | Planned or actual enrollment, as registered. |\n| 20 | `enrollment_type` | `string` | Whether enrollment_count is ANTICIPATED or ACTUAL. |\n| 21 | `start_date` | `string` | Study start date (ISO). |\n| 22 | `primary_completion_date` | `string` | Date primary outcome data collection is expected to finish. |\n| 23 | `completion_date` | `string` | Study completion date (ISO). |\n| 24 | `first_posted` | `date` | Date the record first appeared on ClinicalTrials.gov. |\n| 25 | `last_update_posted` | `date` | Date of the most recent record update. |\n| 26 | `results_first_posted` | `date` | Date results were first posted, if any. |\n| 27 | `has_results` | `boolean` | true when summary results are posted. |\n| 28 | `condition_count` | `number` | Number of registered conditions. |\n| 29 | `conditions` | `string` | Registered conditions (semicolon-joined). |\n| 30 | `keywords` | `string` | Free-text keywords. |\n| 31 | `intervention_count` | `number` | Number of interventions. |\n| 32 | `interventions` | `string` | Intervention names (semicolon-joined). |\n| 33 | `intervention_types` | `string` | Distinct intervention types: DRUG, DEVICE, BIOLOGICAL, BEHAVIORAL, ... |\n| 34 | `arm_group_count` | `number` | Number of study arms/groups. |\n| 35 | `primary_outcome_count` | `number` | Number of primary outcome measures. |\n| 36 | `primary_outcome_measures` | `string` | Primary outcome measure names (semicolon-joined). |\n| 37 | `secondary_outcome_count` | `number` | Number of secondary outcome measures. |\n| 38 | `other_outcome_count` | `number` | Number of other outcome measures. |\n| 39 | `sex` | `string` | Eligible sex: ALL, FEMALE, MALE. |\n| 40 | `minimum_age` | `string` | Minimum eligible age as registered (e.g. '18 Years'). |\n| 41 | `maximum_age` | `string` | Maximum eligible age as registered. |\n| 42 | `healthy_volunteers` | `boolean` | true when healthy volunteers are accepted. |\n| 43 | `std_ages` | `string` | Standard age groups: CHILD, ADULT, OLDER_ADULT. |\n| 44 | `sampling_method` | `string` | Probability vs non-probability sampling (observational studies). |\n| 45 | `primary_purpose` | `string` | Treatment, Prevention, Diagnostic, Screening, Supportive Care, ... |\n| 46 | `allocation` | `string` | Randomized vs non-randomized. |\n| 47 | `intervention_model` | `string` | Parallel, Crossover, Sequential, Factorial, Single Group. |\n| 48 | `observational_model` | `string` | Cohort, Case-Control, Cross-Sectional, ... |\n| 49 | `masking` | `string` | None, Single, Double, Triple, Quadruple. |\n| 50 | `site_count` | `number` | Number of listed site locations. |\n| 51 | `country_count` | `number` | Number of distinct countries with a listed site. |\n| 52 | `countries` | `string` | Countries with a listed site (semicolon-joined). |\n| 53 | `has_us_site` | `boolean` | true when at least one site is in the United States. |\n| 54 | `facility_count` | `number` | Number of distinct facility names. |\n| 55 | `has_dmc` | `boolean` | true when a data monitoring committee is declared. |\n| 56 | `is_fda_regulated_drug` | `boolean` | true when the study involves an FDA-regulated drug. |\n| 57 | `is_fda_regulated_device` | `boolean` | true when the study involves an FDA-regulated device. |\n| 58 | `ipd_sharing` | `string` | Individual participant data sharing statement (Yes/No/Undecided). |\n| 59 | `reference_count` | `number` | Number of publication references attached to the record. |\n| 60 | `brief_summary_length` | `number` | Characters in the brief summary. |\n| 61 | `detailed_description_length` | `number` | Characters in the detailed description. |\n| 62 | `is_interventional` | `boolean` | true for interventional studies. |\n| 63 | `is_observational` | `boolean` | true for observational studies. |\n| 64 | `is_industry_sponsored` | `boolean` | true when the lead sponsor class is Industry. |\n| 65 | `is_academic_sponsored` | `boolean` | true when the lead sponsor is academic/university. |\n| 66 | `is_network_sponsored` | `boolean` | true when the lead sponsor is a clinical network. |\n| 67 | `start_year` | `number` | Calendar year of the start date. |\n| 68 | `planned_duration_days` | `number` | Completion date minus start date, in days. |\n| 69 | `days_since_last_update` | `number` | Days between the last update and the snapshot date (2026-11-21). |\n| 70 | `days_to_first_post` | `number` | Days between study start and first registration posting. |\n| 71 | `min_age_years` | `number` | Minimum age converted to years (months/weeks/days divided accordingly). |\n| 72 | `max_age_years` | `number` | Maximum age converted to years. |\n| 73 | `is_pediatric` | `boolean` | true when the minimum age is below 18. |\n| 74 | `is_older_adult` | `boolean` | true when the maximum age is 65 or below. |\n| 75 | `is_randomized` | `boolean` | true when allocation is Randomized. |\n| 76 | `is_blinded` | `boolean` | true when any masking is declared. |\n| 77 | `enrollment_band` | `string` | Enrollment size band from <50 to 5,000+. |\n| 78 | `title_length` | `number` | Characters in the brief title. |\n| 79 | `condition_count_clean` | `number` | Number of registered conditions (recounted during flattening). |\n| 80 | `is_oncology` | `boolean` | true when a condition mentions cancer, neoplasm or tumour. |\n| 81 | `accepts_healthy_volunteers` | `boolean` | true when healthy volunteers are accepted. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "clinical_trials.csv",
+      "description": "Primary dataset file containing 10,003 records across 81 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "nct_id",
+            "type": "string",
+            "description": "ClinicalTrials.gov identifier (NCT number)."
+          },
+          {
+            "name": "brief_title",
+            "type": "string",
+            "description": "Short public title of the study."
+          },
+          {
+            "name": "official_title",
+            "type": "string",
+            "description": "Full scientific title, when supplied."
+          },
+          {
+            "name": "acronym",
+            "type": "string",
+            "description": "Study acronym, when supplied."
+          },
+          {
+            "name": "org_study_id",
+            "type": "string",
+            "description": "Sponsor's own protocol identifier."
+          },
+          {
+            "name": "secondary_id_count",
+            "type": "number",
+            "description": "Number of secondary identifiers (other registries, grants)."
+          },
+          {
+            "name": "organization",
+            "type": "string",
+            "description": "Organisation that submitted the registration."
+          },
+          {
+            "name": "organization_class",
+            "type": "string",
+            "description": "Class of the submitting organisation (e.g. INDUSTRY, NIH)."
+          },
+          {
+            "name": "study_type",
+            "type": "string",
+            "description": "Interventional, Observational or Expanded Access."
+          },
+          {
+            "name": "overall_status",
+            "type": "string",
+            "description": "Current recruitment/conduct status."
+          },
+          {
+            "name": "last_known_status",
+            "type": "string",
+            "description": "Last status before the study was withdrawn or unknown."
+          },
+          {
+            "name": "why_stopped",
+            "type": "string",
+            "description": "Free-text reason the study stopped, when given."
+          },
+          {
+            "name": "phase",
+            "type": "string",
+            "description": "Raw phase list as registered (semicolon-joined)."
+          },
+          {
+            "name": "phase_clean",
+            "type": "string",
+            "description": "Phase collapsed to a single label, Early Phase 1 / Phase 1 / Phase 2 / Phase 3 / Phase 4 / Not applicable."
+          },
+          {
+            "name": "lead_sponsor",
+            "type": "string",
+            "description": "Primary sponsoring organisation."
+          },
+          {
+            "name": "lead_sponsor_class",
+            "type": "string",
+            "description": "Sponsor type: Industry, Academic, NIH, Network, Other."
+          },
+          {
+            "name": "collaborator_count",
+            "type": "number",
+            "description": "Number of collaborating organisations."
+          },
+          {
+            "name": "collaborators",
+            "type": "string",
+            "description": "Collaborating organisations (semicolon-joined)."
+          },
+          {
+            "name": "enrollment_count",
+            "type": "number",
+            "description": "Planned or actual enrollment, as registered."
+          },
+          {
+            "name": "enrollment_type",
+            "type": "string",
+            "description": "Whether enrollment_count is ANTICIPATED or ACTUAL."
+          },
+          {
+            "name": "start_date",
+            "type": "string",
+            "description": "Study start date (ISO)."
+          },
+          {
+            "name": "primary_completion_date",
+            "type": "string",
+            "description": "Date primary outcome data collection is expected to finish."
+          },
+          {
+            "name": "completion_date",
+            "type": "string",
+            "description": "Study completion date (ISO)."
+          },
+          {
+            "name": "first_posted",
+            "type": "date",
+            "description": "Date the record first appeared on ClinicalTrials.gov."
+          },
+          {
+            "name": "last_update_posted",
+            "type": "date",
+            "description": "Date of the most recent record update."
+          },
+          {
+            "name": "results_first_posted",
+            "type": "date",
+            "description": "Date results were first posted, if any."
+          },
+          {
+            "name": "has_results",
+            "type": "boolean",
+            "description": "true when summary results are posted."
+          },
+          {
+            "name": "condition_count",
+            "type": "number",
+            "description": "Number of registered conditions."
+          },
+          {
+            "name": "conditions",
+            "type": "string",
+            "description": "Registered conditions (semicolon-joined)."
+          },
+          {
+            "name": "keywords",
+            "type": "string",
+            "description": "Free-text keywords."
+          },
+          {
+            "name": "intervention_count",
+            "type": "number",
+            "description": "Number of interventions."
+          },
+          {
+            "name": "interventions",
+            "type": "string",
+            "description": "Intervention names (semicolon-joined)."
+          },
+          {
+            "name": "intervention_types",
+            "type": "string",
+            "description": "Distinct intervention types: DRUG, DEVICE, BIOLOGICAL, BEHAVIORAL, ..."
+          },
+          {
+            "name": "arm_group_count",
+            "type": "number",
+            "description": "Number of study arms/groups."
+          },
+          {
+            "name": "primary_outcome_count",
+            "type": "number",
+            "description": "Number of primary outcome measures."
+          },
+          {
+            "name": "primary_outcome_measures",
+            "type": "string",
+            "description": "Primary outcome measure names (semicolon-joined)."
+          },
+          {
+            "name": "secondary_outcome_count",
+            "type": "number",
+            "description": "Number of secondary outcome measures."
+          },
+          {
+            "name": "other_outcome_count",
+            "type": "number",
+            "description": "Number of other outcome measures."
+          },
+          {
+            "name": "sex",
+            "type": "string",
+            "description": "Eligible sex: ALL, FEMALE, MALE."
+          },
+          {
+            "name": "minimum_age",
+            "type": "string",
+            "description": "Minimum eligible age as registered (e.g. '18 Years')."
+          },
+          {
+            "name": "maximum_age",
+            "type": "string",
+            "description": "Maximum eligible age as registered."
+          },
+          {
+            "name": "healthy_volunteers",
+            "type": "boolean",
+            "description": "true when healthy volunteers are accepted."
+          },
+          {
+            "name": "std_ages",
+            "type": "string",
+            "description": "Standard age groups: CHILD, ADULT, OLDER_ADULT."
+          },
+          {
+            "name": "sampling_method",
+            "type": "string",
+            "description": "Probability vs non-probability sampling (observational studies)."
+          },
+          {
+            "name": "primary_purpose",
+            "type": "string",
+            "description": "Treatment, Prevention, Diagnostic, Screening, Supportive Care, ..."
+          },
+          {
+            "name": "allocation",
+            "type": "string",
+            "description": "Randomized vs non-randomized."
+          },
+          {
+            "name": "intervention_model",
+            "type": "string",
+            "description": "Parallel, Crossover, Sequential, Factorial, Single Group."
+          },
+          {
+            "name": "observational_model",
+            "type": "string",
+            "description": "Cohort, Case-Control, Cross-Sectional, ..."
+          },
+          {
+            "name": "masking",
+            "type": "string",
+            "description": "None, Single, Double, Triple, Quadruple."
+          },
+          {
+            "name": "site_count",
+            "type": "number",
+            "description": "Number of listed site locations."
+          },
+          {
+            "name": "country_count",
+            "type": "number",
+            "description": "Number of distinct countries with a listed site."
+          },
+          {
+            "name": "countries",
+            "type": "string",
+            "description": "Countries with a listed site (semicolon-joined)."
+          },
+          {
+            "name": "has_us_site",
+            "type": "boolean",
+            "description": "true when at least one site is in the United States."
+          },
+          {
+            "name": "facility_count",
+            "type": "number",
+            "description": "Number of distinct facility names."
+          },
+          {
+            "name": "has_dmc",
+            "type": "boolean",
+            "description": "true when a data monitoring committee is declared."
+          },
+          {
+            "name": "is_fda_regulated_drug",
+            "type": "boolean",
+            "description": "true when the study involves an FDA-regulated drug."
+          },
+          {
+            "name": "is_fda_regulated_device",
+            "type": "boolean",
+            "description": "true when the study involves an FDA-regulated device."
+          },
+          {
+            "name": "ipd_sharing",
+            "type": "string",
+            "description": "Individual participant data sharing statement (Yes/No/Undecided)."
+          },
+          {
+            "name": "reference_count",
+            "type": "number",
+            "description": "Number of publication references attached to the record."
+          },
+          {
+            "name": "brief_summary_length",
+            "type": "number",
+            "description": "Characters in the brief summary."
+          },
+          {
+            "name": "detailed_description_length",
+            "type": "number",
+            "description": "Characters in the detailed description."
+          },
+          {
+            "name": "is_interventional",
+            "type": "boolean",
+            "description": "true for interventional studies."
+          },
+          {
+            "name": "is_observational",
+            "type": "boolean",
+            "description": "true for observational studies."
+          },
+          {
+            "name": "is_industry_sponsored",
+            "type": "boolean",
+            "description": "true when the lead sponsor class is Industry."
+          },
+          {
+            "name": "is_academic_sponsored",
+            "type": "boolean",
+            "description": "true when the lead sponsor is academic/university."
+          },
+          {
+            "name": "is_network_sponsored",
+            "type": "boolean",
+            "description": "true when the lead sponsor is a clinical network."
+          },
+          {
+            "name": "start_year",
+            "type": "number",
+            "description": "Calendar year of the start date."
+          },
+          {
+            "name": "planned_duration_days",
+            "type": "number",
+            "description": "Completion date minus start date, in days."
+          },
+          {
+            "name": "days_since_last_update",
+            "type": "number",
+            "description": "Days between the last update and the snapshot date (2026-11-21)."
+          },
+          {
+            "name": "days_to_first_post",
+            "type": "number",
+            "description": "Days between study start and first registration posting."
+          },
+          {
+            "name": "min_age_years",
+            "type": "number",
+            "description": "Minimum age converted to years (months/weeks/days divided accordingly)."
+          },
+          {
+            "name": "max_age_years",
+            "type": "number",
+            "description": "Maximum age converted to years."
+          },
+          {
+            "name": "is_pediatric",
+            "type": "boolean",
+            "description": "true when the minimum age is below 18."
+          },
+          {
+            "name": "is_older_adult",
+            "type": "boolean",
+            "description": "true when the maximum age is 65 or below."
+          },
+          {
+            "name": "is_randomized",
+            "type": "boolean",
+            "description": "true when allocation is Randomized."
+          },
+          {
+            "name": "is_blinded",
+            "type": "boolean",
+            "description": "true when any masking is declared."
+          },
+          {
+            "name": "enrollment_band",
+            "type": "string",
+            "description": "Enrollment size band from <50 to 5,000+."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the brief title."
+          },
+          {
+            "name": "condition_count_clean",
+            "type": "number",
+            "description": "Number of registered conditions (recounted during flattening)."
+          },
+          {
+            "name": "is_oncology",
+            "type": "boolean",
+            "description": "true when a condition mentions cancer, neoplasm or tumour."
+          },
+          {
+            "name": "accepts_healthy_volunteers",
+            "type": "boolean",
+            "description": "true when healthy volunteers are accepted."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

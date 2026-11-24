@@ -1,0 +1,44 @@
+column,data_type,description
+arxiv_id,string,arXiv identifier including version (e.g. 2511.01234v1).
+base_id,number,arXiv identifier without the version suffix.
+version,number,Version number of the posting.
+title,string,"Paper title, whitespace-normalised."
+abstract,string,Full abstract text.
+authors,string,"Author names in order, semicolon-joined."
+author_count,number,Number of authors.
+affiliations,string,"Author affiliations as supplied, semicolon-joined."
+affiliation_count,number,Distinct affiliations listed.
+primary_category,string,Primary arXiv category.
+categories,string,All cross-listed categories.
+category_count,number,Number of categories.
+comment,string,"Author comment field (page count, accepted-at, code links)."
+journal_ref,string,"Journal reference, when the paper was published."
+doi,string,"DOI, when supplied."
+published,datetime,First submission timestamp (UTC).
+updated,datetime,Latest version timestamp (UTC).
+abs_url,string,Abstract page URL.
+pdf_url,string,PDF URL.
+primary_group,string,"Top-level archive of the primary category (cs, math, physics, ...)."
+published_date,date,Date part of the first submission.
+published_year,number,Year of first submission.
+published_month,number,Month of first submission (1-12).
+published_weekday,string,Weekday of first submission.
+days_to_latest_version,number,Days between first submission and latest version.
+revision_count,number,Number of versions implied by the version suffix.
+title_words,number,Word count of the title.
+title_length,number,Characters in the title.
+abstract_words,number,Word count of the abstract.
+abstract_length,number,Characters in the abstract.
+has_journal_ref,boolean,true when a journal reference is supplied.
+has_doi,boolean,true when a DOI is supplied.
+has_comment,boolean,true when the comment field is filled.
+mentions_code,boolean,"true when the comment mentions code, GitHub or a URL."
+mentions_pages,boolean,true when the comment states a page count.
+is_cross_listed,boolean,true when more than one category is assigned.
+is_short_title,boolean,true when the title is under 60 characters.
+abstract_per_author,number,Abstract words per author.
+is_single_author,boolean,true for single-author papers.
+large_collaboration,boolean,true when the paper has 20 or more authors.
+title_has_colon,boolean,true when the title contains a colon.
+age_days,number,Days between first submission and the snapshot date.
+is_recent_30d,boolean,true when submitted within 30 days of the snapshot.

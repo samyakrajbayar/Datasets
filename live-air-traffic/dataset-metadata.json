@@ -1,0 +1,31 @@
+{
+  "title": "Live Air Traffic Snapshot - Global Aircraft States",
+  "id": "samyakrajbayar/live-air-traffic",
+  "subtitle": "8,636 aircraft with positions, altitudes, speeds, vertical rates and emitter...",
+  "description": "### 8,636 aircraft tracked in one live snapshot\n\nThe OpenSky Network aggregates ADS-B, MLAT and FLARM receivers worldwide. This dataset is a single\nsnapshot of every aircraft the network could see, expanded to **38 parameters**.\n\n- **Identity** \u2014 ICAO24 address, callsign, origin country and callsign prefix.\n- **Position** \u2014 latitude, longitude, hemisphere, position source and fix ages.\n- **Flight state** \u2014 barometric and geometric altitude, ground speed, track, vertical rate, squawk\n  and on-ground flag.\n- **Derived** \u2014 altitude/speed bands in feet, km/h, knots and feet per minute, climb/descent flags,\n  emergency-squawk flag, sensor counts and emitter category labels.\n\nAircraft from **109 countries** are visible, **7,623 of them airborne** at snapshot\ntime. The table is a cross-section of global aviation for spatial analysis, trajectory\nreconstruction and live-dashboard projects.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-SA-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "geography"
+  ],
+  "resources": [
+    {
+      "path": "aircraft_states.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

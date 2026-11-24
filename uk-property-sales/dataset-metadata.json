@@ -1,0 +1,31 @@
+{
+  "title": "UK Property Sales 2025-2026",
+  "id": "samyakrajbayar/uk-property-sales",
+  "subtitle": "1,450,241 residential property transactions with prices, addresses, postcodes...",
+  "description": "### 1,450,241 residential property sales in England and Wales\n\nHM Land Registry's Price Paid Data records every residential property sale that reaches completion\nin England and Wales. This dataset streams the **2025, 2026 files** and derives\n**33 parameters** per transaction.\n\n- **Transaction** \u2014 id, price, completion date and record status.\n- **Property** \u2014 type, new-build flag, tenure, full address decomposition (PAON, SAON, street,\n  locality, town, city, district, county) and postcode hierarchy.\n- **Ownership** \u2014 standard vs additional-property category and freehold/leasehold tenure.\n- **Derived** \u2014 year, month, quarter, price bands, postcode area/district/sector, new-build,\n  freehold and additional-ownership flags, address length and price per address character.\n\nThe file contains roughly **2.4% new-build sales** and spans\n**260+ towns** in the sample alone. It is the standard source for UK house-price, affordability\nand property-market research.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics"
+  ],
+  "resources": [
+    {
+      "path": "uk_property_sales.csv.zip",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

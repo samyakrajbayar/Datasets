@@ -1,0 +1,31 @@
+{
+  "title": "FDA Medical Device Recalls",
+  "id": "samyakrajbayar/fda-device-recalls",
+  "subtitle": "25,000 device recalls with classifications, firms, failure modes, dates and 5...",
+  "description": "### 25,000 FDA medical-device recalls\n\nThe openFDA device enforcement endpoint publishes recalls of medical devices, from infusion pumps to\nimplants and diagnostic software. This dataset contains **25,000 recalls** and **51 parameters**.\n\n- **Recall** \u2014 number, event id, classification, status, voluntary/mandated and notification method.\n- **Firm** \u2014 name, address, city, state, country, postal code.\n- **Product** \u2014 description, quantity, code information and distribution pattern.\n- **Dates and lags** \u2014 initiation, classification, report and termination dates with lag and duration\n  in days.\n- **Derived** \u2014 class ranks and flags, status flags, openFDA/510(k) linkage, text lengths and failure\n  keywords (software, battery, sterility, labelling, component, packaging, material).\n\n**2,263 recalls are Class I**, **1,303 involve software or firmware** and **446\ninvolve batteries** \u2014 a concrete view of device-safety failure modes and regulatory response times.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "health"
+  ],
+  "resources": [
+    {
+      "path": "device_recalls.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

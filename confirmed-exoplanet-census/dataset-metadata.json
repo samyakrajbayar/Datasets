@@ -1,0 +1,525 @@
+{
+  "title": "Confirmed Exoplanet Census - 6,473 Worlds",
+  "id": "samyakrajbayar/confirmed-exoplanet-census",
+  "subtitle": "Every confirmed exoplanet with orbit, mass, radius and host-star parameters.",
+  "description": "# Confirmed Exoplanet Census - 6,473 Worlds\n\n**Subtitle:** Every confirmed exoplanet with orbit, mass, radius and host-star parameters.\n\n**Tags:** `astronomy`, `space`, `physics`, `science`, `exoplanets`, `nasa`, `astrophysics`, `tabular`, `regression`, `clustering`\n\n**Dataset File:** `exoplanets.csv` (40,428 rows, 98 columns, 24.3 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### A census of every confirmed planet outside the Solar System\n\nThe NASA Exoplanet Archive is the reference catalogue of confirmed exoplanets. This snapshot exports its\n`ps` (planetary systems) table as a single flat CSV: **40,428 parameter-set rows covering 6,473\ndistinct planets**, described by **98 parameters** spanning discovery, orbit, bulk properties,\nhost star and system geometry. A planet with several published parameter sets appears once per set;\nfilter `default_flag = 1` for exactly one row per planet.\n\nEvery row includes:\n- **Identity & discovery** \u2014 planet and host names, HD/HIP/TIC/Gaia cross-ids, detection method, year,\n  facility, instrument, telescope and the discovery reference.\n- **Orbit** \u2014 period with asymmetric uncertainties, semi-major axis, eccentricity, argument of periastron,\n  impact parameter, transit duration/midpoint, TTV flag, radius and semi-major-axis ratios.\n- **Bulk properties** \u2014 radius in Earth and Jupiter radii, mass (with the provenance of that mass:\n  true mass or m\u00b7sin i), density, equilibrium temperature, insolation flux, orbital inclination.\n- **Host star** \u2014 spectral type, effective temperature, radius, mass, metallicity, surface gravity, age,\n  luminosity, rotation and radial velocity.\n- **System** \u2014 star / planet / moon counts, distance, parallax, V/K/Gaia magnitudes, circumbinary flag,\n  number of photometric, RV and spectroscopic datasets, and sky position (RA/Dec, galactic).\n\nTwelve derived features are appended so the file is analysis-ready: orbital period in years, mean orbital\nspeed, radius class, mass class, density class, habitable-zone flag, equilibrium-temperature band, transit\ndepth in ppm, discovery decade, stellar spectral group, distance in light years and the planet's rank in\nits system.\n\nThe catalogue is naturally imbalanced toward transits and radial-velocity detections, and mass is often a\nlower limit \u2014 both are part of the phenomenon, not a defect, and make the file good material for\nselection-effect studies.\n\n## \ud83e\uddfe Columns (98)\n\n`pl_name`, `hostname`, `hd_name`, `hip_name`, `tic_id`, `gaia_dr2_id`, `gaia_dr3_id`, `pl_letter`, `default_flag`, `pl_controv_flag`, `disc_locale`, `discoverymethod`, `disc_year`, `disc_facility`, `disc_instrument`, `disc_telescope`, `disc_pubdate`, `disc_refname`, `pl_orbper`, `pl_orbpererr1`, `pl_orbpererr2`, `pl_orbsmax`, `pl_orbsmaxerr1`, `pl_orbsmaxerr2`, `pl_orbeccen`, `pl_orbeccenerr1`, `pl_orbeccenerr2`, `pl_orbtper`, `pl_orblper`, `pl_imppar`, `pl_trandur`, `pl_tranmid`, `ttv_flag`, `pl_occdep`, `pl_ratdor`, `pl_ratror`, `pl_rade`, `pl_radeerr1`, `pl_radeerr2`, `pl_radj`, `pl_bmasse`, `pl_bmasseerr1`, `pl_bmasseerr2`, `pl_bmassj`, `pl_bmassprov`, `pl_dens`, `pl_denserr1`, `pl_denserr2`, `pl_eqt`, `pl_insol`, `pl_insolerr1`, `pl_insolerr2`, `pl_orbincl`, `st_spectype`, `st_teff`, `st_tefferr1`, `st_tefferr2`, `st_rad`, `st_raderr1`, `st_mass`, `st_masserr1`, `st_met`, `st_metratio`, `st_logg`, `st_age`, `st_lum`, `st_vsin`, `st_rotp`, `st_radv`, `sy_snum`, `sy_pnum`, `sy_mnum`, `sy_dist`, `sy_disterr1`, `sy_vmag`, `sy_kmag`, `sy_gaiamag`, `sy_plx`, `cb_flag`, `st_nphot`, `st_nrvc`, `st_nspec`, `ra`, `dec`, `glat`, `glon`, `orbital_period_years`, `orbital_speed_kms`, `planet_type`, `mass_class`, `density_class`, `in_habitable_zone`, `teq_class`, `transit_depth_ppm`, `discovery_decade`, `star_type_group`, `distance_light_years`, `system_planet_rank`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Planet radius valley** \u2014 plot the radius distribution split by equilibrium temperature and reproduce the gap between super-Earths and mini-Neptunes.\n2. **Detection-method bias** \u2014 compare period, radius and distance distributions for transit, radial-velocity, microlensing and imaging discoveries.\n3. **Habitable zone census** \u2014 count temperate, rocky candidates per spectral class and per discovery decade.\n4. **Mass\u2013radius diagram** \u2014 fit a power law to `pl_bmasse` vs `pl_rade`, colouring by density class.\n5. **Discovery timeline** \u2014 planets per year by facility; watch Kepler (2009\u20132013), K2 and TESS take over.\n6. **Host-star metallicity** \u2014 test whether giant-planet hosts are more metal-rich than small-planet hosts.\n7. **Classification** \u2014 predict `planet_type` from orbit and stellar features; or regress equilibrium temperature.\n8. **Multi-planet systems** \u2014 use `sy_pnum` to study orbital spacing and the compactness of Kepler systems.\n9. **Sky map** \u2014 plot RA/Dec or galactic coordinates to show the Kepler and TESS fields.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `exoplanets.csv` | 40,428 confirmed exoplanets x 98 parameters. |\n| `data_dictionary.csv` | Column / type / description for all fields. |\n| `notebook.ipynb` | Starter notebook: radius valley, mass-radius, discovery timeline. |\n| `dataset-metadata.json` | Kaggle API metadata (`kaggle datasets create -p .`). |\n| `about.md` | Plain-text About block for the Kaggle web form. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`astronomy`, `space`, `physics`, `science`, `exoplanets`, `nasa`, `astrophysics`, `tabular`, `regression`, `clustering`\n\n## \ud83d\udd17 Provenance\n\n- **Primary source:** NASA Exoplanet Archive, `ps` (Planetary Systems) table, served by the\n  Table Access Protocol endpoint `https://exoplanetarchive.ipac.caltech.edu/TAP/sync`\n  (query: `select * from ps`).\n- **Upstream curation:** NASA Exoplanet Science Institute (NExScI) at Caltech, aggregating peer-reviewed\n  detections from Kepler, K2, TESS, radial-velocity surveys, microlensing, imaging and astrometry.\n- **Collection method:** direct TAP query, one JSON response, converted to CSV without filtering; 12\n  derived columns computed from the archive values (formulas documented in the data dictionary).\n- **Snapshot date:** 20 November 2026.\n- **Record count:** every row returned by the table at snapshot time (the archive's `default_flag`\n  column marks its preferred parameter set when a planet has several).\n\n## \ud83d\udd04 Update frequency\n\n**Never (static snapshot).** The NASA Exoplanet Archive adds planets continuously; this file is frozen at the snapshot date above. Re-run `scripts/11_exoplanets.py` for a refreshed version \u2014 roughly monthly cadence is enough.\n\n## \u26a0\ufe0f Caveats\n\n- Mass is frequently `m\u00b7sin i` rather than true mass \u2014 see `pl_bmassprov` before treating masses as exact.\n- Uncertainty columns are asymmetric (err1 = lower, err2 = upper) and are often empty for older discoveries.\n- Transit, RV and microlensing detections probe very different regions of parameter space, so the file is not a volume-complete sample of planets.\n- Some planets appear more than once when the archive holds competing parameter sets; filter `default_flag = 1` for one row per planet.\n- `st_lum` is log10(L/L_sun) and `st_logg` is log10(g in cgs) \u2014 both are logarithmic, not linear.\n\n## \ud83d\udcdc Licence\n\nPublic domain / openly available. NASA Exoplanet Archive data are produced by Caltech/IPAC under contract with NASA and are free to use with attribution to the archive and the original discovery papers (see `disc_refname`).\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `pl_name` | `string` | Planet name as used by the NASA Exoplanet Archive. |\n| 2 | `hostname` | `string` | Host star name. |\n| 3 | `hd_name` | `string` | HD catalogue identifier of the host star. |\n| 4 | `hip_name` | `string` | Hipparcos catalogue identifier of the host star. |\n| 5 | `tic_id` | `string` | TESS Input Catalog identifier of the host star. |\n| 6 | `gaia_dr2_id` | `string` | Gaia Data Release 2 source id of the host star. |\n| 7 | `gaia_dr3_id` | `string` | Gaia Data Release 3 source id of the host star. |\n| 8 | `pl_letter` | `string` | Letter designating the planet within its system (b, c, d...). |\n| 9 | `default_flag` | `number` | 1 if this is the archive's default parameter set for the planet. |\n| 10 | `pl_controv_flag` | `number` | 1 if the planet's existence or parameters are disputed. |\n| 11 | `disc_locale` | `string` | Where the discovery was announced (Ground, Space, ...). |\n| 12 | `discoverymethod` | `string` | Detection technique (Transit, Radial Velocity, Imaging, Microlensing...). |\n| 13 | `disc_year` | `number` | Year the discovery was announced. |\n| 14 | `disc_facility` | `string` | Facility credited with the discovery. |\n| 15 | `disc_instrument` | `string` | Instrument credited with the discovery. |\n| 16 | `disc_telescope` | `string` | Telescope credited with the discovery. |\n| 17 | `disc_pubdate` | `string` | Publication date of the discovery paper. |\n| 18 | `disc_refname` | `string` | Reference string for the discovery paper. |\n| 19 | `pl_orbper` | `number` | Orbital period in days. |\n| 20 | `pl_orbpererr1` | `number` | Lower 1-sigma uncertainty on orbital period (days). |\n| 21 | `pl_orbpererr2` | `number` | Upper 1-sigma uncertainty on orbital period (days). |\n| 22 | `pl_orbsmax` | `number` | Semi-major axis of the orbit in AU. |\n| 23 | `pl_orbsmaxerr1` | `number` | Lower uncertainty on semi-major axis (AU). |\n| 24 | `pl_orbsmaxerr2` | `number` | Upper uncertainty on semi-major axis (AU). |\n| 25 | `pl_orbeccen` | `number` | Orbital eccentricity. |\n| 26 | `pl_orbeccenerr1` | `number` | Lower uncertainty on eccentricity. |\n| 27 | `pl_orbeccenerr2` | `number` | Upper uncertainty on eccentricity. |\n| 28 | `pl_orbtper` | `number` | Time of periastron passage (BJD). |\n| 29 | `pl_orblper` | `number` | Argument of periastron (degrees). |\n| 30 | `pl_imppar` | `number` | Transit impact parameter (stellar radii). |\n| 31 | `pl_trandur` | `number` | Transit duration (hours). |\n| 32 | `pl_tranmid` | `number` | Transit midpoint (BJD). |\n| 33 | `ttv_flag` | `number` | 1 if transit timing variations are detected. |\n| 34 | `pl_occdep` | `number` | Occultation depth (ppm). |\n| 35 | `pl_ratdor` | `number` | Ratio of semi-major axis to stellar radius. |\n| 36 | `pl_ratror` | `number` | Ratio of planet radius to stellar radius. |\n| 37 | `pl_rade` | `number` | Planet radius in Earth radii. |\n| 38 | `pl_radeerr1` | `number` | Lower uncertainty on planet radius (Earth radii). |\n| 39 | `pl_radeerr2` | `number` | Upper uncertainty on planet radius (Earth radii). |\n| 40 | `pl_radj` | `number` | Planet radius in Jupiter radii. |\n| 41 | `pl_bmasse` | `number` | Planet mass or mass*sin(i) in Earth masses. |\n| 42 | `pl_bmasseerr1` | `number` | Lower uncertainty on planet mass (Earth masses). |\n| 43 | `pl_bmasseerr2` | `number` | Upper uncertainty on planet mass (Earth masses). |\n| 44 | `pl_bmassj` | `number` | Planet mass in Jupiter masses. |\n| 45 | `pl_bmassprov` | `string` | How the mass was measured (Mass, Msini, Msin(i)/sin(i)...). |\n| 46 | `pl_dens` | `number` | Planet bulk density (g/cm^3). |\n| 47 | `pl_denserr1` | `number` | Lower uncertainty on planet density. |\n| 48 | `pl_denserr2` | `number` | Upper uncertainty on planet density. |\n| 49 | `pl_eqt` | `number` | Equilibrium temperature (K), assuming zero albedo. |\n| 50 | `pl_insol` | `number` | Insolation flux received by the planet (Earth flux). |\n| 51 | `pl_insolerr1` | `number` | Lower uncertainty on insolation flux. |\n| 52 | `pl_insolerr2` | `number` | Upper uncertainty on insolation flux. |\n| 53 | `pl_orbincl` | `number` | Orbital inclination (degrees). |\n| 54 | `st_spectype` | `string` | Stellar spectral type. |\n| 55 | `st_teff` | `number` | Stellar effective temperature (K). |\n| 56 | `st_tefferr1` | `number` | Lower uncertainty on stellar temperature. |\n| 57 | `st_tefferr2` | `number` | Upper uncertainty on stellar temperature. |\n| 58 | `st_rad` | `number` | Stellar radius (solar radii). |\n| 59 | `st_raderr1` | `number` | Lower uncertainty on stellar radius. |\n| 60 | `st_mass` | `number` | Stellar mass (solar masses). |\n| 61 | `st_masserr1` | `number` | Lower uncertainty on stellar mass. |\n| 62 | `st_met` | `number` | Stellar metallicity [Fe/H] (dex). |\n| 63 | `st_metratio` | `string` | Stellar metallicity as a raw abundance ratio. |\n| 64 | `st_logg` | `number` | Stellar surface gravity log10(g) (cgs). |\n| 65 | `st_age` | `number` | Stellar age (Gyr). |\n| 66 | `st_lum` | `number` | Stellar luminosity log10(L/L_sun). |\n| 67 | `st_vsin` | `number` | Stellar projected rotational velocity (km/s). |\n| 68 | `st_rotp` | `number` | Stellar rotation period (days). |\n| 69 | `st_radv` | `number` | Stellar radial velocity (km/s). |\n| 70 | `sy_snum` | `number` | Number of stars in the system. |\n| 71 | `sy_pnum` | `number` | Number of confirmed planets in the system. |\n| 72 | `sy_mnum` | `number` | Number of moons in the system. |\n| 73 | `sy_dist` | `number` | Distance to the system (parsecs). |\n| 74 | `sy_disterr1` | `number` | Lower uncertainty on system distance. |\n| 75 | `sy_vmag` | `number` | V-band apparent magnitude of the host star. |\n| 76 | `sy_kmag` | `number` | K-band apparent magnitude of the host star. |\n| 77 | `sy_gaiamag` | `number` | Gaia G-band apparent magnitude of the host star. |\n| 78 | `sy_plx` | `number` | Parallax of the system (mas). |\n| 79 | `cb_flag` | `number` | 1 if the planet orbits a circumbinary system. |\n| 80 | `st_nphot` | `number` | Number of photometric observation sets in the archive. |\n| 81 | `st_nrvc` | `number` | Number of radial-velocity observation sets. |\n| 82 | `st_nspec` | `number` | Number of spectroscopic observation sets. |\n| 83 | `ra` | `number` | Right ascension of the host star (degrees). |\n| 84 | `dec` | `number` | Declination of the host star (degrees). |\n| 85 | `glat` | `number` | Galactic latitude (degrees). |\n| 86 | `glon` | `number` | Galactic longitude (degrees). |\n| 87 | `orbital_period_years` | `number` | Orbital period converted to Earth years. |\n| 88 | `orbital_speed_kms` | `number` | Mean orbital speed (km/s) from semi-major axis and period. |\n| 89 | `planet_type` | `string` | Radius class: Sub-Earth, Earth-size, Super-Earth, Mini-Neptune, Neptune-size, Jupiter-size, Giant. |\n| 90 | `mass_class` | `string` | Mass class from Earth masses (<2, 2-10, 10-50, 50-300, >300). |\n| 91 | `density_class` | `string` | Rocky / Intermediate / Gaseous from bulk density. |\n| 92 | `in_habitable_zone` | `boolean` | true when insolation flux is between 0.35 and 1.5 Earth fluxes. |\n| 93 | `teq_class` | `string` | Equilibrium-temperature band (Cold, Temperate, Warm, Hot, Ultra-hot). |\n| 94 | `transit_depth_ppm` | `number` | Derived transit depth in ppm from (Rp/Rs)^2. |\n| 95 | `discovery_decade` | `string` | Decade of the discovery year. |\n| 96 | `star_type_group` | `string` | Coarse spectral group (O/B, A, F, G, K, M, other). |\n| 97 | `distance_light_years` | `number` | System distance converted to light years. |\n| 98 | `system_planet_rank` | `number` | Planet letter index within the system (b=1). |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "exoplanets.csv",
+      "description": "Primary data file containing 40,428 records across 98 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "pl_name",
+            "type": "string",
+            "description": "Planet name as used by the NASA Exoplanet Archive."
+          },
+          {
+            "name": "hostname",
+            "type": "string",
+            "description": "Host star name."
+          },
+          {
+            "name": "hd_name",
+            "type": "string",
+            "description": "HD catalogue identifier of the host star."
+          },
+          {
+            "name": "hip_name",
+            "type": "string",
+            "description": "Hipparcos catalogue identifier of the host star."
+          },
+          {
+            "name": "tic_id",
+            "type": "string",
+            "description": "TESS Input Catalog identifier of the host star."
+          },
+          {
+            "name": "gaia_dr2_id",
+            "type": "string",
+            "description": "Gaia Data Release 2 source id of the host star."
+          },
+          {
+            "name": "gaia_dr3_id",
+            "type": "string",
+            "description": "Gaia Data Release 3 source id of the host star."
+          },
+          {
+            "name": "pl_letter",
+            "type": "string",
+            "description": "Letter designating the planet within its system (b, c, d...)."
+          },
+          {
+            "name": "default_flag",
+            "type": "number",
+            "description": "1 if this is the archive's default parameter set for the planet."
+          },
+          {
+            "name": "pl_controv_flag",
+            "type": "number",
+            "description": "1 if the planet's existence or parameters are disputed."
+          },
+          {
+            "name": "disc_locale",
+            "type": "string",
+            "description": "Where the discovery was announced (Ground, Space, ...)."
+          },
+          {
+            "name": "discoverymethod",
+            "type": "string",
+            "description": "Detection technique (Transit, Radial Velocity, Imaging, Microlensing...)."
+          },
+          {
+            "name": "disc_year",
+            "type": "number",
+            "description": "Year the discovery was announced."
+          },
+          {
+            "name": "disc_facility",
+            "type": "string",
+            "description": "Facility credited with the discovery."
+          },
+          {
+            "name": "disc_instrument",
+            "type": "string",
+            "description": "Instrument credited with the discovery."
+          },
+          {
+            "name": "disc_telescope",
+            "type": "string",
+            "description": "Telescope credited with the discovery."
+          },
+          {
+            "name": "disc_pubdate",
+            "type": "string",
+            "description": "Publication date of the discovery paper."
+          },
+          {
+            "name": "disc_refname",
+            "type": "string",
+            "description": "Reference string for the discovery paper."
+          },
+          {
+            "name": "pl_orbper",
+            "type": "number",
+            "description": "Orbital period in days."
+          },
+          {
+            "name": "pl_orbpererr1",
+            "type": "number",
+            "description": "Lower 1-sigma uncertainty on orbital period (days)."
+          },
+          {
+            "name": "pl_orbpererr2",
+            "type": "number",
+            "description": "Upper 1-sigma uncertainty on orbital period (days)."
+          },
+          {
+            "name": "pl_orbsmax",
+            "type": "number",
+            "description": "Semi-major axis of the orbit in AU."
+          },
+          {
+            "name": "pl_orbsmaxerr1",
+            "type": "number",
+            "description": "Lower uncertainty on semi-major axis (AU)."
+          },
+          {
+            "name": "pl_orbsmaxerr2",
+            "type": "number",
+            "description": "Upper uncertainty on semi-major axis (AU)."
+          },
+          {
+            "name": "pl_orbeccen",
+            "type": "number",
+            "description": "Orbital eccentricity."
+          },
+          {
+            "name": "pl_orbeccenerr1",
+            "type": "number",
+            "description": "Lower uncertainty on eccentricity."
+          },
+          {
+            "name": "pl_orbeccenerr2",
+            "type": "number",
+            "description": "Upper uncertainty on eccentricity."
+          },
+          {
+            "name": "pl_orbtper",
+            "type": "number",
+            "description": "Time of periastron passage (BJD)."
+          },
+          {
+            "name": "pl_orblper",
+            "type": "number",
+            "description": "Argument of periastron (degrees)."
+          },
+          {
+            "name": "pl_imppar",
+            "type": "number",
+            "description": "Transit impact parameter (stellar radii)."
+          },
+          {
+            "name": "pl_trandur",
+            "type": "number",
+            "description": "Transit duration (hours)."
+          },
+          {
+            "name": "pl_tranmid",
+            "type": "number",
+            "description": "Transit midpoint (BJD)."
+          },
+          {
+            "name": "ttv_flag",
+            "type": "number",
+            "description": "1 if transit timing variations are detected."
+          },
+          {
+            "name": "pl_occdep",
+            "type": "number",
+            "description": "Occultation depth (ppm)."
+          },
+          {
+            "name": "pl_ratdor",
+            "type": "number",
+            "description": "Ratio of semi-major axis to stellar radius."
+          },
+          {
+            "name": "pl_ratror",
+            "type": "number",
+            "description": "Ratio of planet radius to stellar radius."
+          },
+          {
+            "name": "pl_rade",
+            "type": "number",
+            "description": "Planet radius in Earth radii."
+          },
+          {
+            "name": "pl_radeerr1",
+            "type": "number",
+            "description": "Lower uncertainty on planet radius (Earth radii)."
+          },
+          {
+            "name": "pl_radeerr2",
+            "type": "number",
+            "description": "Upper uncertainty on planet radius (Earth radii)."
+          },
+          {
+            "name": "pl_radj",
+            "type": "number",
+            "description": "Planet radius in Jupiter radii."
+          },
+          {
+            "name": "pl_bmasse",
+            "type": "number",
+            "description": "Planet mass or mass*sin(i) in Earth masses."
+          },
+          {
+            "name": "pl_bmasseerr1",
+            "type": "number",
+            "description": "Lower uncertainty on planet mass (Earth masses)."
+          },
+          {
+            "name": "pl_bmasseerr2",
+            "type": "number",
+            "description": "Upper uncertainty on planet mass (Earth masses)."
+          },
+          {
+            "name": "pl_bmassj",
+            "type": "number",
+            "description": "Planet mass in Jupiter masses."
+          },
+          {
+            "name": "pl_bmassprov",
+            "type": "string",
+            "description": "How the mass was measured (Mass, Msini, Msin(i)/sin(i)...)."
+          },
+          {
+            "name": "pl_dens",
+            "type": "number",
+            "description": "Planet bulk density (g/cm^3)."
+          },
+          {
+            "name": "pl_denserr1",
+            "type": "number",
+            "description": "Lower uncertainty on planet density."
+          },
+          {
+            "name": "pl_denserr2",
+            "type": "number",
+            "description": "Upper uncertainty on planet density."
+          },
+          {
+            "name": "pl_eqt",
+            "type": "number",
+            "description": "Equilibrium temperature (K), assuming zero albedo."
+          },
+          {
+            "name": "pl_insol",
+            "type": "number",
+            "description": "Insolation flux received by the planet (Earth flux)."
+          },
+          {
+            "name": "pl_insolerr1",
+            "type": "number",
+            "description": "Lower uncertainty on insolation flux."
+          },
+          {
+            "name": "pl_insolerr2",
+            "type": "number",
+            "description": "Upper uncertainty on insolation flux."
+          },
+          {
+            "name": "pl_orbincl",
+            "type": "number",
+            "description": "Orbital inclination (degrees)."
+          },
+          {
+            "name": "st_spectype",
+            "type": "string",
+            "description": "Stellar spectral type."
+          },
+          {
+            "name": "st_teff",
+            "type": "number",
+            "description": "Stellar effective temperature (K)."
+          },
+          {
+            "name": "st_tefferr1",
+            "type": "number",
+            "description": "Lower uncertainty on stellar temperature."
+          },
+          {
+            "name": "st_tefferr2",
+            "type": "number",
+            "description": "Upper uncertainty on stellar temperature."
+          },
+          {
+            "name": "st_rad",
+            "type": "number",
+            "description": "Stellar radius (solar radii)."
+          },
+          {
+            "name": "st_raderr1",
+            "type": "number",
+            "description": "Lower uncertainty on stellar radius."
+          },
+          {
+            "name": "st_mass",
+            "type": "number",
+            "description": "Stellar mass (solar masses)."
+          },
+          {
+            "name": "st_masserr1",
+            "type": "number",
+            "description": "Lower uncertainty on stellar mass."
+          },
+          {
+            "name": "st_met",
+            "type": "number",
+            "description": "Stellar metallicity [Fe/H] (dex)."
+          },
+          {
+            "name": "st_metratio",
+            "type": "string",
+            "description": "Stellar metallicity as a raw abundance ratio."
+          },
+          {
+            "name": "st_logg",
+            "type": "number",
+            "description": "Stellar surface gravity log10(g) (cgs)."
+          },
+          {
+            "name": "st_age",
+            "type": "number",
+            "description": "Stellar age (Gyr)."
+          },
+          {
+            "name": "st_lum",
+            "type": "number",
+            "description": "Stellar luminosity log10(L/L_sun)."
+          },
+          {
+            "name": "st_vsin",
+            "type": "number",
+            "description": "Stellar projected rotational velocity (km/s)."
+          },
+          {
+            "name": "st_rotp",
+            "type": "number",
+            "description": "Stellar rotation period (days)."
+          },
+          {
+            "name": "st_radv",
+            "type": "number",
+            "description": "Stellar radial velocity (km/s)."
+          },
+          {
+            "name": "sy_snum",
+            "type": "number",
+            "description": "Number of stars in the system."
+          },
+          {
+            "name": "sy_pnum",
+            "type": "number",
+            "description": "Number of confirmed planets in the system."
+          },
+          {
+            "name": "sy_mnum",
+            "type": "number",
+            "description": "Number of moons in the system."
+          },
+          {
+            "name": "sy_dist",
+            "type": "number",
+            "description": "Distance to the system (parsecs)."
+          },
+          {
+            "name": "sy_disterr1",
+            "type": "number",
+            "description": "Lower uncertainty on system distance."
+          },
+          {
+            "name": "sy_vmag",
+            "type": "number",
+            "description": "V-band apparent magnitude of the host star."
+          },
+          {
+            "name": "sy_kmag",
+            "type": "number",
+            "description": "K-band apparent magnitude of the host star."
+          },
+          {
+            "name": "sy_gaiamag",
+            "type": "number",
+            "description": "Gaia G-band apparent magnitude of the host star."
+          },
+          {
+            "name": "sy_plx",
+            "type": "number",
+            "description": "Parallax of the system (mas)."
+          },
+          {
+            "name": "cb_flag",
+            "type": "number",
+            "description": "1 if the planet orbits a circumbinary system."
+          },
+          {
+            "name": "st_nphot",
+            "type": "number",
+            "description": "Number of photometric observation sets in the archive."
+          },
+          {
+            "name": "st_nrvc",
+            "type": "number",
+            "description": "Number of radial-velocity observation sets."
+          },
+          {
+            "name": "st_nspec",
+            "type": "number",
+            "description": "Number of spectroscopic observation sets."
+          },
+          {
+            "name": "ra",
+            "type": "number",
+            "description": "Right ascension of the host star (degrees)."
+          },
+          {
+            "name": "dec",
+            "type": "number",
+            "description": "Declination of the host star (degrees)."
+          },
+          {
+            "name": "glat",
+            "type": "number",
+            "description": "Galactic latitude (degrees)."
+          },
+          {
+            "name": "glon",
+            "type": "number",
+            "description": "Galactic longitude (degrees)."
+          },
+          {
+            "name": "orbital_period_years",
+            "type": "number",
+            "description": "Orbital period converted to Earth years."
+          },
+          {
+            "name": "orbital_speed_kms",
+            "type": "number",
+            "description": "Mean orbital speed (km/s) from semi-major axis and period."
+          },
+          {
+            "name": "planet_type",
+            "type": "string",
+            "description": "Radius class: Sub-Earth, Earth-size, Super-Earth, Mini-Neptune, Neptune-size, Jupiter-size, Giant."
+          },
+          {
+            "name": "mass_class",
+            "type": "string",
+            "description": "Mass class from Earth masses (<2, 2-10, 10-50, 50-300, >300)."
+          },
+          {
+            "name": "density_class",
+            "type": "string",
+            "description": "Rocky / Intermediate / Gaseous from bulk density."
+          },
+          {
+            "name": "in_habitable_zone",
+            "type": "boolean",
+            "description": "true when insolation flux is between 0.35 and 1.5 Earth fluxes."
+          },
+          {
+            "name": "teq_class",
+            "type": "string",
+            "description": "Equilibrium-temperature band (Cold, Temperate, Warm, Hot, Ultra-hot)."
+          },
+          {
+            "name": "transit_depth_ppm",
+            "type": "number",
+            "description": "Derived transit depth in ppm from (Rp/Rs)^2."
+          },
+          {
+            "name": "discovery_decade",
+            "type": "string",
+            "description": "Decade of the discovery year."
+          },
+          {
+            "name": "star_type_group",
+            "type": "string",
+            "description": "Coarse spectral group (O/B, A, F, G, K, M, other)."
+          },
+          {
+            "name": "distance_light_years",
+            "type": "number",
+            "description": "System distance converted to light years."
+          },
+          {
+            "name": "system_planet_rank",
+            "type": "number",
+            "description": "Planet letter index within the system (b=1)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

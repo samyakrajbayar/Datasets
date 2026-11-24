@@ -1,0 +1,31 @@
+{
+  "title": "PubChem Compound Property Table",
+  "id": "samyakrajbayar/pubchem-compounds",
+  "subtitle": "60,000 compounds with molecular descriptors, Lipinski rules, stereochemistry...",
+  "description": "### 60,000 PubChem compounds with computed chemistry\n\nPubChem is the world's largest open chemistry database. This dataset pulls the computed property\ntable for **60,000 compounds** (CIDs 1\u201360,000) and expands it to **45 parameters**.\n\n- **Identity** \u2014 CID, IUPAC name, InChIKey, molecular formula, canonical and isomeric SMILES.\n- **Mass and size** \u2014 average, exact and monoisotopic mass, heavy atoms, covalent units, complexity.\n- **Drug-likeness** \u2014 XLogP, TPSA, hydrogen-bond donors/acceptors, rotatable bonds, Lipinski\n  violations and pass flag.\n- **Stereochemistry** \u2014 atom and bond stereocentre counts, defined vs undefined centres, definition\n  ratio.\n- **Composition** \u2014 carbon, nitrogen, oxygen, sulfur and halogen counts parsed from the formula,\n  hetero-atom total and element bands.\n\n**49,648 compounds pass all four Lipinski rules** and **20,965 contain at least one\nstereocentre**. The table supports QSAR modelling, scaffold analysis, descriptor benchmarking and\nchemical-space exploration without any cheminformatics toolkit.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "pubchem_compounds.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

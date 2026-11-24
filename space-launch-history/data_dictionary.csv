@@ -1,0 +1,54 @@
+column,data_type,description
+launch_id,string,Unique Launch Library 2 launch identifier (UUID).
+launch_name,string,"Full launch name, usually provider + rocket + mission."
+launch_designator,string,Launch designator such as 2024-001.
+status_abbrev,category,"Status code: Go, TBD, Success, Failure, Partial Failure, In Flight, Hold."
+status_name,string,Human-readable launch status.
+net_utc,datetime,No Earlier Than: scheduled or actual liftoff time in UTC.
+window_start_utc,datetime,Start of the launch window (UTC).
+window_end_utc,datetime,End of the launch window (UTC).
+net_precision,category,"Precision of the NET value: Minute, Hour, Day, Month, Year, Quarter."
+year,integer,Liftoff year.
+month,integer,Liftoff month (1-12).
+day,integer,Liftoff day of month.
+hour,integer,"Liftoff hour (0-23, UTC)."
+weekday,string,Liftoff day of week.
+quarter,category,Liftoff quarter (Q1-Q4).
+probability_pct,float,Weather/launch probability at the last update (%).
+weather_concerns,string,Weather concerns reported before launch.
+fail_reason,string,"Failure reason, when the launch failed."
+provider,string,Launch service provider name.
+provider_abbrev,string,"Provider abbreviation (e.g. SpaceX, CASC)."
+provider_country,string,Provider country.
+provider_type,category,"Provider type: Commercial, Government, Multinational, Private."
+rocket_name,string,Rocket configuration name (e.g. Falcon 9 Block 5).
+rocket_family,string,Rocket family (e.g. Falcon).
+rocket_variant,string,Rocket variant (e.g. Block 5).
+rocket_full_name,string,Full rocket configuration name.
+mission_name,string,Mission name.
+mission_type,category,"Mission type: Communications, Earth Science, Astrophysics, Test Flight, ..."
+mission_description,string,"Mission description, truncated to 600 characters."
+orbit_abbrev,string,"Target orbit abbreviation (LEO, SSO, GEO, ...)."
+orbit_name,string,Target orbit full name.
+pad_name,string,Launch pad name.
+pad_latitude,float,Launch pad latitude (decimal degrees).
+pad_longitude,float,Launch pad longitude (decimal degrees).
+location_name,string,Launch site / spaceport name.
+location_country_code,string,ISO alpha-2 country code of the launch site.
+n_crew,integer,Number of crew members on board.
+n_payloads,integer,Number of payloads on the manifest.
+payload_types,string list,Semicolon-separated payload categories.
+orbital_launch_attempt_count,integer,Global orbital launch attempt number at time of launch.
+location_launch_attempt_count,integer,Cumulative launch attempts from the same site.
+pad_launch_attempt_count,integer,Cumulative launch attempts from the same pad.
+agency_launch_attempt_count,integer,Cumulative launch attempts by the provider.
+orbital_launch_attempt_count_year,integer,Orbital launch attempt count within that year.
+pad_turnaround_days,float,Days since the previous launch from the same pad.
+has_webcast,boolean,Whether a live webcast was flagged.
+n_info_urls,integer,Number of reference links.
+n_vid_urls,integer,Number of video links.
+n_mission_patches,integer,Number of mission patch images.
+programs,string list,"Semicolon-separated programme names (e.g. Artemis, Starlink)."
+hashtag,string,Official campaign hashtag.
+image_url,string,Launch image URL.
+info_url,string,Launch Library API URL for the launch.

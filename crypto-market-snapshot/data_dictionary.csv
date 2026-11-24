@@ -1,0 +1,32 @@
+column,data_type,description
+rank,integer,Market-cap rank at snapshot time.
+id,string,CoinGecko coin identifier (e.g. bitcoin).
+symbol,string,Upper-case ticker symbol.
+name,string,Coin name.
+current_price_usd,float,Spot price in US dollars.
+market_cap_usd,float,Market capitalisation in US dollars.
+fully_diluted_valuation_usd,float,Valuation if max supply were circulating.
+volume_24h_usd,float,24-hour trading volume in US dollars.
+volume_to_market_cap,float,Turnover ratio: 24h volume / market cap.
+high_24h_usd,float,24-hour high price.
+low_24h_usd,float,24-hour low price.
+intraday_range_pct,float,(high - low) / low × 100.
+price_change_24h_usd,float,Absolute price change over 24 hours.
+price_change_pct_24h,float,Percentage price change over 24 hours.
+market_cap_change_pct_24h,float,Percentage market-cap change over 24 hours.
+circulating_supply,float,Coins in circulation.
+total_supply,float,Total coins issued.
+max_supply,float,Maximum possible supply (empty if uncapped).
+supply_ratio,float,Circulating supply / total supply.
+fully_diluted_ratio,float,Market cap / fully diluted valuation.
+ath_usd,float,All-time high price in USD.
+ath_change_pct,float,Percentage change from the all-time high.
+ath_date,datetime,Date of the all-time high (UTC).
+atl_usd,float,All-time low price in USD.
+atl_change_pct,float,Percentage change from the all-time low.
+atl_date,datetime,Date of the all-time low (UTC).
+roi_times,float,"Return multiple since the ICO/IDO price, if reported."
+roi_currency,string,Currency the ROI is quoted in.
+volatility_7d_pct,float,Standard deviation of hourly log-free returns over 7 days (%).
+sparkline_points,integer,Number of hourly price points in the 7-day sparkline.
+last_updated_utc,datetime,Timestamp of the quote.

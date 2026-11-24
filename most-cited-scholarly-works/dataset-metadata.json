@@ -1,0 +1,300 @@
+{
+  "title": "Most-Cited Scholarly Works Since 2015",
+  "id": "samyakrajbayar/most-cited-scholarly-works",
+  "subtitle": "Crossref bibliometric snapshot of top-cited articles & open-access metadata",
+  "description": "# Most-Cited Scholarly Works Since 2015\n\n**Subtitle:** Crossref bibliometric snapshot of top-cited articles & open-access metadata\n\n**Tags:** `academia`, `research`, `scientometrics`, `publishing`, `bibliometrics`, `citation-analysis`, `science`, `nlp`, `tabular`, `education`\n\n**Dataset File:** `crossref_works.csv` (6,585 rows, 53 columns, 3.9 MB)\n\n---\n\n## \ud83d\udcd6 Description\n\n### The 6,000 most-cited journal articles published since 2015\n\nA bibliometric snapshot pulled live from **Crossref**, the DOI registration agency that holds metadata for\nover 150 million scholarly works. This file contains the **6,000 journal articles from 2015 onwards with the\nhighest Crossref cited-by counts**, resolved at snapshot time, with **53 parameters** per work.\n\nEach row describes one paper:\n- **Bibliographic identity** \u2014 DOI, title, subtitle, journal and abbreviated journal, publisher, volume,\n  issue, pages, publication year/month/day and the full issued date.\n- **Authorship** \u2014 author and editor counts, first and last author names, distinct affiliation count,\n  first affiliation, single-author flag and a team-size band.\n- **Impact** \u2014 Crossref citation count, citations per year, work age and a citation band.\n- **Funding and openness** \u2014 number of funders, funder names, number of licences, licence URLs and an\n  open-access flag.\n- **Content** \u2014 a discipline label inferred from journal-title keywords, abstract presence and length,\n  title length, full-text link count, references count and the DOI resolver URL.\n\nBecause the sample is defined by citation rank, it is a natural benchmark for **citation prediction,\nteam-size effects, open-access advantage and journal prestige** \u2014 and, equally, a clear example of\nsurvivorship bias.\n\n## \ud83e\uddfe Columns (53)\n\n`doi`, `title`, `subtitle`, `journal`, `journal_abbrev`, `publisher`, `type`, `published_year`, `published_month`, `published_day`, `published_date`, `created_date`, `n_authors`, `n_editors`, `first_author`, `first_author_given`, `last_author`, `n_affiliations`, `first_affiliation`, `n_funders`, `funder_names`, `citations`, `citations_per_year`, `year_since_publication`, `n_subjects`, `subjects`, `n_issn`, `issn`, `is_open_access`, `license_urls`, `volume`, `issue`, `pages`, `n_links`, `n_references`, `has_abstract`, `abstract_length`, `title_length`, `article_number`, `publisher_location`, `doi_prefix`, `group_title`, `deposited_date`, `indexed_date`, `print_year`, `online_year`, `url`, `decade`, `is_single_author`, `team_size_class`, `citation_class`, `field`, `field_basis`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Open-access advantage** \u2014 compare citation rates for works with and without a registered licence, controlling for age and field.\n2. **Team size vs impact** \u2014 boxplot citations by `team_size_class`; test whether large teams dominate the top of the distribution.\n3. **Journal prestige** \u2014 rank journals by mean citations per article and by publication volume.\n4. **Citation decay** \u2014 plot `citations_per_year` against `published_year` to see how the most-cited set ages.\n5. **Field mix** \u2014 `field` frequency by year; which disciplines generate the most highly cited work?\n6. **Abstract effect** \u2014 does `has_abstract` / `abstract_length` correlate with citations?\n7. **Funding** \u2014 share of top-cited work with funder metadata, by publisher and by decade.\n8. **Regression** \u2014 predict log citations from authors, affiliations, openness, field and age.\n9. **Text mining** \u2014 titles are clean UTF-8; cluster them or build a keyword extractor.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `crossref_works.csv` | 6,000 highly cited journal articles x 53 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook: citation distributions, open access, team size. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block for the Kaggle web form. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`academia`, `research`, `scientometrics`, `publishing`, `bibliometrics`, `citation-analysis`, `science`, `nlp`, `tabular`, `education`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** Crossref REST API, `https://api.crossref.org/works`.\n- **Query:** `filter=from-pub-date:2015-01-01,type:journal-article`, `sort=is-referenced-by-count`,\n  `order=desc`, cursor deep-paging, 200 records per page.\n- **Records:** the top-cited slice of the Crossref corpus from 2015 onward (see row count above), not a\n  random sample.\n- **Transformation:** nested JSON (authors, funders, licences, subjects) flattened to one row per work;\n  16 derived columns computed from the raw fields.\n- **Snapshot date:** 20 November 2026. Citation counts change daily upstream.\n\n## \ud83d\udd04 Update frequency\n\n**Never (static snapshot).** Citation counts move daily upstream; re-run `scripts/12_crossref.py` to refresh.\n\n## \u26a0\ufe0f Caveats\n\n- Crossref cited-by counts are **not** the same as Scopus or Web of Science counts and are typically lower.\n- Only works whose publishers deposit reference metadata have citation counts, so coverage is uneven by field and publisher.\n- Names are split into `first_author` / `last_author` only; full author lists are not included.\n- The sample is citation-ranked, so it is heavily survivorship-biased and dominated by medicine and physics.\n- Affiliations come from free-text publisher deposits and are inconsistent in spelling.\n- `is_open_access` only reflects a registered licence, not whether the PDF is actually free to read.\n- `field` is inferred from journal-title keywords, and about 29% of journals match no rule and are labelled `Other`; treat it as a coarse grouping, not a taxonomy.\n\n## \ud83d\udcdc Licence\n\nCrossref metadata is openly available under the Crossref Terms of Use; individual abstracts and titles remain \u00a9 their publishers and authors. Attribution to Crossref and the original publishers is required.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `doi` | `string` | Digital Object Identifier \u2014 the unique, resolvable id of the work. |\n| 2 | `title` | `string` | Work title as deposited at Crossref. |\n| 3 | `subtitle` | `string` | Subtitle, when the deposit includes one. |\n| 4 | `journal` | `string` | Container (journal) title. |\n| 5 | `journal_abbrev` | `string` | Abbreviated journal title as registered by the publisher. |\n| 6 | `publisher` | `string` | Publishing organisation that deposited the DOI. |\n| 7 | `type` | `string` | Crossref work type; all rows here are `journal-article`. |\n| 8 | `published_year` | `number` | Year of the issued (publication) date. |\n| 9 | `published_month` | `number` | Month of the issued date. |\n| 10 | `published_day` | `number` | Day of the issued date. |\n| 11 | `published_date` | `string` | Full issued date as YYYY-M-D. |\n| 12 | `created_date` | `datetime` | Timestamp when the DOI record was first created at Crossref. |\n| 13 | `n_authors` | `number` | Number of authors in the deposited author list. |\n| 14 | `n_editors` | `number` | Number of editors. |\n| 15 | `first_author` | `string` | Family name of the first author. |\n| 16 | `first_author_given` | `string` | Given name of the first author. |\n| 17 | `last_author` | `string` | Family name of the last author (often the senior/PI author). |\n| 18 | `n_affiliations` | `number` | Number of distinct institutional affiliations across all authors. |\n| 19 | `first_affiliation` | `string` | Affiliation of the first author who reported one. |\n| 20 | `n_funders` | `number` | Number of funding records attached to the work. |\n| 21 | `funder_names` | `string` | Semicolon-separated funder names. |\n| 22 | `citations` | `number` | Crossref cited-by count at snapshot time. |\n| 23 | `citations_per_year` | `number` | Citations divided by years since publication. |\n| 24 | `year_since_publication` | `number` | Age of the work in years at snapshot time. |\n| 25 | `n_subjects` | `number` | Derived field. |\n| 26 | `subjects` | `number` | Derived field. |\n| 27 | `n_issn` | `number` | Number of ISSNs registered for the journal. |\n| 28 | `issn` | `string` | First ISSN of the journal. |\n| 29 | `is_open_access` | `boolean` | true when at least one licence is registered for the work. |\n| 30 | `license_urls` | `string` | Semicolon-separated licence URLs. |\n| 31 | `volume` | `string` | Journal volume. |\n| 32 | `issue` | `string` | Journal issue. |\n| 33 | `pages` | `string` | Page range or article number. |\n| 34 | `n_links` | `number` | Number of full-text/resource links in the record. |\n| 35 | `n_references` | `number` | Number of references the publisher deposited for the work. |\n| 36 | `has_abstract` | `boolean` | true when the deposit carries an abstract. |\n| 37 | `abstract_length` | `number` | Length of the abstract text in characters. |\n| 38 | `title_length` | `number` | Title length in characters. |\n| 39 | `article_number` | `string` | Article number for journals that number articles instead of pages. |\n| 40 | `publisher_location` | `number` | Registered location of the publisher. |\n| 41 | `doi_prefix` | `number` | DOI prefix, which identifies the registration agency member (usually the publisher). |\n| 42 | `group_title` | `number` | Group or collection title, where deposited. |\n| 43 | `deposited_date` | `datetime` | Timestamp of the last metadata deposit. |\n| 44 | `indexed_date` | `datetime` | Timestamp when Crossref last indexed the record. |\n| 45 | `print_year` | `number` | Year of the print publication date, when distinct. |\n| 46 | `online_year` | `number` | Year of the online publication date, when distinct. |\n| 47 | `url` | `string` | Canonical DOI resolver URL. |\n| 48 | `decade` | `string` | Publication decade. |\n| 49 | `is_single_author` | `boolean` | true when the work has exactly one author. |\n| 50 | `team_size_class` | `string` | Author-count band: Solo, Small (2-5), Medium (6-20), Large (>20). |\n| 51 | `citation_class` | `string` | Citation band: Mega (10k+), High (1k-10k), Notable (100-1k), Low (<100). |\n| 52 | `field` | `string` | Discipline inferred from journal-title keywords (heuristic, see `field_basis`). |\n| 53 | `field_basis` | `string` | How the field was assigned; always `journal title keywords` here. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, portfolio, or machine learning projects, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "crossref_works.csv",
+      "description": "Primary data file containing 6,585 records across 53 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "doi",
+            "type": "string",
+            "description": "Digital Object Identifier \u2014 the unique, resolvable id of the work."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Work title as deposited at Crossref."
+          },
+          {
+            "name": "subtitle",
+            "type": "string",
+            "description": "Subtitle, when the deposit includes one."
+          },
+          {
+            "name": "journal",
+            "type": "string",
+            "description": "Container (journal) title."
+          },
+          {
+            "name": "journal_abbrev",
+            "type": "string",
+            "description": "Abbreviated journal title as registered by the publisher."
+          },
+          {
+            "name": "publisher",
+            "type": "string",
+            "description": "Publishing organisation that deposited the DOI."
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "Crossref work type; all rows here are `journal-article`."
+          },
+          {
+            "name": "published_year",
+            "type": "number",
+            "description": "Year of the issued (publication) date."
+          },
+          {
+            "name": "published_month",
+            "type": "number",
+            "description": "Month of the issued date."
+          },
+          {
+            "name": "published_day",
+            "type": "number",
+            "description": "Day of the issued date."
+          },
+          {
+            "name": "published_date",
+            "type": "string",
+            "description": "Full issued date as YYYY-M-D."
+          },
+          {
+            "name": "created_date",
+            "type": "datetime",
+            "description": "Timestamp when the DOI record was first created at Crossref."
+          },
+          {
+            "name": "n_authors",
+            "type": "number",
+            "description": "Number of authors in the deposited author list."
+          },
+          {
+            "name": "n_editors",
+            "type": "number",
+            "description": "Number of editors."
+          },
+          {
+            "name": "first_author",
+            "type": "string",
+            "description": "Family name of the first author."
+          },
+          {
+            "name": "first_author_given",
+            "type": "string",
+            "description": "Given name of the first author."
+          },
+          {
+            "name": "last_author",
+            "type": "string",
+            "description": "Family name of the last author (often the senior/PI author)."
+          },
+          {
+            "name": "n_affiliations",
+            "type": "number",
+            "description": "Number of distinct institutional affiliations across all authors."
+          },
+          {
+            "name": "first_affiliation",
+            "type": "string",
+            "description": "Affiliation of the first author who reported one."
+          },
+          {
+            "name": "n_funders",
+            "type": "number",
+            "description": "Number of funding records attached to the work."
+          },
+          {
+            "name": "funder_names",
+            "type": "string",
+            "description": "Semicolon-separated funder names."
+          },
+          {
+            "name": "citations",
+            "type": "number",
+            "description": "Crossref cited-by count at snapshot time."
+          },
+          {
+            "name": "citations_per_year",
+            "type": "number",
+            "description": "Citations divided by years since publication."
+          },
+          {
+            "name": "year_since_publication",
+            "type": "number",
+            "description": "Age of the work in years at snapshot time."
+          },
+          {
+            "name": "n_subjects",
+            "type": "number",
+            "description": "Derived field."
+          },
+          {
+            "name": "subjects",
+            "type": "number",
+            "description": "Derived field."
+          },
+          {
+            "name": "n_issn",
+            "type": "number",
+            "description": "Number of ISSNs registered for the journal."
+          },
+          {
+            "name": "issn",
+            "type": "string",
+            "description": "First ISSN of the journal."
+          },
+          {
+            "name": "is_open_access",
+            "type": "boolean",
+            "description": "true when at least one licence is registered for the work."
+          },
+          {
+            "name": "license_urls",
+            "type": "string",
+            "description": "Semicolon-separated licence URLs."
+          },
+          {
+            "name": "volume",
+            "type": "string",
+            "description": "Journal volume."
+          },
+          {
+            "name": "issue",
+            "type": "string",
+            "description": "Journal issue."
+          },
+          {
+            "name": "pages",
+            "type": "string",
+            "description": "Page range or article number."
+          },
+          {
+            "name": "n_links",
+            "type": "number",
+            "description": "Number of full-text/resource links in the record."
+          },
+          {
+            "name": "n_references",
+            "type": "number",
+            "description": "Number of references the publisher deposited for the work."
+          },
+          {
+            "name": "has_abstract",
+            "type": "boolean",
+            "description": "true when the deposit carries an abstract."
+          },
+          {
+            "name": "abstract_length",
+            "type": "number",
+            "description": "Length of the abstract text in characters."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Title length in characters."
+          },
+          {
+            "name": "article_number",
+            "type": "string",
+            "description": "Article number for journals that number articles instead of pages."
+          },
+          {
+            "name": "publisher_location",
+            "type": "number",
+            "description": "Registered location of the publisher."
+          },
+          {
+            "name": "doi_prefix",
+            "type": "number",
+            "description": "DOI prefix, which identifies the registration agency member (usually the publisher)."
+          },
+          {
+            "name": "group_title",
+            "type": "number",
+            "description": "Group or collection title, where deposited."
+          },
+          {
+            "name": "deposited_date",
+            "type": "datetime",
+            "description": "Timestamp of the last metadata deposit."
+          },
+          {
+            "name": "indexed_date",
+            "type": "datetime",
+            "description": "Timestamp when Crossref last indexed the record."
+          },
+          {
+            "name": "print_year",
+            "type": "number",
+            "description": "Year of the print publication date, when distinct."
+          },
+          {
+            "name": "online_year",
+            "type": "number",
+            "description": "Year of the online publication date, when distinct."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "Canonical DOI resolver URL."
+          },
+          {
+            "name": "decade",
+            "type": "string",
+            "description": "Publication decade."
+          },
+          {
+            "name": "is_single_author",
+            "type": "boolean",
+            "description": "true when the work has exactly one author."
+          },
+          {
+            "name": "team_size_class",
+            "type": "string",
+            "description": "Author-count band: Solo, Small (2-5), Medium (6-20), Large (>20)."
+          },
+          {
+            "name": "citation_class",
+            "type": "string",
+            "description": "Citation band: Mega (10k+), High (1k-10k), Notable (100-1k), Low (<100)."
+          },
+          {
+            "name": "field",
+            "type": "string",
+            "description": "Discipline inferred from journal-title keywords (heuristic, see `field_basis`)."
+          },
+          {
+            "name": "field_basis",
+            "type": "string",
+            "description": "How the field was assigned; always `journal title keywords` here."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Full field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter exploratory data analysis notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}

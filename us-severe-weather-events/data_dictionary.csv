@@ -1,0 +1,73 @@
+column,data_type,description
+event_id,number,Unique event identifier within the Storm Events database.
+episode_id,number,Identifier of the episode (weather system) the event belongs to.
+state,string,Two-letter state postal code.
+state_fips,number,FIPS code of the state.
+year,number,Year the event began.
+month,number,Month number (1-12).
+month_name,string,Month name.
+event_type,string,"NOAA event type (Tornado, Hail, Flash Flood, Excessive Heat, ...)."
+cz_type,string,Whether the county/zone code is a county (C) or forecast zone (Z).
+cz_fips,number,County or zone FIPS code.
+cz_name,string,County or forecast-zone name.
+wfo,string,Weather Forecast Office that logged the event.
+begin_datetime,datetime,"Event start, local time (ISO format)."
+cz_timezone,string,Time zone of the county/zone.
+end_datetime,datetime,"Event end, local time (ISO format)."
+injuries_direct,number,Direct injuries attributed to the event.
+injuries_indirect,number,Indirect injuries (e.g. clean-up accidents).
+deaths_direct,number,Direct fatalities.
+deaths_indirect,number,Indirect fatalities.
+damage_property,string,Property damage as reported (e.g. 10.00K).
+damage_crops,string,Crop damage as reported (e.g. 1.50M).
+source,string,"Reporting source (law enforcement, trained spotter, ASOS, ...)."
+magnitude,number,"Magnitude value; units depend on event type (kt, inches, EF scale...)."
+magnitude_type,string,Unit/type of the magnitude value.
+flood_cause,number,"Cause of a flood event, where given."
+category,number,"Storm category (e.g. hurricane category), where given."
+tor_f_scale,number,Tornado F/EF rating.
+tor_length,number,Tornado path length in miles as reported.
+tor_width,number,Tornado path width in yards as reported.
+tor_other_wfo,number,Secondary WFO for a tornado crossing office boundaries.
+tor_other_cz_state,number,State of the secondary county/zone.
+tor_other_cz_fips,number,FIPS of the secondary county/zone.
+tor_other_cz_name,string,Name of the secondary county/zone.
+begin_range,number,Distance from the beginning location reference point (miles).
+begin_azimuth,string,Compass direction from the reference point to the start.
+begin_location,string,Nearest place name to the event start.
+end_range,number,Distance from the ending location reference point (miles).
+end_azimuth,string,Compass direction from the reference point to the end.
+end_location,string,Nearest place name to the event end.
+begin_lat,number,Start latitude (decimal degrees).
+begin_lon,number,Start longitude (decimal degrees).
+end_lat,number,End latitude (decimal degrees).
+end_lon,number,End longitude (decimal degrees).
+episode_narrative_len,number,Characters in the episode narrative.
+event_narrative_len,number,Characters in the event narrative.
+data_source,string,Post-processing source of the record.
+duration_hours,number,End minus start in hours (derived from the timestamps).
+total_deaths,number,Direct + indirect deaths.
+total_injuries,number,Direct + indirect injuries.
+total_casualties,number,Deaths + injuries.
+damage_total_usd,number,Property + crop damage in current US dollars.
+log10_damage_total,number,"log10(1 + damage_total_usd), for skewed damage models."
+is_fatal,boolean,true when the event killed at least one person.
+has_injuries,boolean,true when at least one injury was recorded.
+state_region,number,U.S. Census region of the state.
+season,string,Meteorological season of the start date.
+day_of_year,number,Day of year of the event start (1-366).
+begin_hour,number,Hour of day the event began (local time).
+time_of_day,string,Overnight / Morning / Afternoon / Evening band.
+path_length_km,number,"Great-circle start-to-end distance in km, or reported tornado length converted."
+path_width_m,number,Tornado width converted from yards to metres.
+path_area_sqkm,number,Path length x width in square kilometres.
+decade,number,"Decade of the event year (2000, 2010, 2020, ...)."
+is_tornado,boolean,true for tornado and funnel-cloud events.
+is_flood,boolean,"true for flash flood, flood and heavy rain events."
+is_winter,boolean,"true for winter storm, blizzard, ice storm and cold events."
+is_heat,boolean,true for heat and excessive heat events.
+is_wind,boolean,"true for thunderstorm wind, high wind and strong wind events."
+has_magnitude,boolean,true when a magnitude value is present.
+damage_per_casualty_usd,number,Damage total divided by casualties.
+narrative_total_len,number,Combined length of the episode and event narratives.
+event_type_group,string,Coarse event family used for grouping.

@@ -1,0 +1,330 @@
+{
+  "title": "Research Data DOIs",
+  "id": "samyakrajbayar/research-data-dois",
+  "subtitle": "50,000 research dataset DOIs with subject, publisher and year",
+  "description": "# Research Data DOIs - DataCite\n\n**Subtitle:** 40,000 research outputs with creators, types, funding and usage metrics\n\n**Tags:** `tabular`, `science`, `research`\n\n**Dataset File:** `datacite_dois.csv` (168,892 rows, 59 columns, 51.9 MB)\n\n**Provenance & Source:** DataCite REST API (api.datacite.org)\n\n**Expected Update Frequency:** `monthly`\n\n---\n\n## \ud83d\udcd6 Description\n\n### 40,000 research-data DOIs\n\nDataCite is the global DOI registration agency for research data, software, samples and other\nnon-article outputs. This dataset contains **40,000 DOIs** with **59 parameters** each.\n\n- **Identity** \u2014 DOI, title, publisher, publication year, resource type (free text and controlled).\n- **People** \u2014 creator count, first creator, creator names and affiliations, contributor count and\n  ORCID coverage.\n- **Description** \u2014 subjects, primary description, language and version.\n- **Rights and links** \u2014 rights statements, landing page and content URL, active state.\n- **Impact metrics** \u2014 views, downloads, references, citations, parts and related records.\n- **Funding and geography** \u2014 funder names, geo-locations with coordinates, dates, sizes and formats.\n- **Derived** \u2014 dataset/software/text/image/preprint flags, ORCID presence, year bands and counts.\n\n**8,262 records are datasets**, **4,401 are software**, and **17,244**\n(43.1%) have at least one creator ORCID \u2014 a view of the research-data ecosystem\nthrough its persistent identifiers.\n\n## \ud83e\uddfe Columns (59)\n\n`doi`, `title`, `publisher`, `publication_year`, `resource_type`, `resource_type_general`, `creator_count`, `first_creator`, `creator_names`, `creator_affiliations`, `contributor_count`, `subject_count`, `subjects`, `description_count`, `description`, `language`, `version`, `rights_count`, `rights`, `url`, `content_url`, `is_active`, `state`, `view_count`, `download_count`, `reference_count`, `citation_count`, `part_count`, `part_of_count`, `related_count`, `funding_count`, `funder_names`, `geo_count`, `geo_place`, `geo_lat`, `geo_lon`, `date_count`, `dates`, `size_count`, `sizes`, `format_count`, `formats`, `identifier_count`, `orcid_count`, `title_length`, `description_length`, `has_orcid`, `has_description`, `has_funding`, `has_geo`, `has_related`, `has_rights`, `is_dataset`, `is_software`, `is_text`, `is_image`, `is_preprint`, `year_band`, `decade`\n\n## \ud83d\udca1 Ideas for using this data\n\n1. **Repository landscape** \u2014 which publishers/repositories mint the most DOIs?\n2. **Type mix** \u2014 datasets vs software vs text over publication year.\n3. **FAIR metadata** \u2014 ORCID, rights, funding and geo coverage by repository.\n4. **Citation advantage** \u2014 do records with richer metadata get more views/downloads?\n5. **Geography** \u2014 map geo-located records and compare with funder countries.\n6. **Funding networks** \u2014 funders and their output types.\n7. **Software citation** \u2014 how software DOIs differ from dataset DOIs.\n8. **Title and description NLP** \u2014 topic-model research outputs across disciplines.\n9. **Metadata completeness** \u2014 build a repository scorecard from the derived coverage flags.\n\n## \ud83d\udcc1 Files\n\n| File | What it is |\n|---|---|\n| `datacite_dois.csv` | 40,000 DOIs x 59 parameters. |\n| `data_dictionary.csv` | Column / type / description for every field. |\n| `notebook.ipynb` | Starter notebook that loads the CSV and analyses it. |\n| `dataset-metadata.json` | Kaggle API metadata. |\n| `about.md` | Plain-text About block. |\n\n## \ud83c\udff7\ufe0f Tags\n\n`datacite`, `doi`, `research-data`, `open-science`, `metadata`, `repositories`, `bibliometrics`\n\n## \ud83d\udd17 Provenance\n\n- **Source:** **DataCite REST API**, `https://api.datacite.org/dois`,\n  paginated 1,000 records per page.\n- **Scope:** the first 40,000 DOI records returned by the default API ordering.\n- **Processing:** nested creators, contributors, subjects, descriptions, rights, funding, geo-locations,\n  dates, sizes and formats flattened; coverage flags and year bands derived.\n- **Snapshot date:** 22 November 2026.\n\n## \ud83d\udd04 Update frequency\n\n**Continuous.** DataCite registers DOIs throughout the day.\n\n## \u26a0\ufe0f Caveats\n\n- This is the first 40,000 records by API ordering, not a random or complete census.\n- Metadata quality varies widely between repositories; many fields are optional.\n- View and download counts are repository-reported and not comparable across all members.\n- Descriptions may contain HTML and are truncated at 1,500 characters.\n- Resource types are free text in `resource_type`, so use the controlled general type for grouping.\n- Geo-locations are optional and often absent for non-spatial data.\n- Publication year is the DOI registration year for some records, not the data collection year.\n\n## \ud83d\udcdc Licence\n\nDataCite metadata is released under CC0 1.0; individual records may carry other licences.\n\n### \ud83d\udccb Column Definitions & File Header\n\n| # | Column Name | Data Type | Description |\n|---|---|---|---|\n| 1 | `doi` | `string` | DOI of the research output. |\n| 2 | `title` | `string` | Primary title. |\n| 3 | `publisher` | `string` | Data repository or publisher. |\n| 4 | `publication_year` | `number` | Year of publication. |\n| 5 | `resource_type` | `string` | Free-text resource type. |\n| 6 | `resource_type_general` | `string` | Controlled resource type (Dataset, Software, Text, ...). |\n| 7 | `creator_count` | `number` | Number of creators. |\n| 8 | `first_creator` | `string` | First creator's name. |\n| 9 | `creator_names` | `string` | All creator names (semicolon-joined). |\n| 10 | `creator_affiliations` | `string` | Distinct creator affiliations. |\n| 11 | `contributor_count` | `number` | Number of contributors. |\n| 12 | `subject_count` | `number` | Number of subject keywords. |\n| 13 | `subjects` | `string` | Subject keywords (semicolon-joined). |\n| 14 | `description_count` | `number` | Number of descriptions. |\n| 15 | `description` | `string` | Primary description (truncated to 1,500 characters). |\n| 16 | `language` | `string` | Language code. |\n| 17 | `version` | `string` | Version string. |\n| 18 | `rights_count` | `number` | Number of rights statements. |\n| 19 | `rights` | `string` | Rights/licence statements (semicolon-joined). |\n| 20 | `url` | `string` | Landing-page URL. |\n| 21 | `content_url` | `string` | Direct content URL, where given. |\n| 22 | `is_active` | `boolean` | true when the DOI is active. |\n| 23 | `state` | `string` | DOI state (findable, registered, ...). |\n| 24 | `view_count` | `number` | DataCite view count. |\n| 25 | `download_count` | `number` | DataCite download count. |\n| 26 | `reference_count` | `number` | Number of references. |\n| 27 | `citation_count` | `number` | Number of citations. |\n| 28 | `part_count` | `number` | Number of parts. |\n| 29 | `part_of_count` | `number` | Number of parent records. |\n| 30 | `related_count` | `number` | Number of related identifiers. |\n| 31 | `funding_count` | `number` | Number of funding references. |\n| 32 | `funder_names` | `string` | Funder names (semicolon-joined). |\n| 33 | `geo_count` | `number` | Number of geo-locations. |\n| 34 | `geo_place` | `string` | First geo-location place name. |\n| 35 | `geo_lat` | `number` | First geo-location latitude. |\n| 36 | `geo_lon` | `number` | First geo-location longitude. |\n| 37 | `date_count` | `number` | Number of dates. |\n| 38 | `dates` | `string` | Date values (semicolon-joined). |\n| 39 | `size_count` | `number` | Number of sizes. |\n| 40 | `sizes` | `string` | Size values (semicolon-joined). |\n| 41 | `format_count` | `number` | Number of formats. |\n| 42 | `formats` | `string` | Format values (semicolon-joined). |\n| 43 | `identifier_count` | `number` | Number of alternative identifiers. |\n| 44 | `orcid_count` | `number` | Number of ORCID identifiers among creators. |\n| 45 | `title_length` | `number` | Characters in the title. |\n| 46 | `description_length` | `number` | Characters in the stored description. |\n| 47 | `has_orcid` | `boolean` | true when at least one creator has an ORCID. |\n| 48 | `has_description` | `boolean` | true when a description exists. |\n| 49 | `has_funding` | `boolean` | true when funding references exist. |\n| 50 | `has_geo` | `boolean` | true when a geo-location exists. |\n| 51 | `has_related` | `boolean` | true when related identifiers exist. |\n| 52 | `has_rights` | `boolean` | true when a rights statement exists. |\n| 53 | `is_dataset` | `boolean` | true for resource_type_general Dataset. |\n| 54 | `is_software` | `boolean` | true for Software. |\n| 55 | `is_text` | `boolean` | true for Text/JournalArticle. |\n| 56 | `is_image` | `boolean` | true for Image. |\n| 57 | `is_preprint` | `boolean` | true when the type or title suggests a preprint. |\n| 58 | `year_band` | `string` | Publication year band. |\n| 59 | `decade` | `number` | Publication decade. |\n\n\n\n---\n\n## \ud83c\udf1f Support & Community\nIf you find this dataset valuable for your research, machine learning projects, or data explorations, **please give it an upvote (\ud83d\udc4d) on Kaggle!**\nFeedback, questions, and community notebook submissions are warmly welcomed in the Discussions tab.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "datacite_dois.csv",
+      "description": "Primary dataset file containing 168,892 records across 59 parameters.",
+      "schema": {
+        "fields": [
+          {
+            "name": "doi",
+            "type": "string",
+            "description": "DOI of the research output."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Primary title."
+          },
+          {
+            "name": "publisher",
+            "type": "string",
+            "description": "Data repository or publisher."
+          },
+          {
+            "name": "publication_year",
+            "type": "number",
+            "description": "Year of publication."
+          },
+          {
+            "name": "resource_type",
+            "type": "string",
+            "description": "Free-text resource type."
+          },
+          {
+            "name": "resource_type_general",
+            "type": "string",
+            "description": "Controlled resource type (Dataset, Software, Text, ...)."
+          },
+          {
+            "name": "creator_count",
+            "type": "number",
+            "description": "Number of creators."
+          },
+          {
+            "name": "first_creator",
+            "type": "string",
+            "description": "First creator's name."
+          },
+          {
+            "name": "creator_names",
+            "type": "string",
+            "description": "All creator names (semicolon-joined)."
+          },
+          {
+            "name": "creator_affiliations",
+            "type": "string",
+            "description": "Distinct creator affiliations."
+          },
+          {
+            "name": "contributor_count",
+            "type": "number",
+            "description": "Number of contributors."
+          },
+          {
+            "name": "subject_count",
+            "type": "number",
+            "description": "Number of subject keywords."
+          },
+          {
+            "name": "subjects",
+            "type": "string",
+            "description": "Subject keywords (semicolon-joined)."
+          },
+          {
+            "name": "description_count",
+            "type": "number",
+            "description": "Number of descriptions."
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Primary description (truncated to 1,500 characters)."
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "description": "Language code."
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "description": "Version string."
+          },
+          {
+            "name": "rights_count",
+            "type": "number",
+            "description": "Number of rights statements."
+          },
+          {
+            "name": "rights",
+            "type": "string",
+            "description": "Rights/licence statements (semicolon-joined)."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "Landing-page URL."
+          },
+          {
+            "name": "content_url",
+            "type": "string",
+            "description": "Direct content URL, where given."
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "description": "true when the DOI is active."
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "DOI state (findable, registered, ...)."
+          },
+          {
+            "name": "view_count",
+            "type": "number",
+            "description": "DataCite view count."
+          },
+          {
+            "name": "download_count",
+            "type": "number",
+            "description": "DataCite download count."
+          },
+          {
+            "name": "reference_count",
+            "type": "number",
+            "description": "Number of references."
+          },
+          {
+            "name": "citation_count",
+            "type": "number",
+            "description": "Number of citations."
+          },
+          {
+            "name": "part_count",
+            "type": "number",
+            "description": "Number of parts."
+          },
+          {
+            "name": "part_of_count",
+            "type": "number",
+            "description": "Number of parent records."
+          },
+          {
+            "name": "related_count",
+            "type": "number",
+            "description": "Number of related identifiers."
+          },
+          {
+            "name": "funding_count",
+            "type": "number",
+            "description": "Number of funding references."
+          },
+          {
+            "name": "funder_names",
+            "type": "string",
+            "description": "Funder names (semicolon-joined)."
+          },
+          {
+            "name": "geo_count",
+            "type": "number",
+            "description": "Number of geo-locations."
+          },
+          {
+            "name": "geo_place",
+            "type": "string",
+            "description": "First geo-location place name."
+          },
+          {
+            "name": "geo_lat",
+            "type": "number",
+            "description": "First geo-location latitude."
+          },
+          {
+            "name": "geo_lon",
+            "type": "number",
+            "description": "First geo-location longitude."
+          },
+          {
+            "name": "date_count",
+            "type": "number",
+            "description": "Number of dates."
+          },
+          {
+            "name": "dates",
+            "type": "string",
+            "description": "Date values (semicolon-joined)."
+          },
+          {
+            "name": "size_count",
+            "type": "number",
+            "description": "Number of sizes."
+          },
+          {
+            "name": "sizes",
+            "type": "string",
+            "description": "Size values (semicolon-joined)."
+          },
+          {
+            "name": "format_count",
+            "type": "number",
+            "description": "Number of formats."
+          },
+          {
+            "name": "formats",
+            "type": "string",
+            "description": "Format values (semicolon-joined)."
+          },
+          {
+            "name": "identifier_count",
+            "type": "number",
+            "description": "Number of alternative identifiers."
+          },
+          {
+            "name": "orcid_count",
+            "type": "number",
+            "description": "Number of ORCID identifiers among creators."
+          },
+          {
+            "name": "title_length",
+            "type": "number",
+            "description": "Characters in the title."
+          },
+          {
+            "name": "description_length",
+            "type": "number",
+            "description": "Characters in the stored description."
+          },
+          {
+            "name": "has_orcid",
+            "type": "boolean",
+            "description": "true when at least one creator has an ORCID."
+          },
+          {
+            "name": "has_description",
+            "type": "boolean",
+            "description": "true when a description exists."
+          },
+          {
+            "name": "has_funding",
+            "type": "boolean",
+            "description": "true when funding references exist."
+          },
+          {
+            "name": "has_geo",
+            "type": "boolean",
+            "description": "true when a geo-location exists."
+          },
+          {
+            "name": "has_related",
+            "type": "boolean",
+            "description": "true when related identifiers exist."
+          },
+          {
+            "name": "has_rights",
+            "type": "boolean",
+            "description": "true when a rights statement exists."
+          },
+          {
+            "name": "is_dataset",
+            "type": "boolean",
+            "description": "true for resource_type_general Dataset."
+          },
+          {
+            "name": "is_software",
+            "type": "boolean",
+            "description": "true for Software."
+          },
+          {
+            "name": "is_text",
+            "type": "boolean",
+            "description": "true for Text/JournalArticle."
+          },
+          {
+            "name": "is_image",
+            "type": "boolean",
+            "description": "true for Image."
+          },
+          {
+            "name": "is_preprint",
+            "type": "boolean",
+            "description": "true when the type or title suggests a preprint."
+          },
+          {
+            "name": "year_band",
+            "type": "string",
+            "description": "Publication year band."
+          },
+          {
+            "name": "decade",
+            "type": "number",
+            "description": "Publication decade."
+          }
+        ]
+      }
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Field-level data dictionary detailing column names, data types, and semantic definitions."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Jupyter starter notebook providing exploratory data analysis and baseline visualizations."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar"
+}
