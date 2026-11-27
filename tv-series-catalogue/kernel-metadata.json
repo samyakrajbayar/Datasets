@@ -1,6 +1,6 @@
 {
-  "id": "samyakrajbayar/tv-series-catalogue-starter-notebook",
-  "title": "Television Series Catalogue TVmaze Starter Notebook",
+  "id": "samyakrajbayar/tv-series-catalogue-starter",
+  "title": "TV Series Catalogue Starter",
   "code_file": "notebook.ipynb",
   "language": "python",
   "kernel_type": "notebook",

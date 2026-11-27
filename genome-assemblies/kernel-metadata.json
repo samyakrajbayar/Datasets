@@ -1,6 +1,6 @@
 {
-  "id": "samyakrajbayar/genome-assemblies-starter-notebook",
-  "title": "NCBI RefSeq Sequenced Genomes Starter Notebook",
+  "id": "samyakrajbayar/genome-assemblies-starter",
+  "title": "Genome Assemblies Starter",
   "code_file": "notebook.ipynb",
   "language": "python",
   "kernel_type": "notebook",

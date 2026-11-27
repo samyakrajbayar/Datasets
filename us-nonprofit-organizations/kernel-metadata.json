@@ -1,6 +1,6 @@
 {
-  "id": "samyakrajbayar/us-nonprofit-organizations-starter-notebook",
-  "title": "US Nonprofit Organisations IRS BMF Starter Notebook",
+  "id": "samyakrajbayar/us-nonprofit-organizations-starter",
+  "title": "US Nonprofit Organizations Starter",
   "code_file": "notebook.ipynb",
   "language": "python",
   "kernel_type": "notebook",

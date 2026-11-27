@@ -1,6 +1,6 @@
 {
-  "id": "samyakrajbayar/us-bank-financials-starter-notebook",
-  "title": "US Bank Financial Statements FDIC Starter Notebook",
+  "id": "samyakrajbayar/us-bank-financials-starter",
+  "title": "US Bank Financials Starter",
   "code_file": "notebook.ipynb",
   "language": "python",
   "kernel_type": "notebook",

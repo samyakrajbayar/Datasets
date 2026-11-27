@@ -1,6 +1,6 @@
 {
-  "id": "samyakrajbayar/us-public-schools-starter-notebook",
-  "title": "US Public Schools NCES Directory Starter Notebook",
+  "id": "samyakrajbayar/us-public-schools-starter",
+  "title": "US Public Schools Starter",
   "code_file": "notebook.ipynb",
   "language": "python",
   "kernel_type": "notebook",

@@ -1,6 +1,6 @@
 {
-  "id": "samyakrajbayar/world-language-structures-starter-notebook",
-  "title": "World Language Structures WALS Starter Notebook",
+  "id": "samyakrajbayar/world-language-structures-starter",
+  "title": "World Language Structures Starter",
   "code_file": "notebook.ipynb",
   "language": "python",
   "kernel_type": "notebook",
