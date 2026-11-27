@@ -1,0 +1,32 @@
+{
+  "title": "NCBI RefSeq Sequenced Genomes",
+  "id": "samyakrajbayar/genome-assemblies",
+  "subtitle": "576K genome assemblies with taxonomy, contiguity, and gene counts",
+  "description": "### 576,154 sequenced genomes from NCBI RefSeq\n\nNCBI's RefSeq assembly summary lists every genome assembly in the reference sequence collection.\nThis dataset contains **576,154 assemblies** (latest versions with a reported genome size) and\n**62 parameters** \u2014 one of the widest genomics catalogues available.\n\n- **Identity** \u2014 RefSeq accession, assembly name, organism, species, genus, taxonomy ids,\n  strain or isolate, submitter and BioProject/BioSample accessions.\n- **Assembly** \u2014 level (complete, chromosome, scaffold, contig), release type, representation,\n  ploidy, release date and decade, paired GenBank assembly and FTP path.\n- **Size and composition** \u2014 genome size in base pairs and megabases, ungapped size, GC percent,\n  replicons, scaffolds, contigs and scaffolds per contig.\n- **Annotation** \u2014 annotation provider, release name and date, total, protein-coding and\n  non-coding gene counts, coding share, gene density and linked PubMed records.\n- **Flags** \u2014 reference, representative, complete, chromosome-level, animal, plant, bacteria,\n  fungi, virus and human markers.\n\n**86,191 assemblies are complete genomes**, **9,184**\nare chromosome-level and **575,414** carry gene annotations. The largest groups\nare bacteria (554,612), viral (15,865), archaea (3,220), fungi (674), vertebrate other (622).\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "science"
+  ],
+  "resources": [
+    {
+      "path": "genome_assemblies.csv.zip",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar",
+  "datasetSlug": "genome-assemblies"
+}

@@ -1,0 +1,32 @@
+{
+  "title": "US Public Schools NCES Directory",
+  "id": "samyakrajbayar/us-public-schools",
+  "subtitle": "102K K-12 public schools with enrolment, staff, poverty and district data",
+  "description": "### 102,268 US public schools (NCES Common Core of Data)\n\nThe Urban Institute's Education Data Portal republishes the federal Common Core of Data. This\ndataset is the **2022-23 school directory**: every public elementary, middle and\nhigh school in the United States and its territories, with **102,268 schools** and\n**65 parameters**.\n\n- **Identity** \u2014 NCES school id, state and district ids, name, district name and school code.\n- **Location** \u2014 street, city, state, ZIP, county FIPS, CBSA, CSA, latitude and longitude,\n  plus the NCES urban-centric locale code and description (city / suburb / town / rural).\n- **School** \u2014 level, type, status, lowest and highest grade, grade span, charter, magnet,\n  virtual, shared-time, Title I, schoolwide Title I and Bureau of Indian Education flags.\n- **Students and staff** \u2014 enrolment, FTE teachers, student-teacher ratio, free and reduced-price\n  lunch counts and percentages, direct certification, Community Eligibility Provision counts and\n  lunch programme code.\n- **Politics and derived** \u2014 state legislative districts, congressional district, phone and\n  coordinate flags, enrolment bands.\n\nThe file covers **56 states and territories** with **49,620,679 enrolled students**;\n**99,528 schools are open**, **8,288 are charter schools**, and the mean student-teacher\nratio is **15.9**.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "education"
+  ],
+  "resources": [
+    {
+      "path": "us_public_schools.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar",
+  "datasetSlug": "us-public-schools"
+}

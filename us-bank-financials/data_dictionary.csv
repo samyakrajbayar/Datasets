@@ -1,0 +1,104 @@
+column,data_type,description
+fdic_cert,number,"FDIC certificate number, unique per institution."
+name,string,Institution name.
+address,string,Street address.
+address2,string,Second address line.
+city,string,City.
+state,string,Two-letter state code of the main office.
+state_name,string,Full state name.
+county,string,County name.
+zip,number,ZIP code.
+latitude,number,Latitude of the main office.
+longitude,number,Longitude of the main office.
+cbsa_name,string,Core based statistical area name.
+cbsa_code,number,CBSA code.
+csa_name,string,Combined statistical area name.
+state_county_fips,number,State-county FIPS code.
+bank_class,string,FDIC bank class code.
+chartering_agent,string,Chartering authority (state or federal).
+charter_type,number,Charter type code.
+fed_district,number,Federal Reserve district.
+fdic_region,string,FDIC region code.
+fdic_region_name,string,FDIC region name.
+insurance_date,string,Date the deposits became FDIC-insured.
+established_date,string,Date the bank was established.
+effective_date,string,Date of the last structural change.
+report_date,string,Financial report date (RISDATE).
+website,string,Bank website.
+fed_rssd_id,number,Federal Reserve RSSD identifier.
+minority_depository_status,string,Minority depository institution status.
+cfpb_supervised,number,CFPB supervisory flag.
+mutual_ownership,number,Mutual (depositor-owned) flag.
+subchapter_s_c,number,Subchapter S corporation flag.
+trust_powers,number,Trust powers code.
+industrial_bank,number,Industrial bank flag.
+oakar_holder,number,Oakar institution flag.
+savings_association_insurance,number,Savings association insurance flag.
+bif_insured,number,Bank Insurance Fund member flag.
+dif_insured,number,Deposit Insurance Fund member flag.
+fdic_insured,number,FDIC-insured flag.
+conservatorship,string,Under conservatorship flag.
+active,number,Active institution flag.
+bank_class_desc,string,"Bank class: national, state member, nonmember, savings, ..."
+institution_age_years,number,Years since the bank was established.
+report_period,number,Reporting quarter used for the financial columns (YYYYMMDD).
+total_assets_usd,number,Total assets in US dollars.
+total_deposits_usd,number,Total deposits in US dollars.
+domestic_deposits_usd,number,Domestic deposits in US dollars.
+insured_deposits_usd,number,Estimated FDIC-insured deposits.
+uninsured_deposits_usd,number,Estimated uninsured deposits.
+total_liabilities_usd,number,Total liabilities.
+total_equity_usd,number,Total equity capital.
+net_loans_usd,number,Net loans and leases.
+securities_usd,number,Total securities.
+intangibles_usd,number,Intangible assets.
+net_income_usd,number,"Net income for the quarter, annualised."
+interest_income_usd,number,Total interest income.
+interest_expense_usd,number,Total interest expense.
+noninterest_income_usd,number,Total noninterest income.
+noninterest_expense_usd,number,Total noninterest expense.
+income_tax_usd,number,Applicable income taxes.
+provision_for_loan_losses_usd,number,Provision for loan and lease losses.
+employees,number,Full-time equivalent employees.
+domestic_offices,number,Number of domestic offices.
+foreign_offices,number,Number of foreign offices.
+loans_to_deposits_pct,number,Net loans as a percentage of deposits.
+equity_to_assets_pct,number,Equity capital as a percentage of assets.
+net_interest_margin_pct,number,Net interest margin.
+efficiency_ratio_pct,number,Efficiency ratio.
+noncurrent_assets_pct,number,Noncurrent assets as a percentage of assets.
+return_on_assets_pct,number,Return on assets.
+return_on_equity_pct,number,Return on equity.
+net_chargeoffs_to_loans_pct,number,Net charge-offs as a percentage of loans.
+loan_loss_reserve_to_loans_pct,number,Loan loss reserve as a percentage of loans.
+tier1_leverage_ratio_pct,number,Tier 1 leverage ratio.
+tier1_risk_based_ratio_pct,number,Tier 1 risk-based capital ratio.
+total_risk_based_ratio_pct,number,Total risk-based capital ratio.
+core_deposits_usd,number,Core deposits.
+trading_assets_usd,number,Trading assets.
+available_for_sale_securities_usd,number,Securities available for sale.
+held_to_maturity_securities_usd,number,Securities held to maturity.
+construction_loans_usd,number,Construction and development loans.
+multifamily_loans_usd,number,Multifamily residential loans.
+residential_loans_usd,number,1-4 family residential loans.
+nonresidential_loans_usd,number,Nonfarm nonresidential loans.
+consumer_loans_usd,number,Consumer loans.
+commercial_industrial_loans_usd,number,Commercial and industrial loans.
+credit_card_loans_usd,number,Credit card loans.
+agricultural_loans_usd,number,Agricultural loans.
+transaction_accounts_usd,number,Transaction accounts.
+time_deposits_usd,number,Time deposits.
+bank_premises_usd,number,Bank premises and fixed assets.
+specialization,number,FDIC asset specialisation group.
+investment_offices,number,Number of investment offices.
+branches,number,Number of branches.
+net_income_bank_measure_usd,number,Net income (bank measure).
+assets_billions,number,Total assets in billions of US dollars.
+deposits_billions,number,Total deposits in billions of US dollars.
+loans_to_assets_pct,number,Net loans as a percentage of total assets.
+uninsured_deposit_share_pct,number,Uninsured deposits as a share of total deposits.
+assets_per_employee_musd,number,Assets per employee in millions of dollars.
+income_per_employee_kusd,number,Net income per employee in thousands of dollars.
+has_uninsured_deposits,boolean,true when uninsured deposits are reported.
+is_community_bank,boolean,true when total assets are below USD 1 billion.
+is_large_bank,boolean,true when total assets are USD 10 billion or more.

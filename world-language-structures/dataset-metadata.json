@@ -1,0 +1,32 @@
+{
+  "title": "World Language Structures WALS",
+  "id": "samyakrajbayar/world-language-structures",
+  "subtitle": "3,573 languages across 192 structural, phonology, and grammar features",
+  "description": "### 3,573 languages \u00d7 192 structural features\n\nWALS Online (the World Atlas of Language Structures) codes the grammar, phonology and lexicon of\nthe world's languages. This dataset pivots the whole atlas into one row per language: **3,573\nlanguages** and **214 columns**, of which **192** are individual WALS features\n(e.g. `wals_81a_order_of_object_and_verb`) whose values are the human-readable feature values\n(\"Subject-Object-Verb\", \"Small\", ...).\n\n- **Identity** \u2014 WALS id, name, Glottolog code, ISO 639-3, family, subfamily, genus, country.\n- **Geography** \u2014 latitude, longitude and macroarea.\n- **Coverage** \u2014 features answered, coverage percentage, whether the language is in the 100- or\n  200-language sample, family and genus size, isolate flag.\n- **Features** \u2014 192 structural variables covering phonology (consonant inventories, tone,\n  stress), morphology (case, gender, derivation), word order, numerals, negation and more.\n\nThe matrix is **11.1% filled** (76,475 of\n686,016 cells); the best-documented language, **English**, has\n**159 of 192** features coded. The largest macroareas are\nEurasia (659), Africa (606), Papunesia (560), North America (396), South America (258) and the largest families are\nAustronesian (324), Niger-Congo (324), Indo-European (176), Sino-Tibetan (146), Afro-Asiatic (145).\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "Attribution 4.0 International (CC BY 4.0)"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "education"
+  ],
+  "resources": [
+    {
+      "path": "world_languages.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar",
+  "datasetSlug": "world-language-structures"
+}

@@ -1,0 +1,54 @@
+column,data_type,description
+ein,number,"Employer Identification Number (9 digits, unique)."
+name,string,Organisation name as filed.
+sort_name,string,Normalised sort name (articles moved to the end).
+ico,string,"In-care-of name, when present."
+street,string,Street address on file.
+city,string,City.
+state,string,"Two-letter US state, territory or foreign country code."
+state_name,string,Full state name (blank for foreign addresses).
+state_region,string,US Census region derived from the state code.
+zip,string,ZIP or postal code.
+zip5,number,First five characters of the ZIP code.
+group_exemption_number,number,Group exemption number (GEN) if the org files under a group ruling.
+subsection_code,number,IRS subsection code (all rows are 03 = 501(c)(3)).
+subsection_desc,string,Text label for the subsection code.
+affiliation_code,number,"Affiliation code: central, subordinate or independent."
+affiliation_desc,string,Text label for the affiliation code.
+classification_code,number,"IRS classification code (church, school, hospital, foundation, ...)."
+ruling_date,date,Date the IRS issued the exemption ruling (YYYY-MM-DD).
+ruling_year,number,Year of the exemption ruling.
+ruling_month,number,Month of the exemption ruling.
+ruling_age_years,number,Whole years between the ruling date and the snapshot date.
+deductibility_code,number,Deductibility code (1 = contributions are deductible).
+foundation_code,number,"Foundation / public-charity code (170(b)(1)(A)(vi), 509(a)(2), private foundation, ...)."
+foundation_desc,string,Text label for the foundation code.
+activity_code,number,Legacy IRS activity code.
+organization_code,number,"Legal form: corporation, trust, association, ..."
+organization_desc,string,Text label for the legal form.
+status_code,number,Exemption status code.
+status_desc,string,Text label for the exemption status.
+tax_period,number,Tax period on file (MM).
+accounting_period,number,Accounting period code (MM).
+asset_code,number,Asset bracket code 0-9.
+asset_band,string,Asset bracket as a dollar range.
+income_code,number,Income bracket code 0-9.
+income_band,string,Income bracket as a dollar range.
+filing_requirement_code,number,Form 990 filing requirement code.
+pf_filing_requirement_code,number,Private-foundation filing requirement code.
+asset_amount,number,Total assets in US dollars (0 when not reported).
+income_amount,number,Total income in US dollars (0 when not reported).
+revenue_amount,number,Total revenue in US dollars (0 when not reported).
+revenue_per_asset,number,Revenue divided by assets.
+income_per_asset,number,Income divided by assets.
+ntee_code,string,National Taxonomy of Exempt Entities code.
+ntee_category_letter,string,First letter of the NTEE code (broad category).
+ntee_category,string,NTEE broad category name.
+ntee_subcategory,string,NTEE subcategory digits.
+is_foreign,boolean,true for organisations with a foreign address (eo_xx file).
+source_file,string,"IRS regional file the record came from (eo1-eo4, eo_xx)."
+has_asset_amount,boolean,true when a non-zero asset amount is reported.
+has_income_amount,boolean,true when a non-zero income amount is reported.
+has_revenue,boolean,true when a non-zero revenue amount is reported.
+has_ntee,boolean,true when an NTEE code is present.
+has_group_exemption,boolean,true when the org files under a group exemption.

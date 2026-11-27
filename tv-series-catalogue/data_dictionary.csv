@@ -1,0 +1,64 @@
+column,data_type,description
+tvmaze_id,number,TVmaze show identifier.
+name,string,Show title.
+type,string,"Scripted, Reality, Animation, Documentary, Game Show, Talk Show, ..."
+language,string,Primary language.
+status,string,"Running, Ended, To Be Determined or In Development."
+genres,string,Semicolon-separated genre list.
+genre_count,number,Number of genres.
+runtime_minutes,number,Typical episode runtime in minutes.
+average_runtime_minutes,number,Average episode runtime across the series.
+premiered,date,Premiere date.
+premiered_year,number,Premiere year.
+premiered_month,number,Premiere month.
+ended,date,Final episode date where known.
+ended_year,number,Year the series ended.
+run_years,number,Years between premiere and finale.
+is_running,boolean,true for shows still in production.
+is_ended,boolean,true for finished shows.
+is_upcoming,boolean,true for shows announced or in development.
+schedule_time,string,Broadcast time of day.
+schedule_days,string,Semicolon-separated broadcast days.
+schedule_day_count,number,Number of broadcast days per week.
+rating_average,number,TVmaze user rating (0-10).
+weight,number,TVmaze popularity weight.
+network_name,string,Broadcast network.
+network_id,number,TVmaze network identifier.
+network_country,string,Network country.
+network_country_code,string,Network country ISO code.
+network_timezone,string,Network timezone.
+web_channel,string,"Streaming or web channel, when not broadcast."
+dvd_country,string,DVD release country.
+tvrage_id,number,Legacy TVRage identifier.
+thetvdb_id,number,TheTVDB identifier.
+imdb_id,string,IMDb identifier.
+url,string,TVmaze page URL.
+official_site,string,Official show website.
+image_url,string,Poster image URL.
+summary,string,"Plain-text synopsis, truncated to 600 characters."
+summary_length,number,Characters in the full synopsis.
+updated_date,date,Date the TVmaze record was last updated.
+previous_episode,string,Title of the most recent episode.
+has_image,boolean,true when a poster exists.
+has_official_site,boolean,true when an official site is linked.
+has_imdb,boolean,true when an IMDb id exists.
+has_thetvdb,boolean,true when a TheTVDB id exists.
+has_web_channel,boolean,true for streaming-only shows.
+premiered_decade,string,Decade of the premiere.
+is_scripted,boolean,true for scripted shows.
+is_reality,boolean,true for reality shows.
+is_animation,boolean,true for animated shows.
+is_documentary,boolean,true for documentaries.
+is_game_show,boolean,true for game shows.
+is_talk_show,boolean,true for talk shows.
+is_award_show,boolean,true for award shows.
+is_children,boolean,true for children's shows.
+is_variety,boolean,true for variety shows.
+genre_drama,boolean,true when tagged Drama.
+genre_comedy,boolean,true when tagged Comedy.
+genre_action,boolean,true when tagged Action.
+genre_scifi,boolean,true when tagged Science-Fiction.
+genre_crime,boolean,true when tagged Crime.
+genre_thriller,boolean,true when tagged Thriller.
+rating_weighted,number,Rating multiplied by popularity weight.
+age_days,number,Days since the premiere.

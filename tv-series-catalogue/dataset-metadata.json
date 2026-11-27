@@ -1,0 +1,32 @@
+{
+  "title": "Television Series Catalogue TVmaze",
+  "id": "samyakrajbayar/tv-series-catalogue",
+  "subtitle": "91K TV shows with genres, networks, ratings, run dates and synopses",
+  "description": "### 91,563 television series from around the world\n\nTVmaze catalogues every scripted, reality, animated and documentary series it can identify. This\ndataset contains **91,563 shows** with **63 parameters**, from 1930s radio-era titles to\ncurrent streaming releases.\n\n- **Show** \u2014 TVmaze id, title, type, language, status, genres, episode runtime and average runtime.\n- **Broadcast** \u2014 premiere and finale dates, run length in years, schedule time and days,\n  network, network country and timezone, web channel and DVD country.\n- **Ratings** \u2014 TVmaze user rating (0-10), popularity weight, a rating \u00d7 weight score and the\n  number of genres.\n- **Identifiers** \u2014 IMDb, TheTVDB and TVRage ids, TVmaze URL and official site.\n- **Text and media** \u2014 plain-text synopsis (600 characters) with its length, poster image URL and\n  the title of the most recent episode.\n- **Derived** \u2014 premiere decade, running / ended / upcoming flags, 9 type flags, 6 genre flags,\n  presence flags and show age in days.\n\n**11,885 shows carry a rating** (mean **6.71**) and **14,582 are still running**. The\nnetworks with the most titles are United States (18,493), United Kingdom (13,600), Japan (5,975), Russian Federation (5,035), Korea, Republic of (2,683).\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "Attribution 4.0 International (CC BY 4.0)"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "history"
+  ],
+  "resources": [
+    {
+      "path": "tv_series.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar",
+  "datasetSlug": "tv-series-catalogue"
+}

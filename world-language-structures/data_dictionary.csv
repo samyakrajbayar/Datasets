@@ -1,0 +1,215 @@
+column,data_type,description
+wals_id,string,WALS language identifier (three-letter code).
+name,string,Language name.
+macroarea,string,"WALS macroarea: Africa, Eurasia, Papunesia, Australia, North America, South America."
+latitude,number,Latitude of the representative point.
+longitude,number,Longitude of the representative point.
+glottocode,string,Glottolog languoid identifier.
+iso639_3,string,ISO 639-3 code.
+family,string,Language family.
+subfamily,string,Subfamily within the family.
+genus,string,Genus within the subfamily.
+iso_codes,string,All ISO codes recorded for the language.
+country_code,string,ISO 3166-1 alpha-2 country code of the main country.
+source,string,Bibliographic source of the language entry.
+samples_100,boolean,true when the language is in the 100-language sample.
+samples_200,boolean,true when the language is in the 200-language sample.
+features_answered,number,Number of WALS features with a recorded value for this language.
+feature_coverage_pct,number,Percentage of the 192 features that have a value.
+has_iso,boolean,true when an ISO 639-3 code exists.
+has_glottocode,boolean,true when a Glottolog code exists.
+family_size,number,Number of WALS languages in the same family.
+genus_size,number,Number of WALS languages in the same genus.
+is_isolate,boolean,true when the language has no recorded family (isolate or unclassified).
+wals_1a_consonant_inventories,string,WALS feature 1A — Consonant Inventories. One column per structural feature.
+wals_2a_vowel_quality_inventories,string,WALS feature 2A — Vowel Quality Inventories. One column per structural feature.
+wals_3a_consonant_vowel_ratio,string,WALS feature 3A — Consonant-Vowel Ratio. One column per structural feature.
+wals_4a_voicing_in_plosives_and_fricatives,string,WALS feature 4A — Voicing in Plosives and Fricatives. One column per structural feature.
+wals_5a_voicing_and_gaps_in_plosive_systems,string,WALS feature 5A — Voicing and Gaps in Plosive Systems. One column per structural feature.
+wals_6a_uvular_consonants,string,WALS feature 6A — Uvular Consonants. One column per structural feature.
+wals_7a_glottalized_consonants,string,WALS feature 7A — Glottalized Consonants. One column per structural feature.
+wals_8a_lateral_consonants,string,WALS feature 8A — Lateral Consonants. One column per structural feature.
+wals_9a_the_velar_nasal,string,WALS feature 9A — The Velar Nasal. One column per structural feature.
+wals_10a_vowel_nasalization,string,WALS feature 10A — Vowel Nasalization. One column per structural feature.
+wals_10b_nasal_vowels_in_west_africa,string,WALS feature 10B — Nasal Vowels in West Africa. One column per structural feature.
+wals_11a_front_rounded_vowels,string,WALS feature 11A — Front Rounded Vowels. One column per structural feature.
+wals_12a_syllable_structure,string,WALS feature 12A — Syllable Structure. One column per structural feature.
+wals_13a_tone,string,WALS feature 13A — Tone. One column per structural feature.
+wals_14a_fixed_stress_locations,string,WALS feature 14A — Fixed Stress Locations. One column per structural feature.
+wals_15a_weight_sensitive_stress,string,WALS feature 15A — Weight-Sensitive Stress. One column per structural feature.
+wals_16a_weight_factors_in_weight_sensitive_str,string,WALS feature 16A — Weight Factors in Weight-Sensitive Stress Systems. One column per structural feature.
+wals_17a_rhythm_types,string,WALS feature 17A — Rhythm Types. One column per structural feature.
+wals_18a_absence_of_common_consonants,string,WALS feature 18A — Absence of Common Consonants. One column per structural feature.
+wals_19a_presence_of_uncommon_consonants,string,WALS feature 19A — Presence of Uncommon Consonants. One column per structural feature.
+wals_20a_fusion_of_selected_inflectional_format,string,WALS feature 20A — Fusion of Selected Inflectional Formatives. One column per structural feature.
+wals_21a_exponence_of_selected_inflectional_for,string,WALS feature 21A — Exponence of Selected Inflectional Formatives. One column per structural feature.
+wals_21b_exponence_of_tense_aspect_mood_inflect,string,WALS feature 21B — Exponence of Tense-Aspect-Mood Inflection. One column per structural feature.
+wals_22a_inflectional_synthesis_of_the_verb,string,WALS feature 22A — Inflectional Synthesis of the Verb. One column per structural feature.
+wals_23a_locus_of_marking_in_the_clause,string,WALS feature 23A — Locus of Marking in the Clause. One column per structural feature.
+wals_24a_locus_of_marking_in_possessive_noun_ph,string,WALS feature 24A — Locus of Marking in Possessive Noun Phrases. One column per structural feature.
+wals_25a_locus_of_marking_whole_language_typolo,string,WALS feature 25A — Locus of Marking: Whole-language Typology. One column per structural feature.
+wals_25b_zero_marking_of_a_and_p_arguments,string,WALS feature 25B — Zero Marking of A and P Arguments. One column per structural feature.
+wals_26a_prefixing_vs_suffixing_in_inflectional,string,WALS feature 26A — Prefixing vs. Suffixing in Inflectional Morphology. One column per structural feature.
+wals_27a_reduplication,string,WALS feature 27A — Reduplication. One column per structural feature.
+wals_28a_case_syncretism,string,WALS feature 28A — Case Syncretism. One column per structural feature.
+wals_29a_syncretism_in_verbal_person_number_mar,string,WALS feature 29A — Syncretism in Verbal Person/Number Marking. One column per structural feature.
+wals_30a_number_of_genders,string,WALS feature 30A — Number of Genders. One column per structural feature.
+wals_31a_sex_based_and_non_sex_based_gender_sys,string,WALS feature 31A — Sex-based and Non-sex-based Gender Systems. One column per structural feature.
+wals_32a_systems_of_gender_assignment,string,WALS feature 32A — Systems of Gender Assignment. One column per structural feature.
+wals_33a_coding_of_nominal_plurality,string,WALS feature 33A — Coding of Nominal Plurality. One column per structural feature.
+wals_34a_occurrence_of_nominal_plurality,string,WALS feature 34A — Occurrence of Nominal Plurality. One column per structural feature.
+wals_35a_plurality_in_independent_personal_pron,string,WALS feature 35A — Plurality in Independent Personal Pronouns. One column per structural feature.
+wals_36a_the_associative_plural,string,WALS feature 36A — The Associative Plural. One column per structural feature.
+wals_37a_definite_articles,string,WALS feature 37A — Definite Articles. One column per structural feature.
+wals_38a_indefinite_articles,string,WALS feature 38A — Indefinite Articles. One column per structural feature.
+wals_39a_inclusive_exclusive_distinction_in_ind,string,WALS feature 39A — Inclusive/Exclusive Distinction in Independent Pronouns. One column per structural feature.
+wals_39b_inclusive_exclusive_forms_in_pama_nyun,string,WALS feature 39B — Inclusive/Exclusive Forms in Pama-Nyungan. One column per structural feature.
+wals_40a_inclusive_exclusive_distinction_in_ver,string,WALS feature 40A — Inclusive/Exclusive Distinction in Verbal Inflection. One column per structural feature.
+wals_41a_distance_contrasts_in_demonstratives,string,WALS feature 41A — Distance Contrasts in Demonstratives. One column per structural feature.
+wals_42a_pronominal_and_adnominal_demonstrative,string,WALS feature 42A — Pronominal and Adnominal Demonstratives. One column per structural feature.
+wals_43a_third_person_pronouns_and_demonstrativ,string,WALS feature 43A — Third Person Pronouns and Demonstratives. One column per structural feature.
+wals_44a_gender_distinctions_in_independent_per,string,WALS feature 44A — Gender Distinctions in Independent Personal Pronouns. One column per structural feature.
+wals_45a_politeness_distinctions_in_pronouns,string,WALS feature 45A — Politeness Distinctions in Pronouns. One column per structural feature.
+wals_46a_indefinite_pronouns,string,WALS feature 46A — Indefinite Pronouns. One column per structural feature.
+wals_47a_intensifiers_and_reflexive_pronouns,string,WALS feature 47A — Intensifiers and Reflexive Pronouns. One column per structural feature.
+wals_48a_person_marking_on_adpositions,string,WALS feature 48A — Person Marking on Adpositions. One column per structural feature.
+wals_49a_number_of_cases,string,WALS feature 49A — Number of Cases. One column per structural feature.
+wals_50a_asymmetrical_case_marking,string,WALS feature 50A — Asymmetrical Case-Marking. One column per structural feature.
+wals_51a_position_of_case_affixes,string,WALS feature 51A — Position of Case Affixes. One column per structural feature.
+wals_52a_comitatives_and_instrumentals,string,WALS feature 52A — Comitatives and Instrumentals. One column per structural feature.
+wals_53a_ordinal_numerals,string,WALS feature 53A — Ordinal Numerals. One column per structural feature.
+wals_54a_distributive_numerals,string,WALS feature 54A — Distributive Numerals. One column per structural feature.
+wals_55a_numeral_classifiers,string,WALS feature 55A — Numeral Classifiers. One column per structural feature.
+wals_56a_conjunctions_and_universal_quantifiers,string,WALS feature 56A — Conjunctions and Universal Quantifiers. One column per structural feature.
+wals_57a_position_of_pronominal_possessive_affi,string,WALS feature 57A — Position of Pronominal Possessive Affixes. One column per structural feature.
+wals_58a_obligatory_possessive_inflection,string,WALS feature 58A — Obligatory Possessive Inflection. One column per structural feature.
+wals_58b_number_of_possessive_nouns,string,WALS feature 58B — Number of Possessive Nouns. One column per structural feature.
+wals_59a_possessive_classification,string,WALS feature 59A — Possessive Classification. One column per structural feature.
+wals_60a_genitives_adjectives_and_relative_clau,string,"WALS feature 60A — Genitives, Adjectives and Relative Clauses. One column per structural feature."
+wals_61a_adjectives_without_nouns,string,WALS feature 61A — Adjectives without Nouns. One column per structural feature.
+wals_62a_action_nominal_constructions,string,WALS feature 62A — Action Nominal Constructions. One column per structural feature.
+wals_63a_noun_phrase_conjunction,string,WALS feature 63A — Noun Phrase Conjunction. One column per structural feature.
+wals_64a_nominal_and_verbal_conjunction,string,WALS feature 64A — Nominal and Verbal Conjunction. One column per structural feature.
+wals_65a_perfective_imperfective_aspect,string,WALS feature 65A — Perfective/Imperfective Aspect. One column per structural feature.
+wals_66a_the_past_tense,string,WALS feature 66A — The Past Tense. One column per structural feature.
+wals_67a_the_future_tense,string,WALS feature 67A — The Future Tense. One column per structural feature.
+wals_68a_the_perfect,string,WALS feature 68A — The Perfect. One column per structural feature.
+wals_69a_position_of_tense_aspect_affixes,string,WALS feature 69A — Position of Tense-Aspect Affixes. One column per structural feature.
+wals_70a_the_morphological_imperative,string,WALS feature 70A — The Morphological Imperative. One column per structural feature.
+wals_71a_the_prohibitive,string,WALS feature 71A — The Prohibitive. One column per structural feature.
+wals_72a_imperative_hortative_systems,string,WALS feature 72A — Imperative-Hortative Systems. One column per structural feature.
+wals_73a_the_optative,string,WALS feature 73A — The Optative. One column per structural feature.
+wals_74a_situational_possibility,string,WALS feature 74A — Situational Possibility. One column per structural feature.
+wals_75a_epistemic_possibility,string,WALS feature 75A — Epistemic Possibility. One column per structural feature.
+wals_76a_overlap_between_situational_and_episte,string,WALS feature 76A — Overlap between Situational and Epistemic Modal Marking. One column per structural feature.
+wals_77a_semantic_distinctions_of_evidentiality,string,WALS feature 77A — Semantic Distinctions of Evidentiality. One column per structural feature.
+wals_78a_coding_of_evidentiality,string,WALS feature 78A — Coding of Evidentiality. One column per structural feature.
+wals_79a_suppletion_according_to_tense_and_aspe,string,WALS feature 79A — Suppletion According to Tense and Aspect. One column per structural feature.
+wals_79b_suppletion_in_imperatives_and_hortativ,string,WALS feature 79B — Suppletion in Imperatives and Hortatives. One column per structural feature.
+wals_80a_verbal_number_and_suppletion,string,WALS feature 80A — Verbal Number and Suppletion. One column per structural feature.
+wals_81a_order_of_subject_object_and_verb,string,"WALS feature 81A — Order of Subject, Object and Verb. One column per structural feature."
+wals_81b_languages_with_two_dominant_orders_of,string,"WALS feature 81B — Languages with two Dominant Orders of Subject, Object, and Verb. One column per structural feature."
+wals_82a_order_of_subject_and_verb,string,WALS feature 82A — Order of Subject and Verb. One column per structural feature.
+wals_83a_order_of_object_and_verb,string,WALS feature 83A — Order of Object and Verb. One column per structural feature.
+wals_84a_order_of_object_oblique_and_verb,string,"WALS feature 84A — Order of Object, Oblique, and Verb. One column per structural feature."
+wals_85a_order_of_adposition_and_noun_phrase,string,WALS feature 85A — Order of Adposition and Noun Phrase. One column per structural feature.
+wals_86a_order_of_genitive_and_noun,string,WALS feature 86A — Order of Genitive and Noun. One column per structural feature.
+wals_87a_order_of_adjective_and_noun,string,WALS feature 87A — Order of Adjective and Noun. One column per structural feature.
+wals_88a_order_of_demonstrative_and_noun,string,WALS feature 88A — Order of Demonstrative and Noun. One column per structural feature.
+wals_89a_order_of_numeral_and_noun,string,WALS feature 89A — Order of Numeral and Noun. One column per structural feature.
+wals_90a_order_of_relative_clause_and_noun,string,WALS feature 90A — Order of Relative Clause and Noun. One column per structural feature.
+wals_90b_prenominal_relative_clauses,string,WALS feature 90B — Prenominal relative clauses. One column per structural feature.
+wals_90c_postnominal_relative_clauses,string,WALS feature 90C — Postnominal relative clauses. One column per structural feature.
+wals_90d_internally_headed_relative_clauses,string,WALS feature 90D — Internally-headed relative clauses. One column per structural feature.
+wals_90e_correlative_relative_clauses,string,WALS feature 90E — Correlative relative clauses. One column per structural feature.
+wals_90f_adjoined_relative_clauses,string,WALS feature 90F — Adjoined relative clauses. One column per structural feature.
+wals_90g_double_headed_relative_clauses,string,WALS feature 90G — Double-headed relative clauses. One column per structural feature.
+wals_91a_order_of_degree_word_and_adjective,string,WALS feature 91A — Order of Degree Word and Adjective. One column per structural feature.
+wals_92a_position_of_polar_question_particles,string,WALS feature 92A — Position of Polar Question Particles. One column per structural feature.
+wals_93a_position_of_interrogative_phrases_in_c,string,WALS feature 93A — Position of Interrogative Phrases in Content Questions. One column per structural feature.
+wals_94a_order_of_adverbial_subordinator_and_cl,string,WALS feature 94A — Order of Adverbial Subordinator and Clause. One column per structural feature.
+wals_95a_relationship_between_the_order_of_obje,string,WALS feature 95A — Relationship between the Order of Object and Verb and the Order of Adposition and Noun Phrase. One column per structural feature.
+wals_96a_relationship_between_the_order_of_obje,string,WALS feature 96A — Relationship between the Order of Object and Verb and the Order of Relative Clause and Noun. One column per structural feature.
+wals_97a_relationship_between_the_order_of_obje,string,WALS feature 97A — Relationship between the Order of Object and Verb and the Order of Adjective and Noun. One column per structural feature.
+wals_98a_alignment_of_case_marking_of_full_noun,string,WALS feature 98A — Alignment of Case Marking of Full Noun Phrases. One column per structural feature.
+wals_99a_alignment_of_case_marking_of_pronouns,string,WALS feature 99A — Alignment of Case Marking of Pronouns. One column per structural feature.
+wals_100a_alignment_of_verbal_person_marking,string,WALS feature 100A — Alignment of Verbal Person Marking. One column per structural feature.
+wals_101a_expression_of_pronominal_subjects,string,WALS feature 101A — Expression of Pronominal Subjects. One column per structural feature.
+wals_102a_verbal_person_marking,string,WALS feature 102A — Verbal Person Marking. One column per structural feature.
+wals_103a_third_person_zero_of_verbal_person_mar,string,WALS feature 103A — Third Person Zero of Verbal Person Marking. One column per structural feature.
+wals_104a_order_of_person_markers_on_the_verb,string,WALS feature 104A — Order of Person Markers on the Verb. One column per structural feature.
+wals_105a_ditransitive_constructions_the_verb_gi,string,WALS feature 105A — Ditransitive Constructions: The Verb 'Give'. One column per structural feature.
+wals_106a_reciprocal_constructions,string,WALS feature 106A — Reciprocal Constructions. One column per structural feature.
+wals_107a_passive_constructions,string,WALS feature 107A — Passive Constructions. One column per structural feature.
+wals_108a_antipassive_constructions,string,WALS feature 108A — Antipassive Constructions. One column per structural feature.
+wals_108b_productivity_of_the_antipassive_constr,string,WALS feature 108B — Productivity of the Antipassive Construction. One column per structural feature.
+wals_109a_applicative_constructions,string,WALS feature 109A — Applicative Constructions. One column per structural feature.
+wals_109b_other_roles_of_applied_objects,string,WALS feature 109B — Other Roles of Applied Objects. One column per structural feature.
+wals_110a_periphrastic_causative_constructions,string,WALS feature 110A — Periphrastic Causative Constructions. One column per structural feature.
+wals_111a_nonperiphrastic_causative_construction,string,WALS feature 111A — Nonperiphrastic Causative Constructions. One column per structural feature.
+wals_112a_negative_morphemes,string,WALS feature 112A — Negative Morphemes. One column per structural feature.
+wals_113a_symmetric_and_asymmetric_standard_nega,string,WALS feature 113A — Symmetric and Asymmetric Standard Negation. One column per structural feature.
+wals_114a_subtypes_of_asymmetric_standard_negati,string,WALS feature 114A — Subtypes of Asymmetric Standard Negation. One column per structural feature.
+wals_115a_negative_indefinite_pronouns_and_predi,string,WALS feature 115A — Negative Indefinite Pronouns and Predicate Negation. One column per structural feature.
+wals_116a_polar_questions,string,WALS feature 116A — Polar Questions. One column per structural feature.
+wals_117a_predicative_possession,string,WALS feature 117A — Predicative Possession. One column per structural feature.
+wals_118a_predicative_adjectives,string,WALS feature 118A — Predicative Adjectives. One column per structural feature.
+wals_119a_nominal_and_locational_predication,string,WALS feature 119A — Nominal and Locational Predication. One column per structural feature.
+wals_120a_zero_copula_for_predicate_nominals,string,WALS feature 120A — Zero Copula for Predicate Nominals. One column per structural feature.
+wals_121a_comparative_constructions,string,WALS feature 121A — Comparative Constructions. One column per structural feature.
+wals_122a_relativization_on_subjects,string,WALS feature 122A — Relativization on Subjects. One column per structural feature.
+wals_123a_relativization_on_obliques,string,WALS feature 123A — Relativization on Obliques. One column per structural feature.
+wals_124a_want_complement_subjects,string,WALS feature 124A — 'Want' Complement Subjects. One column per structural feature.
+wals_125a_purpose_clauses,string,WALS feature 125A — Purpose Clauses. One column per structural feature.
+wals_126a_when_clauses,string,WALS feature 126A — 'When' Clauses. One column per structural feature.
+wals_127a_reason_clauses,string,WALS feature 127A — Reason Clauses. One column per structural feature.
+wals_128a_utterance_complement_clauses,string,WALS feature 128A — Utterance Complement Clauses. One column per structural feature.
+wals_129a_hand_and_arm,string,WALS feature 129A — Hand and Arm. One column per structural feature.
+wals_130a_finger_and_hand,string,WALS feature 130A — Finger and Hand. One column per structural feature.
+wals_130b_cultural_categories_of_languages_with,string,WALS feature 130B — Cultural Categories of Languages with Identity of 'Finger' and 'Hand'. One column per structural feature.
+wals_131a_numeral_bases,string,WALS feature 131A — Numeral Bases. One column per structural feature.
+wals_132a_number_of_non_derived_basic_colour_cat,number,WALS feature 132A — Number of Non-Derived Basic Colour Categories. One column per structural feature.
+wals_133a_number_of_basic_colour_categories,string,WALS feature 133A — Number of Basic Colour Categories. One column per structural feature.
+wals_134a_green_and_blue,string,WALS feature 134A — Green and Blue. One column per structural feature.
+wals_135a_red_and_yellow,string,WALS feature 135A — Red and Yellow. One column per structural feature.
+wals_136a_m_t_pronouns,string,WALS feature 136A — M-T Pronouns. One column per structural feature.
+wals_136b_m_in_first_person_singular,string,WALS feature 136B — M in First Person Singular. One column per structural feature.
+wals_137a_n_m_pronouns,string,WALS feature 137A — N-M Pronouns. One column per structural feature.
+wals_137b_m_in_second_person_singular,string,WALS feature 137B — M in Second Person Singular. One column per structural feature.
+wals_138a_tea,string,WALS feature 138A — Tea. One column per structural feature.
+wals_139a_irregular_negatives_in_sign_languages,string,WALS feature 139A — Irregular Negatives in Sign Languages. One column per structural feature.
+wals_140a_question_particles_in_sign_languages,string,WALS feature 140A — Question Particles in Sign Languages. One column per structural feature.
+wals_141a_writing_systems,string,WALS feature 141A — Writing Systems. One column per structural feature.
+wals_142a_para_linguistic_usages_of_clicks,string,WALS feature 142A — Para-Linguistic Usages of Clicks. One column per structural feature.
+wals_143a_order_of_negative_morpheme_and_verb,string,WALS feature 143A — Order of Negative Morpheme and Verb. One column per structural feature.
+wals_143b_obligatory_double_negation,string,WALS feature 143B — Obligatory Double Negation. One column per structural feature.
+wals_143c_optional_double_negation,string,WALS feature 143C — Optional Double Negation. One column per structural feature.
+wals_143d_optional_triple_negation,string,WALS feature 143D — Optional Triple Negation. One column per structural feature.
+wals_143e_preverbal_negative_morphemes,string,WALS feature 143E — Preverbal Negative Morphemes. One column per structural feature.
+wals_143f_postverbal_negative_morphemes,string,WALS feature 143F — Postverbal Negative Morphemes. One column per structural feature.
+wals_143g_minor_morphological_means_of_signaling,string,WALS feature 143G — Minor morphological means of signaling negation. One column per structural feature.
+wals_144a_position_of_negative_word_with_respect,string,"WALS feature 144A — Position of Negative Word With Respect to Subject, Object, and Verb. One column per structural feature."
+wals_144b_position_of_negative_words_relative_to,string,WALS feature 144B — Position of negative words relative to beginning and end of clause and with respect to adjacency to verb. One column per structural feature.
+wals_144c_languages_with_different_word_order_in,string,WALS feature 144C — Languages with different word order in negative clauses. One column per structural feature.
+wals_144d_the_position_of_negative_morphemes_in,string,WALS feature 144D — The Position of Negative Morphemes in SVO Languages. One column per structural feature.
+wals_144e_multiple_negative_constructions_in_svo,string,WALS feature 144E — Multiple Negative Constructions in SVO Languages. One column per structural feature.
+wals_144f_obligatory_double_negation_in_svo_lang,string,WALS feature 144F — Obligatory Double Negation in SVO languages. One column per structural feature.
+wals_144g_optional_double_negation_in_svo_langua,string,WALS feature 144G — Optional Double Negation in SVO languages. One column per structural feature.
+wals_144h_negsvo_order,string,WALS feature 144H — NegSVO Order. One column per structural feature.
+wals_144i_snegvo_order,string,WALS feature 144I — SNegVO Order. One column per structural feature.
+wals_144j_svnego_order,string,WALS feature 144J — SVNegO Order. One column per structural feature.
+wals_144k_svoneg_order,string,WALS feature 144K — SVONeg Order. One column per structural feature.
+wals_144l_the_position_of_negative_morphemes_in,string,WALS feature 144L — The Position of Negative Morphemes in SOV Languages. One column per structural feature.
+wals_144m_multiple_negative_constructions_in_sov,string,WALS feature 144M — Multiple Negative Constructions in SOV Languages. One column per structural feature.
+wals_144n_obligatory_double_negation_in_sov_lang,string,WALS feature 144N — Obligatory Double Negation in SOV languages. One column per structural feature.
+wals_144o_optional_double_negation_in_sov_langua,string,WALS feature 144O — Optional Double Negation in SOV languages. One column per structural feature.
+wals_144p_negsov_order,string,WALS feature 144P — NegSOV Order. One column per structural feature.
+wals_144q_snegov_order,string,WALS feature 144Q — SNegOV Order. One column per structural feature.
+wals_144r_sonegv_order,string,WALS feature 144R — SONegV Order. One column per structural feature.
+wals_144s_sovneg_order,string,WALS feature 144S — SOVNeg Order. One column per structural feature.
+wals_144t_the_position_of_negative_morphemes_in,string,WALS feature 144T — The Position of Negative Morphemes in Verb-Initial Languages. One column per structural feature.
+wals_144u_double_negation_in_verb_initial_langua,string,WALS feature 144U — Double negation in verb-initial languages. One column per structural feature.
+wals_144v_verb_initial_with_preverbal_negative,string,WALS feature 144V — Verb-Initial with Preverbal Negative. One column per structural feature.
+wals_144w_verb_initial_with_negative_that_is_imm,string,WALS feature 144W — Verb-Initial with Negative that is Immediately Postverbal or between Subject and Object. One column per structural feature.
+wals_144x_verb_initial_with_clause_final_negativ,string,WALS feature 144X — Verb-Initial with Clause-Final Negative. One column per structural feature.
+wals_144y_the_position_of_negative_morphemes_in,string,WALS feature 144Y — The Position of Negative Morphemes in Object-Initial Languages. One column per structural feature.

@@ -1,0 +1,32 @@
+{
+  "title": "US Nonprofit Organisations IRS BMF",
+  "id": "samyakrajbayar/us-nonprofit-organizations",
+  "subtitle": "1.66M tax-exempt 501(c)(3) charities with assets, revenue and NTEE sector",
+  "description": "### 1,661,259 US 501(c)(3) nonprofit organisations\n\nThe IRS Exempt Organizations Business Master File is the official register of every organisation\nrecognised as tax-exempt in the United States. This dataset keeps the **1,661,259 public charities\n(501(c)(3))** \u2014 churches, schools, hospitals, foundations, clubs and community groups \u2014 with\n**53 parameters** per organisation.\n\n- **Identity** \u2014 EIN, name, sort name, in-care-of, street, city, state, ZIP, foreign flag.\n- **Exemption** \u2014 subsection, affiliation, classification, foundation code, deductibility,\n  status, ruling date and ruling age in years.\n- **Money** \u2014 assets, income, revenue in dollars plus the IRS bracket codes and bands, and\n  revenue/income per asset.\n- **Classification** \u2014 26 NTEE categories derived from the NTEE code, legal form, activity code,\n  group exemption number and filing requirement codes.\n- **Geography** \u2014 state name, Census region and five-digit ZIP.\n\nAbout **447,583 charities** report revenue figures; the remainder are\nmostly churches and small organisations that are not required to file Form 990. The largest\nNTEE categories are religion (206,845), education (185,660), human services (156,177), arts and culture (119,364), philanthropy (105,308).\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics"
+  ],
+  "resources": [
+    {
+      "path": "us_nonprofits.csv.zip",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar",
+  "datasetSlug": "us-nonprofit-organizations"
+}

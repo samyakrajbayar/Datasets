@@ -1,0 +1,66 @@
+column,data_type,description
+ncessch,number,"NCES school identifier (12 digits, unique)."
+school_id,number,State-local school identifier.
+school_name,string,School name.
+leaid,number,Local education agency (district) identifier.
+lea_name,string,District name.
+state_leaid,string,State district identifier.
+seasch,string,NCES school code within the district.
+year,number,School year of the directory record.
+state_fips,number,State FIPS code.
+state,string,State name.
+state_abbr,string,Two-letter state abbreviation.
+county_code,number,County code within the state.
+county_fips,number,Five-digit county FIPS code.
+cbsa,number,Core based statistical area code.
+csa,number,Combined statistical area code.
+urban_centric_locale,number,NCES locale code (11-43).
+locale_desc,string,"Locale description (city, suburb, town, rural and size)."
+locale_type,string,Locale type without the size qualifier.
+street_location,string,Street address.
+city_location,string,City.
+state_location,string,State abbreviation of the location.
+zip_location,number,ZIP code.
+phone,string,Phone number.
+latitude,number,Latitude.
+longitude,number,Longitude.
+school_level,number,"NCES school level code (1 primary, 2 middle, 3 high, 4 other)."
+school_level_desc,string,School level description.
+school_type,number,"NCES school type code (1 regular, 2 special education, 3 vocational, 4 alternative)."
+school_type_desc,string,School type description.
+school_status,number,NCES school status code.
+school_status_desc,string,School status description.
+lowest_grade_offered,string,"Lowest grade offered (PreK, K, 1-13)."
+highest_grade_offered,string,Highest grade offered.
+grade_span,string,"Grade range, e.g. 6-8."
+grade_span_size,number,Number of grades in the range.
+is_charter,boolean,true for charter schools.
+is_magnet,boolean,true for magnet schools.
+is_virtual,boolean,true for virtual schools.
+is_shared_time,boolean,true for shared-time schools.
+is_title_i,boolean,true when Title I eligible.
+is_title_i_schoolwide,boolean,true for schoolwide Title I programmes.
+is_bie_school,boolean,true for Bureau of Indian Education schools.
+enrollment,number,Total students enrolled.
+teachers_fte,number,Full-time equivalent teachers.
+student_teacher_ratio,number,Students per FTE teacher.
+free_lunch,number,Students eligible for free lunch.
+reduced_price_lunch,number,Students eligible for reduced-price lunch.
+free_or_reduced_price_lunch,number,Students eligible for free or reduced-price lunch.
+free_lunch_pct,number,Free-lunch students as a percentage of enrolment.
+reduced_lunch_pct,number,Reduced-price lunch students as a percentage of enrolment.
+free_or_reduced_lunch_pct,number,Free-or-reduced lunch share of enrolment.
+direct_certification,number,Students directly certified for meal benefits.
+direct_certification_pct,number,Direct certification as a percentage of enrolment.
+elem_cedp,number,Elementary students in the Community Eligibility Provision.
+middle_cedp,number,Middle-school students in the Community Eligibility Provision.
+high_cedp,number,High-school students in the Community Eligibility Provision.
+ungrade_cedp,number,Ungraded students in the Community Eligibility Provision.
+lunch_program,number,School lunch programme code.
+state_leg_district_lower,string,State lower legislative district.
+state_leg_district_upper,string,State upper legislative district.
+congress_district_id,number,US congressional district number.
+has_phone,boolean,true when a phone number is listed.
+has_coordinates,boolean,true when latitude and longitude are present.
+is_open,boolean,true for schools reported as open.
+enrollment_band,string,Enrolment size band.

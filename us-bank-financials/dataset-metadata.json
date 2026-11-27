@@ -1,0 +1,32 @@
+{
+  "title": "US Bank Financial Statements FDIC",
+  "id": "samyakrajbayar/us-bank-financials",
+  "subtitle": "4,204 FDIC-insured banks with balance sheets, capital ratios and branches",
+  "description": "### 4,204 FDIC-insured US banks with full financial statements\n\nThe FDIC publishes a quarterly directory and call-report financials for every bank it insures.\nThis dataset joins the two: **4,204 active institutions**, **103 parameters**,\nand one row per bank with the report quarter in `report_period`.\n\n- **Institution** \u2014 certificate number, name, address, city, state, county, ZIP, latitude and\n  longitude, CBSA, FDIC region, chartering agent, bank class and establishment date.\n- **Balance sheet** \u2014 assets, deposits (domestic, insured, uninsured), liabilities, equity, loans,\n  securities, intangibles, cash, premises and 12 loan categories.\n- **Income** \u2014 net income, interest and noninterest income and expense, taxes, loan-loss provision.\n- **Ratios** \u2014 loans to deposits, equity to assets, net interest margin, efficiency ratio,\n  noncurrent assets, ROA, ROE, charge-off rate, Tier 1 leverage and risk-based capital.\n- **Derived** \u2014 assets in billions, uninsured deposit share, assets and income per employee,\n  community-bank and large-bank flags.\n\nThe banks in this snapshot hold **$0.03 trillion in assets** and\n**$0.02 trillion in deposits**; **4,204** are FDIC-insured and\n**161** have assets of USD 10 billion or more.\n",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tabular",
+    "economics"
+  ],
+  "resources": [
+    {
+      "path": "us_banks.csv",
+      "description": "The dataset."
+    },
+    {
+      "path": "data_dictionary.csv",
+      "description": "Column / type / description for every field."
+    },
+    {
+      "path": "notebook.ipynb",
+      "description": "Starter notebook."
+    }
+  ],
+  "ownerSlug": "samyakrajbayar",
+  "datasetSlug": "us-bank-financials"
+}

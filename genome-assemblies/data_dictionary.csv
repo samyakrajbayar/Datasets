@@ -1,0 +1,63 @@
+column,data_type,description
+assembly_accession,string,RefSeq assembly accession (GCF_...).
+assembly_name,string,Assembly name assigned by the submitter.
+organism_name,string,"Full organism name including strain, cultivar or isolate."
+species,string,Binomial species name.
+genus,string,Genus (first word of the organism name).
+taxid,number,NCBI Taxonomy identifier of the organism.
+species_taxid,number,NCBI Taxonomy identifier of the species.
+infraspecific_name,string,"Strain, cultivar, ecotype or isolate qualifier."
+isolate,string,Isolate identifier.
+refseq_category,string,"reference genome, representative genome or na."
+version_status,string,latest or suppressed.
+assembly_level,string,"Complete Genome, Chromosome, Scaffold or Contig."
+release_type,string,Major or Minor release.
+genome_rep,string,Full or partial genome representation.
+assembly_type,string,"haploid, diploid, haploid-with-alt-loci, ..."
+group,string,"NCBI organism group (bacteria, plant, vertebrate_mammalian, ...)."
+seq_rel_date,date,Date the assembly was released.
+seq_rel_year,number,Release year.
+seq_rel_month,number,Release month.
+asm_submitter,string,Submitting consortium or institution.
+annotation_provider,string,Organisation that produced the annotation.
+annotation_name,string,Annotation release name.
+annotation_date,date,Date of the annotation release.
+annotation_year,number,Year of the annotation release.
+genome_size_bp,number,Total genome length in base pairs.
+genome_size_mb,number,Total genome length in megabases.
+genome_size_ungapped_mb,number,Ungapped genome length in megabases.
+gc_percent,number,GC content percentage.
+replicon_count,number,Number of replicons (chromosomes plus plasmids).
+scaffold_count,number,Number of scaffolds.
+contig_count,number,Number of contigs.
+scaffolds_per_contig,number,Scaffolds divided by contigs (assembly contiguity).
+total_gene_count,number,Total annotated genes.
+protein_coding_gene_count,number,Protein-coding genes.
+non_coding_gene_count,number,Non-coding genes.
+protein_coding_share,number,Protein-coding share of all annotated genes.
+genes_per_mb,number,Gene density per megabase.
+pubmed_id,string,First PubMed identifier linked to the assembly.
+pubmed_count,number,Number of linked PubMed records.
+bioproject,string,NCBI BioProject accession.
+biosample,string,NCBI BioSample accession.
+paired_asm_comp,string,Whether the GenBank twin is identical or different.
+has_paired_asm,boolean,true when a GenBank (GCA) twin exists.
+excluded_from_refseq,string,"Reason the assembly is excluded from RefSeq, if any."
+relation_to_type_material,string,"Type-material relationship (type, synonym, ...)."
+asm_not_live_date,date,Date the assembly stopped being live.
+ftp_path,string,FTP directory containing the assembly files.
+is_reference,boolean,true for reference genomes.
+is_representative,boolean,true for representative genomes.
+is_complete_genome,boolean,true for complete genomes.
+is_chromosome_level,boolean,true for chromosome-level assemblies.
+is_scaffold_level,boolean,true for scaffold-level assemblies.
+is_contig_level,boolean,true for contig-level assemblies.
+has_annotation,boolean,true when protein-coding genes are annotated.
+has_pubmed,boolean,true when a PubMed record is linked.
+is_animal,boolean,true for animal (metazoan) assemblies.
+is_plant,boolean,true for plant assemblies.
+is_bacteria,boolean,true for bacterial assemblies.
+is_fungi,boolean,true for fungal assemblies.
+is_virus,boolean,true for viral assemblies.
+is_human,boolean,true for Homo sapiens assemblies.
+release_decade,string,Decade of release.
